@@ -8,7 +8,7 @@
  * @link      https://awork.dk
  *
  * Plugin Name:     Formular af CitizenOne journalsystem
- * Plugin URI:      @TODO
+ * Plugin URI:      https://github.com/AWORK-AS/contact-form-app
  * Description:     Formular af CitizenOne journalsystem
  * Version:         1.0.0
  * Author:          mz@awork.dk
@@ -74,7 +74,7 @@ if ( ! $requirements->satisfied() ) {
 // Documentation to integrate GitHub, GitLab or BitBucket https://github.com/YahnisElsts/plugin-update-checker/blob/master/README.md
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
-PucFactory::buildUpdateChecker( 'https://github.com/user-name/repo-name/', __FILE__, 'unique-plugin-or-theme-slug' );
+PucFactory::buildUpdateChecker( 'https://github.com/AWORK-AS/contact-form-app', __FILE__, 'contact-form-app' );
 
 if ( ! wp_installing() ) {
 	register_activation_hook( CFA_TEXTDOMAIN . '/' . CFA_TEXTDOMAIN . '.php', array( new \Contact_Form_App\Backend\ActDeact, 'activate' ) );

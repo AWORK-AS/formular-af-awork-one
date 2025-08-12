@@ -1,6 +1,5 @@
 === Contact Form App ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: http://example.com/
+Contributors: mzc74b331b9fdbc
 Tags: comments, spam (maximum 12)
 Requires at least: 4.9
 Tested up to: 5.3
