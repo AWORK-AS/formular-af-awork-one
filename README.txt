@@ -1,6 +1,6 @@
 === Contact Form App ===
 Contributors: mzc74b331b9fdbc
-Tags: comments, spam (maximum 12)
+Tags: contacts, leads
 Requires at least: 4.9
 Tested up to: 5.3
 Stable tag: 1.0.0
