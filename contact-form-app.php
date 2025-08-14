@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @package   Contact_Form_App
  * @author    Mindell Zamora <mz@awork.dk>
@@ -18,75 +17,131 @@
  * License URI:     http://www.gnu.org/licenses/gpl-3.0.txt
  * Domain Path:     /languages
  * Requires PHP:    7.4
- * WordPress-Plugin-Boilerplate-Powered: v3.3.0
  */
 
 // If this file is called directly, abort.
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH'  ) ) {
 	die( 'We\'re sorry, but you can not directly access this file.' );
 }
 
-define( 'CFA_VERSION', '1.0.0' );
-define( 'CFA_TEXTDOMAIN', 'contact-form-app' );
-define( 'CFA_NAME', 'Formular af CitizenOne journalsystem' );
-define( 'CFA_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
+// Define constants that are safe to be global.
 define( 'CFA_PLUGIN_ABSOLUTE', __FILE__ );
+define( 'CFA_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
+define( 'CFA_TEXTDOMAIN', 'contact-form-app' );
+define( 'CFA_VERSION', '1.0.0' );
 define( 'CFA_MIN_PHP_VERSION', '7.4' );
-define( 'CFA_WP_VERSION', '5.3' );
-define( 'CFA_PLUGIN_API_URL', 'https://citizenone.dk/api' );
+define( 'CFA_WP_VERSION', '5.6' );
+define( 'CFA_PLUGIN_API_URL', 'https://citizenone.dk/api'  );
 define( 'CFA_PLUGIN_API_NAME', 'CitizenOne journalsystem' );
-define( 'CFA_PLUGIN_GITHUB_TOKEN' , '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');
-add_action(
-	'init',
-	static function () {
-		load_plugin_textdomain( CFA_TEXTDOMAIN, false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+define( 'CFA_PLUGIN_GITHUB_TOKEN', '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' );
+
+/**
+ * The main function that initializes the plugin.
+ *
+ * This function is hooked to 'init' to ensure all WordPress functionalities,
+ * including user data and translations, are ready.
+ */
+function cfa_initialize_plugin() {
+	// Load the text domain first thing inside the init hook.
+	load_plugin_textdomain( CFA_TEXTDOMAIN, false, dirname( plugin_basename( CFA_PLUGIN_ABSOLUTE ) ) . '/languages' );
+
+	// Define other constants here.
+	define( 'CFA_NAME', __( 'Formular af CitizenOne journalsystem', CFA_TEXTDOMAIN ) ); // Now safe to translate
+	
+	// Require necessary files.
+	$contact_form_app_libraries = require CFA_PLUGIN_ROOT . 'vendor/autoload.php';
+	require_once CFA_PLUGIN_ROOT . 'functions/functions.php';
+	require_once CFA_PLUGIN_ROOT . 'functions/debug.php';
+
+	// Check for requirements.
+	$requirements = new \Micropackage\Requirements\Requirements(
+		__( 'Contact Form App', CFA_TEXTDOMAIN ),
+		array(
+			'php'            => CFA_MIN_PHP_VERSION,
+			'php_extensions' => array( 'mbstring' ),
+			'wp'             => CFA_WP_VERSION,
+		)
+	);
+
+	if ( ! $requirements->satisfied() ) {
+		add_action( 'admin_notices', array( $requirements, 'print_notice' ) );
+		return;
 	}
-	);
 
+	// Set up the update checker.
+	$myUpdateChecker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+		'https://github.com/AWORK-AS/contact-form-app',
+		CFA_PLUGIN_ABSOLUTE,
+		CFA_TEXTDOMAIN
+	 );
+	$myUpdateChecker->setBranch( 'main' );
+	$myUpdateChecker->setAuthentication( CFA_PLUGIN_GITHUB_TOKEN );
+    
+	// Add the filter for the block preview. This runs before the Block class is instantiated.
+    add_filter( 'register_block_type_args', function( $args, $name ) {
+        if ( 'contact-form-app/contact-form-app-form' === $name ) {
+            $args['example'] = array(
+                'media' => array(
+                    'url' => plugin_dir_url( CFA_PLUGIN_ABSOLUTE ) . 'assets/images/form-preview.png',
+                ),
+            );
+        }
+        return $args;
+    }, 10, 2 );
+	
+	// Initialize the plugin's core engine.
+	new \Contact_Form_App\Engine\Initialize( $contact_form_app_libraries );
 
-$contact_form_app_libraries = require CFA_PLUGIN_ROOT . 'vendor/autoload.php'; //phpcs:ignore
-
-require_once CFA_PLUGIN_ROOT . 'functions/functions.php';
-require_once CFA_PLUGIN_ROOT . 'functions/debug.php';
-
-// Add your new plugin on the wiki: https://github.com/WPBP/WordPress-Plugin-Boilerplate-Powered/wiki/Plugin-made-with-this-Boilerplate
-
-$requirements = new \Micropackage\Requirements\Requirements(
-	'Contact Form App',
-	array(
-		'php'            => CFA_MIN_PHP_VERSION,
-		'php_extensions' => array( 'mbstring' ),
-		'wp'             => CFA_WP_VERSION,
-		// 'plugins'            => array(
-		// array( 'file' => 'hello-dolly/hello.php', 'name' => 'Hello Dolly', 'version' => '1.5' )
-		// ),
-	)
-);
-
-if ( ! $requirements->satisfied() ) {
-	$requirements->print_notice();
-
-	return;
+	
 }
 
+// Hook the initializer function to 'init'.
+add_action( 'init', 'cfa_initialize_plugin' );
 
+/**
+ * Register activation and deactivation hooks.
+ * These hooks are safe to be registered globally as they only create a hook,
+ * they don't execute the class methods immediately.
+ */
 
-// Documentation to integrate GitHub, GitLab or BitBucket https://github.com/YahnisElsts/plugin-update-checker/blob/master/README.md
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-
-$myUpdateChecker = PucFactory::buildUpdateChecker( 'https://github.com/AWORK-AS/contact-form-app', __FILE__, 'contact-form-app' );
-//Set the branch that contains the stable release.
-$myUpdateChecker->setBranch('main');
-$myUpdateChecker->setAuthentication( CFA_PLUGIN_GITHUB_TOKEN );
-
-
-if ( ! wp_installing() ) {
-	register_activation_hook( CFA_TEXTDOMAIN . '/' . CFA_TEXTDOMAIN . '.php', array( new \Contact_Form_App\Backend\ActDeact, 'activate' ) );
-	register_deactivation_hook( CFA_TEXTDOMAIN . '/' . CFA_TEXTDOMAIN . '.php', array( new \Contact_Form_App\Backend\ActDeact, 'deactivate' ) );
-	add_action(
-		'plugins_loaded',
-		static function () use ( $contact_form_app_libraries ) {
-			new \Contact_Form_App\Engine\Initialize( $contact_form_app_libraries );
-		}
-	);
+/**
+ * Handle activation - use a separate function to avoid class dependency issues
+ */
+function cfa_activate_plugin( $network_wide ) {
+    // Ensure the autoloader is available
+    if ( ! file_exists( CFA_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
+        wp_die( __( 'Plugin dependencies are missing. Please run composer install.', CFA_TEXTDOMAIN ) );
+    }
+    
+    require_once CFA_PLUGIN_ROOT . 'vendor/autoload.php';
+    
+    // Load the ActDeact class
+    if ( ! class_exists( '\Contact_Form_App\Backend\ActDeact' ) ) {
+        require_once CFA_PLUGIN_ROOT . 'backend/ActDeact.php';
+    }
+    
+    \Contact_Form_App\Backend\ActDeact::activate( $network_wide );
 }
+
+/**
+ * Handle deactivation - use a separate function to avoid class dependency issues
+ */
+function cfa_deactivate_plugin( $network_wide ) {
+    // Ensure the autoloader is available
+    if ( ! file_exists( CFA_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
+        return;
+    }
+    
+    require_once CFA_PLUGIN_ROOT . 'vendor/autoload.php';
+    
+    // Load the ActDeact class
+    if ( ! class_exists( '\Contact_Form_App\Backend\ActDeact' ) ) {
+        require_once CFA_PLUGIN_ROOT . 'backend/ActDeact.php';
+    }
+    
+    \Contact_Form_App\Backend\ActDeact::deactivate( $network_wide );
+}
+
+// Register activation and deactivation hooks
+register_activation_hook( CFA_PLUGIN_ABSOLUTE, 'cfa_activate_plugin' );
+register_deactivation_hook( CFA_PLUGIN_ABSOLUTE, 'cfa_deactivate_plugin' );

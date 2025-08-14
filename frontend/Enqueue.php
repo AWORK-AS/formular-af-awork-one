@@ -87,14 +87,15 @@ class Enqueue extends Base {
 		$scripts[0]->forLocation( Asset::FRONTEND )->useAsyncFilter()->withVersion( CFA_VERSION );
 		$scripts[0]->dependencies();
 		$scripts[0]->withLocalize(
-			'exampleDemo',
+			'cfa_form_vars',
 			array(
-				'alert'   => \__( 'Error!', CFA_TEXTDOMAIN ),
-				'nonce'   => \wp_create_nonce( 'demo_example' ),
-				'wp_rest' => \wp_create_nonce( 'wp_rest' ),
+				'rest_url' => rest_url('contact-form-app/v1/submit'),
+				'nonce'   => \wp_create_nonce( 'wp_rest' ),
+				
 			)
 		);
-
+	
+		
 
 		return $scripts;
 	}

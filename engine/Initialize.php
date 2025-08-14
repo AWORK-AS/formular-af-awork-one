@@ -49,10 +49,11 @@ class Initialize {
 	public function __construct( \Composer\Autoload\ClassLoader $composer ) {
 		$this->content  = new Engine\Context;
 		$this->composer = $composer;
+       
 
 		$this->get_classes( 'Internals' );
 		$this->get_classes( 'Integrations' );
-
+		
 		if ( $this->content->request( 'rest' ) ) {
 			$this->get_classes( 'Rest' );
 		}

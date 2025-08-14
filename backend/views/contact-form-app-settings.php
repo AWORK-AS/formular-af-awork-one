@@ -13,7 +13,7 @@
                 'name'       => __( 'Token', 'contact-form-app' ),
                 'desc'       => __( 'Enter your API token from '.CFA_PLUGIN_API_NAME.' here.', 'contact-form-app' ),
                 'id'         => CFA_TEXTDOMAIN . '_token',
-                'type'       => 'text',
+                'type'       => 'textarea',
                 'attributes' => array(
 					'required' => 'required', // HTML5 validation
                                 ),

@@ -205,12 +205,12 @@ class ActDeact extends Base {
 
 		$version = \strval( \get_option( 'contact-form-app-version' ) );
 
-		if ( !\version_compare( CFA_VERSION, $version, '>' ) ) {
+		if ( !\version_compare( \CFA_VERSION, $version, '>' ) ) {
 			return;
 		}
 
-		\update_option( 'contact-form-app-version', CFA_VERSION );
-		\delete_option( CFA_TEXTDOMAIN . '_fake-meta' );
+		\update_option( 'contact-form-app-version', \CFA_VERSION );
+		\delete_option( \CFA_TEXTDOMAIN . '_fake-meta' );
 	}
 
 	/**

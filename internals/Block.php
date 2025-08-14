@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Contact_Form_App
  *
@@ -12,35 +11,49 @@
 
 namespace Contact_Form_App\Internals;
 
-use Contact_Form_App\Engine\Base;
+use Contact_Form_App\Internals\Views\FormRenderer;
 
 /**
- * Block of this plugin
+ * Block of this plugin, powered by WP_V2_Super_Duper.
  */
-class Block extends Base {
+class Block extends \WP_V2_Super_Duper {
 
-	/**
-	 * Initialize the class.
-	 *
-	 * @return void|bool
-	 */
-	public function initialize() {
-		parent::initialize();
+    /**
+     * Sets up the block name and properties.
+     */
+    public function __construct( ) {
+        $options = array(
+            'textdomain'     => \CFA_TEXTDOMAIN,
+            'base_id'        => 'contact-form-app-form',
+            'name'           => \__( 'Contact Form', \CFA_TEXTDOMAIN ),
+            'block-icon'     => 'email',
+            'block-category' => 'widgets',
+            'block-keywords' => "['form', 'contact', 'awork', 'lead']",
+            'class_name'     => self::class,
+            'widget_ops'     => array(
+                'classname'   => 'cfa-form-widget',
+                'description' => \esc_html__( 'Displays the contact form.', \CFA_TEXTDOMAIN ),
+            ),
+            'no_wrap'        => true,
+            'arguments'      => array(),
+        );
 
-		\add_action( 'init', array( $this, 'register_block' ) );
-	}
+        parent::__construct( $options );
+    }
 
-	/**
-	 * Registers and enqueue the block assets
-	 *
-	 * @since 1.0.0
-	 * @return void
-	 */
-	public function register_block() {
-		// Register the block by passing the location of block.json to register_block_type.
-		$json = \CFA_PLUGIN_ROOT . 'assets/block.json';
+    /**
+     * Renders the form on the front end.
+     */
+    public function output( $args = array(), $widget_args = array(), $content = '' ) {
+        $renderer = new FormRenderer();
+        return $renderer->render_form();
+    }
 
-		\register_block_type( $json );
-	}
-
+    /**
+     * Initialize the class.
+     * This method is required by the engine but can be empty for this class.
+     */
+    public function initialize() {
+        // Leave this empty. The filter is now handled globally.
+    }
 }
