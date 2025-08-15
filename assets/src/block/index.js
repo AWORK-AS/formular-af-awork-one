@@ -32,7 +32,7 @@ const blockConfig = /** @type {BlockConfig} */ (
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType( 'contact-form-app/block-name', {
+registerBlockType( 'citizenone-form', {
 	...blockConfig,
 	icon: blockIcon,
 	/**

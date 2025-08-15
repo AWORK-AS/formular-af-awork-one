@@ -29,7 +29,6 @@ class Notices extends Base {
 			return;
 		}
 
-		\wpdesk_wp_notice( \__( 'Updated Messages', CFA_TEXTDOMAIN ), 'updated' );
 
 		/*
 		 * Alert after few days to suggest to contribute to the localization if it is incomplete

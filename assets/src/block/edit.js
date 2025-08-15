@@ -10,6 +10,7 @@ import { blockIcon, blockStyle } from './utils';
  * @typedef {Object} Props The custom block props.
  * @property {string} href The block url link attribute.
  * @property {Record<string, any>} style The block custom style attribute.
+ * @property {boolean} isPreview Attribute para malaman kung nasa preview mode.
  */
 
 /**
@@ -20,15 +21,30 @@ import { blockIcon, blockStyle } from './utils';
  * @return {JSX.Element} Element to render.
  */
 export const Edit = ( { isSelected, attributes, setAttributes } ) => {
+	const blockProps = useBlockProps( {
+		style: {
+			...attributes.style,
+			...blockStyle,
+		},
+	} );
+
+	
+	if ( attributes.isPreview ) {
+		const previewImageUrl = window.cfaBlockData.previewImage;
+		return (
+			<div { ...blockProps }>
+				<img
+					src={ previewImageUrl }
+					alt="Block Preview"
+					style={ { width: '100%', height: 'auto' } }
+				/>
+			</div>
+		);
+	}
+
+	
 	return (
-		<div
-			{ ...useBlockProps( {
-				style: {
-					...attributes.style,
-					...blockStyle,
-				},
-			} ) }
-		>
+		<div { ...blockProps }>
 			<InspectorControls key="setting">
 				<Panel header="Settings">
 					<PanelBody
@@ -64,9 +80,6 @@ export const Edit = ( { isSelected, attributes, setAttributes } ) => {
 					Hello World, WordPress Plugin Boilerplate Powered here!
 				</a>
 			</h4>
-			<p>
-				Edit contact-form-app/assets/src/block/index.js to change this block
-			</p>
 		</div>
 	);
 };

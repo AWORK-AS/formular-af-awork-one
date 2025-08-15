@@ -77,21 +77,11 @@ function cfa_initialize_plugin() {
 	$myUpdateChecker->setBranch( 'main' );
 	$myUpdateChecker->setAuthentication( CFA_PLUGIN_GITHUB_TOKEN );
     
-	// Add the filter for the block preview. This runs before the Block class is instantiated.
-    add_filter( 'register_block_type_args', function( $args, $name ) {
-        if ( 'contact-form-app/contact-form-app-form' === $name ) {
-            $args['example'] = array(
-                'media' => array(
-                    'url' => plugin_dir_url( CFA_PLUGIN_ABSOLUTE ) . 'assets/images/form-preview.png',
-                ),
-            );
-        }
-        return $args;
-    }, 10, 2 );
+	
 	
 	// Initialize the plugin's core engine.
 	new \Contact_Form_App\Engine\Initialize( $contact_form_app_libraries );
-
+	
 	
 }
 

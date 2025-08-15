@@ -3,21 +3,24 @@ namespace Contact_Form_App\Internals\Views;
 
 class FormRenderer {
     public function render_form() {
-        $options = get_option(CFA_TEXTDOMAIN . '_options');
-        $color = $options[CFA_TEXTDOMAIN . '_color_theme'] ?? '#0055ff';
-        $headline = $options[CFA_TEXTDOMAIN . '_headline'] ?? 'Get in Touch With Us';
-        $company = $options[CFA_TEXTDOMAIN . '_company_name'] ?? get_bloginfo('name');
-
+        
+       
+        $color =  '#0055ff';
+        $headline = 'Get in Touch With Us';
+        
+        
         // Unique ID for form instance
         $form_id = 'cfa-form-' . uniqid();
-        $nonce = wp_create_nonce('cfa_form_nonce');
 
+        //Using `wp-rest` nonce
+     
         ob_start(); ?>
+       
+        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
         <div class="cfa-contact-form" id="<?= esc_attr($form_id) ?>">
-            <h3 style="color: <?= esc_attr($color) ?>"><?= esc_html($headline) ?></h3>
+            <h3 style="color: <?= esc_attr($color) ?>" class="cfa-headline-config"><?= esc_html($headline) ?></h3>
             <form class="cfa-form" id="<?= esc_attr($form_id) ?>-form">
                 <input type="hidden" name="source_url" value="<?= esc_url($_SERVER['HTTP_REFERER'] ?? '') ?>">
-                <input type="hidden" name="nonce" value="<?= esc_attr($nonce) ?>">
                 
                 <div class="cfa-form-grid">
                     <div class="cfa-form-group cfa-form-group--full">
@@ -44,6 +47,7 @@ class FormRenderer {
                         <label for="cfa-message"><?php _e('Message', 'contact-form-app') ?> *</label>
                         <textarea id="cfa-message" name="message" required></textarea>
                     </div>
+                    
                 </div>
                 
                 <div class="cfa-form-footer">

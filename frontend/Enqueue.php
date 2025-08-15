@@ -86,12 +86,34 @@ class Enqueue extends Base {
 		$scripts[0] = new Script( CFA_TEXTDOMAIN . '-plugin-script', \plugins_url( 'assets/build/plugin-public.js', CFA_PLUGIN_ABSOLUTE ) );
 		$scripts[0]->forLocation( Asset::FRONTEND )->useAsyncFilter()->withVersion( CFA_VERSION );
 		$scripts[0]->dependencies();
+		$options = \get_option(CFA_TEXTDOMAIN . '_options');
+        $color = $options[CFA_TEXTDOMAIN . '_color_theme'] ?? '#0055ff';
+        $headline = $options[CFA_TEXTDOMAIN . '_headline'] ?? 'Get in Touch With Us';
+        $hcaptcha_site_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
+		
+		// IMPORTANT: Do not add to localized data. Only for configuration testing
+        $hcaptcha_secret_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
+
+        $hcaptcha_enabled = $hcaptcha_site_key && $hcaptcha_secret_key ? true : false;
+
 		$scripts[0]->withLocalize(
 			'cfa_form_vars',
 			array(
 				'rest_url' => rest_url('contact-form-app/v1/submit'),
-				'nonce'   => \wp_create_nonce( 'wp_rest' ),
-				
+				'nonce'    => \wp_create_nonce( 'wp_rest' ),
+				'i18n'     => [ // Add i18n object
+								'loading'           => \__('Loading...', 'contact-form-app'),
+								'sending'           => \__('Sending...', 'contact-form-app'),
+								'submission_failed' => \__('Submission failed', 'contact-form-app'),
+								'invalid_nonce'     => \__('Session expired. Please refresh the page.', 'contact-form-app'),
+								'required_field'    => \__('This field is required', 'contact-form-app'),
+								'invalid_email'     => \__('Please enter a valid email address', 'contact-form-app'),
+								'success_message'   => \__('Thank you! Your message has been sent.', 'contact-form-app')
+				],
+				'color' => $color,
+				'headline' => $headline,
+				'hcaptcha_site_key' => $hcaptcha_site_key,
+				'hcaptcha_enabled'  => $hcaptcha_enabled,
 			)
 		);
 	

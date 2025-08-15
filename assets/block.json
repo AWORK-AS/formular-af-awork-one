@@ -1,7 +1,7 @@
 {
 	"apiVersion": 2,
-	"name": "contact-form-app/block-name",
-	"title": "block_name",
+	"name": "citizenone-form",
+	"title": "Contact Form",
 	"category": "text",
 	"editorScript": "file:./build/plugin-block.js",
 	"editorStyle": "file:./build/plugin-block.css",
@@ -30,7 +30,7 @@
 			"source": "attribute",
 			"selector": "a",
 			"attribute": "href",
-			"default": "https://github.com/WPBP"
+			"default": "https://citizenone.dk"
 		}
 	}
 }

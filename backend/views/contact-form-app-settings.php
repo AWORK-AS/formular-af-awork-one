@@ -43,6 +43,20 @@
                 'default' => '#0055ff',
             )
         );
+        $cmb->add_field(
+            array(
+                'name'    => __( 'hCaptcha secret key', 'contact-form-app' ),
+                'id'      => CFA_TEXTDOMAIN . '_hcaptcha_secret_key',
+                'type'    => 'text',
+            )
+        );
+        $cmb->add_field(
+            array(
+                'name'    => __( 'hCaptcha site key', 'contact-form-app' ),
+                'id'      => CFA_TEXTDOMAIN . '_hcaptcha_site_key',
+                'type'    => 'text',
+            )
+        );
         cmb2_metabox_form( CFA_TEXTDOMAIN . '_options', CFA_TEXTDOMAIN . '-settings' );
 		?>
 </div>

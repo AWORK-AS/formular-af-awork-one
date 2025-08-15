@@ -6,18 +6,21 @@ import './styles/public.scss';
 window.onload = () => {
 	// Write in console log the PHP value passed in enqueue_js_vars in frontend/Enqueue.php
 	( () => {
-		document.addEventListener('DOMContentLoaded', () => {
+		
 			// Use event delegation for all form submissions
 			document.addEventListener('submit', async (e) => {
+				
 				// Check if the submitted element is a CFA form
 				if (!e.target.matches('.cfa-form')) return;
 				
 				e.preventDefault();
 				const form = e.target;
 				const formContainer = form.closest('.cfa-contact-form');
+				
+				
 				const messageDiv = formContainer.querySelector('.cfa-message');
 				const restUrl = window.cfa_form_vars.rest_url;
-
+                
 				// Show loading state
 				messageDiv.innerHTML = `<div class="cfa-loading">${window.cfa_form_vars.i18n.sending}</div>`;
 				messageDiv.classList.remove('error', 'success');
@@ -26,6 +29,9 @@ window.onload = () => {
 					const formData = new FormData(form);
 					const response = await fetch(restUrl, {
 						method: 'POST',
+						headers: {
+							'X-WP-Nonce': window.cfa_form_vars.nonce // wp_rest nonce
+						},
 						body: formData
 					});
 
@@ -43,7 +49,6 @@ window.onload = () => {
 					messageDiv.classList.add('error');
 				}
 			});
-		});
 		
 	} )();
 	// Place your public-facing magic js 🪄 here
