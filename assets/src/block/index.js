@@ -1,63 +1,24 @@
-/**
- * WordPress dependencies
- */
 import { registerBlockType } from '@wordpress/blocks';
+import { __ } from '@wordpress/i18n';
+import Edit from './edit';
+// import save from './save';
+import '../styles/block.scss';
 
-/**
- * The plugin Edit and Save components
- */
-import { Edit } from './edit';
-import { Save } from './save';
-
-/**
- * @typedef {import('@wordpress/blocks').Block<Props>} BlockType
- * @typedef {import('@wordpress/blocks').BlockConfiguration<Props>} BlockConfig
- * @typedef {import('./edit').Props} Props
- */
-
-/**
- * @type { import('@wordpress/blocks').BlockIcon } BlockIcon - The Block Icon
- */
-import { blockIcon } from './utils';
-
-/**
- * The block configuration
- */
-const blockConfig = /** @type {BlockConfig} */ (
-	require( '../../block.json' )
-);
-
-/**
- * Register the block
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
- */
-registerBlockType( 'citizenone-form', {
-	...blockConfig,
-	icon: blockIcon,
-	/**
-	 * @see edit.js
-	 */
-	edit: Edit,
-	/**
-	 * @see save.js
-	 */
-	save: Save,
-	// https://developer.wordpress.org/block-editor/reference-guides/block-api/block-supports/
-	supports: {
-		align: true,
-		anchor: true,
-		className: true,
-		color: {
-			background: true,
-			link: true,
-			text: true,
-			gradients: true,
-		},
-		spacing: {
-			margin: true, // Enable margin UI control.
-			padding: true, // Enable padding UI control.
-			blockGap: true, // Enables block spacing UI control.
-		},
-	},
-} );
+registerBlockType('contact-form-app/contact-form', {
+    apiVersion: 2,
+    title: __('Contact Form', 'contact-form-app'),
+    icon: 'email-alt',
+    category: 'widgets',
+    attributes: {
+        headline: {
+            type: 'string',
+            default: __('Get in Touch With Us', 'contact-form-app'),
+        },
+        color: {
+            type: 'string',
+            default: '#205E77',
+        },
+    },
+    edit: Edit,
+    save: () => null,
+});

@@ -4,9 +4,9 @@ namespace Contact_Form_App\Internals\Views;
 class FormRenderer {
     public function render_form() {
         
-       
-        $color =  '#0055ff';
-        $headline = 'Get in Touch With Us';
+        $color = apply_filters('cfa_form_color', '#205E77');
+        $headline = apply_filters('cfa_form_headline', __('Get in Touch With Us', 'contact-form-app'));
+        
         
         
         // Unique ID for form instance
@@ -16,7 +16,7 @@ class FormRenderer {
      
         ob_start(); ?>
        
-        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+        
         <div class="cfa-contact-form" id="<?= esc_attr($form_id) ?>">
             <h3 style="color: <?= esc_attr($color) ?>" class="cfa-headline-config"><?= esc_html($headline) ?></h3>
             <form class="cfa-form" id="<?= esc_attr($form_id) ?>-form">

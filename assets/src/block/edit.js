@@ -1,85 +1,77 @@
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { Panel, PanelBody, PanelRow, TextControl } from '@wordpress/components';
-import { blockIcon, blockStyle } from './utils';
+import { __ } from '@wordpress/i18n';
+import { useBlockProps, RichText, ColorPalette } from '@wordpress/block-editor';
+import { PanelBody, PanelRow } from '@wordpress/components';
 
-/**
- * @typedef {import('@wordpress/blocks').BlockEditProps<Props>} BlockEditProps
- */
+export default function Edit({ attributes, setAttributes }) {
 
-/**
- * @typedef {Object} Props The custom block props.
- * @property {string} href The block url link attribute.
- * @property {Record<string, any>} style The block custom style attribute.
- * @property {boolean} isPreview Attribute para malaman kung nasa preview mode.
- */
+    const { headline, color } = attributes;
 
-/**
- * The edit function describes the structure of your block in the context of the editor.
- *
- * @see https://wordpress.org/gutenberg/handbook/block-api/block-edit-save
- * @param {BlockEditProps} props - The block attributes
- * @return {JSX.Element} Element to render.
- */
-export const Edit = ( { isSelected, attributes, setAttributes } ) => {
-	const blockProps = useBlockProps( {
-		style: {
-			...attributes.style,
-			...blockStyle,
-		},
-	} );
+    // Use randomId
+    const randomId = Math.random().toString(36).substr(2, 9);
+    const formId = `cfa-form-${randomId}`;
 
-	
-	if ( attributes.isPreview ) {
-		const previewImageUrl = window.cfaBlockData.previewImage;
-		return (
-			<div { ...blockProps }>
-				<img
-					src={ previewImageUrl }
-					alt="Block Preview"
-					style={ { width: '100%', height: 'auto' } }
-				/>
-			</div>
-		);
-	}
-
-	
-	return (
-		<div { ...blockProps }>
-			<InspectorControls key="setting">
-				<Panel header="Settings">
-					<PanelBody
-						title="Block Settings"
-						icon={ 'admin-settings' }
-						initialOpen={ true }
-					>
-						<PanelRow>
-							<TextControl
-								label="Link Href"
-								type={ 'url' }
-								value={ attributes.href }
-								onChange={ ( target ) =>
-									setAttributes( { href: target } )
-								}
-							/>
-						</PanelRow>
-					</PanelBody>
-				</Panel>
-			</InspectorControls>
-			{ blockIcon }
-			<h4
-				style={
-					isSelected
-						? { border: '2px solid red' }
-						: { border: 'none' }
-				}
-			>
-				<a
-					href={ attributes.href ?? '' }
-					className={ 'has-link-color' }
-				>
-					Hello World, WordPress Plugin Boilerplate Powered here!
-				</a>
-			</h4>
-		</div>
-	);
-};
+    return (
+        <div {...useBlockProps()}>
+            <PanelBody title={__('Form Settings', 'contact-form-app')} initialOpen={true}>
+                <PanelRow>
+                    <RichText
+                        tagName="h3"
+                        value={headline}
+                        onChange={(value) => setAttributes({ headline: value })}
+                        placeholder={__('Enter form headline...', 'contact-form-app')}
+                    />
+                </PanelRow>
+                <PanelRow>
+                    <label>{__('Headline Color', 'contact-form-app')}</label>
+                    <ColorPalette
+                        value={color}
+                        onChange={(value) => setAttributes({ color: value })}
+                    />
+                </PanelRow>
+            </PanelBody>
+            
+            {/* Form preview in editor */}
+            <div className="cfa-contact-form" id={formId}>
+                <h3 style={{ color: color || '#205E77' }}>
+                    {headline || __('Get in Touch With Us', 'contact-form-app')}
+                </h3>
+                <div className="cfa-form-preview">
+                    <div className="cfa-form-grid">
+                        <div className="cfa-form-group cfa-form-group--full">
+                            <input type="text" disabled placeholder={__('Name', 'contact-form-app')}/>
+                        </div>
+                        
+                        <div className="cfa-form-group">
+                            <input type="text" disabled placeholder={__('Company', 'contact-form-app')}/>
+                        </div>
+                        
+                        <div className="cfa-form-group">
+                            <input type="email" disabled placeholder={__('Email', 'contact-form-app')}/>
+                        </div>
+                        
+                        <div className="cfa-form-group">
+                            <input type="tel" disabled placeholder={__('Phone', 'contact-form-app')}/>
+                        </div>
+                        
+                        <div className="cfa-form-group cfa-form-group--full">
+                            <textarea disabled placeholder={__('Message', 'contact-form-app')}></textarea>
+                        </div>
+                    </div>
+                    
+                    <div className="cfa-form-footer">
+                        <button type="button" disabled className="cfa-submit-btn">
+                            {__('Submit', 'contact-form-app')}
+                        </button>
+                    </div>
+                    
+                    <div className="cfa-powered-by">
+                        {__('Formular af', 'contact-form-app')} { ' ' }
+                        <a href="https://citizenone.dk" target="_blank" rel="noreferrer">
+                            CitizenOne - Journalsystem med alt inklusiv
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}

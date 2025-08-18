@@ -1,0 +1,30 @@
+{
+    "apiVersion": 2,
+    "name": "contact-form-app/contact-form",
+    "title": "Contact Form",
+    "category": "widgets",
+    "icon": "email",
+    "description": "Formular af CitizenOne journalsystem",
+    "keywords": ["form", "contact", "lead", "citizenone", "journalsystem"],
+    "version": "1.0.0",
+    "textdomain": "contact-form-app",
+    "editorScript": "plugin-block",
+    "editorStyle": "file:./assets/build/plugin-block.css",
+    "render": "file:./assets/src/render.php",
+    "style": "file:./assets/build/plugin-block.css",
+    "attributes": {
+        "headline": {
+            "type": "string",
+            "default": "Get in Touch With Us"
+        },
+        "color": {
+            "type": "string",
+            "default": "#205E77"
+        }
+    },
+    "example": {
+        "attributes": {
+            "isPreview": true
+        }
+    }
+}

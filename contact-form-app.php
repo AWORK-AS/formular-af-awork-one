@@ -82,7 +82,40 @@ function cfa_initialize_plugin() {
 	// Initialize the plugin's core engine.
 	new \Contact_Form_App\Engine\Initialize( $contact_form_app_libraries );
 	
+	// Load Contact form block.
+	add_action('enqueue_block_assets', function() {
+		// Only load on frontend
+		if (!is_admin()) {
+			wp_enqueue_script(
+				'contact-form-frontend',
+				plugins_url('build/frontend.js', __FILE__),
+				['wp-i18n', 'wp-api-fetch'],
+				filemtime(plugin_dir_path(__FILE__) . 'assets/build/frontend.js')
+			);
+			
+			// Localize script with WP REST API settings
+			wp_localize_script('contact-form-frontend', 'wpApiSettings', [
+				'root' => esc_url_raw(rest_url()),
+				'nonce' => wp_create_nonce('wp_rest'),
+			]);
+			
+			// Load hCaptcha script if needed
+			wp_enqueue_script(
+				'hcaptcha',
+				'https://js.hcaptcha.com/1/api.js',
+				[],
+				null,
+				['async' => true, 'defer' => true]
+			);
+		}
+	});
 	
+	register_block_type_from_metadata(
+		plugin_dir_path(__FILE__) . 'block.json',
+		[
+			'render_callback' => 'render_contact_form_block',
+		]
+	);
 }
 
 // Hook the initializer function to 'init'.

@@ -34,14 +34,19 @@
 .cfa-form-group input,
 .cfa-form-group textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid #E2E2E2;
     border-radius: 4px;
-    background-color: #fff;
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.07);
     font-size: 16px;
     box-sizing: border-box;
     transition: border-color 0.3s;
+    background-color: #ffffff;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 4px 4px 4px 4px;
+    font-family: var( --e-global-typography-text-font-family ), Sans-serif;
+    font-weight: var( --e-global-typography-text-font-weight );
+    min-height: 47px;
+    padding: 6px 16px;
 }
 
 .cfa-form-group textarea {
@@ -63,9 +68,11 @@
 
 .cfa-submit-btn {
     display: inline-block;
-    padding: 12px 24px;
     border: none;
-    border-radius: 4px;
+    padding-block-end: 0;
+    padding-block-start: 0;
+    border-radius: 4px 4px 4px 4px;
+    padding: 20px 32px 20px 32px;
     font-size: 16px;
     font-weight: 600;
     line-height: 1;
@@ -73,6 +80,9 @@
     text-align: center;
     text-decoration: none;
     transition: transform 0.1s;
+    background-color: #42AED9;
+    color: #ffffff;
+    flex-basis: 100%;
 }
 
 .cfa-message {

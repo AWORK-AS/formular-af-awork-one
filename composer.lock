@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f07283a2f6e586bbf8b68d1e534cec51",
+    "content-hash": "5bbc3085984c8cdece7eee89c1c89ed6",
     "packages": [
         {
             "name": "cmb2/cmb2",
@@ -1133,21 +1133,6 @@
                 "source": "https://github.com/micropackage/requirements/tree/1.2.2"
             },
             "time": "2023-06-23T09:01:05+00:00"
-        },
-        {
-            "name": "mte90/wp-super-duper",
-            "version": "dev-fork",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mte90/wp-super-duper.git",
-                "reference": "fork"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "wp-super-duper.php"
-                ]
-            }
         },
         {
             "name": "origgami/cmb2-grid",
@@ -14339,7 +14324,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "mte90/wp-super-duper": 20,
         "origgami/cmb2-grid": 20,
         "wpbp/i18n-notice": 20
     },

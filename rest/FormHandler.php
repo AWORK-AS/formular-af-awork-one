@@ -29,6 +29,7 @@ class FormHandler {
                 ]
             ]
         ]);
+        
     }
 
     public function handle_form_submission(\WP_REST_Request $request) {

@@ -83,6 +83,14 @@ class Enqueue extends Base {
 		$styles[1] = new Style( CFA_TEXTDOMAIN . '-admin-style', \plugins_url( 'assets/build/plugin-admin.css', CFA_PLUGIN_ABSOLUTE ) );
 		$styles[1]->forLocation( Asset::BACKEND )->withVersion( CFA_VERSION );
 		$styles[1]->withDependencies( 'dashicons' );
+        
+		$styles[2] = new Style(
+			CFA_TEXTDOMAIN . '-block-editor-style',
+			\plugins_url('assets/build/plugin-block.css', CFA_PLUGIN_ABSOLUTE)
+		);
+		$styles[2]->forLocation(Asset::BACKEND)
+				->withVersion(CFA_VERSION)
+				->withDependencies('wp-edit-blocks'); // Important dependency for block editor
 
 		return $styles;
 	}
@@ -107,11 +115,31 @@ class Enqueue extends Base {
 				}
 			);
 		}
-
+        
+		
 		$scripts[1] = new Script( CFA_TEXTDOMAIN . '-settings-admin', \plugins_url( 'assets/build/plugin-admin.js', CFA_PLUGIN_ABSOLUTE ) );
 		$scripts[1]->forLocation( Asset::BACKEND )->withVersion( CFA_VERSION );
 		$scripts[1]->dependencies();
 
+		$is_block_editor = $admin_page && method_exists($admin_page, 'is_block_editor') && $admin_page->is_block_editor();
+		if ($is_block_editor) {
+			$block_script = new Script(
+				CFA_TEXTDOMAIN . '-block-editor-script',
+				\plugins_url('assets/build/plugin-block.js', CFA_PLUGIN_ABSOLUTE)
+			);
+			$block_script->forLocation(Asset::BACKEND)
+				->withVersion(CFA_VERSION);
+			$block_script->withDependencies('wp-blocks')
+            ->withDependencies('wp-element')
+            ->withDependencies('wp-editor')
+            ->withDependencies('wp-components')
+            ->withDependencies('wp-i18n')
+            ->withDependencies('wp-api-fetch');
+			$block_script->canEnqueue(function() {
+				return \current_user_can('edit_posts');
+			});
+			$scripts[] = $block_script;
+		}
 		return $scripts;
 	}
 

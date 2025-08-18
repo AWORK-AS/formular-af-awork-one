@@ -16,7 +16,7 @@ use Contact_Form_App\Engine\Base;
 use \stdClass; // phpcs:ignore
 
 /**
- * Transient used by the plugin
+ *  used by the plugin
  */
 class Transient extends Base {
 
