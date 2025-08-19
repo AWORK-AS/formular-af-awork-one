@@ -8,10 +8,12 @@
             'show_names' => true,
         )
     );
+    /** Hide first */
+    /*
     $cmb->add_field(
         array(
             'name'       => __( 'Token', 'contact-form-app' ),
-            'desc'       => __( 'Enter your API token from '.CFA_PLUGIN_API_NAME.' here.', 'contact-form-app' ),
+            'desc'       => __( 'Enter your token from CitizenOne dashboard.', 'contact-form-app' ),
             'id'         => CFA_TEXTDOMAIN . '_token',
             'type'       => 'textarea',
             'attributes' => array(
@@ -19,16 +21,41 @@
                             ),
         )
     );
+    */
     $cmb->add_field(
         array(
-            'name'    => __( 'hCaptcha secret key', 'contact-form-app' ),
+            'name'    => __( 'Email', 'contact-form-app' ),
+            'id'      => CFA_TEXTDOMAIN . '_field_email',
+            'type'    => 'text',
+        )
+    );
+    
+    $cmb->add_field(
+        array(
+            'name'    => __( 'Company CVR', 'contact-form-app' ),
+            'id'      => CFA_TEXTDOMAIN . '_field_company_cvr',
+            'type'    => 'text',
+        )
+    );
+    
+    $cmb->add_field(
+        array(
+            'name'    => __( 'Email', 'contact-form-app' ),
+            'id'      => CFA_TEXTDOMAIN . '_field_email',
+            'type'    => 'text',
+        )
+    );
+    
+    $cmb->add_field(
+        array(
+            'name'    => "hCaptcha " . __( 'secret key', 'contact-form-app' ),
             'id'      => CFA_TEXTDOMAIN . '_hcaptcha_secret_key',
             'type'    => 'text',
         )
     );
     $cmb->add_field(
         array(
-            'name'    => __( 'hCaptcha site key', 'contact-form-app' ),
+            'name'    => "hCaptcha " . __( 'site key', 'contact-form-app' ),
             'id'      => CFA_TEXTDOMAIN . '_hcaptcha_site_key',
             'type'    => 'text',
         )

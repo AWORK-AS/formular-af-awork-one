@@ -1,18 +1,18 @@
-import { __ } from '@wordpress/i18n';
+
 import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
-    const { headline, color } = attributes;
-    
+    const { headline, color, btnColor, btnTextColor } = attributes;
+    const translations = window.cfaBlockTranslations || {};
     // Use randomId
     const randomId = Math.random().toString(36).substr(2, 9);
     const formId = `cfa-form-${randomId}`;
-
+    
     return (
         <div {...useBlockProps.save()}>
             <div className="cfa-contact-form" id={formId}>
                 <h3 style={{ color: color || '#205E77' }}>
-                    {headline || __('Get in Touch With Us', 'contact-form-app')}
+                    {translations.headline || 'Get in Touch With Us'}
                 </h3>
                 <form className="cfa-form" id={`${formId}-form`}>
                     <input type="hidden" name="source_url" value="" />
@@ -24,7 +24,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-name`}
                                 name="name"
                                 required
-								placeholder={__('Name', 'contact-form-app')}
+								placeholder={translations.name || 'Name'}
                             />
                         </div>
                         
@@ -34,7 +34,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-company`}
                                 name="company"
                                 required
-								placeholder={__('Company', 'contact-form-app')}
+								placeholder={translations.company || 'Company'}
                             />
                         </div>
                         
@@ -44,7 +44,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-email`}
                                 name="email"
                                 required
-								placeholder={__('Email', 'contact-form-app')}
+								placeholder={translations.email || 'Email'}
                             />
                         </div>
                         
@@ -54,7 +54,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-phone`}
                                 name="phone"
                                 required
-								placeholder={__('Phone', 'contact-form-app')}
+								placeholder={translations.phone || 'Phone'}
                             />
                         </div>
                         
@@ -63,14 +63,14 @@ export default function save({ attributes }) {
                                 id={`${formId}-message`}
                                 name="message"
                                 required
-								placeholder={__('Message', 'contact-form-app')}
+								placeholder={translations.message || 'Message'}
                             ></textarea>
                         </div>
                     </div>
                     
                     <div className="cfa-form-footer">
-                        <button type="submit" className="cfa-submit-btn">
-                            {__('Submit', 'contact-form-app')}
+                        <button type="submit" className="cfa-submit-btn" style={{backgroundColor: btnColor, color: btnTextColor}}>
+                            {translations.submit || 'Submit'}
                         </button>
                     </div>
                 </form>
@@ -78,7 +78,7 @@ export default function save({ attributes }) {
                 <div className="cfa-message"></div>
                 
                 <div className="cfa-powered-by">
-                    {__('Formular af', 'contact-form-app')} { ' ' }
+                    Formular af { ' ' }
                     <a href="https://citizenone.dk" target="_blank" rel="noreferrer">
                         CitizenOne - Journalsystem med alt inklusiv
                     </a>

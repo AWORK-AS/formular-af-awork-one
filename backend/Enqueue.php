@@ -34,6 +34,7 @@ class Enqueue extends Base {
 		}
 
 		\add_action( AssetManager::ACTION_SETUP, array( $this, 'enqueue_assets' ) );
+		\add_action('admin_enqueue_scripts', [$this, 'localize_block_editor_script'], 20);
 	}
 
 	/**
@@ -94,7 +95,7 @@ class Enqueue extends Base {
 
 		return $styles;
 	}
-
+    
 	/**
 	 * Register and enqueue admin-specific JavaScript.
 	 *
@@ -123,6 +124,7 @@ class Enqueue extends Base {
 
 		$is_block_editor = $admin_page && method_exists($admin_page, 'is_block_editor') && $admin_page->is_block_editor();
 		if ($is_block_editor) {
+			
 			$block_script = new Script(
 				CFA_TEXTDOMAIN . '-block-editor-script',
 				\plugins_url('assets/build/plugin-block.js', CFA_PLUGIN_ABSOLUTE)
@@ -135,6 +137,8 @@ class Enqueue extends Base {
             ->withDependencies('wp-components')
             ->withDependencies('wp-i18n')
             ->withDependencies('wp-api-fetch');
+
+			
 			$block_script->canEnqueue(function() {
 				return \current_user_can('edit_posts');
 			});
@@ -142,5 +146,37 @@ class Enqueue extends Base {
 		}
 		return $scripts;
 	}
+    
 
+	/**
+	 * Register and enqueue admin-specific JavaScript.
+	 *
+	 * @since 1.0.0
+	 * @return array
+	 */
+	public function localize_block_editor_script() {
+    	$screen = \get_current_screen();
+    
+		if ($screen && $screen->is_block_editor()) {
+			$translations = [
+				'headline' => __('Get in Touch With Us', 'contact-form-app'),
+				'headlineColor' => __('Headline Color', 'contact-form-app'),
+				'enterHeadline' => __('Enter form headline...', 'contact-form-app'),
+				'name' => __('Name', 'contact-form-app'),
+				'company' => __('Company', 'contact-form-app'),
+				'email' => __('Email', 'contact-form-app'),
+				'phone' => __('Phone', 'contact-form-app'),
+				'message' => __('Message', 'contact-form-app'),
+				'submit' => __('Submit', 'contact-form-app'),
+				'formSettings' => __('Form Settings', 'contact-form-app'),
+				'btnColor' => __('Button Color', 'contact-form-app'),
+				'btnTextColor' => __('Button Text Color', 'contact-form-app'),
+			];
+			wp_localize_script(
+				CFA_TEXTDOMAIN . '-block-editor-script',
+				'cfaBlockTranslations',
+				$translations
+			);
+		}
+	}
 }

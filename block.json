@@ -5,7 +5,7 @@
     "category": "widgets",
     "icon": "email",
     "description": "Formular af CitizenOne journalsystem",
-    "keywords": ["form", "contact", "lead", "citizenone", "journalsystem"],
+    "keywords": ["form", "contacts", "leads", "citizenone", "journalsystem"],
     "version": "1.0.0",
     "textdomain": "contact-form-app",
     "editorScript": "plugin-block",
@@ -20,6 +20,14 @@
         "color": {
             "type": "string",
             "default": "#205E77"
+        },
+        "btnColor": {
+            "type": "string",
+            "default": "#42aed9"
+        },
+        "btnTextColor": {
+            "type": "string",
+            "default": "#ffffff"
         }
     },
     "example": {

@@ -1,6 +1,6 @@
 === Contact Form App ===
 Contributors: mzc74b331b9fdbc
-Tags: contacts, leads
+Tags: contacts, leads, citizenone
 Requires at least: 5.6
 Tested up to: 6.8
 Stable tag: 1.0.0
@@ -14,8 +14,8 @@ Embed customizable contact forms from CitizenOne on any WordPress site. Capture 
 * Customizable embed forms with color matching
 * Real-time lead submission to CitizenOne dashboard
 * GDPR-compliant data handling
-* Shortcode & Gutenberg block implementation
-* "Powered by CitizenOne" branding (customizable)
+* Gutenberg block implementation
+* "Powered by CitizenOne" branding
 * Mobile-responsive design
 
 == Installation ==
@@ -38,8 +38,6 @@ Embed customizable contact forms from CitizenOne on any WordPress site. Capture 
 
 == Frequently Asked Questions ==
 
-= Where do I get my Client Token? =
-After installing the Contact Form app in CitizenOne App Store, your unique token appears in your dashboard under "Integration Settings".
 
 = Can I customize the form fields? =
 Yes! Edit field labels in plugin settings. Additional fields require CitizenOne dashboard configuration.
@@ -52,16 +50,13 @@ The branding link is required per our terms but can be minimally styled to match
 
 == Screenshots ==
 
-1. Form customization settings
+1. Contact Form App Setup
 2. Gutenberg block interface
 3. Example embedded form on frontend
-4. Leads dashboard view in CitizenOne
 
-== Changelog ==
 
 == Changelog ==
 = 1.0.0 =
 * Initial release with core functionality
 * Gutenberg block support
-* Shortcode implementation
 * Settings dashboard

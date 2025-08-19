@@ -33,7 +33,6 @@ define( 'CFA_MIN_PHP_VERSION', '7.4' );
 define( 'CFA_WP_VERSION', '5.6' );
 define( 'CFA_PLUGIN_API_URL', 'https://citizenone.dk/api'  );
 define( 'CFA_PLUGIN_API_NAME', 'CitizenOne journalsystem' );
-define( 'CFA_PLUGIN_GITHUB_TOKEN', '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' );
 
 /**
  * The main function that initializes the plugin.
@@ -75,7 +74,6 @@ function cfa_initialize_plugin() {
 		CFA_TEXTDOMAIN
 	 );
 	$myUpdateChecker->setBranch( 'main' );
-	$myUpdateChecker->setAuthentication( CFA_PLUGIN_GITHUB_TOKEN );
     
 	
 	

@@ -1,7 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import Edit from './edit';
-// import save from './save';
+import save from './save';
 import '../styles/block.scss';
 
 registerBlockType('contact-form-app/contact-form', {
@@ -20,5 +20,5 @@ registerBlockType('contact-form-app/contact-form', {
         },
     },
     edit: Edit,
-    save: () => null,
+    save,
 });

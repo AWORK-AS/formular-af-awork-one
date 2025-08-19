@@ -8,9 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const messageDiv = formContainer.querySelector('.cfa-message');
             const submitBtn = form.querySelector('.cfa-submit-btn');
             
+
             submitBtn.disabled = true;
             messageDiv.textContent = __('Sending...', 'contact-form-app');
             messageDiv.className = 'cfa-message cfa-message--loading';
+            
             
             try {
                 // Set source_url dynamically
