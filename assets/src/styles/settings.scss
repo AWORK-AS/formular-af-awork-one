@@ -65,3 +65,33 @@
 	max-width: 270px;
 	float: right;
 }
+
+.cfa-icon-box {
+	background: white;
+	border-radius: 10px;
+	padding: 15px;
+	box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+	text-align: center;
+	width: 120px;
+	transition: transform 0.3s ease;
+}
+.cfa-icon-box:hover {
+	transform: translateY(-3px);
+}
+.cfa-icon {
+	width: 60px;
+	height: 60px;
+	margin: 0 auto 10px;
+}
+.cfa-connected {
+	color: #205E77;
+}
+.cfa-not-connected {
+	color: #e74c3c;
+}
+
+.cfa-label {
+	font-size: 14px;
+	font-weight: 600;
+	margin-top: 8px;
+}

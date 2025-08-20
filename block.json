@@ -29,10 +29,5 @@
             "type": "string",
             "default": "#ffffff"
         }
-    },
-    "example": {
-        "attributes": {
-            "isPreview": true
-        }
     }
 }

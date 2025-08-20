@@ -13,6 +13,7 @@
 namespace Contact_Form_App\Backend;
 
 use Contact_Form_App\Engine\Base;
+use Contact_Form_App\Internals\Models\RetrieveToken;
 
 /**
  * Create the settings page in the backend
@@ -31,6 +32,9 @@ class Settings_Page extends Base {
 		
 		// Add the options page and menu item.
 		\add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
+    
+		// Add CMB2 save hook
+        \add_action( 'cmb2_save_options-page_fields', array( $this, 'before_settings_save' ), 10, 2 );
 
 		$realpath        = (string) \realpath( __DIR__ );
 		$plugin_basename = \plugin_basename( \plugin_dir_path( $realpath ) . CFA_TEXTDOMAIN . '.php' );
@@ -88,6 +92,42 @@ class Settings_Page extends Base {
 		);
 	}
     
+	/**
+	 * Action before CMB2 saves settings
+	 *
+	 * @param int    $object_id Object ID
+	 * @param string $cmb_id    CMB2 instance ID
+	 */
+	public function before_settings_save( $object_id, $cmb_id ) {
+		if ( $cmb_id !== CFA_TEXTDOMAIN . '_options' ) {
+			return;
+		}
+		
+		$cmb = \cmb2_get_metabox( $cmb_id );
+
+		// Get the submitted values
+		$values = $cmb->get_sanitized_values( $_POST );
+		
+		if(!empty( $values[CFA_TEXTDOMAIN . '_field_email'] )
+			&& !empty( $values[CFA_TEXTDOMAIN . '_field_company_cvr'] )
+			&& !empty( $values[CFA_TEXTDOMAIN . '_field_company_id'] )
+			) {
+				
+				$token = new RetrieveToken;
+				$data = $token->submit([
+					'company_cvr' => $values[CFA_TEXTDOMAIN . '_field_company_cvr'],
+					'citizenone_company_id' => $values[CFA_TEXTDOMAIN . '_field_company_id'],
+					'email' => $values[CFA_TEXTDOMAIN . '_field_email'],
+				]);
+				if($data) {
+					$opts = \cfa_get_settings();
+					$opts[CFA_TEXTDOMAIN .'_token'] = $data->data;
+					\update_options(CFA_TEXTDOMAIN.'-settings', $opts);
+				}
+				
+		}
+	}
+
 	/**
 	 * Token validation callback
      *

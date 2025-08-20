@@ -8,25 +8,12 @@
             'show_names' => true,
         )
     );
-    /** Hide first */
-    /*
-    $cmb->add_field(
-        array(
-            'name'       => __( 'Token', 'contact-form-app' ),
-            'desc'       => __( 'Enter your token from CitizenOne dashboard.', 'contact-form-app' ),
-            'id'         => CFA_TEXTDOMAIN . '_token',
-            'type'       => 'textarea',
-            'attributes' => array(
-                'required' => 'required', // HTML5 validation
-                            ),
-        )
-    );
-    */
+    
     $cmb->add_field(
         array(
             'name'    => __( 'Email', 'contact-form-app' ),
             'id'      => CFA_TEXTDOMAIN . '_field_email',
-            'type'    => 'text',
+            'type'    => 'text_email',
         )
     );
     
@@ -40,9 +27,19 @@
     
     $cmb->add_field(
         array(
-            'name'    => __( 'Email', 'contact-form-app' ),
-            'id'      => CFA_TEXTDOMAIN . '_field_email',
+            'name'    => __( 'CitizenOne Company ID', 'contact-form-app' ),
+            'id'      => CFA_TEXTDOMAIN . '_field_company_id',
             'type'    => 'text',
+        )
+    );
+    
+    // DIVIDER: hCaptcha Settings
+    $cmb->add_field(
+        array(
+            'name' => __( 'hCaptcha Settings (Optional)', 'contact-form-app' ),
+            'desc' => __( 'Configure your hCaptcha integration', 'contact-form-app' ),
+            'type' => 'title',
+            'id'   => 'hcaptcha_divider'
         )
     );
     

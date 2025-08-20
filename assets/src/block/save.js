@@ -4,6 +4,7 @@ import { useBlockProps } from '@wordpress/block-editor';
 export default function save({ attributes }) {
     const { headline, color, btnColor, btnTextColor } = attributes;
     const translations = window.cfaBlockTranslations || {};
+    const hCaptcha     = window.cfaBlockhCaptcha || {};
     // Use randomId
     const randomId = Math.random().toString(36).substr(2, 9);
     const formId = `cfa-form-${randomId}`;
@@ -12,7 +13,7 @@ export default function save({ attributes }) {
         <div {...useBlockProps.save()}>
             <div className="cfa-contact-form" id={formId}>
                 <h3 style={{ color: color || '#205E77' }}>
-                    {translations.headline || 'Get in Touch With Us'}
+                    {headline || 'Get in Touch With Us'}
                 </h3>
                 <form className="cfa-form" id={`${formId}-form`}>
                     <input type="hidden" name="source_url" value="" />
@@ -66,6 +67,13 @@ export default function save({ attributes }) {
 								placeholder={translations.message || 'Message'}
                             ></textarea>
                         </div>
+
+                        {
+                            hCaptcha.hCaptchaEnabled &&
+                            <div className="cfa-form-group cfa-form-group--full">
+                                <div className="h-captcha" data-sitekey={hCaptcha.hCaptchaSiteKey}></div>
+                            </div>
+                        }
                     </div>
                     
                     <div className="cfa-form-footer">

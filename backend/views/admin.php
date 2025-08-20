@@ -15,15 +15,22 @@
 
 <div class="wrap">
 
-	<h2><?php echo __( 'Formular af CitizenOne journalsystem', 'contact-form-app' ); ?></h2>
+	<h2><?php esc_html_e( 'Formular af CitizenOne journalsystem', 'contact-form-app' ); ?></h2>
 
 	<div id="tabs" class="settings-tab">
 		<ul>
-			<li><a href="#tabs-1"><?php echo __( 'Configuration', 'contact-form-app' ); ?></a></li>
+			<li><a href="#tabs-1"><?php esc_html_e( 'Configuration', 'contact-form-app' ); ?></a></li>
 		</ul>
 		<?php
-		    require_once plugin_dir_path( __FILE__ ) . 'contact-form-app-settings.php';
-		
+		    require_once plugin_dir_path( __FILE__ ) . 'contact-form-app-settings.php';		
 		?>
+	</div>
+
+	<div class="right-column-settings-page metabox-holder">
+		
+			<?php
+		   	 require_once plugin_dir_path( __FILE__ ) . 'connection-svg.php';		
+			?>
+		
 	</div>
 </div>

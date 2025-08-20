@@ -158,6 +158,7 @@ class Enqueue extends Base {
     	$screen = \get_current_screen();
     
 		if ($screen && $screen->is_block_editor()) {
+			
 			$translations = [
 				'headline' => __('Get in Touch With Us', 'contact-form-app'),
 				'headlineColor' => __('Headline Color', 'contact-form-app'),
@@ -177,6 +178,23 @@ class Enqueue extends Base {
 				'cfaBlockTranslations',
 				$translations
 			);
+            // Get plugin options
+			$options = \get_option(CFA_TEXTDOMAIN . '-settings');
+			
+			
+			$hcaptcha_site_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
+			$hcaptcha_secret_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
+			$hcaptcha_enabled = $hcaptcha_site_key && $hcaptcha_secret_key;
+
+			wp_localize_script(
+				CFA_TEXTDOMAIN . '-block-editor-script',
+				'cfaBlockhCaptcha',
+				[
+					'hCaptchaEnabled' => $hcaptcha_enabled,
+					'hCaptchaSiteKey' => $hcaptcha_site_key
+				]
+			);
+
 		}
 	}
 }

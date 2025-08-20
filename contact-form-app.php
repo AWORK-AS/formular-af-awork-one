@@ -4,14 +4,14 @@
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
- * @link      https://awork.dk
+ * @link      https://github.com/mz-aworkdk
  *
  * Plugin Name:     Formular af CitizenOne journalsystem
  * Plugin URI:      https://github.com/AWORK-AS/contact-form-app
  * Description:     Formular af CitizenOne journalsystem
  * Version:         1.0.0
  * Author:          mz@awork.dk
- * Author URI:      https://awork.dk
+ * Author URI:      https://github.com/mz-aworkdk
  * Text Domain:     contact-form-app
  * License:         GPL 2.0+
  * License URI:     http://www.gnu.org/licenses/gpl-3.0.txt
@@ -31,7 +31,7 @@ define( 'CFA_TEXTDOMAIN', 'contact-form-app' );
 define( 'CFA_VERSION', '1.0.0' );
 define( 'CFA_MIN_PHP_VERSION', '7.4' );
 define( 'CFA_WP_VERSION', '5.6' );
-define( 'CFA_PLUGIN_API_URL', 'https://citizenone.dk/api'  );
+define( 'CFA_PLUGIN_API_URL', 'http://127.0.0.1:8000/api'  );
 define( 'CFA_PLUGIN_API_NAME', 'CitizenOne journalsystem' );
 
 /**
@@ -84,12 +84,7 @@ function cfa_initialize_plugin() {
 	add_action('enqueue_block_assets', function() {
 		// Only load on frontend
 		if (!is_admin()) {
-			wp_enqueue_script(
-				'contact-form-frontend',
-				plugins_url('build/frontend.js', __FILE__),
-				['wp-i18n', 'wp-api-fetch'],
-				filemtime(plugin_dir_path(__FILE__) . 'assets/build/frontend.js')
-			);
+			
 			
 			// Localize script with WP REST API settings
 			wp_localize_script('contact-form-frontend', 'wpApiSettings', [

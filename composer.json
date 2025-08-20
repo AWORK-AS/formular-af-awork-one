@@ -7,7 +7,7 @@
         {
             "name": "Mindell Zamora",
             "email": "mz@awork.dk",
-            "homepage": "https://author-url.test"
+            "homepage": "https://github.com/mz-aworkdk"
         }
     ],
     "homepage": "https://awork.dk",
@@ -24,7 +24,8 @@
         "wpbp/i18n-notice": "dev-main",
         "wpdesk/wp-notice": "^3.2",
         "yahnis-elsts/plugin-update-checker": "^5.4",
-        "gregwar/captcha": "^1.3"
+        "gregwar/captcha": "^1.3",
+        "guzzlehttp/guzzle": "^7.9"
     },
     "require-dev": {
         "codeatcode/codeatcs": "^1.0",
@@ -78,7 +79,8 @@
             "Contact_Form_App\\Internals\\": "internals/",
             "Contact_Form_App\\Internals\\Models\\": "internals/models/",
             "Contact_Form_App\\Internals\\Views\\": "internals/views/",
-            "Contact_Form_App\\Rest\\": "rest/"
+            "Contact_Form_App\\Rest\\": "rest/",
+            "Contact_Form_App\\Class\\": "class/"
         }
     },
     "config": {

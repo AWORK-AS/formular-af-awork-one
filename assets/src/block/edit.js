@@ -6,6 +6,8 @@ export default function Edit({ attributes, setAttributes }) {
 
     const { headline, color, btnColor, btnTextColor} = attributes;
     const translations = window.cfaBlockTranslations || {};
+    const hCaptcha     = window.cfaBlockhCaptcha || {};
+
     // Use randomId
     const randomId = Math.random().toString(36).substr(2, 9);
     const formId = `cfa-form-${randomId}`;
@@ -47,7 +49,7 @@ export default function Edit({ attributes, setAttributes }) {
             {/* Form preview in editor */}
             <div className="cfa-contact-form" id={formId}>
                 <h3 style={{ color: color || '#205E77' }}>
-                    {translations.headline || 'Get in Touch With Us'}
+                    {headline || 'Get in Touch With Us'}
                 </h3>
                 <div className="cfa-form-preview">
                     <div className="cfa-form-grid">
@@ -70,6 +72,12 @@ export default function Edit({ attributes, setAttributes }) {
                         <div className="cfa-form-group cfa-form-group--full">
                             <textarea disabled placeholder={translations.message || 'Message'}></textarea>
                         </div>
+                        {
+                            hCaptcha.hCaptchaEnabled &&
+                            <div className="cfa-form-group cfa-form-group--full">
+                                <div className="h-captcha" data-sitekey={hCaptcha.hCaptchaSiteKey}></div>
+                            </div>
+                        }
                     </div>
                     
                     <div className="cfa-form-footer">

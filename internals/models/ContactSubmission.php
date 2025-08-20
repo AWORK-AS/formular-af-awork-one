@@ -1,5 +1,8 @@
 <?php
 namespace Contact_Form_App\Internals\Models;
+
+use Contact_Form_App\Class\CitizenOneHttpClient;
+
 class ContactSubmission {
     public function submit_lead($data) {
         // Get plugin options
@@ -12,17 +15,18 @@ class ContactSubmission {
         }
 
         // Prepare API request
-        $api_url = CFA_PLUGIN_API_URL . '/api/contactform/submit';
-        $body = [
+        
+        $data = [
             'client_token' => $client_token,
-            'name' => \sanitize_text_field($data['name']),
-            'email' => \sanitize_email($data['email']),
+            'name'    => \sanitize_text_field($data['name']),
+            'email'   => \sanitize_email($data['email']),
+            'company' => \sanitize_text_field($data['company']),
+            'phone'   => \sanitize_text_field($data['phone']),
             'message' => \sanitize_textarea_field($data['message']),
-            'source_url' => \esc_url($data['source_url']),
         ];
 
-        $response = \wp_remote_post($api_url, [
-            'body' => \json_encode($body),
+        $response = \wp_remote_post(CFA_PLUGIN_API_URL . '/web-leads', [
+            'body' => \json_encode($data),
             'headers' => [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
@@ -31,13 +35,12 @@ class ContactSubmission {
         ]);
 
         if (is_wp_error($response)) {
-            \error_log('CitizenOne API error: ' . $response->get_error_message());
+            
             return false;
         }
 
         $status = \wp_remote_retrieve_response_code($response);
         if ($status !== 200) {
-            \error_log('CitizenOne API returned status: ' . $status);
             return false;
         }
 

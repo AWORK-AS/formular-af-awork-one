@@ -13,9 +13,8 @@ Embed customizable contact forms from CitizenOne on any WordPress site. Capture 
 
 * Customizable embed forms with color matching
 * Real-time lead submission to CitizenOne dashboard
-* GDPR-compliant data handling
 * Gutenberg block implementation
-* "Powered by CitizenOne" branding
+* "Formular af CitizenOne - Journalsystem med alt inklusiv" branding
 * Mobile-responsive design
 
 == Installation ==
@@ -38,6 +37,9 @@ Embed customizable contact forms from CitizenOne on any WordPress site. Capture 
 
 == Frequently Asked Questions ==
 
+= How to Enable hCaptcha? =
+For hCaptcha to work, you need to add your **Secret Key** and **Site Key** from hCaptcha into the Admin Settings.
+**Important**: If you already had a **Contact Form** block on your web page before adding the hCaptcha keys, you must replace it with a new one for the settings to take effect.
 
 = Can I customize the form fields? =
 Yes! Edit field labels in plugin settings. Additional fields require CitizenOne dashboard configuration.
@@ -45,8 +47,6 @@ Yes! Edit field labels in plugin settings. Additional fields require CitizenOne 
 = How do leads appear in CitizenOne? =
 All submissions populate in your dashboard > Leads section with timestamp, source URL, and contact details.
 
-= Can I remove "Powered by CitizenOne"? =
-The branding link is required per our terms but can be minimally styled to match your site design.
 
 == Screenshots ==
 
