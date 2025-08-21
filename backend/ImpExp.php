@@ -99,13 +99,13 @@ class ImpExp extends Base {
 		$extension       = \end( $file_name_parts );
 
 		if ( 'json' !== $extension ) {
-			\wp_die( \esc_html__( 'Please upload a valid .json file', CFA_TEXTDOMAIN ) );
+			\wp_die( \esc_html__( 'Please upload a valid .json file', 'contact-form-app' ) );
 		}
 
 		$import_file = $_FILES[ 'cfa_import_file' ][ 'tmp_name' ]; //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 		if ( empty( $import_file ) ) {
-			\wp_die( \esc_html__( 'Please upload a file to import', CFA_TEXTDOMAIN ) );
+			\wp_die( \esc_html__( 'Please upload a file to import', 'contact-form-app' ) );
 		}
 
 		// Retrieve the settings from the file and convert the json object to an array.
@@ -125,7 +125,7 @@ class ImpExp extends Base {
 
 		new \WP_Error(
 				'contact_form_app_import_settings_failed',
-				\__( 'Failed to import the settings.', CFA_TEXTDOMAIN )
+				\__( 'Failed to import the settings.', 'contact-form-app' )
 			);
 	}
 

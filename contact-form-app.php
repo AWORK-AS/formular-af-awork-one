@@ -13,7 +13,7 @@
  * Author:          mz@awork.dk
  * Author URI:      https://github.com/mz-aworkdk
  * Text Domain:     contact-form-app
- * License:         GPL 2.0+
+ * License:         GPLv3+
  * License URI:     http://www.gnu.org/licenses/gpl-3.0.txt
  * Domain Path:     /languages
  * Requires PHP:    7.4
@@ -45,7 +45,7 @@ function cfa_initialize_plugin() {
 	load_plugin_textdomain( CFA_TEXTDOMAIN, false, dirname( plugin_basename( CFA_PLUGIN_ABSOLUTE ) ) . '/languages' );
 
 	// Define other constants here.
-	define( 'CFA_NAME', __( 'Formular af CitizenOne journalsystem', CFA_TEXTDOMAIN ) ); // Now safe to translate
+	define( 'CFA_NAME', __( 'Formular af CitizenOne journalsystem', 'contact-form-app' ) ); // Now safe to translate
 	
 	// Require necessary files.
 	$contact_form_app_libraries = require CFA_PLUGIN_ROOT . 'vendor/autoload.php';
@@ -54,7 +54,7 @@ function cfa_initialize_plugin() {
 
 	// Check for requirements.
 	$requirements = new \Micropackage\Requirements\Requirements(
-		__( 'Contact Form App', CFA_TEXTDOMAIN ),
+		__( 'Contact Form App', 'contact-form-app' ),
 		array(
 			'php'            => CFA_MIN_PHP_VERSION,
 			'php_extensions' => array( 'mbstring' ),
@@ -97,7 +97,7 @@ function cfa_initialize_plugin() {
 				'hcaptcha',
 				'https://js.hcaptcha.com/1/api.js',
 				[],
-				null,
+				CFA_VERSION,
 				['async' => true, 'defer' => true]
 			);
 		}
@@ -126,7 +126,7 @@ add_action( 'init', 'cfa_initialize_plugin' );
 function cfa_activate_plugin( $network_wide ) {
     // Ensure the autoloader is available
     if ( ! file_exists( CFA_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
-        wp_die( __( 'Plugin dependencies are missing. Please run composer install.', CFA_TEXTDOMAIN ) );
+        wp_die( esc_html_e( 'Plugin dependencies are missing. Please run composer install.', 'contact-form-app' ) );
     }
     
     require_once CFA_PLUGIN_ROOT . 'vendor/autoload.php';

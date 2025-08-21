@@ -9,7 +9,7 @@
  * @link      https://awork.dk
  */
 
-$cfa_debug = new WPBP_Debug( __( 'Contact Form App', CFA_TEXTDOMAIN ) );
+$cfa_debug = new WPBP_Debug( __( 'Contact Form App', 'contact-form-app' ) );
 
 /**
  * Log text inside the debugging plugins.

@@ -63,7 +63,7 @@ class Settings_Page extends Base {
 		 * Add a settings page for this plugin to the main menu
 		 *
 		 */
-		\add_menu_page( \__( 'Contact Form App Settings', CFA_TEXTDOMAIN ), CFA_NAME, 'manage_options', CFA_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ), 'dashicons-hammer', 90 );
+		\add_menu_page( \__( 'Contact Form App Settings', 'contact-form-app' ), CFA_NAME, 'manage_options', CFA_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ), 'dashicons-hammer', 90 );
 	}
 
 	/**
@@ -86,7 +86,7 @@ class Settings_Page extends Base {
 	public function add_action_links( array $links ) {
 		return \array_merge(
 			array(
-				'settings' => '<a href="' . \admin_url( 'options-general.php?page=' . CFA_TEXTDOMAIN ) . '">' . \__( 'Settings', CFA_TEXTDOMAIN ) . '</a>',
+				'settings' => '<a href="' . \admin_url( 'options-general.php?page=' . CFA_TEXTDOMAIN ) . '">' . \__( 'Settings', 'contact-form-app' ) . '</a>',
 			),
 			$links
 		);
@@ -122,7 +122,7 @@ class Settings_Page extends Base {
 				if($data) {
 					$opts = \cfa_get_settings();
 					$opts[CFA_TEXTDOMAIN .'_token'] = $data->data;
-					\update_options(CFA_TEXTDOMAIN.'-settings', $opts);
+					\update_option(CFA_TEXTDOMAIN.'-settings', $opts);
 				}
 				
 		}

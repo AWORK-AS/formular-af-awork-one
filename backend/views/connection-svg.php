@@ -5,25 +5,25 @@
 <?php if($token): ?>
      <div class="cfa-icon-box">
         <div class="cfa-icon cfa-connected">
-            <svg viewBox="0 0 100 100" width="60" height="60">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="8"/>
-                <path d="M30,50 Q50,30 70,50" fill="none" stroke="currentColor" stroke-width="5"/>
-                <path d="M30,50 Q50,70 70,50" fill="none" stroke="currentColor" stroke-width="5"/>
-                <circle cx="30" cy="50" r="8" fill="currentColor"/>
-                <circle cx="70" cy="50" r="8" fill="currentColor"/>
+            <svg width="60" height="60" viewBox="0 0 100 100">
+                <rect x="20" y="35" width="60" height="30" rx="15" fill="currentColor" opacity="0.2"></rect>
+                <circle cx="30" cy="50" r="10" fill="currentColor"></circle>
+                <circle cx="70" cy="50" r="10" fill="currentColor"></circle>
+                <path d="M40,50 L60,50" stroke="white" stroke-width="4" stroke-linecap="round"></path>
             </svg>
         </div>
+        <div class="cfa-label cfa-connected"><?php esc_html_e( 'Connected', 'contact-form-app' ); ?></div>
      </div>
 <?php else:?>
     <div class="cfa-icon-box">
         <div class="cfa-icon cfa-not-connected">
-            <svg viewBox="0 0 100 100" width="60" height="60">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="8"/>
-                <path d="M30,30 L70,70" stroke="currentColor" stroke-width="5"/>
-                <path d="M70,30 L30,70" stroke="currentColor" stroke-width="5"/>
-                <circle cx="30" cy="30" r="8" fill="currentColor"/>
-                <circle cx="70" cy="70" r="8" fill="currentColor"/>
+            <svg width="60" height="60" viewBox="0 0 100 100">
+                <rect x="20" y="35" width="60" height="30" rx="15" fill="currentColor" opacity="0.2"></rect>
+                <circle cx="30" cy="50" r="10" fill="currentColor"></circle>
+                <circle cx="70" cy="50" r="10" fill="currentColor"></circle>
+                <path d="M40,40 L60,60 M60,40 L40,60" stroke="white" stroke-width="4" stroke-linecap="round"></path>
             </svg>
         </div>
+        <div><?php esc_html_e( 'Not Connected', 'contact-form-app' ); ?></div>
     </div>
 <?php endif;?>

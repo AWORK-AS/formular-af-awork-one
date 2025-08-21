@@ -6,18 +6,14 @@ use Contact_Form_App\Class\CitizenOneHttpClient;
 class ContactSubmission {
     public function submit_lead($data) {
         // Get plugin options
-        $options = \get_option(CFA_TEXTDOMAIN . '_options');
-        $client_token = $options[CFA_TEXTDOMAIN . '_token'] ?? '';
+        $options = \cfa_get_settings();
+        $token = $options[CFA_TEXTDOMAIN . '_token'] ?? '';
 
-        if (empty($client_token)) {
-            \error_log('CitizenOne: Missing API token');
-            return false;
-        }
+        
 
         // Prepare API request
         
         $data = [
-            'client_token' => $client_token,
             'name'    => \sanitize_text_field($data['name']),
             'email'   => \sanitize_email($data['email']),
             'company' => \sanitize_text_field($data['company']),
@@ -29,11 +25,14 @@ class ContactSubmission {
             'body' => \json_encode($data),
             'headers' => [
                 'Content-Type' => 'application/json',
-                'Accept' => 'application/json'
+                'Accept' => 'application/json',
+                'wordpress-key' => $token,
             ],
             'timeout' => 15
         ]);
 
+        $body = \wp_remote_retrieve_body( $response );
+        
         if (is_wp_error($response)) {
             
             return false;

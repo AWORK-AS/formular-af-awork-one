@@ -8,9 +8,8 @@
     "keywords": ["form", "contacts", "leads", "citizenone", "journalsystem"],
     "version": "1.0.0",
     "textdomain": "contact-form-app",
-    "editorScript": "plugin-block",
+    "editorScript": "file:./assets/build/plugin-block.js",
     "editorStyle": "file:./assets/build/plugin-block.css",
-    "render": "file:./assets/src/render.php",
     "style": "file:./assets/build/plugin-block.css",
     "attributes": {
         "headline": {
@@ -28,6 +27,14 @@
         "btnTextColor": {
             "type": "string",
             "default": "#ffffff"
+        }
+    },
+    "example": {
+        "attributes": {
+            "headline": "Get in Touch With Us",
+            "color": "#205E77",
+            "btnColor": "#42aed9",
+            "btnTextColor": "#ffffff"
         }
     }
 }

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-20T13:03:20+00:00\n"
+"POT-Creation-Date: 2025-08-21T09:48:09+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: contact-form-app\n"
@@ -18,6 +18,7 @@ msgstr ""
 #. Description of the plugin
 #: contact-form-app.php
 #: backend/views/admin.php:18
+#: contact-form-app.php:48
 msgid "Formular af CitizenOne journalsystem"
 msgstr ""
 
@@ -38,8 +39,6 @@ msgstr ""
 
 #: backend/Enqueue.php:163
 #: internals/views/FormRenderer.php:8
-#: assets/build/plugin-block.js:1
-#: assets/src/block/index.js:15
 msgid "Get in Touch With Us"
 msgstr ""
 
@@ -94,8 +93,20 @@ msgstr ""
 msgid "Button Text Color"
 msgstr ""
 
+#: backend/Enqueue.php:175
+msgid "Contact Form"
+msgstr ""
+
 #: backend/views/admin.php:22
 msgid "Configuration"
+msgstr ""
+
+#: backend/views/connection-svg.php:15
+msgid "Connected"
+msgstr ""
+
+#: backend/views/connection-svg.php:27
+msgid "Not Connected"
 msgstr ""
 
 #: backend/views/contact-form-app-settings.php:22
@@ -122,12 +133,19 @@ msgstr ""
 msgid "site key"
 msgstr ""
 
+#: contact-form-app.php:57
+msgid "Contact Form App"
+msgstr ""
+
+#: contact-form-app.php:129
+msgid "Plugin dependencies are missing. Please run composer install."
+msgstr ""
+
 #: frontend/Enqueue.php:123
 msgid "Loading..."
 msgstr ""
 
 #: frontend/Enqueue.php:124
-#: assets/build/frontend.js:1
 msgid "Sending..."
 msgstr ""
 
@@ -148,7 +166,7 @@ msgid "Please enter a valid email address"
 msgstr ""
 
 #: frontend/Enqueue.php:129
-#: rest/FormHandler.php:67
+#: rest/FormHandler.php:72
 msgid "Thank you! Your message has been sent."
 msgstr ""
 
@@ -156,25 +174,20 @@ msgstr ""
 msgid "Formular af"
 msgstr ""
 
-#: rest/FormHandler.php:50
+#: rest/FormHandler.php:51
 msgid "Please complete the hCaptcha challenge."
 msgstr ""
 
-#: rest/FormHandler.php:55
+#: rest/FormHandler.php:56
 msgid "hCaptcha verification failed. Please try again."
 msgstr ""
 
-#: rest/FormHandler.php:73
+#: rest/FormHandler.php:63
+msgid "Error occured. Please contact the administrator."
+msgstr ""
+
+#: rest/FormHandler.php:78
 msgid "Failed to send message. Please try again."
-msgstr ""
-
-#: assets/build/frontend.js:1
-msgid "An error occurred. Please try again."
-msgstr ""
-
-#: assets/build/plugin-block.js:1
-#: assets/src/block/index.js:9
-msgid "Contact Form"
 msgstr ""
 
 #: assets/block.json

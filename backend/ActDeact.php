@@ -238,6 +238,7 @@ class ActDeact extends Base {
 		// @TODO: Define deactivation functionality here
 		self::remove_capabilities();
 		// Clear the permalinks
+		\delete_option( \CFA_TEXTDOMAIN . '-settings' );
 		\flush_rewrite_rules();
 	}
 

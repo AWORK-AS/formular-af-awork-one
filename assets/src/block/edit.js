@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, RichText, ColorPalette } from '@wordpress/block-editor';
-import { PanelBody, PanelRow } from '@wordpress/components';
+import { Panel, PanelBody, PanelRow, InspectorControls } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
 
@@ -45,7 +45,6 @@ export default function Edit({ attributes, setAttributes }) {
                     />
                 </PanelRow>
             </PanelBody>
-            
             {/* Form preview in editor */}
             <div className="cfa-contact-form" id={formId}>
                 <h3 style={{ color: color || '#205E77' }}>

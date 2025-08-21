@@ -172,6 +172,7 @@ class Enqueue extends Base {
 				'formSettings' => __('Form Settings', 'contact-form-app'),
 				'btnColor' => __('Button Color', 'contact-form-app'),
 				'btnTextColor' => __('Button Text Color', 'contact-form-app'),
+				'contactForm' => __('Contact Form', 'contact-form-app'),
 			];
 			wp_localize_script(
 				CFA_TEXTDOMAIN . '-block-editor-script',

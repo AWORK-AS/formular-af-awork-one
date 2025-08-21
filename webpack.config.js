@@ -2,7 +2,7 @@ const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 const path = require( 'path' );
 
 const entry = {};
-[ 'plugin-admin', 'plugin-block', 'plugin-public', 'plugin-settings', 'frontend' ].forEach(
+[ 'plugin-admin', 'plugin-block', 'plugin-public', 'plugin-settings' ].forEach(
 	( script ) =>
 		( entry[ script ] = path.resolve(
 			process.cwd(),

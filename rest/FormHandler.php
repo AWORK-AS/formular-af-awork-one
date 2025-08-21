@@ -41,6 +41,7 @@ class FormHandler {
         $data = $request->get_params();
 
         $opts = \cfa_get_settings();
+        if(!$opts) $opts = [];
         $hcaptcha_site_key = $opts[CFA_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
 		$hcaptcha_secret_key = $opts[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
 		$hcaptcha_enabled = $hcaptcha_site_key && $hcaptcha_secret_key;
@@ -54,9 +55,13 @@ class FormHandler {
             if (!$verification_result['success']) {
                 return new \WP_Error('hcaptcha_failed', __('hCaptcha verification failed. Please try again.', 'contact-form-app'), ['status' => 403]);
             }
-
         }
 
+        $token = $opts[CFA_TEXTDOMAIN . '_token'] ?? false;
+
+        if(!$token) {
+            return new \WP_Error('not_connected', __('Error occured. Please contact the administrator.', 'contact-form-app'), ['status' => 403]);
+        }
 
         
         $submission = new \Contact_Form_App\Internals\Models\ContactSubmission();
