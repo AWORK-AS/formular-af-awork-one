@@ -20,7 +20,6 @@ class FormRenderer {
         <div class="cfa-contact-form" id="<?php echo \esc_attr($form_id) ?>">
             <h3 style="color: <?php echo \esc_attr($color) ?>" class="cfa-headline-config"><?php echo \esc_html($headline) ?></h3>
             <form class="cfa-form" id="<?php echo \esc_attr($form_id) ?>-form">
-                <input type="hidden" name="source_url" value="<?php echo \esc_url(\wp_unslash($_SERVER['HTTP_REFERER']) ?? '') ?>">
                 
                 <div class="cfa-form-grid">
                     <div class="cfa-form-group cfa-form-group--full">

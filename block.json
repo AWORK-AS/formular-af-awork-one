@@ -1,7 +1,6 @@
 {
     "apiVersion": 2,
     "name": "contact-form-app/contact-form",
-    "title": "Contact Form",
     "category": "widgets",
     "icon": "email",
     "description": "Formular af CitizenOne journalsystem",

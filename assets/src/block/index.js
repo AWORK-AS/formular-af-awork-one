@@ -4,23 +4,29 @@ import Edit from './edit';
 import save from './save';
 import '../styles/block.scss';
 
-const translations = window.cfaBlockTranslations || {};
-
 registerBlockType('contact-form-app/contact-form', {
     apiVersion: 2,
-    title: translations.contactForm || 'Contact Form',
+    title:__('Contact Form', 'contact-form-app'),
     icon: 'email-alt',
     category: 'widgets',
     attributes: {
         headline: {
             type: 'string',
-            default: translations.headline || 'Get in Touch With Us',
+            default: __('Get in Touch With Us', 'contact-form-app'),
         },
         color: {
             type: 'string',
             default: '#205E77',
         },
+        btnColor: {
+            "type": "string",
+            "default": "#42aed9"
+        },
+        btnTextColor: {
+            "type": "string",
+            "default": "#ffffff"
+        }
     },
     edit: Edit,
-    save,
+    save
 });

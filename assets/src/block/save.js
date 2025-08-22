@@ -1,13 +1,11 @@
-
+import { __ } from '@wordpress/i18n';
 import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
     const { headline, color, btnColor, btnTextColor } = attributes;
-    const translations = window.cfaBlockTranslations || {};
     const hCaptcha     = window.cfaBlockhCaptcha || {};
-    // Use randomId
-    const randomId = Math.random().toString(36).substr(2, 9);
-    const formId = `cfa-form-${randomId}`;
+ 
+    const formId = `cfa-form-save`;
     
     return (
         <div {...useBlockProps.save()}>
@@ -16,7 +14,6 @@ export default function save({ attributes }) {
                     {headline || 'Get in Touch With Us'}
                 </h3>
                 <form className="cfa-form" id={`${formId}-form`}>
-                    <input type="hidden" name="source_url" value="" />
                     
                     <div className="cfa-form-grid">
                         <div className="cfa-form-group cfa-form-group--full">
@@ -25,7 +22,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-name`}
                                 name="name"
                                 required
-								placeholder={translations.name || 'Name'}
+								placeholder={__( 'Name', 'contact-form-app' )}
                             />
                         </div>
                         
@@ -35,7 +32,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-company`}
                                 name="company"
                                 required
-								placeholder={translations.company || 'Company'}
+								placeholder={__( 'Company', 'contact-form-app' )}
                             />
                         </div>
                         
@@ -45,7 +42,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-email`}
                                 name="email"
                                 required
-								placeholder={translations.email || 'Email'}
+								placeholder={__( 'Email', 'contact-form-app' )}
                             />
                         </div>
                         
@@ -55,7 +52,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-phone`}
                                 name="phone"
                                 required
-								placeholder={translations.phone || 'Phone'}
+								placeholder={__( 'Phone', 'contact-form-app' )}
                             />
                         </div>
                         
@@ -64,7 +61,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-message`}
                                 name="message"
                                 required
-								placeholder={translations.message || 'Message'}
+								placeholder={__( 'Message', 'contact-form-app' )}
                             ></textarea>
                         </div>
 
@@ -78,7 +75,7 @@ export default function save({ attributes }) {
                     
                     <div className="cfa-form-footer">
                         <button type="submit" className="cfa-submit-btn" style={{backgroundColor: btnColor, color: btnTextColor}}>
-                            {translations.submit || 'Submit'}
+                            {__( 'Submit', 'contact-form-app' )}
                         </button>
                     </div>
                 </form>

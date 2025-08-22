@@ -32,10 +32,22 @@ class Enqueue extends Base {
 		if ( !parent::initialize() ) {
 			return;
 		}
-
+        \add_action('init', array( $this, 'register_block' ), 20);
 		\add_action( AssetManager::ACTION_SETUP, array( $this, 'enqueue_assets' ) );
-		\add_action('admin_enqueue_scripts', [$this, 'localize_block_editor_script'], 20);
+		
+		\add_action('admin_enqueue_scripts', array( $this, 'attach_block_editor_data'), 19);
 	}
+    
+	/**
+     * Registers the Gutenberg block, linking it to its scripts, styles,
+     * and server-side translations.
+     */
+    public function register_block() {
+        
+        \register_block_type_from_metadata(
+            CFA_PLUGIN_ROOT . 'block.json'
+        );
+    }
 
 	/**
 	 * Enqueue assets with Inpyside library https://inpsyde.github.io/assets
@@ -149,46 +161,36 @@ class Enqueue extends Base {
     
 
 	/**
-	 * Register and enqueue admin-specific JavaScript.
+	 * Attaches translations and other data to the block editor script.
 	 *
 	 * @since 1.0.0
-	 * @return array
+	 * @return void
 	 */
-	public function localize_block_editor_script() {
-    	$screen = \get_current_screen();
-    
+	public function attach_block_editor_data() {
+		$screen = \get_current_screen();
+
+		// Make sure we're in the block editor
 		if ($screen && $screen->is_block_editor()) {
-			
-			$translations = [
-				'headline' => __('Get in Touch With Us', 'contact-form-app'),
-				'headlineColor' => __('Headline Color', 'contact-form-app'),
-				'enterHeadline' => __('Enter form headline...', 'contact-form-app'),
-				'name' => __('Name', 'contact-form-app'),
-				'company' => __('Company', 'contact-form-app'),
-				'email' => __('Email', 'contact-form-app'),
-				'phone' => __('Phone', 'contact-form-app'),
-				'message' => __('Message', 'contact-form-app'),
-				'submit' => __('Submit', 'contact-form-app'),
-				'formSettings' => __('Form Settings', 'contact-form-app'),
-				'btnColor' => __('Button Color', 'contact-form-app'),
-				'btnTextColor' => __('Button Text Color', 'contact-form-app'),
-				'contactForm' => __('Contact Form', 'contact-form-app'),
-			];
-			wp_localize_script(
-				CFA_TEXTDOMAIN . '-block-editor-script',
-				'cfaBlockTranslations',
-				$translations
-			);
-            // Get plugin options
+
+			// THIS IS THE CORRECT WAY FOR MODERN BLOCK TRANSLATIONS
+			// Make sure this is called after the script is enqueued.
+			// The hook priority (19) in add_action is important for this.
+			if (function_exists('wp_set_script_translations')) {
+				wp_set_script_translations(
+					CFA_TEXTDOMAIN . '-block-editor-script', // Use the handle you registered with Inpsyde
+					'contact-form-app',
+					CFA_PLUGIN_ROOT . 'languages'
+				);
+			}
+
+			// Keep localize for NON-translation data, such as hCaptcha settings
 			$options = \get_option(CFA_TEXTDOMAIN . '-settings');
-			
-			
 			$hcaptcha_site_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
 			$hcaptcha_secret_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
 			$hcaptcha_enabled = $hcaptcha_site_key && $hcaptcha_secret_key;
 
 			wp_localize_script(
-				CFA_TEXTDOMAIN . '-block-editor-script',
+				CFA_TEXTDOMAIN . '-block-editor-script', // Still use the correct handle
 				'cfaBlockhCaptcha',
 				[
 					'hCaptchaEnabled' => $hcaptcha_enabled,
@@ -196,6 +198,7 @@ class Enqueue extends Base {
 				]
 			);
 
+			
 		}
 	}
 }

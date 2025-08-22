@@ -1,7 +1,7 @@
 === Formular af CitizenOne journalsystem ===
 Contributors: mzc74b331b9fdbc
 Tags: contacts, leads, citizenone, kontaktformular
-Requires at least: 5.6
+Requires at least: 5.8
 Tested up to: 6.8
 Stable tag: 1.0.0
 License: GPLv3+

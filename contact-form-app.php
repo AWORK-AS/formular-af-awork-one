@@ -47,10 +47,13 @@ function cfa_initialize_plugin() {
 	// Define other constants here.
 	define( 'CFA_NAME', __( 'Formular af CitizenOne journalsystem', 'contact-form-app' ) ); // Now safe to translate
 	
+
 	// Require necessary files.
 	$contact_form_app_libraries = require CFA_PLUGIN_ROOT . 'vendor/autoload.php';
 	require_once CFA_PLUGIN_ROOT . 'functions/functions.php';
 	require_once CFA_PLUGIN_ROOT . 'functions/debug.php';
+
+    
 
 	// Check for requirements.
 	$requirements = new \Micropackage\Requirements\Requirements(
@@ -102,17 +105,12 @@ function cfa_initialize_plugin() {
 			);
 		}
 	});
-	
-	register_block_type_from_metadata(
-		plugin_dir_path(__FILE__) . 'block.json',
-		[
-			'render_callback' => 'render_contact_form_block',
-		]
-	);
 }
 
 // Hook the initializer function to 'init'.
 add_action( 'init', 'cfa_initialize_plugin' );
+
+
 
 /**
  * Register activation and deactivation hooks.

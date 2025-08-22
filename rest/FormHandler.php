@@ -93,11 +93,11 @@ class FormHandler {
             // Error: No secret key configured
             return ['success' => false, 'error-codes' => ['missing-secret-key']];
         }
-
+        $remote_ip = isset($_SERVER['REMOTE_ADDR']) ?  \sanitize_text_field(\wp_unslash($_SERVER['REMOTE_ADDR'])) : '';
         $data = [
             'secret'   => $secret_key,
             'response' => $token,
-            'remoteip' => $_SERVER['REMOTE_ADDR'] ?? ''
+            'remoteip' => $remote_ip,
         ];
 
         $verify_url = 'https://hcaptcha.com/siteverify';

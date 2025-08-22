@@ -103,6 +103,12 @@ class Settings_Page extends Base {
 			return;
 		}
 		
+		// Nonce verification - CRITICAL!
+		if ( ! isset( $_POST['nonce_CMB2php' . $cmb_id ] ) || 
+			! \wp_verify_nonce( \sanitize_text_field(\wp_unslash($_POST['nonce_CMB2php' . $cmb_id ])), 'nonce_CMB2php' . $cmb_id ) ) {
+			return;
+		}
+
 		$cmb = \cmb2_get_metabox( $cmb_id );
 
 		// Get the submitted values
