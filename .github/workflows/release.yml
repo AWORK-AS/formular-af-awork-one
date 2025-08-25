@@ -55,7 +55,7 @@ jobs:
         [ -f README.txt ] && cp README.txt contact-form-app-build/
         
         # Create ZIP file
-        cd contact-form-app && zip -r ../contact-form-app.zip .
+        cd contact-form-app-build && zip -r ../contact-form-app.zip .
         
         # Return to root directory
         cd ..
