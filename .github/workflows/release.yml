@@ -46,11 +46,15 @@ jobs:
         # Create assets folder
         mkdir contact-form-app-build/assets
         
+        
         # Copy other required files
         cp -r assets/build ajax engine frontend backend cli integrations contact-form-app-build/
         
         # Copy other required files
         cp -r languages rest  templates index.php  LICENSE.txt uninstall.php contact-form-app-build/
+        
+        # Copy other required files
+        cp assets/block.json contact-form-app-build/
         
         # Add readme if exists
         [ -f README.txt ] && cp README.txt contact-form-app-build/

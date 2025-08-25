@@ -40,7 +40,7 @@ class Enqueue extends Base {
      */
     public function register_block() {
         // Use block.json for block registration
-        $block_json_path = CFA_PLUGIN_ROOT . 'assets/src/block.json';
+        $block_json_path = CFA_PLUGIN_ROOT . 'assets/block.json';
         
         if (file_exists($block_json_path)) {
             \register_block_type($block_json_path);
