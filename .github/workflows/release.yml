@@ -44,7 +44,7 @@ jobs:
         cp -r contact-form-app.php composer.json vendor functions internals contact-form-app-build/
         
         # Create assets folder
-        mkdir contact-form-app-build/assets
+        mkdir -p contact-form-app-build/assets/build
         
         
         # Copy other required files
@@ -54,8 +54,11 @@ jobs:
         cp -r languages rest  templates index.php  LICENSE.txt uninstall.php contact-form-app-build/
         
         # Copy other required files
-        cp assets/block.json contact-form-app-build/
+        cp assets/block.json contact-form-app-build/assets
         
+        # Copy other required files
+        cp -r assets/build contact-form-app-build/assets/
+
         # Add readme if exists
         [ -f README.txt ] && cp README.txt contact-form-app-build/
         
