@@ -4,7 +4,7 @@ namespace Contact_Form_App\Rest;
 class FormHandler {
     public function __construct() {
         \add_action('rest_api_init', [$this, 'register_api_endpoint']);
-        \error_log('rest_api_init:register_api_endpoint');
+       
     }
 
     public function register_api_endpoint() {
