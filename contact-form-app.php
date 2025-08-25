@@ -28,12 +28,12 @@ if ( ! defined( 'ABSPATH'  ) ) {
 define( 'CFA_PLUGIN_ABSOLUTE', __FILE__ );
 define( 'CFA_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
 define( 'CFA_TEXTDOMAIN', 'contact-form-app' );
-define( 'CFA_VERSION', '1.0.0' );
+define( 'CFA_VERSION', '1.0.0-alpha' );
 define( 'CFA_MIN_PHP_VERSION', '7.4' );
-define( 'CFA_WP_VERSION', '5.6' );
-define( 'CFA_PLUGIN_API_URL', 'http://127.0.0.1:8000/api'  );
+define( 'CFA_WP_VERSION', '5.8' );
+define( 'CFA_PLUGIN_API_URL', 'https://server1488.citizenone.dk/api'  );
 define( 'CFA_PLUGIN_API_NAME', 'CitizenOne journalsystem' );
-
+define( 'CFA_NAME', 'Formular af CitizenOne journalsystem' ); 
 /**
  * The main function that initializes the plugin.
  *
@@ -43,11 +43,7 @@ define( 'CFA_PLUGIN_API_NAME', 'CitizenOne journalsystem' );
 function cfa_initialize_plugin() {
 	// Load the text domain first thing inside the init hook.
 	load_plugin_textdomain( CFA_TEXTDOMAIN, false, dirname( plugin_basename( CFA_PLUGIN_ABSOLUTE ) ) . '/languages' );
-
-	// Define other constants here.
-	define( 'CFA_NAME', __( 'Formular af CitizenOne journalsystem', 'contact-form-app' ) ); // Now safe to translate
-	
-
+    
 	// Require necessary files.
 	$contact_form_app_libraries = require CFA_PLUGIN_ROOT . 'vendor/autoload.php';
 	require_once CFA_PLUGIN_ROOT . 'functions/functions.php';
@@ -159,3 +155,4 @@ function cfa_deactivate_plugin( $network_wide ) {
 // Register activation and deactivation hooks
 register_activation_hook( CFA_PLUGIN_ABSOLUTE, 'cfa_activate_plugin' );
 register_deactivation_hook( CFA_PLUGIN_ABSOLUTE, 'cfa_deactivate_plugin' );
+

@@ -41,8 +41,6 @@ Embed customizable contact forms from CitizenOne on any WordPress site.
 For hCaptcha to work, you need to add your **Secret Key** and **Site Key** from hCaptcha into the Admin Settings.
 **Important**: If you already had a **Contact Form** block on your web page before adding the hCaptcha keys, you must replace it with a new one for the settings to take effect.
 
-= Can I customize the form fields? =
-Yes! Edit field labels in plugin settings. Additional fields require CitizenOne dashboard configuration.
 
 = How do leads appear in CitizenOne? =
 All submissions populate in your dashboard > Leads section with timestamp, source URL, and contact details.
