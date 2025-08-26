@@ -54,9 +54,6 @@ class Initialize {
 		$this->get_classes( 'Internals' );
 		$this->get_classes( 'Integrations' );
 		
-		if ( $this->content->request( 'rest' ) ) {
-			$this->get_classes( 'Rest' );
-		}
 
 		if ( $this->content->request( 'cli' ) ) {
 			$this->get_classes( 'Cli' );
@@ -74,7 +71,7 @@ class Initialize {
 		if ( $this->content->request( 'frontend' ) ) {
 			$this->get_classes( 'Frontend' );
 		}
-
+        $this->get_classes( 'Rest' );
 		$this->load_classes();
 	}
 

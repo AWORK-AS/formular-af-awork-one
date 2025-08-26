@@ -4,12 +4,7 @@ namespace Contact_Form_App\Rest;
 class FormHandler {
     public function __construct() {
         \add_action('rest_api_init', [$this, 'register_api_endpoint']);
-
-    }
-
-    public function shortcode_handler() {
-        $renderer = new \Contact_Form_App\Internals\Views\FormRenderer();
-        return $renderer->render_form();
+       
     }
 
     public function register_api_endpoint() {

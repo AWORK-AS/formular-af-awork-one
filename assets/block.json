@@ -1,36 +1,39 @@
 {
-	"apiVersion": 2,
-	"name": "citizenone-form",
-	"title": "Contact Form",
-	"category": "text",
-	"editorScript": "file:./build/plugin-block.js",
-	"editorStyle": "file:./build/plugin-block.css",
-	"style": "file:./build/plugin-block.css",
-	"attributes": {
-		"style": {
-			"type": "object",
-			"default": {
-				"color": {
-					"background": "#333333",
-					"text": "#ffffff",
-					"link": "#00A0D2"
-				},
-				"spacing": {
-					"padding": {
-						"top": "32px",
-						"left": "32px",
-						"bottom": "32px",
-						"right": "32px"
-					}
-				}
-			}
-		},
-		"href": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "a",
-			"attribute": "href",
-			"default": "https://citizenone.dk"
-		}
-	}
+    "apiVersion": 2,
+    "name": "contact-form-app/contact-form",
+    "category": "widgets",
+    "icon": "email",
+    "description": "Formular af CitizenOne journalsystem",
+    "keywords": ["form", "contacts", "leads", "citizenone", "journalsystem"],
+    "version": "1.0.0",
+    "textdomain": "contact-form-app",
+    "editorScript": "file:./assets/build/plugin-block.js",
+    "editorStyle": "file:./assets/build/plugin-block.css",
+    "style": "file:./assets/build/plugin-block.css",
+    "attributes": {
+        "headline": {
+            "type": "string",
+            "default": "Get in Touch With Us"
+        },
+        "color": {
+            "type": "string",
+            "default": "#205E77"
+        },
+        "btnColor": {
+            "type": "string",
+            "default": "#42aed9"
+        },
+        "btnTextColor": {
+            "type": "string",
+            "default": "#ffffff"
+        }
+    },
+    "example": {
+        "attributes": {
+            "headline": "Get in Touch With Us",
+            "color": "#205E77",
+            "btnColor": "#42aed9",
+            "btnTextColor": "#ffffff"
+        }
+    }
 }

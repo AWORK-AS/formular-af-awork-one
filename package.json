@@ -46,12 +46,12 @@
         "@types/wordpress__block-editor": "^11.5.1",
         "@types/wordpress__blocks": "^12.5.0",
         "@wordpress/block-editor": "^9.8.0",
-        "@wordpress/scripts": "^24.6.0",
+        "@wordpress/scripts": "^30.22.0",
         "typescript": "^5.0.4"
     },
     "engines": {
-        "node": ">=14.0.0",
-        "npm": ">=6.9.0"
+        "node": ">=24.6.0",
+        "npm": ">=11.5.1"
     },
     "browserslist": [
         "extends @wordpress/browserslist-config"
@@ -78,5 +78,9 @@
             "@wordpress/stylelint-config/scss"
         ]
     },
-    "prettier": "@wordpress/prettier-config"
+    "prettier": "@wordpress/prettier-config",
+    "overrides": {
+        "react": "18.0.0",
+        "react-dom": "18.0.0"
+    }
 }

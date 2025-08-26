@@ -1,24 +1,23 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Formular af CitizenOne journalsystem 1.0.0\n"
+"Project-Id-Version: Formular af CitizenOne journalsystem 1.0.0-alpha\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/contact-form-app\n"
 "Last-Translator: Mindell Zamora <mindell-zamora@mindell-zamora>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-22T08:42:11+00:00\n"
-"PO-Revision-Date: 2025-08-22 16:45+0800\n"
+"POT-Creation-Date: 2025-08-25T06:06:09+00:00\n"
+"PO-Revision-Date: 2025-08-25 14:06+0800\n"
 "Language: da\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: contact-form-app\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. Plugin Name of the plugin
 #. Description of the plugin
 #: contact-form-app.php
 #: backend/views/admin.php:18
-#: contact-form-app.php:48
 msgid "Formular af CitizenOne journalsystem"
 msgstr "Formular af CitizenOne journalsystem"
 
@@ -71,9 +70,8 @@ msgstr "Ikke forbundet"
 
 #: backend/views/contact-form-app-settings.php:14
 #: internals/views/FormRenderer.php:36
-#: assets/build/plugin-block.js:1
-#: assets/src/block/edit.js:63
-#: assets/src/block/save.js:46
+#: assets/src/block/edit.js:61
+#: assets/src/block/save.js:45
 msgid "Email"
 msgstr "E-mail"
 
@@ -101,12 +99,12 @@ msgstr "sikkerhedsnøgle"
 msgid "site key"
 msgstr "webstedsnøgle"
 
-#: contact-form-app.php:57
+#: contact-form-app.php:54
 #: functions/debug.php:12
 msgid "Contact Form App"
 msgstr "Kontaktformular-app"
 
-#: contact-form-app.php:133
+#: contact-form-app.php:116
 msgid "Plugin dependencies are missing. Please run composer install."
 msgstr "Plugin-afhængigheder mangler. Kør venligst composer-installationen."
 
@@ -139,48 +137,42 @@ msgid "Please enter a valid email address"
 msgstr "Indtast venligst en gyldig e-mailadresse"
 
 #: frontend/Enqueue.php:129
-#: rest/FormHandler.php:72
+#: rest/FormHandler.php:71
 msgid "Thank you! Your message has been sent."
 msgstr "Tak! Din besked er blevet sendt."
 
 #: internals/views/FormRenderer.php:8
-#: assets/build/plugin-block.js:1
 #: assets/src/block/index.js:15
 msgid "Get in Touch With Us"
 msgstr "Kontakt os"
 
 #: internals/views/FormRenderer.php:26
-#: assets/build/plugin-block.js:1
-#: assets/src/block/edit.js:55
-#: assets/src/block/save.js:26
+#: assets/src/block/edit.js:53
+#: assets/src/block/save.js:25
 msgid "Name"
 msgstr "Navn"
 
 #: internals/views/FormRenderer.php:31
-#: assets/build/plugin-block.js:1
-#: assets/src/block/edit.js:59
-#: assets/src/block/save.js:36
+#: assets/src/block/edit.js:57
+#: assets/src/block/save.js:35
 msgid "Company"
 msgstr "Selskab"
 
 #: internals/views/FormRenderer.php:41
-#: assets/build/plugin-block.js:1
-#: assets/src/block/edit.js:67
-#: assets/src/block/save.js:56
+#: assets/src/block/edit.js:65
+#: assets/src/block/save.js:55
 msgid "Phone"
 msgstr "Telefon"
 
 #: internals/views/FormRenderer.php:46
-#: assets/build/plugin-block.js:1
-#: assets/src/block/edit.js:71
-#: assets/src/block/save.js:65
+#: assets/src/block/edit.js:69
+#: assets/src/block/save.js:64
 msgid "Message"
 msgstr "Meddelelse"
 
 #: internals/views/FormRenderer.php:54
-#: assets/build/plugin-block.js:1
-#: assets/src/block/edit.js:83
-#: assets/src/block/save.js:79
+#: assets/src/block/edit.js:81
+#: assets/src/block/save.js:78
 msgid "Submit"
 msgstr "Indsend"
 
@@ -188,19 +180,19 @@ msgstr "Indsend"
 msgid "Formular af"
 msgstr "Formular af"
 
-#: rest/FormHandler.php:51
+#: rest/FormHandler.php:50
 msgid "Please complete the hCaptcha challenge."
 msgstr "Udfordringen fra hCaptcha skal gennemføres."
 
-#: rest/FormHandler.php:56
+#: rest/FormHandler.php:55
 msgid "hCaptcha verification failed. Please try again."
 msgstr "hCaptcha-verificering mislykkedes. Prøv venligst igen."
 
-#: rest/FormHandler.php:63
+#: rest/FormHandler.php:62
 msgid "Error occured. Please contact the administrator."
 msgstr "Der opstod en fejl. Kontakt venligst administratoren."
 
-#: rest/FormHandler.php:78
+#: rest/FormHandler.php:77
 msgid "Failed to send message. Please try again."
 msgstr "Kunne ikke sende beskeden. Prøv venligst igen."
 

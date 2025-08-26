@@ -11,10 +11,6 @@
 
 namespace Contact_Form_App\Frontend;
 
-use Inpsyde\Assets\Asset;
-use Inpsyde\Assets\AssetManager;
-use Inpsyde\Assets\Script;
-use Inpsyde\Assets\Style;
 use Contact_Form_App\Engine\Base;
 
 /**
@@ -30,64 +26,60 @@ class Enqueue extends Base {
 	public function initialize() {
 		parent::initialize();
 
-		\add_action( AssetManager::ACTION_SETUP, array( $this, 'enqueue_assets' ) );
+		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		// Use a later hook for localization
 		\add_action( 'wp_footer', array( $this, 'localize_scripts' ), 5 );
 	}
 
 	/**
-	 * Enqueue assets with Inpyside library https://inpsyde.github.io/assets
+	 * Enqueue assets with WordPress standard functions
 	 *
-	 * @param \Inpsyde\Assets\AssetManager $asset_manager The class.
 	 * @return void
 	 */
-	public function enqueue_assets( AssetManager $asset_manager ) {
+	public function enqueue_assets() {
 		// Load public-facing style sheet and JavaScript.
-		$assets = $this->enqueue_styles();
-
-		if ( !empty( $assets ) ) {
-			foreach ( $assets as $asset ) {
-				$asset_manager->register( $asset );
-			}
-		}
-
-		$assets = $this->enqueue_scripts();
-
-		if ( !empty( $assets ) ) {
-			foreach ( $assets as $asset ) {
-				$asset_manager->register( $asset );
-			}
-		}
+		$this->enqueue_styles();
+		$this->enqueue_scripts();
 	}
 
 	/**
 	 * Register and enqueue public-facing style sheet.
 	 *
 	 * @since 1.0.0
-	 * @return array
+	 * @return void
 	 */
 	public function enqueue_styles() {
-		$styles = array();
-		$styles[0] = new Style( CFA_TEXTDOMAIN . '-plugin-styles', \plugins_url( 'assets/build/plugin-public.css', CFA_PLUGIN_ABSOLUTE ) );
-		$styles[0]->forLocation( Asset::FRONTEND )->useAsyncFilter()->withVersion( CFA_VERSION );
-		$styles[0]->dependencies();
+		$handle = CFA_TEXTDOMAIN . '-plugin-styles';
+		$src = \plugins_url( 'assets/build/plugin-public.css', CFA_PLUGIN_ABSOLUTE );
+		$deps = array(); // No dependencies specified in original Inpsyde code
+		$version = CFA_VERSION;
+		$media = 'all';
 
-		return $styles;
+		\wp_enqueue_style( $handle, $src, $deps, $version, $media );
 	}
 
 	/**
 	 * Register and enqueues public-facing JavaScript files.
 	 *
 	 * @since 1.0.0
-	 * @return array
+	 * @return void
 	 */
 	public function enqueue_scripts() {
-		$scripts = array();
-		$scripts[0] = new Script( CFA_TEXTDOMAIN . '-plugin-script', \plugins_url( 'assets/build/plugin-public.js', CFA_PLUGIN_ABSOLUTE ) );
-		$scripts[0]->forLocation( Asset::FRONTEND )->useAsyncFilter()->withVersion( CFA_VERSION );
-		$scripts[0]->dependencies();
+		$handle = CFA_TEXTDOMAIN . '-plugin-script';
+		$src = \plugins_url( 'assets/build/plugin-public.js', CFA_PLUGIN_ABSOLUTE );
+		$deps = array(); // No dependencies specified in original Inpsyde code
+		$version = CFA_VERSION;
+		$in_footer = true; // Inpsyde's useAsyncFilter implies defer/async, which often means loading in footer
 
-		return $scripts;
+		\wp_enqueue_script( $handle, $src, $deps, $version, $in_footer );
+
+		// Add async/defer attributes using script_loader_tag filter
+		\add_filter( 'script_loader_tag', function( $tag, $handle ) {
+			if ( CFA_TEXTDOMAIN . '-plugin-script' === $handle ) {
+				return str_replace( '<script', '<script async defer', $tag );
+			}
+			return $tag;
+		}, 10, 2 );
 	}
 
 	/**
@@ -97,42 +89,42 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	public function localize_scripts() {
-    // Only localize if the script is enqueued
-    if (!wp_script_is(CFA_TEXTDOMAIN . '-plugin-script', 'enqueued')) {
-        return;
-    }
-    
-    // Get plugin options
-    $options = \get_option(CFA_TEXTDOMAIN . '-settings');
-    
-    $color = $options[CFA_TEXTDOMAIN . '_color_theme'] ?? '#205E77';
-    $headline = $options[CFA_TEXTDOMAIN . '_headline'] ?? 'Get in Touch With Us';
-    $hcaptcha_site_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
-    $hcaptcha_secret_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
-    $hcaptcha_enabled = $hcaptcha_site_key && $hcaptcha_secret_key;
+		// Only localize if the script is enqueued
+		if (!wp_script_is(CFA_TEXTDOMAIN . '-plugin-script', 'enqueued')) {
+			return;
+		}
+		
+		// Get plugin options
+		$options = \get_option(CFA_TEXTDOMAIN . '-settings');
+		
+		$color = $options[CFA_TEXTDOMAIN . '_color_theme'] ?? '#205E77';
+		$headline = $options[CFA_TEXTDOMAIN . '_headline'] ?? 'Get in Touch With Us';
+		$hcaptcha_site_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
+		$hcaptcha_secret_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
+		$hcaptcha_enabled = $hcaptcha_site_key && $hcaptcha_secret_key;
 
-    
-    // Localize the script using WordPress standard method
-    wp_localize_script(
-        CFA_TEXTDOMAIN . '-plugin-script',
-        'cfa_form_vars',
-        array(
-            'rest_url' => rest_url('contact-form-app/v1/submit'),
-            'nonce'    => \wp_create_nonce( 'wp_rest' ),
-            'i18n'     => [
-                'loading'           => \__('Loading...', 'contact-form-app'),
-                'sending'           => \__('Sending...', 'contact-form-app'),
-                'submission_failed' => \__('Submission failed', 'contact-form-app'),
-                'invalid_nonce'     => \__('Session expired. Please refresh the page.', 'contact-form-app'),
-                'required_field'    => \__('This field is required', 'contact-form-app'),
-                'invalid_email'     => \__('Please enter a valid email address', 'contact-form-app'),
-                'success_message'   => \__('Thank you! Your message has been sent.', 'contact-form-app')
-            ],
-            'color' => $color,
-            'headline' => $headline,
-            'hcaptcha_site_key' => $hcaptcha_site_key,
-            'hcaptcha_enabled'  => $hcaptcha_enabled,
-        )
-    );
-}
+		
+		// Localize the script using WordPress standard method
+		wp_localize_script(
+			CFA_TEXTDOMAIN . '-plugin-script',
+			'cfa_form_vars',
+			array(
+				'rest_url' => rest_url('contact-form-app/v1/submit'),
+				'nonce'    => \wp_create_nonce( 'wp_rest' ),
+				'i18n'     => [
+					'loading'           => \__('Loading...', 'contact-form-app'),
+					'sending'           => \__('Sending...', 'contact-form-app'),
+					'submission_failed' => \__('Submission failed', 'contact-form-app'),
+					'invalid_nonce'     => \__('Session expired. Please refresh the page.', 'contact-form-app'),
+					'required_field'    => \__('This field is required', 'contact-form-app'),
+					'invalid_email'     => \__('Please enter a valid email address', 'contact-form-app'),
+					'success_message'   => \__('Thank you! Your message has been sent.', 'contact-form-app')
+				],
+				'color' => $color,
+				'headline' => $headline,
+				'hcaptcha_site_key' => $hcaptcha_site_key,
+				'hcaptcha_enabled'  => $hcaptcha_enabled,
+			)
+		);
+	}
 }
