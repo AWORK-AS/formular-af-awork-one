@@ -57,7 +57,7 @@ jobs:
         cp assets/block.json contact-form-app-build/assets
         
         # Copy other required files
-        cp -r assets/build contact-form-app-build/assets/
+        cp -r assets/build assets/screenshots contact-form-app-build/assets/
 
         # Add readme if exists
         [ -f README.txt ] && cp README.txt contact-form-app-build/

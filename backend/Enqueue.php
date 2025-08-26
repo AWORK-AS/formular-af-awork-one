@@ -28,24 +28,12 @@ class Enqueue extends Base {
 		if ( !parent::initialize() ) {
 			return;
 		}
-        
         // Register and enqueue assets
-        \add_action('init', array( $this, 'register_block' ));
+        
 		\add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		\add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
 	}
     
-	/**
-     * Registers the Gutenberg block
-     */
-    public function register_block() {
-        // Use block.json for block registration
-        $block_json_path = CFA_PLUGIN_ROOT . 'assets/block.json';
-        
-        if (file_exists($block_json_path)) {
-            \register_block_type($block_json_path);
-        }
-    }
 
 	/**
 	 * Enqueue admin assets
@@ -81,7 +69,8 @@ class Enqueue extends Base {
 			CFA_TEXTDOMAIN . '-block-editor-script',
 			\plugins_url('assets/build/plugin-block.js', CFA_PLUGIN_ABSOLUTE),
 			array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n', 'wp-api-fetch'),
-			CFA_VERSION
+			CFA_VERSION,
+			true
 		);
 		
 		// Handle translations
@@ -147,7 +136,8 @@ class Enqueue extends Base {
 			CFA_TEXTDOMAIN . '-settings-admin',
 			\plugins_url('assets/build/plugin-admin.js', CFA_PLUGIN_ABSOLUTE),
 			array(),
-			CFA_VERSION
+			CFA_VERSION,
+			true
 		);
 		
 		// Settings page script

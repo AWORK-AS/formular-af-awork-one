@@ -71,7 +71,10 @@ class Initialize {
 		if ( $this->content->request( 'frontend' ) ) {
 			$this->get_classes( 'Frontend' );
 		}
-        $this->get_classes( 'Rest' );
+		if ( $this->content->request( 'rest' ) ) {
+			$this->get_classes( 'Rest' );
+		}
+        
 		$this->load_classes();
 	}
 

@@ -40,10 +40,9 @@ define( 'CFA_NAME', 'Formular af CitizenOne journalsystem' );
  * This function is hooked to 'init' to ensure all WordPress functionalities,
  * including user data and translations, are ready.
  */
+
 function cfa_initialize_plugin() {
-	// Load the text domain first thing inside the init hook.
-	load_plugin_textdomain( CFA_TEXTDOMAIN, false, dirname( plugin_basename( CFA_PLUGIN_ABSOLUTE ) ) . '/languages' );
-    
+	
 	// Require necessary files.
 	$contact_form_app_libraries = require CFA_PLUGIN_ROOT . 'vendor/autoload.php';
 	require_once CFA_PLUGIN_ROOT . 'functions/functions.php';
@@ -101,6 +100,13 @@ function cfa_initialize_plugin() {
 			);
 		}
 	});
+
+	// Use block.json for block registration
+	$block_json_path = CFA_PLUGIN_ROOT . 'assets/block.json';
+	if (file_exists($block_json_path)) {
+		\register_block_type($block_json_path);
+	}
+
 }
 
 // Hook the initializer function to 'init'.
