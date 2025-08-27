@@ -6,13 +6,8 @@ grumphp:
       with_dependencies: false
       strict: false
     phpcs:
-      standard: CodeatCodingStandard
+      standard: ./phpcs.xml
       ignore_patterns:
-      - /vendor/
-      - /tests/
-      - /assets/build
-    phpmd:
-      exclude:
       - /vendor/
       - /tests/
       - /assets/build
@@ -22,6 +17,8 @@ grumphp:
       - php
       ignore_patterns:
       - /vendor/
+      - /tests/
+      - /assets/build
     codeception:
       config_file: ~
       fail_fast: false
@@ -29,9 +26,9 @@ grumphp:
       test: ~
     git_blacklist:
       keywords:
-      - die(
       - print_r(
       - var_dump(
+      - error_log(
       triggered_by:
       - php
       ignore_patterns:

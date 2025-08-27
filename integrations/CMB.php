@@ -30,7 +30,6 @@ class CMB extends Base {
 
 		require_once CFA_PLUGIN_ROOT . 'vendor/cmb2/init.php';
 		require_once CFA_PLUGIN_ROOT . 'vendor/cmb2-grid/Cmb2GridPluginLoad.php';
-		
 	}
 
 }

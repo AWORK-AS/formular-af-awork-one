@@ -11,8 +11,8 @@
 
 namespace Contact_Form_App\Backend;
 
-use I18n_Notice_WordPressOrg;
 use Contact_Form_App\Engine\Base;
+use I18n_Notice_WordPressOrg;
 
 /**
  * Everything that involves notification on the WordPress dashboard
@@ -29,22 +29,22 @@ class Notices extends Base {
 			return;
 		}
 
-
 		/*
 		 * Alert after few days to suggest to contribute to the localization if it is incomplete
 		 * on translate.wordpress.org, the filter enables to remove globally.
 		 */
-		if ( \apply_filters( 'contact_form_app_alert_localization', true ) ) {
-			new I18n_Notice_WordPressOrg(
-			array(
-				'textdomain'  => CFA_TEXTDOMAIN,
-				'contact_form_app' => CFA_NAME,
-				'hook'        => 'admin_notices',
-			),
-			true
-			);
+		if ( !\apply_filters( 'contact_form_app_alert_localization', true ) ) {
+			return;
 		}
 
+		new I18n_Notice_WordPressOrg(
+		array(
+			'textdomain'       => CFA_TEXTDOMAIN,
+			'contact_form_app' => CFA_NAME,
+			'hook'             => 'admin_notices',
+		),
+		true
+		);
 	}
 
 }

@@ -45,7 +45,6 @@ class Ajax extends Base {
 		);
 
 		\wp_send_json_success( $return );
-		// wp_send_json_error( $return );
 	}
 
 }

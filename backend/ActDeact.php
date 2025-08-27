@@ -201,10 +201,10 @@ class ActDeact extends Base {
 		if ( !\is_admin() ) {
 			return;
 		}
+
+		$version_option = \get_option( 'contact-form-app-version' );
+		$version        = is_scalar( $version_option ) ? (string) $version_option : '';
 		
-
-		$version = \strval( \get_option( 'contact-form-app-version' ) );
-
 		if ( !\version_compare( \CFA_VERSION, $version, '>' ) ) {
 			return;
 		}
@@ -220,8 +220,6 @@ class ActDeact extends Base {
 	 * @return void
 	 */
 	private static function single_activate() {
-		// @TODO: Define activation functionality here
-		// add_role( 'advanced', __( 'Advanced' ) ); //Add a custom roles
 		self::add_capabilities();
 		self::upgrade_procedure();
 		// Clear the permalinks
@@ -235,7 +233,6 @@ class ActDeact extends Base {
 	 * @return void
 	 */
 	private static function single_deactivate() {
-		// @TODO: Define deactivation functionality here
 		self::remove_capabilities();
 		// Clear the permalinks
 		\delete_option( \CFA_TEXTDOMAIN . '-settings' );

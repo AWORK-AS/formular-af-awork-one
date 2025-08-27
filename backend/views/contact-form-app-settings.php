@@ -1,3 +1,18 @@
+<?php
+/**
+ * Represents the view for the administration dashboard.
+ *
+ * This includes the header, options, and other information that should provide
+ * The User Interface to the end user.
+ *
+ * @package   Contact_Form_App
+ * @author    Mindell Zamora <mz@awork.dk>
+ * @copyright 2025 AWORK A/S
+ * @license   GPL 2.0+
+ * @link      https://awork.dk
+ */
+?>
+
 <div id="tabs-1" class="wrap">
 <?php
     $cmb = new_cmb2_box(
@@ -11,25 +26,25 @@
     
     $cmb->add_field(
         array(
-            'name'    => __( 'Email', 'contact-form-app' ),
-            'id'      => CFA_TEXTDOMAIN . '_field_email',
-            'type'    => 'text_email',
+            'name' => __( 'Email', 'contact-form-app' ),
+            'id'   => CFA_TEXTDOMAIN . '_field_email',
+            'type' => 'text_email',
         )
     );
     
     $cmb->add_field(
         array(
-            'name'    => __( 'Company CVR', 'contact-form-app' ),
-            'id'      => CFA_TEXTDOMAIN . '_field_company_cvr',
-            'type'    => 'text',
+            'name' => __( 'Company CVR', 'contact-form-app' ),
+            'id'   => CFA_TEXTDOMAIN . '_field_company_cvr',
+            'type' => 'text',
         )
     );
     
     $cmb->add_field(
         array(
-            'name'    => __( 'CitizenOne Company ID', 'contact-form-app' ),
-            'id'      => CFA_TEXTDOMAIN . '_field_company_id',
-            'type'    => 'text',
+            'name' => __( 'CitizenOne Company ID', 'contact-form-app' ),
+            'id'   => CFA_TEXTDOMAIN . '_field_company_id',
+            'type' => 'text',
         )
     );
     
@@ -39,26 +54,26 @@
             'name' => __( 'hCaptcha Settings (Optional)', 'contact-form-app' ),
             'desc' => __( 'Configure your hCaptcha integration', 'contact-form-app' ),
             'type' => 'title',
-            'id'   => 'hcaptcha_divider'
+            'id'   => 'hcaptcha_divider',
         )
     );
     
     $cmb->add_field(
         array(
-            'name'    => "hCaptcha " . __( 'secret key', 'contact-form-app' ),
-            'id'      => CFA_TEXTDOMAIN . '_hcaptcha_secret_key',
-            'type'    => 'text',
+            'name' => 'hCaptcha ' . __( 'secret key', 'contact-form-app' ),
+            'id'   => CFA_TEXTDOMAIN . '_hcaptcha_secret_key',
+            'type' => 'text',
         )
     );
     $cmb->add_field(
         array(
-            'name'    => "hCaptcha " . __( 'site key', 'contact-form-app' ),
-            'id'      => CFA_TEXTDOMAIN . '_hcaptcha_site_key',
-            'type'    => 'text',
+            'name' => 'hCaptcha ' . __( 'site key', 'contact-form-app' ),
+            'id'   => CFA_TEXTDOMAIN . '_hcaptcha_site_key',
+            'type' => 'text',
         )
     );
     
     
     cmb2_metabox_form( CFA_TEXTDOMAIN . '_options', CFA_TEXTDOMAIN . '-settings' );
-?>
+	?>
 </div>

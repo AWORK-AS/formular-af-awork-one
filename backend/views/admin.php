@@ -5,7 +5,7 @@
  * This includes the header, options, and other information that should provide
  * The User Interface to the end user.
  *
- * @package   Formular_af_CitizenOne
+ * @package   Contact_Form_App
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -22,14 +22,14 @@
 			<li><a href="#tabs-1"><?php esc_html_e( 'Configuration', 'contact-form-app' ); ?></a></li>
 		</ul>
 		<?php
-		    require_once plugin_dir_path( __FILE__ ) . 'contact-form-app-settings.php';		
+		    require_once plugin_dir_path( __FILE__ ) . 'contact-form-app-settings.php';
 		?>
 	</div>
 
 	<div class="right-column-settings-page metabox-holder">
 		
 			<?php
-		   	 require_once plugin_dir_path( __FILE__ ) . 'connection-svg.php';		
+			require_once plugin_dir_path( __FILE__ ) . 'connection-svg.php';
 			?>
 		
 	</div>

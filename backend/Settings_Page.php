@@ -104,8 +104,8 @@ class Settings_Page extends Base {
 		}
 		
 		// Nonce verification - CRITICAL!
-		if ( ! isset( $_POST['nonce_CMB2php' . $cmb_id ] ) || 
-			! \wp_verify_nonce( \sanitize_text_field(\wp_unslash($_POST['nonce_CMB2php' . $cmb_id ])), 'nonce_CMB2php' . $cmb_id ) ) {
+		if ( ! isset( $_POST['nonce_CMB2php' . $cmb_id ] ) ||
+			! \wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST['nonce_CMB2php' . $cmb_id ] ) ), 'nonce_CMB2php' . $cmb_id ) ) {
 			return;
 		}
 
@@ -114,24 +114,29 @@ class Settings_Page extends Base {
 		// Get the submitted values
 		$values = $cmb->get_sanitized_values( $_POST );
 		
-		if(!empty( $values[CFA_TEXTDOMAIN . '_field_email'] )
-			&& !empty( $values[CFA_TEXTDOMAIN . '_field_company_cvr'] )
-			&& !empty( $values[CFA_TEXTDOMAIN . '_field_company_id'] )
-			) {
-				
-				$token = new RetrieveToken;
-				$data = $token->submit([
-					'company_cvr' => $values[CFA_TEXTDOMAIN . '_field_company_cvr'],
-					'citizenone_company_id' => $values[CFA_TEXTDOMAIN . '_field_company_id'],
-					'email' => $values[CFA_TEXTDOMAIN . '_field_email'],
-				]);
-				if($data) {
-					$opts = \cfa_get_settings();
-					$opts[CFA_TEXTDOMAIN .'_token'] = $data->data;
-					\update_option(CFA_TEXTDOMAIN.'-settings', $opts);
-				}
-				
+		if ( empty( $values[CFA_TEXTDOMAIN . '_field_email'] )
+			|| empty( $values[CFA_TEXTDOMAIN . '_field_company_cvr'] )
+			|| empty( $values[CFA_TEXTDOMAIN . '_field_company_id'] )
+		) {
+			return;
 		}
+
+			$token = new RetrieveToken;
+			$data  = $token->submit(
+				array(
+					'company_cvr'           => $values[CFA_TEXTDOMAIN . '_field_company_cvr'],
+					'citizenone_company_id' => $values[CFA_TEXTDOMAIN . '_field_company_id'],
+					'email'                 => $values[CFA_TEXTDOMAIN . '_field_email'],
+			)
+				);
+
+		if ( !$data ) {
+			return;
+		}
+
+		$opts                            = \cfa_get_settings();
+		$opts[CFA_TEXTDOMAIN . '_token'] = $data->data;
+		\update_option( CFA_TEXTDOMAIN . '-settings', $opts );
 	}
 
 	/**
@@ -143,11 +148,14 @@ class Settings_Page extends Base {
      */
 	public function validate_token_field( $value ) {
 		$value = \sanitize_text_field( $value );
+
 		if ( empty( trim( $value ) ) ) {
 			\update_option( 'contact-form-app-connected', false );
 		}
+
 		// @TODO: Validate the token against the API.
 		
-		return $value; 
+		return $value;
 	}
+
 }

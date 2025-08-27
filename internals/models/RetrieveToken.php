@@ -1,27 +1,46 @@
 <?php
-namespace Contact_Form_App\Internals\Models;
 
+/**
+ * Retrieve token from API
+ *
+ *
+ * @package   Contact_Form_App
+ * @author    Mindell Zamora <mz@awork.dk>
+ * @copyright 2025 AWORK A/S
+ * @license   GPL 2.0+
+ * @link      https://awork.dk
+ */
+
+namespace Contact_Form_App\Internals\Models;
 
 class RetrieveToken {
 
-    public function submit($data) {
-        $response = \wp_remote_post(CFA_PLUGIN_API_URL . '/jwt/generate-token', [
-            'body' => \json_encode($data),
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json'
-            ],
-            'timeout' => 15
-        ]);
-        
-       
+    /**
+     * Submit data to generate a token
+     *
+     * @param array<string, mixed> $data
+     * @return object|array<string, mixed>|null|false
+     */
+    public function submit( $data ) {
+        $response = \wp_remote_post(
+            CFA_PLUGIN_API_URL . '/jwt/generate-token',
+            array(
+				'body'    => \json_encode( $data ),
+				'headers' => array(
+					'Content-Type' => 'application/json',
+					'Accept'       => 'application/json',
+				),
+				'timeout' => 15,
+			)
+            );
 
-        if (\is_wp_error($response)) {
+        if ( \is_wp_error( $response ) ) {
             return false;
         }
         
-        $status = \wp_remote_retrieve_response_code($response);
-        if ($status !== 200) {
+        $status = \wp_remote_retrieve_response_code( $response );
+
+        if ( $status !== 200 ) {
             return false;
         }
 
@@ -29,4 +48,5 @@ class RetrieveToken {
         
         return \json_decode( $body );
     }
+
 }

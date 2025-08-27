@@ -20,7 +20,7 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'ABSPATH'  ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	die( 'We\'re sorry, but you can not directly access this file.' );
 }
 
@@ -31,18 +31,16 @@ define( 'CFA_TEXTDOMAIN', 'contact-form-app' );
 define( 'CFA_VERSION', '1.0.0-alpha' );
 define( 'CFA_MIN_PHP_VERSION', '7.4' );
 define( 'CFA_WP_VERSION', '5.8' );
-define( 'CFA_PLUGIN_API_URL', 'https://server1488.citizenone.dk/api'  );
+define( 'CFA_PLUGIN_API_URL', 'https://server1488.citizenone.dk/api' );
 define( 'CFA_PLUGIN_API_NAME', 'CitizenOne journalsystem' );
-define( 'CFA_NAME', 'Formular af CitizenOne journalsystem' ); 
+define( 'CFA_NAME', 'Formular af CitizenOne journalsystem' );
 /**
  * The main function that initializes the plugin.
  *
  * This function is hooked to 'init' to ensure all WordPress functionalities,
  * including user data and translations, are ready.
  */
-
 function cfa_initialize_plugin() {
-	
 	// Require necessary files.
 	$contact_form_app_libraries = require CFA_PLUGIN_ROOT . 'vendor/autoload.php';
 	require_once CFA_PLUGIN_ROOT . 'functions/functions.php';
@@ -62,6 +60,7 @@ function cfa_initialize_plugin() {
 
 	if ( ! $requirements->satisfied() ) {
 		add_action( 'admin_notices', array( $requirements, 'print_notice' ) );
+
 		return;
 	}
 
@@ -70,7 +69,7 @@ function cfa_initialize_plugin() {
 		'https://github.com/AWORK-AS/contact-form-app',
 		CFA_PLUGIN_ABSOLUTE,
 		CFA_TEXTDOMAIN
-	 );
+	);
 	$myUpdateChecker->setBranch( 'main' );
     
 	
@@ -79,34 +78,43 @@ function cfa_initialize_plugin() {
 	new \Contact_Form_App\Engine\Initialize( $contact_form_app_libraries );
 	
 	// Load Contact form block.
-	add_action('enqueue_block_assets', function() {
+	add_action(
+        'enqueue_block_assets',
+        function() {
 		// Only load on frontend
-		if (!is_admin()) {
-			
-			
+			if ( is_admin() ) {
+				return;
+			}
+
 			// Localize script with WP REST API settings
-			wp_localize_script('contact-form-frontend', 'wpApiSettings', [
-				'root' => esc_url_raw(rest_url()),
-				'nonce' => wp_create_nonce('wp_rest'),
-			]);
-			
+			wp_localize_script(
+			'contact-form-frontend',
+			'wpApiSettings',
+			array(
+				'root'  => esc_url_raw( rest_url() ),
+				'nonce' => wp_create_nonce( 'wp_rest' ),
+			)
+				);
+		
 			// Load hCaptcha script if needed
 			wp_enqueue_script(
 				'hcaptcha',
 				'https://js.hcaptcha.com/1/api.js',
-				[],
+				array(),
 				CFA_VERSION,
-				['async' => true, 'defer' => true]
+				array( 'async' => true, 'defer' => true )
 			);
 		}
-	});
+        );
 
 	// Use block.json for block registration
 	$block_json_path = CFA_PLUGIN_ROOT . 'assets/block.json';
-	if (file_exists($block_json_path)) {
-		\register_block_type($block_json_path);
+
+	if ( !file_exists( $block_json_path ) ) {
+		return;
 	}
 
+	register_block_type( $block_json_path );
 }
 
 // Hook the initializer function to 'init'.
@@ -161,4 +169,3 @@ function cfa_deactivate_plugin( $network_wide ) {
 // Register activation and deactivation hooks
 register_activation_hook( CFA_PLUGIN_ABSOLUTE, 'cfa_activate_plugin' );
 register_deactivation_hook( CFA_PLUGIN_ABSOLUTE, 'cfa_deactivate_plugin' );
-

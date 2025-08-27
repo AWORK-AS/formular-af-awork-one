@@ -1,4 +1,15 @@
 <?php
+
+/**
+ * The "Contact Form" submit handler
+ *
+ *
+ * @package   Contact_Form_App
+ * @author    Mindell Zamora <mz@awork.dk>
+ * @copyright 2025 AWORK A/S
+ * @license   GPL 2.0+
+ * @link      https://awork.dk
+ */
 namespace Contact_Form_App\Rest;
 
 class FormHandler {
@@ -6,7 +17,12 @@ class FormHandler {
         \add_action('rest_api_init', [$this, 'register_api_endpoint']);
        
     }
-
+    
+     /**
+     * Register API endpoint
+     * 
+     * @return void
+     */
     public function register_api_endpoint() {
         
         \register_rest_route('contact-form-app/v1', '/submit', [
@@ -26,10 +42,16 @@ class FormHandler {
         ]);
         
     }
-
+    
+    /**
+     * Handle form submission
+     * 
+     * @param \WP_REST_Request<array<string, mixed>> $request
+     * @return \WP_REST_Response|\WP_Error
+     */
     public function handle_form_submission(\WP_REST_Request $request) {
         // Verify nonce
-        $nonce = $request->get_header('X-WP-Nonce');
+        $nonce = $request->get_header('X-WP-Nonce') ?? '';
         if (!\wp_verify_nonce($nonce, 'wp_rest')) {
             return new \WP_Error('invalid_nonce', 'Security check failed', ['status' => 403]);
         }
@@ -45,7 +67,9 @@ class FormHandler {
             if (!isset($data['h-captcha-response']) || empty($data['h-captcha-response'])) {
                 return new \WP_Error('hcaptcha_missing', __('Please complete the hCaptcha challenge.', 'contact-form-app'), ['status' => 400]);
             }
-            $hcaptcha_response = sanitize_text_field($data['h-captcha-response']);
+
+            $hcaptcha_response_value = is_string($data['h-captcha-response']) ? $data['h-captcha-response'] : '';
+            $hcaptcha_response = \sanitize_text_field($hcaptcha_response_value);
             $verification_result = $this->verify_hcaptcha($hcaptcha_response);
             if (!$verification_result['success']) {
                 return new \WP_Error('hcaptcha_failed', __('hCaptcha verification failed. Please try again.', 'contact-form-app'), ['status' => 403]);
@@ -75,10 +99,10 @@ class FormHandler {
     }
 
     /**
-     * A function to verify the hCaptcha token
+     * Verify the hCaptcha token
      *
      * @param string $token The 'h-captcha-response' from the form.
-     * @return array Verification result.
+     * @return array{success: bool, error-codes?: string[]}
      */
     private function verify_hcaptcha($token) {
         $options = \cfa_get_settings();
@@ -111,6 +135,11 @@ class FormHandler {
 
         $body = wp_remote_retrieve_body($response);
         $result = json_decode($body, true);
+
+        // Ensure we always return the expected array structure
+        if (!is_array($result) || !isset($result['success'])) {
+            return ['success' => false, 'error-codes' => ['invalid-response']];
+        }
 
         return $result; // $result will contain ['success' => true/false, ...]
     }
