@@ -9,7 +9,7 @@
  * Plugin Name:     Formular af CitizenOne journalsystem
  * Plugin URI:      https://github.com/AWORK-AS/contact-form-app
  * Description:     Formular af CitizenOne journalsystem
- * Version:         1.0.0
+ * Version:         1.0.1
  * Author:          mz@awork.dk
  * Author URI:      https://github.com/mz-aworkdk
  * Text Domain:     contact-form-app
