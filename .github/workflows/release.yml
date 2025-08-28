@@ -37,41 +37,32 @@ jobs:
 
     - name: Create plugin ZIP file
       run: |
-        # Create a clean build directory
+        # Create temporary directory for build
         mkdir contact-form-app-build
-
-        # Use rsync to copy only what you need, excluding hidden and unwanted files
-        rsync -av --delete \
-        --exclude='.*' \
-        --exclude='*.sh' \
-        --exclude='composer.lock' \
-        --exclude='node_modules' \
-        --exclude='tests' \
-        \
-        ./contact-form-app.php \
-        ./composer.json \
-        ./functions/ \
-        ./internals/ \
-        ./ajax/ \
-        ./engine/ \
-        ./frontend/ \
-        ./backend/ \
-        ./cli/ \
-        ./integrations/ \
-        ./languages/ \
-        ./rest/ \
-        ./templates/ \
-        ./index.php \
-        ./LICENSE.txt \
-        ./uninstall.php \
-        ./assets/ \
-        ./vendor/ \
-        contact-form-app-build/
-
-        # Copy specific files that might be caught in excludes
+        
+        # Copy main plugin files
+        cp contact-form-app.php composer.json index.php LICENSE.txt uninstall.php contact-form-app-build/
+        
+        # Copy directories while preserving structure
+        cp -r functions internals ajax engine frontend backend cli integrations languages rest templates contact-form-app-build/
+        
+        # Copy assets directory and its contents
+        mkdir -p contact-form-app-build/assets
+        cp -r assets/* contact-form-app-build/assets/
+        
+        # Copy vendor directory and its contents
+        mkdir -p contact-form-app-build/vendor
+        cp -r vendor/* contact-form-app-build/vendor/
+        
+        # Remove unwanted files from vendor directory
+        find contact-form-app-build/vendor -name "*.sh" -delete
+        find contact-form-app-build/vendor -name ".git*" -delete
+        find contact-form-app-build/vendor -name ".*" -not -path "." -delete
+        
+        # Copy README if exists
         [ -f README.txt ] && cp README.txt contact-form-app-build/
-
-        # Create the final ZIP file, excluding any system-hidden files (like .DS_Store on Mac)
+        
+        # Create the final ZIP file
         cd contact-form-app-build && zip -r ../contact-form-app.zip . -x ".*"
 
     - name: Upload release assets
