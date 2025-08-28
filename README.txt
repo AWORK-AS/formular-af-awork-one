@@ -3,7 +3,7 @@ Contributors: mzc74b331b9fdbc
 Tags: contacts, leads, citizenone
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -64,3 +64,6 @@ All submissions populate in your dashboard > Leads section with timestamp, sourc
 
 = 1.0.2 = 
 * keyword search fixes
+
+= 1.0.3 =
+* Unauthorized WordPress plugin files were removed.
