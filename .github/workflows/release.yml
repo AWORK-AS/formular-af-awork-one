@@ -38,47 +38,51 @@ jobs:
     - name: Create plugin ZIP file
       run: |
         # Create a clean build directory
-        BUILD_DIR="contact-form-app-build"
-        mkdir -p "$BUILD_DIR"
+        mkdir contact-form-app-build
 
         # Use rsync to copy only what you need, excluding hidden and unwanted files
         rsync -av --delete \
-          --exclude='.*' \           # Exclude all hidden files/folders (like .git, .github, .gitignore)
-          --exclude='*.sh' \         # Exclude shell script files
-          --exclude='composer.lock' \ # Often excluded from production
-          --exclude='node_modules' \
-          --exclude='tests' \
-          \
-          contact-form-app.php \
-          composer.json \
-          functions \
-          internals \
-          ajax \
-          engine \
-          frontend \
-          backend \
-          cli \
-          integrations \
-          languages \
-          rest \
-          templates \
-          index.php \
-          LICENSE.txt \
-          uninstall.php \
-          assets/ \
-          vendor/ \
-          "$BUILD_DIR/"
+        --exclude='.*' \
+        --exclude='*.sh' \
+        --exclude='composer.lock' \
+        --exclude='node_modules' \
+        --exclude='tests' \
+        \
+        ./contact-form-app.php \
+        ./composer.json \
+        ./functions/ \
+        ./internals/ \
+        ./ajax/ \
+        ./engine/ \
+        ./frontend/ \
+        ./backend/ \
+        ./cli/ \
+        ./integrations/ \
+        ./languages/ \
+        ./rest/ \
+        ./templates/ \
+        ./index.php \
+        ./LICENSE.txt \
+        ./uninstall.php \
+        ./assets/ \
+        ./vendor/ \
+        contact-form-app-build/
 
         # Copy specific files that might be caught in excludes
-        [ -f README.txt ] && cp README.txt "$BUILD_DIR/"
-        [ -f 'assets/block.json' ] && cp 'assets/block.json' "$BUILD_DIR/assets/"
+        [ -f README.txt ] && cp README.txt contact-form-app-build/
 
         # Create the final ZIP file, excluding any system-hidden files (like .DS_Store on Mac)
-        cd "$BUILD_DIR" && zip -r ../contact-form-app.zip . -x ".*"
-        
+        cd contact-form-app-build && zip -r ../contact-form-app.zip . -x ".*"
+
     - name: Upload release assets
       uses: softprops/action-gh-release@v1
       with:
         files: contact-form-app.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Deploy to WordPress.org
+      uses: 10up/action-wordpress-plugin-deploy@stable
+      env:
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+        SLUG: "contact-form-app" # The slug of your plugin on WordPress.org
