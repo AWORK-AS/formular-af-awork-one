@@ -57,7 +57,7 @@ jobs:
         # Remove unwanted files from vendor directory
         find contact-form-app-build/vendor -name "*.sh" -delete
         find contact-form-app-build/vendor -name ".git*" -exec rm -rf {} +
-        find contact-form-app-build/vendor -name ".*" -not -path "." -delete
+        find contact-form-app-build/vendor -name ".*" -exec rm -rf {} +
         
         # Copy README if exists
         [ -f README.txt ] && cp README.txt contact-form-app-build/
