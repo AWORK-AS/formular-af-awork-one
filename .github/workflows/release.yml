@@ -38,37 +38,37 @@ jobs:
     - name: Create plugin ZIP file
       run: |
         # Create temporary directory for build
-        mkdir contact-form-app-build
+        mkdir formular-af-citizenone-journalsystem-build
         
         # Copy main plugin files
-        cp contact-form-app.php composer.json index.php LICENSE.txt uninstall.php contact-form-app-build/
+        cp formular-af-citizenone-journalsystem.php composer.json index.php LICENSE.txt uninstall.php formular-af-citizenone-journalsystem-build/
         
         # Copy directories while preserving structure
-        cp -r functions internals ajax engine frontend backend cli integrations languages rest templates contact-form-app-build/
+        cp -r functions internals ajax engine frontend backend cli integrations languages rest templates formular-af-citizenone-journalsystem-build/
         
         # Copy assets directory and its contents
-        mkdir -p contact-form-app-build/assets
-        cp -r assets/* contact-form-app-build/assets/
+        mkdir -p formular-af-citizenone-journalsystem-build/assets
+        cp -r assets/* formular-af-citizenone-journalsystem-build/assets/
         
         # Copy vendor directory and its contents
-        mkdir -p contact-form-app-build/vendor
-        cp -r vendor/* contact-form-app-build/vendor/
+        mkdir -p formular-af-citizenone-journalsystem-build/vendor
+        cp -r vendor/* formular-af-citizenone-journalsystem-build/vendor/
         
         # Remove unwanted files from vendor directory
-        find contact-form-app-build/vendor -name "*.sh" -delete
-        find contact-form-app-build/vendor -name ".git*" -exec rm -rf {} +
-        find contact-form-app-build/vendor -name ".*" -exec rm -rf {} +
+        find formular-af-citizenone-journalsystem-build/vendor -name "*.sh" -delete
+        find formular-af-citizenone-journalsystem-build/vendor -name ".git*" -exec rm -rf {} +
+        find formular-af-citizenone-journalsystem-build/vendor -name ".*" -exec rm -rf {} +
         
         # Copy README if exists
-        [ -f README.txt ] && cp README.txt contact-form-app-build/
+        [ -f README.txt ] && cp README.txt formular-af-citizenone-journalsystem-build/
         
         # Create the final ZIP file
-        cd contact-form-app-build && zip -r ../contact-form-app.zip . -x ".*"
+        cd formular-af-citizenone-journalsystem-build && zip -r ../formular-af-citizenone-journalsystem.zip . -x ".*"
 
     - name: Upload release assets
       uses: softprops/action-gh-release@v1
       with:
-        files: contact-form-app.zip
+        files: formular-af-citizenone-journalsystem.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     

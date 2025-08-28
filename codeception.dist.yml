@@ -87,8 +87,8 @@ modules:
             phpBinary: php
             language: ''
             configFile: 'wp-config-test.php'
-            plugins: ['contact-form-app/contact-form-app.php']
-            activatePlugins: ['contact-form-app/contact-form-app.php']
+            plugins: ['formular-af-citizenone-journalsystem/formular-af-citizenone-journalsystem.php']
+            activatePlugins: ['formular-af-citizenone-journalsystem/formular-af-citizenone-journalsystem.php']
         WPWebDriver:
             url: '%WP_URL%'
             browser: chrome

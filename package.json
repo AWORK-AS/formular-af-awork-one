@@ -1,5 +1,5 @@
 {
-    "name": "contact-form-app",
+    "name": "formular-af-citizenone-journalsystem",
     "version": "1.0.0",
     "description": "",
     "author": "Mindell Zamora <mz@awork.dk>",
@@ -19,7 +19,7 @@
         "vendor",
         "index.php",
         "LICENSE.txt",
-        "contact-form-app.php",
+        "formular-af-citizenone-journalsystem.php",
         "README.txt",
         "uninstall.php"
     ],

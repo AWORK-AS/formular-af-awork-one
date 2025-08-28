@@ -77,7 +77,7 @@ class Enqueue extends Base {
 		if ( function_exists( 'wp_set_script_translations' ) ) {
 			wp_set_script_translations(
 				CFA_TEXTDOMAIN . '-block-editor-script',
-				'contact-form-app',
+				'formular-af-citizenone-journalsystem',
 				CFA_PLUGIN_ROOT . 'languages'
 			);
 		}
@@ -114,7 +114,7 @@ class Enqueue extends Base {
 		);
 		
 		// Settings page style
-		if ( \is_null( $admin_page ) || 'toplevel_page_contact-form-app' !== $admin_page->id ) {
+		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-citizenone-journalsystem' !== $admin_page->id ) {
 			return;
 		}
 
@@ -143,7 +143,7 @@ class Enqueue extends Base {
 		);
 		
 		// Settings page script
-		if ( \is_null( $admin_page ) || 'toplevel_page_contact-form-app' !== $admin_page->id ) {
+		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-citizenone-journalsystem' !== $admin_page->id ) {
 			return;
 		}
 

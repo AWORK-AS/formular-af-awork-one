@@ -35,9 +35,9 @@ intermediate
 cache
 vendor
 tests/_output/
-contact-form-app/vendor/
+formular-af-citizenone-journalsystem/vendor/
 tests/_support/_generated/
-contact-form-app/assets/build/
+formular-af-citizenone-journalsystem/assets/build/
 /assets/build/
 
 !composer.lock

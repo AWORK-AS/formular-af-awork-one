@@ -24,15 +24,15 @@ Integrer tilpasselige kontaktformularer fra CitizenOne på enhver WordPress-side
 
 1. Gå til 'Tilføj nye' i plugin-dashboardet
 2. Gå til 'Upload'-området
-3. Vælg `contact-form-app.zip` fra din computer
+3. Vælg `formular-af-citizenone-journalsystem.zip` fra din computer
 4. Klik på 'Installer nu'
 5. Aktiver pluginet i Plugin-dashboardet
 
 = Via FTP =
 
-1. Download `contact-form-app.zip`
-2. Udpak `contact-form-app`-mappen til din computer
-3. Upload `contact-form-app`-mappen til `/wp-content/plugins/`-mappen
+1. Download `formular-af-citizenone-journalsystem.zip`
+2. Udpak `formular-af-citizenone-journalsystem`-mappen til din computer
+3. Upload `formular-af-citizenone-journalsystem`-mappen til `/wp-content/plugins/`-mappen
 4. Aktiver pluginet i Plugin-dashboardet
 
 = Efter installation =

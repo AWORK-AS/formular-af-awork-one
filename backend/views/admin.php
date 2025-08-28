@@ -15,14 +15,14 @@
 
 <div class="wrap">
 
-	<h2><?php esc_html_e( 'Formular af CitizenOne journalsystem', 'contact-form-app' ); ?></h2>
+	<h2><?php esc_html_e( 'Formular af CitizenOne journalsystem', 'formular-af-citizenone-journalsystem' ); ?></h2>
 
 	<div id="tabs" class="settings-tab">
 		<ul>
-			<li><a href="#tabs-1"><?php esc_html_e( 'Configuration', 'contact-form-app' ); ?></a></li>
+			<li><a href="#tabs-1"><?php esc_html_e( 'Configuration', 'formular-af-citizenone-journalsystem' ); ?></a></li>
 		</ul>
 		<?php
-		    require_once plugin_dir_path( __FILE__ ) . 'contact-form-app-settings.php';
+		    require_once plugin_dir_path( __FILE__ ) . 'formular-af-citizenone-journalsystem-settings.php';
 		?>
 	</div>
 

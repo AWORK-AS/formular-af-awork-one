@@ -26,7 +26,7 @@ if ( $token ) :
                 <path d="M40,50 L60,50" stroke="white" stroke-width="4" stroke-linecap="round"></path>
             </svg>
         </div>
-        <div class="cfa-label cfa-connected"><?php esc_html_e( 'Connected', 'contact-form-app' ); ?></div>
+        <div class="cfa-label cfa-connected"><?php esc_html_e( 'Connected', 'formular-af-citizenone-journalsystem' ); ?></div>
     </div>
 <?php else : ?>
     <div class="cfa-icon-box">
@@ -38,7 +38,7 @@ if ( $token ) :
                 <path d="M40,40 L60,60 M60,40 L40,60" stroke="white" stroke-width="4" stroke-linecap="round"></path>
             </svg>
         </div>
-        <div><?php esc_html_e( 'Not Connected', 'contact-form-app' ); ?></div>
+        <div><?php esc_html_e( 'Not Connected', 'formular-af-citizenone-journalsystem' ); ?></div>
     </div>
 	<?php
 endif;

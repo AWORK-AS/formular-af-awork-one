@@ -32,5 +32,5 @@ grumphp:
       triggered_by:
       - php
       ignore_patterns:
-      - contact-form-app.php
+      - formular-af-citizenone-journalsystem.php
 ...

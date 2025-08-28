@@ -187,7 +187,7 @@ class Initialize {
 			$this->find_classes( $php_files, $folder, $namespacetofind );
 
 			if ( !WP_DEBUG ) {
-				\wp_die( \esc_html_e( 'Contact Form App is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself.', 'contact-form-app' ) );
+				\wp_die( \esc_html_e( 'Contact Form App is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself.', 'formular-af-citizenone-journalsystem' ) );
 			}
 
 			return $this->classes;

@@ -4,15 +4,15 @@ import Edit from './edit';
 import save from './save';
 import '../styles/block.scss';
 
-registerBlockType('contact-form-app/contact-form', {
+registerBlockType('formular-af-citizenone-journalsystem/contact-form', {
     apiVersion: 2,
-    title:__('Contact Form', 'contact-form-app'),
+    title:__('Contact Form', 'formular-af-citizenone-journalsystem'),
     icon: 'email-alt',
     category: 'widgets',
     attributes: {
         headline: {
             type: 'string',
-            default: __('Get in Touch With Us', 'contact-form-app'),
+            default: __('Get in Touch With Us', 'formular-af-citizenone-journalsystem'),
         },
         color: {
             type: 'string',

@@ -9,7 +9,7 @@
  * @link      https://awork.dk
  */
 
-$cfa_debug = new WPBP_Debug( __( 'Contact Form App', 'contact-form-app' ) );
+$cfa_debug = new WPBP_Debug( __( 'Contact Form App', 'formular-af-citizenone-journalsystem' ) );
 
 /**
  * Log text inside the debugging plugins.

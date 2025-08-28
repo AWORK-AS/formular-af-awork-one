@@ -202,14 +202,14 @@ class ActDeact extends Base {
 			return;
 		}
 
-		$version_option = \get_option( 'contact-form-app-version' );
+		$version_option = \get_option( 'formular-af-citizenone-journalsystem-version' );
 		$version        = is_scalar( $version_option ) ? (string) $version_option : '';
 		
 		if ( !\version_compare( \CFA_VERSION, $version, '>' ) ) {
 			return;
 		}
 
-		\update_option( 'contact-form-app-version', \CFA_VERSION );
+		\update_option( 'formular-af-citizenone-journalsystem-version', \CFA_VERSION );
 		\delete_option( \CFA_TEXTDOMAIN . '_fake-meta' );
 	}
 

@@ -11,31 +11,31 @@ export default function Edit({ attributes, setAttributes }) {
 
     return (
         <div {...useBlockProps()}>
-            <PanelBody title={__( 'Form Settings', 'contact-form-app' )} initialOpen={true}>
+            <PanelBody title={__( 'Form Settings', 'formular-af-citizenone-journalsystem' )} initialOpen={true}>
                 <PanelRow>
                     <RichText
                         tagName="h3"
                         value={headline}
                         onChange={(value) => setAttributes({ headline: value })}
-                        placeholder={__( 'Enter form headline...', 'contact-form-app' ) }
+                        placeholder={__( 'Enter form headline...', 'formular-af-citizenone-journalsystem' ) }
                     />
                 </PanelRow>
                 <PanelRow>
-                    <label>{__( 'Headline Color', 'contact-form-app' )}</label>
+                    <label>{__( 'Headline Color', 'formular-af-citizenone-journalsystem' )}</label>
                     <ColorPalette
                         value={color}
                         onChange={(value) => setAttributes({ color: value })}
                     />
                 </PanelRow>
                 <PanelRow>
-                    <label>{__( 'Button Color', 'contact-form-app' )}</label>
+                    <label>{__( 'Button Color', 'formular-af-citizenone-journalsystem' )}</label>
                     <ColorPalette
                         value={btnColor}
                         onChange={(value) => setAttributes({ btnColor: value })}
                     />
                 </PanelRow>
                 <PanelRow>
-                    <label>{__('Button Text Color', 'contact-form-app')}</label>
+                    <label>{__('Button Text Color', 'formular-af-citizenone-journalsystem')}</label>
                     <ColorPalette
                         value={btnTextColor}
                         onChange={(value) => setAttributes({ btnTextColor: value })}
@@ -50,23 +50,23 @@ export default function Edit({ attributes, setAttributes }) {
                 <div className="cfa-form-preview">
                     <div className="cfa-form-grid">
                         <div className="cfa-form-group cfa-form-group--full">
-                            <input type="text" disabled placeholder={__( 'Name', 'contact-form-app' )}/>
+                            <input type="text" disabled placeholder={__( 'Name', 'formular-af-citizenone-journalsystem' )}/>
                         </div>
                         
                         <div className="cfa-form-group">
-                            <input type="text" disabled placeholder={__( 'Company', 'contact-form-app' )}/>
+                            <input type="text" disabled placeholder={__( 'Company', 'formular-af-citizenone-journalsystem' )}/>
                         </div>
                         
                         <div className="cfa-form-group">
-                            <input type="email" disabled placeholder={__( 'Email', 'contact-form-app' )}/>
+                            <input type="email" disabled placeholder={__( 'Email', 'formular-af-citizenone-journalsystem' )}/>
                         </div>
                         
                         <div className="cfa-form-group">
-                            <input type="tel" disabled placeholder={__( 'Phone', 'contact-form-app' )}/>
+                            <input type="tel" disabled placeholder={__( 'Phone', 'formular-af-citizenone-journalsystem' )}/>
                         </div>
                         
                         <div className="cfa-form-group cfa-form-group--full">
-                            <textarea disabled placeholder={__( 'Message', 'contact-form-app' )}></textarea>
+                            <textarea disabled placeholder={__( 'Message', 'formular-af-citizenone-journalsystem' )}></textarea>
                         </div>
                         {
                             hCaptcha.hCaptchaEnabled &&
@@ -78,7 +78,7 @@ export default function Edit({ attributes, setAttributes }) {
                     
                     <div className="cfa-form-footer">
                         <button type="button" disabled className="cfa-submit-btn" style={{backgroundColor: btnColor, color: btnTextColor}}>
-                            {__( 'Submit', 'contact-form-app' )}
+                            {__( 'Submit', 'formular-af-citizenone-journalsystem' )}
                         </button>
                     </div>
                     

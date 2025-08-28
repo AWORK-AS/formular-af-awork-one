@@ -24,15 +24,15 @@ Embed customizable contact forms from CitizenOne on any WordPress site.
 
 1. Navigate to the 'Add New' in the plugins dashboard
 2. Navigate to the 'Upload' area
-3. Select `contact-form-app.zip` from your computer
+3. Select `formular-af-citizenone-journalsystem.zip` from your computer
 4. Click 'Install Now'
 5. Activate the plugin in the Plugin dashboard
 
 = Using FTP =
 
-1. Download `contact-form-app.zip`
-2. Extract the `contact-form-app` directory to your computer
-3. Upload the `contact-form-app` directory to the `/wp-content/plugins/` directory
+1. Download `formular-af-citizenone-journalsystem.zip`
+2. Extract the `formular-af-citizenone-journalsystem` directory to your computer
+3. Upload the `formular-af-citizenone-journalsystem` directory to the `/wp-content/plugins/` directory
 4. Activate the plugin in the Plugin dashboard
 
 == Frequently Asked Questions ==

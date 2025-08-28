@@ -16,7 +16,7 @@ parameters:
         # CMB2 is loaded in this file
         - tests/phpstan/bootstrap.php
     scanFiles:
-        - contact-form-app.php
+        - formular-af-citizenone-journalsystem.php
         - uninstall.php
         - vendor/wpbp/i18n-notice/src/i18n-wordpressorg-v3.php
         - vendor/inpsyde/wp-context/src/WpContext.php

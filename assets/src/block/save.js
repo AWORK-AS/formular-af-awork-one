@@ -22,7 +22,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-name`}
                                 name="name"
                                 required
-								placeholder={__( 'Name', 'contact-form-app' )}
+								placeholder={__( 'Name', 'formular-af-citizenone-journalsystem' )}
                             />
                         </div>
                         
@@ -32,7 +32,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-company`}
                                 name="company"
                                 required
-								placeholder={__( 'Company', 'contact-form-app' )}
+								placeholder={__( 'Company', 'formular-af-citizenone-journalsystem' )}
                             />
                         </div>
                         
@@ -42,7 +42,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-email`}
                                 name="email"
                                 required
-								placeholder={__( 'Email', 'contact-form-app' )}
+								placeholder={__( 'Email', 'formular-af-citizenone-journalsystem' )}
                             />
                         </div>
                         
@@ -52,7 +52,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-phone`}
                                 name="phone"
                                 required
-								placeholder={__( 'Phone', 'contact-form-app' )}
+								placeholder={__( 'Phone', 'formular-af-citizenone-journalsystem' )}
                             />
                         </div>
                         
@@ -61,7 +61,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-message`}
                                 name="message"
                                 required
-								placeholder={__( 'Message', 'contact-form-app' )}
+								placeholder={__( 'Message', 'formular-af-citizenone-journalsystem' )}
                             ></textarea>
                         </div>
 
@@ -75,7 +75,7 @@ export default function save({ attributes }) {
                     
                     <div className="cfa-form-footer">
                         <button type="submit" className="cfa-submit-btn" style={{backgroundColor: btnColor, color: btnTextColor}}>
-                            {__( 'Submit', 'contact-form-app' )}
+                            {__( 'Submit', 'formular-af-citizenone-journalsystem' )}
                         </button>
                     </div>
                 </form>

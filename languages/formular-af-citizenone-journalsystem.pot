@@ -1,0 +1,240 @@
+# Copyright (C) 2025 mz@awork.dk
+# This file is distributed under the GPLv3+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Formular af CitizenOne journalsystem 1.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formular-af-citizenone-journalsystem\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-08-28T04:45:50+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: formular-af-citizenone-journalsystem\n"
+
+#. Plugin Name of the plugin
+#. Description of the plugin
+#: contact-form-app.php
+#: backend/views/admin.php:18
+#: contact-form-app.php:53
+msgid "Formular af CitizenOne journalsystem"
+msgstr "Formular af CitizenOne journalsystem"
+
+#. Plugin URI of the plugin
+#: contact-form-app.php
+msgid "https://github.com/AWORK-AS/contact-form-app"
+msgstr "https://github.com/AWORK-AS/contact-form-app"
+
+#. Author of the plugin
+#: contact-form-app.php
+msgid "mz@awork.dk"
+msgstr "mz@awork.dk"
+
+#. Author URI of the plugin
+#: contact-form-app.php
+msgid "https://github.com/mz-aworkdk"
+msgstr "https://github.com/mz-aworkdk"
+
+#: backend/ImpExp.php:102
+msgid "Please upload a valid .json file"
+msgstr "Upload venligst en gyldig .json-fil"
+
+#: backend/ImpExp.php:108
+msgid "Please upload a file to import"
+msgstr "Upload venligst en fil at importere"
+
+#: backend/ImpExp.php:128
+msgid "Failed to import the settings."
+msgstr "Kunne ikke importere indstillingerne."
+
+#: backend/Settings_Page.php:66
+msgid "Contact Form App Settings"
+msgstr "Kontaktformular App Indstillinger"
+
+#: backend/Settings_Page.php:89
+msgid "Settings"
+msgstr "Indstillinger"
+
+#: backend/views/admin.php:22
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: backend/views/connection-svg.php:29
+msgid "Connected"
+msgstr "Forbundet"
+
+#: backend/views/connection-svg.php:41
+msgid "Not Connected"
+msgstr "Ikke forbundet"
+
+#: backend/views/contact-form-app-settings.php:29
+#: assets/src/block/edit.js:61
+#: assets/src/block/save.js:45
+msgid "Email"
+msgstr "E-mail"
+
+#: backend/views/contact-form-app-settings.php:37
+msgid "Company CVR"
+msgstr "Virksomheds CVR"
+
+#: backend/views/contact-form-app-settings.php:45
+msgid "CitizenOne Company ID"
+msgstr "CitizenOne Virksomheds-ID"
+
+#: backend/views/contact-form-app-settings.php:54
+msgid "hCaptcha Settings (Optional)"
+msgstr "hCaptcha-indstillinger (Valgfrit)"
+
+#: backend/views/contact-form-app-settings.php:55
+msgid "Configure your hCaptcha integration"
+msgstr "Konfigurer din hCaptcha-integration"
+
+#: backend/views/contact-form-app-settings.php:63
+msgid "secret key"
+msgstr "sikkerhedsnøgle"
+
+#: backend/views/contact-form-app-settings.php:70
+msgid "site key"
+msgstr "webstedsnøgle"
+
+#: contact-form-app.php:143
+msgid "Plugin dependencies are missing. Please run composer install."
+msgstr "Plugin-afhængigheder mangler. Kør venligst composer-installationen."
+
+#: engine/Initialize.php:190
+msgid "Contact Form App is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself."
+msgstr "Contact Form App kører i produktionsmiljø uden den manglende `composer dumpautoload -o`-kommando, som vil forbedre ydeevnen ved selve autoloading."
+
+#: frontend/Enqueue.php:121
+msgid "Loading..."
+msgstr "Indlæser..."
+
+#: frontend/Enqueue.php:122
+msgid "Sending..."
+msgstr "Sender..."
+
+#: frontend/Enqueue.php:123
+msgid "Submission failed"
+msgstr "Indsendelse mislykkedes"
+
+#: frontend/Enqueue.php:124
+msgid "Session expired. Please refresh the page."
+msgstr "Sessionen er udløbet. Opdater venligst siden."
+
+#: frontend/Enqueue.php:125
+msgid "This field is required"
+msgstr "Dette felt er påkrævet"
+
+#: frontend/Enqueue.php:126
+msgid "Please enter a valid email address"
+msgstr "Indtast venligst en gyldig e-mailadresse"
+
+#: frontend/Enqueue.php:127
+#: rest/FormHandler.php:91
+msgid "Thank you! Your message has been sent."
+msgstr "Tak! Din besked er blevet sendt."
+
+#: functions/debug.php:12
+msgid "Contact Form App"
+msgstr "Kontaktformular-app"
+
+#: rest/FormHandler.php:68
+msgid "Please complete the hCaptcha challenge."
+msgstr "Udfordringen fra hCaptcha skal gennemføres."
+
+#: rest/FormHandler.php:75
+msgid "hCaptcha verification failed. Please try again."
+msgstr "hCaptcha-verificering mislykkedes. Prøv venligst igen."
+
+#: rest/FormHandler.php:82
+msgid "Error occured. Please contact the administrator."
+msgstr "Der opstod en fejl. Kontakt venligst administratoren."
+
+#: rest/FormHandler.php:97
+msgid "Failed to send message. Please try again."
+msgstr "Kunne ikke sende beskeden. Prøv venligst igen."
+
+#: assets/src/block/edit.js:14
+msgid "Form Settings"
+msgstr "Formularindstillinger"
+
+#: assets/src/block/edit.js:20
+msgid "Enter form headline..."
+msgstr "Indtast formularoverskrift..."
+
+#: assets/src/block/edit.js:24
+msgid "Headline Color"
+msgstr "Overskriftsfarve"
+
+#: assets/src/block/edit.js:31
+msgid "Button Color"
+msgstr "Knapfarve"
+
+#: assets/src/block/edit.js:38
+msgid "Button Text Color"
+msgstr "Knaptekstfarve"
+
+#: assets/src/block/edit.js:53
+#: assets/src/block/save.js:25
+msgid "Name"
+msgstr "Navn"
+
+#: assets/src/block/edit.js:57
+#: assets/src/block/save.js:35
+msgid "Company"
+msgstr "Selskab"
+
+#: assets/src/block/edit.js:65
+#: assets/src/block/save.js:55
+msgid "Phone"
+msgstr "Telefon"
+
+#: assets/src/block/edit.js:69
+#: assets/src/block/save.js:64
+msgid "Message"
+msgstr "Meddelelse"
+
+#: assets/src/block/edit.js:81
+#: assets/src/block/save.js:78
+msgid "Submit"
+msgstr "Indsend"
+
+#: assets/src/block/index.js:9
+msgid "Contact Form"
+msgstr "Kontaktformular"
+
+#: assets/src/block/index.js:15
+msgid "Get in Touch With Us"
+msgstr "Kontakt os"
+
+#: assets/block.json
+msgctxt "block description"
+msgid "Formular af CitizenOne journalsystem"
+msgstr "Formular af CitizenOne journalsystem"
+
+#: assets/block.json
+msgctxt "block keyword"
+msgid "form"
+msgstr "form"
+
+#: assets/block.json
+msgctxt "block keyword"
+msgid "contacts"
+msgstr "kontakter"
+
+#: assets/block.json
+msgctxt "block keyword"
+msgid "leads"
+msgstr "kundeemner"
+
+#: assets/block.json
+msgctxt "block keyword"
+msgid "citizenone"
+msgstr "citizenone"
+
+#: assets/block.json
+msgctxt "block keyword"
+msgid "journalsystem"
+msgstr "journalsystem"

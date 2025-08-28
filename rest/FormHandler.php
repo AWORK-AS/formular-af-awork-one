@@ -25,7 +25,7 @@ class FormHandler {
      */
     public function register_api_endpoint() {
         
-        \register_rest_route('contact-form-app/v1', '/submit', [
+        \register_rest_route('formular-af-citizenone-journalsystem/v1', '/submit', [
             'methods' => 'POST',
             'callback' => [$this, 'handle_form_submission'],
             'permission_callback' => function() {
@@ -65,21 +65,21 @@ class FormHandler {
 
         if($hcaptcha_enabled) {
             if (!isset($data['h-captcha-response']) || empty($data['h-captcha-response'])) {
-                return new \WP_Error('hcaptcha_missing', __('Please complete the hCaptcha challenge.', 'contact-form-app'), ['status' => 400]);
+                return new \WP_Error('hcaptcha_missing', __('Please complete the hCaptcha challenge.', 'formular-af-citizenone-journalsystem'), ['status' => 400]);
             }
 
             $hcaptcha_response_value = is_string($data['h-captcha-response']) ? $data['h-captcha-response'] : '';
             $hcaptcha_response = \sanitize_text_field($hcaptcha_response_value);
             $verification_result = $this->verify_hcaptcha($hcaptcha_response);
             if (!$verification_result['success']) {
-                return new \WP_Error('hcaptcha_failed', __('hCaptcha verification failed. Please try again.', 'contact-form-app'), ['status' => 403]);
+                return new \WP_Error('hcaptcha_failed', __('hCaptcha verification failed. Please try again.', 'formular-af-citizenone-journalsystem'), ['status' => 403]);
             }
         }
 
         $token = $opts[CFA_TEXTDOMAIN . '_token'] ?? false;
 
         if(!$token) {
-            return new \WP_Error('not_connected', __('Error occured. Please contact the administrator.', 'contact-form-app'), ['status' => 403]);
+            return new \WP_Error('not_connected', __('Error occured. Please contact the administrator.', 'formular-af-citizenone-journalsystem'), ['status' => 403]);
         }
 
         
@@ -88,13 +88,13 @@ class FormHandler {
         if ($submission->submit_lead($data)) {
             return new \WP_REST_Response([
                 'success' => true,
-                'message' => __('Thank you! Your message has been sent.', 'contact-form-app')
+                'message' => __('Thank you! Your message has been sent.', 'formular-af-citizenone-journalsystem')
             ], 200);
         }
         
         return new \WP_REST_Response([
             'success' => false,
-            'message' => __('Failed to send message. Please try again.', 'contact-form-app')
+            'message' => __('Failed to send message. Please try again.', 'formular-af-citizenone-journalsystem')
         ], 500);
     }
 
