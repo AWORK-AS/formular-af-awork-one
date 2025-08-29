@@ -29,6 +29,9 @@ class Enqueue extends Base {
 		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		// Use a later hook for localization
 		\add_action( 'wp_footer', array( $this, 'localize_scripts' ), 5 );
+
+		// Load hCaptcha
+		$this->load_hcaptcha_script();
 	}
 
 	/**
@@ -101,7 +104,7 @@ class Enqueue extends Base {
 		}
 		
 		// Get plugin options
-		$options = \get_option( CFA_TEXTDOMAIN . '-settings' );
+		$options = \cfa_get_settings();
 		
 		$color               = $options[CFA_TEXTDOMAIN . '_color_theme'] ?? '#205E77';
 		$headline            = $options[CFA_TEXTDOMAIN . '_headline'] ?? 'Get in Touch With Us';
@@ -132,6 +135,30 @@ class Enqueue extends Base {
 				'hcaptcha_enabled'  => $hcaptcha_enabled,
 			)
 		);
+
 	}
 
+	/**
+	 * Load hCaptcha script
+	 *
+	 * @since 1.0.0
+	 * @return void
+	 */
+	protected function load_hcaptcha_script() {
+		$opts = \cfa_get_settings();
+		$hcaptcha_site_key   = $opts[CFA_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
+		$hcaptcha_secret_key = $opts[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
+		$hcaptcha_enabled    = $hcaptcha_site_key && $hcaptcha_secret_key;
+		if( $hcaptcha_enabled && !\wp_script_is( 'hcaptcha', 'enqueued' ) ) {
+			// Load hCaptcha script if needed
+			wp_enqueue_script(
+				'hcaptcha',
+				'https://js.hcaptcha.com/1/api.js',
+				array(),
+				CFA_VERSION,
+				true
+			);
+		}
+		
+	}
 }
