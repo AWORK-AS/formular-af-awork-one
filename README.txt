@@ -13,9 +13,27 @@ Embed customizable contact forms from CitizenOne on any WordPress site.
 
 * Customizable embed forms with color matching
 * Real-time lead submission to CitizenOne dashboard
-* Gutenberg block implementation
+* Shortcode & Gutenberg block implementation
 * "Formular af CitizenOne - Journalsystem med alt inklusiv" branding
 * Mobile-responsive design
+
+== External Services ==
+
+This plugin utilizes the following third-party services to enhance functionality:
+
+=== hCaptcha ===
+* **Purpose**: Optional spam protection for contact forms
+* **Data Sent**: User interaction data through hCaptcha's API
+* **When**: Only when site administrator has configured hCaptcha keys in plugin settings
+* **Terms**: https://hcaptcha.com/terms
+* **Privacy Policy**: https://hcaptcha.com/privacy
+
+=== CitizenOne API ===
+* **Purpose**: Processing form submissions and generating authentication tokens
+* **Data Sent**: Form submission data (as provided by users) and authentication tokens
+* **When**: When users submit forms through the contact form
+* **Terms**: https://citizenone.dk/vilkaarogbetingelser/
+* **Privacy Policy**: https://citizenone.dk/privatlivspolitik/
 
 == Installation ==
 

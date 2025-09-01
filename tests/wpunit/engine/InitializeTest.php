@@ -34,7 +34,6 @@ class InitializeTest extends \Codeception\TestCase\WPTestCase {
 		$classes   = array();
 		$classes[] = 'Contact_Form_App\Internals\PostTypes';
 		$classes[] = 'Contact_Form_App\Internals\Shortcode';
-		$classes[] = 'Contact_Form_App\Internals\Transient';
 		$classes[] = 'Contact_Form_App\Integrations\CMB';
 		$classes[] = 'Contact_Form_App\Integrations\Cron';
 		$classes[] = 'Contact_Form_App\Integrations\Template';

@@ -37,33 +37,7 @@ jobs:
 
     - name: Create plugin ZIP file
       run: |
-        # Create temporary directory for build
-        mkdir formular-af-citizenone-journalsystem-build
-        
-        # Copy main plugin files
-        cp formular-af-citizenone-journalsystem.php composer.json index.php LICENSE.txt uninstall.php formular-af-citizenone-journalsystem-build/
-        
-        # Copy directories while preserving structure
-        cp -r functions internals ajax engine frontend backend cli integrations languages rest templates formular-af-citizenone-journalsystem-build/
-        
-        # Copy assets directory and its contents
-        mkdir -p formular-af-citizenone-journalsystem-build/assets
-        cp -r assets/* formular-af-citizenone-journalsystem-build/assets/
-        
-        # Copy vendor directory and its contents
-        mkdir -p formular-af-citizenone-journalsystem-build/vendor
-        cp -r vendor/* formular-af-citizenone-journalsystem-build/vendor/
-        
-        # Remove unwanted files from vendor directory
-        find formular-af-citizenone-journalsystem-build/vendor -name "*.sh" -delete
-        find formular-af-citizenone-journalsystem-build/vendor -name ".git*" -exec rm -rf {} +
-        find formular-af-citizenone-journalsystem-build/vendor -name ".*" -exec rm -rf {} +
-        
-        # Copy README if exists
-        [ -f README.txt ] && cp README.txt formular-af-citizenone-journalsystem-build/
-        
-        # Create the final ZIP file
-        cd formular-af-citizenone-journalsystem-build && zip -r ../formular-af-citizenone-journalsystem.zip . -x ".*"
+        wp dist-archive . formular-af-citizenone-journalsystem.zip
 
     - name: Upload release assets
       uses: softprops/action-gh-release@v1
@@ -71,4 +45,3 @@ jobs:
         files: formular-af-citizenone-journalsystem.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
