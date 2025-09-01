@@ -1,0 +1,5 @@
+{
+    "assets/src/block/edit.js": "build/plugin-block.js",
+    "assets/src/block/save.js": "build/plugin-block.js",
+    "assets/src/block/index.js": "build/plugin-block.js"
+}

@@ -9,7 +9,7 @@
  * Plugin Name:     Formular af CitizenOne journalsystem
  * Plugin URI:      https://github.com/AWORK-AS/contact-form-app
  * Description:     Formular af CitizenOne journalsystem
- * Version:         1.0.4
+ * Version:         1.0.5
  * Author:          mz@awork.dk
  * Author URI:      https://github.com/mz-aworkdk
  * Text Domain:     formular-af-citizenone-journalsystem
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'CFA_PLUGIN_ABSOLUTE', __FILE__ );
 define( 'CFA_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
 define( 'CFA_TEXTDOMAIN', 'formular-af-citizenone-journalsystem' );
-define( 'CFA_VERSION', '1.0.4' );
+define( 'CFA_VERSION', '1.0.5' );
 define( 'CFA_MIN_PHP_VERSION', '7.4' );
 define( 'CFA_WP_VERSION', '5.8' );
 define( 'CFA_PLUGIN_API_URL', 'https://server1488.citizenone.dk/api' );

@@ -57,26 +57,28 @@ class Enqueue extends Base {
 	 */
 	public function enqueue_block_editor_assets() {
 		// Enqueue block editor styles
-		wp_enqueue_style(
+		\wp_enqueue_style(
 			CFA_TEXTDOMAIN . '-block-editor-style',
 			\plugins_url( 'assets/build/plugin-block.css', CFA_PLUGIN_ABSOLUTE ),
 			array( 'wp-edit-blocks' ),
 			CFA_VERSION
 		);
-		
+		// Unregister editor script from block.json
+		\wp_deregister_script( 'formular-af-citizenone-journalsystem-contact-form-editor-script' );
+
 		// Enqueue block editor script
-		wp_enqueue_script(
-			CFA_TEXTDOMAIN . '-block-editor-script',
+		\wp_enqueue_script(
+			'formular-af-citizenone-journalsystem-contact-form-editor-script',
 			\plugins_url( 'assets/build/plugin-block.js', CFA_PLUGIN_ABSOLUTE ),
 			array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n', 'wp-api-fetch' ),
 			CFA_VERSION,
-			true
+			false
 		);
 		
 		// Handle translations
 		if ( function_exists( 'wp_set_script_translations' ) ) {
-			wp_set_script_translations(
-				CFA_TEXTDOMAIN . '-block-editor-script',
+			\wp_set_script_translations(
+				'formular-af-citizenone-journalsystem-contact-form-editor-script',
 				'formular-af-citizenone-journalsystem',
 				CFA_PLUGIN_ROOT . 'languages'
 			);
@@ -88,8 +90,8 @@ class Enqueue extends Base {
 		$hcaptcha_secret_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
 		$hcaptcha_enabled    = ( $hcaptcha_site_key && $hcaptcha_secret_key );
 
-		wp_localize_script(
-			CFA_TEXTDOMAIN . '-block-editor-script',
+		\wp_localize_script(
+			'formular-af-citizenone-journalsystem-contact-form-editor-script',
 			'cfaBlockhCaptcha',
 			array(
 				'hCaptchaEnabled' => $hcaptcha_enabled,
@@ -106,7 +108,7 @@ class Enqueue extends Base {
 	 */
 	public function enqueue_admin_styles( $admin_page ) {
 		// Main admin style
-		wp_enqueue_style(
+		\wp_enqueue_style(
 			CFA_TEXTDOMAIN . '-admin-style',
 			\plugins_url( 'assets/build/plugin-admin.css', CFA_PLUGIN_ABSOLUTE ),
 			array( 'dashicons' ),
@@ -118,7 +120,7 @@ class Enqueue extends Base {
 			return;
 		}
 
-		wp_enqueue_style(
+		\wp_enqueue_style(
 			CFA_TEXTDOMAIN . '-settings-style',
 			\plugins_url( 'assets/build/plugin-settings.css', CFA_PLUGIN_ABSOLUTE ),
 			array( 'dashicons' ),
@@ -134,7 +136,7 @@ class Enqueue extends Base {
 	 */
 	public function enqueue_admin_scripts( $admin_page ) {
 		// Main admin script
-		wp_enqueue_script(
+		\wp_enqueue_script(
 			CFA_TEXTDOMAIN . '-settings-admin',
 			\plugins_url( 'assets/build/plugin-admin.js', CFA_PLUGIN_ABSOLUTE ),
 			array(),
@@ -147,7 +149,7 @@ class Enqueue extends Base {
 			return;
 		}
 
-		wp_enqueue_script(
+		\wp_enqueue_script(
 			CFA_TEXTDOMAIN . '-settings-script',
 			\plugins_url( 'assets/build/plugin-settings.js', CFA_PLUGIN_ABSOLUTE ),
 			array( 'jquery-ui-tabs' ),

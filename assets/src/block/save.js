@@ -11,7 +11,7 @@ export default function save({ attributes }) {
         <div {...useBlockProps.save()}>
             <div className="cfa-contact-form" id={formId}>
                 <h3 style={{ color: color || '#205E77' }}>
-                    {headline || 'Get in Touch With Us'}
+                    {headline || __( 'Get in Touch With Us', 'formular-af-citizenone-journalsystem' )}
                 </h3>
                 <form className="cfa-form" id={`${formId}-form`}>
                     

@@ -19,5 +19,6 @@ module.exports = {
 	externals: {
 		react: 'React',
 		'react-dom': 'ReactDOM',
+		'@wordpress/i18n': 'wp.i18n',
 	},
 };
