@@ -109,14 +109,14 @@ class Settings_Page extends Base {
 			return;
 		}
 
-		$cmb = \cmb2_get_metabox( $cmb_id );
-
 		// Get the submitted values
-		$values = $cmb->get_sanitized_values( $_POST );
-		
-		if ( empty( $values[CFA_TEXTDOMAIN . '_field_email'] )
-			|| empty( $values[CFA_TEXTDOMAIN . '_field_company_cvr'] )
-			|| empty( $values[CFA_TEXTDOMAIN . '_field_company_id'] )
+		$company_cvr = \sanitize_text_field( \wp_unslash( $_POST[CFA_TEXTDOMAIN . '_field_company_cvr'] ) );
+		$citizenone_company_id = \sanitize_text_field( \wp_unslash( $_POST[CFA_TEXTDOMAIN . '_field_company_id'] ) );
+		$email = \sanitize_email( \wp_unslash( $_POST[CFA_TEXTDOMAIN . '_field_email'] ) );
+
+		if ( empty( $company_cvr )
+			|| empty( $citizenone_company_id )
+			|| empty( $email )
 		) {
 			return;
 		}
@@ -124,10 +124,10 @@ class Settings_Page extends Base {
 			$token = new RetrieveToken;
 			$data  = $token->submit(
 				array(
-					'company_cvr'           => $values[CFA_TEXTDOMAIN . '_field_company_cvr'],
-					'citizenone_company_id' => $values[CFA_TEXTDOMAIN . '_field_company_id'],
-					'email'                 => $values[CFA_TEXTDOMAIN . '_field_email'],
-			)
+					'company_cvr'           => $company_cvr,
+					'citizenone_company_id' => $citizenone_company_id,
+					'email'                 => $email,
+			      )
 				);
 
 		if ( !$data ) {

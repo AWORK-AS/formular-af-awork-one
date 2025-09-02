@@ -95,14 +95,14 @@ class ImpExp extends Base {
 			return;
 		}
 
-		$file_name_parts = \explode( '.', $_FILES[ 'cfa_import_file' ][ 'name' ] ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$file_name_parts = \explode( '.', \sanitize_text_field( \wp_unslash( $_FILES[ 'cfa_import_file' ][ 'name' ] ) ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		$extension       = \end( $file_name_parts );
 
 		if ( 'json' !== $extension ) {
 			\wp_die( \esc_html__( 'Please upload a valid .json file', 'formular-af-citizenone-journalsystem' ) );
 		}
 
-		$import_file = $_FILES[ 'cfa_import_file' ][ 'tmp_name' ]; //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$import_file = \sanitize_text_field( \wp_unslash( $_FILES[ 'cfa_import_file' ][ 'tmp_name' ] ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 		if ( empty( $import_file ) ) {
 			\wp_die( \esc_html__( 'Please upload a file to import', 'formular-af-citizenone-journalsystem' ) );

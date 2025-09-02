@@ -12,6 +12,8 @@
  * @link      https://awork.dk
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 $opts  = cfa_get_settings();
 $token = $opts[CFA_TEXTDOMAIN . '_token'] ?? false;
 

@@ -15,6 +15,8 @@
  * @since 1.0.0
  * @return array
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 function cfa_get_settings() {
 	return apply_filters( 'cfa_get_settings', get_option( CFA_TEXTDOMAIN . '-settings' ) );
 }
