@@ -1,6 +1,6 @@
 <?php
 
-namespace Contact_Form_App\Tests\WPUnit;
+namespace mzaworkdk\CitizenOne\Tests\WPUnit;
 
 class InitializeAdminTest extends \Codeception\TestCase\WPTestCase {
 	/**
@@ -32,18 +32,18 @@ class InitializeAdminTest extends \Codeception\TestCase\WPTestCase {
 		do_action('plugins_loaded');
 
 		$classes   = array();
-		$classes[] = 'Contact_Form_App\Internals\PostTypes';
-		$classes[] = 'Contact_Form_App\Internals\Shortcode';
-		$classes[] = 'Contact_Form_App\Integrations\CMB';
-		$classes[] = 'Contact_Form_App\Integrations\Cron';
-		$classes[] = 'Contact_Form_App\Integrations\Template';
-		$classes[] = 'Contact_Form_App\Integrations\Widgets\My_Recent_Posts_Widget';
-		$classes[] = 'Contact_Form_App\Backend\ActDeact';
-		$classes[] = 'Contact_Form_App\Backend\Enqueue';
-		$classes[] = 'Contact_Form_App\Backend\ImpExp';
-		$classes[] = 'Contact_Form_App\Backend\Notices';
-		$classes[] = 'Contact_Form_App\Backend\Pointers';
-		$classes[] = 'Contact_Form_App\Backend\Settings_Page';
+		$classes[] = 'mzaworkdk\CitizenOne\Internals\PostTypes';
+		$classes[] = 'mzaworkdk\CitizenOne\Internals\Shortcode';
+		$classes[] = 'mzaworkdk\CitizenOne\Integrations\CMB';
+		$classes[] = 'mzaworkdk\CitizenOne\Integrations\Cron';
+		$classes[] = 'mzaworkdk\CitizenOne\Integrations\Template';
+		$classes[] = 'mzaworkdk\CitizenOne\Integrations\Widgets\My_Recent_Posts_Widget';
+		$classes[] = 'mzaworkdk\CitizenOne\Backend\ActDeact';
+		$classes[] = 'mzaworkdk\CitizenOne\Backend\Enqueue';
+		$classes[] = 'mzaworkdk\CitizenOne\Backend\ImpExp';
+		$classes[] = 'mzaworkdk\CitizenOne\Backend\Notices';
+		$classes[] = 'mzaworkdk\CitizenOne\Backend\Pointers';
+		$classes[] = 'mzaworkdk\CitizenOne\Backend\Settings_Page';
 
 		$all_classes = get_declared_classes();
 		foreach( $classes as $class ) {
@@ -60,8 +60,8 @@ class InitializeAdminTest extends \Codeception\TestCase\WPTestCase {
 		do_action('plugins_loaded');
 
 		$classes   = array();
-		$classes[] = 'Contact_Form_App\Ajax\Ajax';
-		$classes[] = 'Contact_Form_App\Ajax\Ajax_Admin';
+		$classes[] = 'mzaworkdk\CitizenOne\Ajax\Ajax';
+		$classes[] = 'mzaworkdk\CitizenOne\Ajax\Ajax_Admin';
 
 		$all_classes = get_declared_classes();
 		foreach( $classes as $class ) {

@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Contact_Form_App
+ * mzaworkdk\CitizenOne
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace Contact_Form_App\Engine;
+namespace mzaworkdk\CitizenOne\Engine;
 
 use Inpsyde\WpContext;
 

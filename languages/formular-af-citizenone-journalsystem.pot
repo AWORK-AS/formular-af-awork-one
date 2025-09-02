@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv3+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Formular af CitizenOne journalsystem 1.0.4\n"
+"Project-Id-Version: Formular af CitizenOne journalsystem 1.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formular-af-citizenone-journalsystem\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-29T11:24:18+00:00\n"
+"POT-Creation-Date: 2025-09-02T12:27:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: formular-af-citizenone-journalsystem\n"
@@ -17,231 +17,386 @@ msgstr ""
 #. Plugin Name of the plugin
 #. Description of the plugin
 #: formular-af-citizenone-journalsystem.php
-#: backend/views/admin.php:18
+#: backend/views/admin.php:21
 #: formular-af-citizenone-journalsystem.php:53
 msgid "Formular af CitizenOne journalsystem"
-msgstr "Formular af CitizenOne journalsystem"
+msgstr ""
 
 #. Plugin URI of the plugin
 #: formular-af-citizenone-journalsystem.php
 msgid "https://github.com/AWORK-AS/contact-form-app"
-msgstr "https://github.com/AWORK-AS/contact-form-app"
+msgstr ""
 
 #. Author of the plugin
 #: formular-af-citizenone-journalsystem.php
 msgid "mz@awork.dk"
-msgstr "mz@awork.dk"
+msgstr ""
 
 #. Author URI of the plugin
 #: formular-af-citizenone-journalsystem.php
 msgid "https://github.com/mz-aworkdk"
-msgstr "https://github.com/mz-aworkdk"
+msgstr ""
 
 #: backend/ImpExp.php:102
 msgid "Please upload a valid .json file"
-msgstr "Upload venligst en gyldig .json-fil"
+msgstr ""
 
 #: backend/ImpExp.php:108
 msgid "Please upload a file to import"
-msgstr "Upload venligst en fil at importere"
+msgstr ""
 
 #: backend/ImpExp.php:128
 msgid "Failed to import the settings."
-msgstr "Kunne ikke importere indstillingerne."
+msgstr ""
 
 #: backend/Settings_Page.php:66
 msgid "Contact Form App Settings"
-msgstr "Kontaktformular App Indstillinger"
+msgstr ""
 
 #: backend/Settings_Page.php:89
 msgid "Settings"
-msgstr "Indstillinger"
+msgstr ""
 
-#: backend/views/admin.php:22
+#: backend/views/admin.php:25
 msgid "Configuration"
-msgstr "Konfiguration"
+msgstr ""
 
-#: backend/views/connection-svg.php:29
+#: backend/views/admin.php:26
+msgid "Instructions"
+msgstr ""
+
+#: backend/views/connection-svg.php:31
 msgid "Connected"
-msgstr "Forbundet"
+msgstr ""
 
-#: backend/views/connection-svg.php:41
+#: backend/views/connection-svg.php:43
 msgid "Not Connected"
-msgstr "Ikke forbundet"
+msgstr ""
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:29
+#: backend/views/formular-af-citizenone-journalsystem-settings.php:32
+#: backend/views/instructions.php:23
 #: internals/views/FormRenderer.php:57
+#: assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:61
 #: assets/src/block/save.js:45
 msgid "Email"
-msgstr "E-mail"
+msgstr ""
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:37
+#: backend/views/formular-af-citizenone-journalsystem-settings.php:40
+#: backend/views/instructions.php:24
 msgid "Company CVR"
-msgstr "Virksomheds CVR"
+msgstr ""
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:45
+#: backend/views/formular-af-citizenone-journalsystem-settings.php:48
+#: backend/views/instructions.php:25
 msgid "CitizenOne Company ID"
-msgstr "CitizenOne Virksomheds-ID"
+msgstr ""
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:54
+#: backend/views/formular-af-citizenone-journalsystem-settings.php:57
 msgid "hCaptcha Settings (Optional)"
-msgstr "hCaptcha-indstillinger (Valgfrit)"
+msgstr ""
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:55
+#: backend/views/formular-af-citizenone-journalsystem-settings.php:58
 msgid "Configure your hCaptcha integration"
-msgstr "Konfigurer din hCaptcha-integration"
+msgstr ""
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:63
+#: backend/views/formular-af-citizenone-journalsystem-settings.php:66
 msgid "secret key"
-msgstr "sikkerhedsnøgle"
+msgstr ""
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:70
+#: backend/views/formular-af-citizenone-journalsystem-settings.php:73
 msgid "site key"
-msgstr "webstedsnøgle"
+msgstr ""
+
+#: backend/views/instructions.php:19
+msgid "Required Admin Settings"
+msgstr ""
+
+#: backend/views/instructions.php:20
+msgid "To use the CitizenOne form plugin, you need to configure the following required settings:"
+msgstr ""
+
+#: backend/views/instructions.php:23
+msgid "Your CitizenOne account email"
+msgstr ""
+
+#: backend/views/instructions.php:24
+msgid "Your company's CVR number"
+msgstr ""
+
+#: backend/views/instructions.php:25
+msgid "Your company ID in the CitizenOne system"
+msgstr ""
+
+#. translators: %s is a link to the CitizenOne dashboard
+#: backend/views/instructions.php:31
+#, php-format
+msgid "You can find the CVR and Company ID in your %s."
+msgstr ""
+
+#: backend/views/instructions.php:32
+msgid "CitizenOne dashboard"
+msgstr ""
+
+#: backend/views/instructions.php:38
+msgid "Optional hCaptcha Integration"
+msgstr ""
+
+#: backend/views/instructions.php:39
+msgid "To prevent spam submissions, you can integrate hCaptcha with your forms:"
+msgstr ""
+
+#: backend/views/instructions.php:42
+msgid "Site Key"
+msgstr ""
+
+#: backend/views/instructions.php:42
+msgid "Your hCaptcha site key"
+msgstr ""
+
+#: backend/views/instructions.php:43
+msgid "Secret Key"
+msgstr ""
+
+#: backend/views/instructions.php:43
+msgid "Your hCaptcha secret key"
+msgstr ""
+
+#. translators: %s is a link to the hCaptcha dashboard
+#: backend/views/instructions.php:49
+#, php-format
+msgid "You can get these keys from the %s after creating an account."
+msgstr ""
+
+#: backend/views/instructions.php:50
+msgid "hCaptcha dashboard"
+msgstr ""
+
+#: backend/views/instructions.php:56
+msgid "Adding Forms to Your Site"
+msgstr ""
+
+#: backend/views/instructions.php:57
+msgid "You can add the CitizenOne form to your pages or posts using two methods:"
+msgstr ""
+
+#: backend/views/instructions.php:59
+msgid "1. Gutenberg Block (Widget)"
+msgstr ""
+
+#: backend/views/instructions.php:60
+msgid "When editing a page or post:"
+msgstr ""
+
+#: backend/views/instructions.php:62
+msgid "Click the \"+\" button to add a new block"
+msgstr ""
+
+#. translators: %s is a list of search keywords
+#: backend/views/instructions.php:66
+#, php-format
+msgid "Search for: %s"
+msgstr ""
+
+#: backend/views/instructions.php:70
+msgid "Select the \"Contact Form\" block"
+msgstr ""
+
+#: backend/views/instructions.php:71
+msgid "Customize the form as needed"
+msgstr ""
+
+#: backend/views/instructions.php:74
+msgid "2. Shortcode"
+msgstr ""
+
+#. translators: %s is the shortcode example
+#: backend/views/instructions.php:78
+#, php-format
+msgid "You can use the shortcode %s in any post, page, or widget area."
+msgstr ""
+
+#: backend/views/instructions.php:83
+msgid "Customization options:"
+msgstr ""
+
+#: backend/views/instructions.php:85
+msgid "Form headline text (Default: \"Get in Touch With Us\")"
+msgstr ""
+
+#: backend/views/instructions.php:86
+msgid "Headline text color (Default: \"#205E77\")"
+msgstr ""
+
+#: backend/views/instructions.php:87
+msgid "Submit button color (Default: \"#42aed9\")"
+msgstr ""
+
+#: backend/views/instructions.php:88
+msgid "Submit button text color (Default: \"#ffffff\")"
+msgstr ""
+
+#: backend/views/instructions.php:91
+msgid "Example with customization:"
+msgstr ""
+
+#: backend/views/instructions.php:93
+#: internals/views/FormRenderer.php:9
+#: assets/build/plugin-block.js:1
+#: assets/src/block/edit.js:48
+#: assets/src/block/index.js:15
+#: assets/src/block/save.js:14
+msgid "Get in Touch With Us"
+msgstr ""
 
 #: engine/Initialize.php:189
 msgid "Contact Form App is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself."
-msgstr "Contact Form App kører i produktionsmiljø uden den manglende `composer dumpautoload -o`-kommando, som vil forbedre ydeevnen ved selve autoloading."
+msgstr ""
 
-#: formular-af-citizenone-journalsystem.php:114
+#: formular-af-citizenone-journalsystem.php:124
 msgid "Plugin dependencies are missing. Please run composer install."
-msgstr "Plugin-afhængigheder mangler. Kør venligst composer-installationen."
+msgstr ""
 
 #: frontend/Enqueue.php:124
 msgid "Loading..."
-msgstr "Indlæser..."
+msgstr ""
 
 #: frontend/Enqueue.php:125
 msgid "Sending..."
-msgstr "Sender..."
+msgstr ""
 
 #: frontend/Enqueue.php:126
 msgid "Submission failed"
-msgstr "Indsendelse mislykkedes"
+msgstr ""
 
 #: frontend/Enqueue.php:127
 msgid "Session expired. Please refresh the page."
-msgstr "Sessionen er udløbet. Opdater venligst siden."
+msgstr ""
 
 #: frontend/Enqueue.php:128
 msgid "This field is required"
-msgstr "Dette felt er påkrævet"
+msgstr ""
 
 #: frontend/Enqueue.php:129
 msgid "Please enter a valid email address"
-msgstr "Indtast venligst en gyldig e-mailadresse"
+msgstr ""
 
 #: frontend/Enqueue.php:130
-#: rest/FormHandler.php:91
+#: rest/FormHandler.php:89
 msgid "Thank you! Your message has been sent."
-msgstr "Tak! Din besked er blevet sendt."
+msgstr ""
 
-#: functions/debug.php:12
+#: functions/debug.php:13
 msgid "Contact Form App"
-msgstr "Kontaktformular-app"
-
-#: internals/views/FormRenderer.php:9
-#: assets/src/block/index.js:15
-msgid "Get in Touch With Us"
-msgstr "Kontakt os"
+msgstr ""
 
 #: internals/views/FormRenderer.php:37
+#: assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:53
 #: assets/src/block/save.js:25
 msgid "Name"
-msgstr "Navn"
+msgstr ""
 
 #: internals/views/FormRenderer.php:47
+#: assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:57
 #: assets/src/block/save.js:35
 msgid "Company"
-msgstr "Selskab"
+msgstr ""
 
 #: internals/views/FormRenderer.php:67
+#: assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:65
 #: assets/src/block/save.js:55
 msgid "Phone"
-msgstr "Telefon"
+msgstr ""
 
 #: internals/views/FormRenderer.php:76
+#: assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:69
 #: assets/src/block/save.js:64
 msgid "Message"
-msgstr "Meddelelse"
+msgstr ""
 
 #: internals/views/FormRenderer.php:94
+#: assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:81
 #: assets/src/block/save.js:78
 msgid "Submit"
-msgstr "Indsend"
+msgstr ""
 
-#: rest/FormHandler.php:68
+#: rest/FormHandler.php:66
 msgid "Please complete the hCaptcha challenge."
-msgstr "Udfordringen fra hCaptcha skal gennemføres."
+msgstr ""
 
-#: rest/FormHandler.php:75
+#: rest/FormHandler.php:73
 msgid "hCaptcha verification failed. Please try again."
-msgstr "hCaptcha-verificering mislykkedes. Prøv venligst igen."
+msgstr ""
 
-#: rest/FormHandler.php:82
+#: rest/FormHandler.php:80
 msgid "Error occured. Please contact the administrator."
-msgstr "Der opstod en fejl. Kontakt venligst administratoren."
+msgstr ""
 
-#: rest/FormHandler.php:97
+#: rest/FormHandler.php:95
 msgid "Failed to send message. Please try again."
-msgstr "Kunne ikke sende beskeden. Prøv venligst igen."
+msgstr ""
 
-#: assets/src/block/edit.js:14
-msgid "Form Settings"
-msgstr "Formularindstillinger"
-
-#: assets/src/block/edit.js:20
-msgid "Enter form headline..."
-msgstr "Indtast formularoverskrift..."
-
-#: assets/src/block/edit.js:24
-msgid "Headline Color"
-msgstr "Overskriftsfarve"
-
-#: assets/src/block/edit.js:31
-msgid "Button Color"
-msgstr "Knapfarve"
-
-#: assets/src/block/edit.js:38
-msgid "Button Text Color"
-msgstr "Knaptekstfarve"
-
+#: assets/build/plugin-block.js:1
 #: assets/src/block/index.js:9
 msgid "Contact Form"
-msgstr "Kontaktformular"
+msgstr ""
+
+#: assets/build/plugin-block.js:1
+#: assets/src/block/edit.js:14
+msgid "Form Settings"
+msgstr ""
+
+#: assets/build/plugin-block.js:1
+#: assets/src/block/edit.js:20
+msgid "Enter form headline..."
+msgstr ""
+
+#: assets/build/plugin-block.js:1
+#: assets/src/block/edit.js:24
+msgid "Headline Color"
+msgstr ""
+
+#: assets/build/plugin-block.js:1
+#: assets/src/block/edit.js:31
+msgid "Button Color"
+msgstr ""
+
+#: assets/build/plugin-block.js:1
+#: assets/src/block/edit.js:38
+msgid "Button Text Color"
+msgstr ""
 
 #: assets/block.json
 msgctxt "block description"
 msgid "Formular af CitizenOne journalsystem"
-msgstr "Formular af CitizenOne journalsystem"
+msgstr ""
 
 #: assets/block.json
 msgctxt "block keyword"
 msgid "form"
-msgstr "form"
+msgstr ""
 
 #: assets/block.json
 msgctxt "block keyword"
 msgid "contacts"
-msgstr "kontakter"
+msgstr ""
 
 #: assets/block.json
 msgctxt "block keyword"
 msgid "leads"
-msgstr "kundeemner"
+msgstr ""
 
 #: assets/block.json
 msgctxt "block keyword"
 msgid "citizenone"
-msgstr "citizenone"
+msgstr ""
 
 #: assets/block.json
 msgctxt "block keyword"
 msgid "journalsystem"
-msgstr "journalsystem"
+msgstr ""

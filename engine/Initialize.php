@@ -1,21 +1,21 @@
 <?php
 
 /**
- * Contact_Form_App
+ * mzaworkdk\CitizenOne
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace Contact_Form_App\Engine;
+namespace mzaworkdk\CitizenOne\Engine;
 
-use Contact_Form_App\Engine;
+use mzaworkdk\CitizenOne\Engine;
 
 /**
- * Contact_Form_App Initializer
+ * mzaworkdk\CitizenOne Initializer
  */
 class Initialize {
 
@@ -83,13 +83,13 @@ class Initialize {
 	 * @return void
 	 */
 	private function load_classes() {
-		$this->classes = \apply_filters( 'contact_form_app_classes_to_execute', $this->classes );
+		$this->classes = \apply_filters( 'facioj_classes_to_execute', $this->classes );
 
 		foreach ( $this->classes as $class ) {
 			try {
 				$this->initialize_plugin_class( $class );
 			} catch ( \Throwable $err ) {
-				\do_action( 'contact_form_app_initialize_failed', $err );
+				\do_action( 'facioj_initialize_failed', $err );
 
 				if ( \WP_DEBUG ) {
 					throw new \Exception( $err->getMessage() ); //phpcs:ignore
@@ -125,7 +125,7 @@ class Initialize {
 
 					$temp->initialize();
 					\add_filter(
-						'contact_form_app_instance_' . $classtovalidate,
+						'facioj_instance_' . $classtovalidate,
 						function() use ( $temp ) {
 							return $temp;
 						}
@@ -142,7 +142,7 @@ class Initialize {
 			$temp->initialize();
 
 			\add_filter(
-				'contact_form_app_instance_' . $classtovalidate,
+				'facioj_instance_' . $classtovalidate,
 				function() use ( $temp ) {
 					return $temp;
 				}
@@ -160,10 +160,10 @@ class Initialize {
 	private function get_classes( string $namespacetofind ) {
 		$prefix          = $this->composer->getPrefixesPsr4();
 		$classmap        = $this->composer->getClassMap();
-		$namespacetofind = 'Contact_Form_App\\' . $namespacetofind;
+		$namespacetofind = 'mzaworkdk\\CitizenOne\\' . $namespacetofind;
 
 		// In case composer has autoload optimized
-		if ( isset( $classmap[ 'Contact_Form_App\\Engine\\Initialize' ] ) ) {
+		if ( isset( $classmap[ 'mzaworkdk\\CitizenOne\\Engine\\Initialize' ] ) ) {
 			$classes = \array_keys( $classmap );
 
 			foreach ( $classes as $class ) {

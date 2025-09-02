@@ -4,14 +4,14 @@
  * Retrieve token from API
  *
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace Contact_Form_App\Internals\Models;
+namespace mzaworkdk\CitizenOne\Internals\Models;
 
 class RetrieveToken {
 
@@ -23,7 +23,7 @@ class RetrieveToken {
      */
     public function submit( $data ) {
         $response = \wp_remote_post(
-            CFA_PLUGIN_API_URL . '/jwt/generate-token',
+            FACIOJ_PLUGIN_API_URL . '/jwt/generate-token',
             array(
 				'body'    => \json_encode( $data ),
 				'headers' => array(

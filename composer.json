@@ -68,17 +68,17 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Contact_Form_App\\Ajax\\": "ajax/",
-            "Contact_Form_App\\Backend\\": "backend/",
-            "Contact_Form_App\\Cli\\": "cli/",
-            "Contact_Form_App\\Engine\\": "engine/",
-            "Contact_Form_App\\Frontend\\": "frontend/",
-            "Contact_Form_App\\Integrations\\": "integrations/",
-            "Contact_Form_App\\Internals\\": "internals/",
-            "Contact_Form_App\\Internals\\Models\\": "internals/models/",
-            "Contact_Form_App\\Internals\\Views\\": "internals/views/",
-            "Contact_Form_App\\Rest\\": "rest/",
-            "Contact_Form_App\\Class\\": "class/"
+            "mzaworkdk\\CitizenOne\\Ajax\\": "ajax/",
+            "mzaworkdk\\CitizenOne\\Backend\\": "backend/",
+            "mzaworkdk\\CitizenOne\\Cli\\": "cli/",
+            "mzaworkdk\\CitizenOne\\Engine\\": "engine/",
+            "mzaworkdk\\CitizenOne\\Frontend\\": "frontend/",
+            "mzaworkdk\\CitizenOne\\Integrations\\": "integrations/",
+            "mzaworkdk\\CitizenOne\\Internals\\": "internals/",
+            "mzaworkdk\\CitizenOne\\Internals\\Models\\": "internals/models/",
+            "mzaworkdk\\CitizenOne\\Internals\\Views\\": "internals/views/",
+            "mzaworkdk\\CitizenOne\\Rest\\": "rest/",
+            "mzaworkdk\\CitizenOne\\Class\\": "class/"
         }
     },
     "config": {

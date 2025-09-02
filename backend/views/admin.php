@@ -5,7 +5,7 @@
  * This includes the header, options, and other information that should provide
  * The User Interface to the end user.
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -23,9 +23,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 	<div id="tabs" class="settings-tab">
 		<ul>
 			<li><a href="#tabs-1"><?php esc_html_e( 'Configuration', 'formular-af-citizenone-journalsystem' ); ?></a></li>
+			<li><a href="#tabs-2"><?php esc_html_e( 'Instructions', 'formular-af-citizenone-journalsystem' ); ?></a></li>
 		</ul>
 		<?php
 		    require_once plugin_dir_path( __FILE__ ) . 'formular-af-citizenone-journalsystem-settings.php';
+			require_once plugin_dir_path( __FILE__ ) . 'instructions.php';
 		?>
 	</div>
 

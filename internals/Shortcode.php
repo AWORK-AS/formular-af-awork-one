@@ -1,13 +1,13 @@
 <?php
 
-namespace Contact_Form_App\Internals;
+namespace mzaworkdk\CitizenOne\Internals;
 
-use Contact_Form_App\Internals\Views\FormRenderer;
+use mzaworkdk\CitizenOne\Internals\Views\FormRenderer;
 
 class Shortcode {
 
     public function initialize() {
-        \add_shortcode( 'citizenone_form', array( $this, 'render_shortcode' ) );
+        \add_shortcode( 'facioj_citizenone_form', array( $this, 'render_shortcode' ) );
     }
     
     public function render_shortcode( $attributes ) {
@@ -15,7 +15,7 @@ class Shortcode {
         // Pass block attributes to the renderer
         if ( !empty( $attributes['headline'] ) ) {
             \add_filter(
-                'cfa_headline',
+                'facioj_headline',
                 function() use ( $attributes ) {
                     return $attributes['headline'];
                 }
@@ -24,7 +24,7 @@ class Shortcode {
         
         if ( !empty( $attributes['color'] ) ) {
             \add_filter(
-                'cfa_color',
+                'facioj_color',
                 function() use ( $attributes ) {
                     return $attributes['color'];
                 }
@@ -33,7 +33,7 @@ class Shortcode {
 
         if ( !empty( $attributes['button_color'] ) ) {
             \add_filter(
-                'cfa_button_color',
+                'facioj_button_color',
                 function() use ( $attributes ) {
                     return $attributes['button_color'];
                 }
@@ -42,7 +42,7 @@ class Shortcode {
 
         if ( !empty( $attributes['button_text_color'] ) ) {
             \add_filter(
-                'cfa_button_text_color',
+                'facioj_button_text_color',
                 function() use ( $attributes ) {
                     return $attributes['button_text_color'];
                 }

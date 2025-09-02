@@ -66,7 +66,7 @@
 	float: right;
 }
 
-.cfa-icon-box {
+.facioj-icon-box {
 	background: white;
 	border-radius: 10px;
 	padding: 15px;
@@ -75,23 +75,62 @@
 	width: 100px;
 	transition: transform 0.3s ease;
 }
-.cfa-icon-box:hover {
+.facioj-icon-box:hover {
 	transform: translateY(-3px);
 }
-.cfa-icon {
+.facioj-icon {
 	width: 60px;
 	height: 60px;
 	margin: 0 auto 10px;
 }
-.cfa-connected {
+.facioj-connected {
 	color: #00607A;
 }
-.cfa-not-connected {
+.facioj-not-connected {
 	color: #F3F9EE;
 }
 
-.cfa-label {
+.facioj-label {
 	font-size: 12px;
 	font-weight: 600;
 	margin-top: 8px;
+}
+
+.facioj-instructions {
+    max-width: 800px;
+}
+
+.facioj-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+}
+
+.facioj-section h3 {
+    margin-top: 0;
+    color: #205E77;
+}
+
+.facioj-section h4 {
+    color: #205E77;
+}
+
+.facioj-section ul,
+.facioj-section ol {
+    margin-left: 20px;
+}
+
+.facioj-section pre {
+    background: #f6f8fa;
+    padding: 15px;
+    border-radius: 4px;
+    overflow: auto;
+}
+
+.facioj-section code {
+    background: #f6f8fa;
+    padding: 2px 5px;
+    border-radius: 3px;
 }

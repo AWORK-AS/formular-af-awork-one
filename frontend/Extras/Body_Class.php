@@ -1,17 +1,17 @@
 <?php
 /**
- * Contact_Form_App
+ * mzaworkdk\CitizenOne
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace Contact_Form_App\Frontend\Extras;
+namespace mzaworkdk\CitizenOne\Frontend\Extras;
 
-use Contact_Form_App\Engine\Base;
+use mzaworkdk\CitizenOne\Engine\Base;
 
 /**
  * Add custom css class to <body>
@@ -26,7 +26,7 @@ class Body_Class extends Base {
 	public function initialize() {
 		parent::initialize();
 
-		\add_filter( 'body_class', array( self::class, 'add_cfa_class' ), 10, 1 );
+		\add_filter( 'body_class', array( self::class, 'add_facioj_class' ), 10, 1 );
 	}
 
 	/**
@@ -36,8 +36,8 @@ class Body_Class extends Base {
 	 * @since 1.0.0
 	 * @return array
 	 */
-	public static function add_cfa_class( array $classes ) {
-		$classes[] = CFA_TEXTDOMAIN;
+	public static function add_facioj_class( array $classes ) {
+		$classes[] = FACIOJ_TEXTDOMAIN;
 
 		return $classes;
 	}

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Contact_Form_App
+ * mzaworkdk\CitizenOne
  *
  * Fired when the plugin is uninstalled.
  *
@@ -15,7 +15,7 @@
  * - Repeat with other user roles. Best directly by using the links/query string parameters.
  * - Repeat things for multisite. Once for a single site in the network, once sitewide.
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -32,7 +32,7 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  *
  * @return void
  */
-function cfa_uninstall_multisite() {
+function facioj_uninstall_multisite() {
 	if ( is_multisite() ) {
 		/** @var array<\WP_Site> $blogs */
 		$blogs = get_sites();
@@ -40,7 +40,7 @@ function cfa_uninstall_multisite() {
 		if ( !empty( $blogs ) ) {
 			foreach ( $blogs as $blog ) {
 				switch_to_blog( (int) $blog->blog_id );
-				cfa_uninstall();
+				facioj_uninstall();
 				restore_current_blog();
 			}
 
@@ -48,7 +48,7 @@ function cfa_uninstall_multisite() {
 		}
 	}
 
-	cfa_uninstall();
+	facioj_uninstall();
 }
 
 /**
@@ -57,7 +57,7 @@ function cfa_uninstall_multisite() {
  * @global WP_Roles $wp_roles
  * @return void
  */
-function cfa_uninstall() { // phpcs:ignore
+function facioj_uninstall() { // phpcs:ignore
 	global $wp_roles;
 	/*
 	@TODO
@@ -119,4 +119,4 @@ function cfa_uninstall() { // phpcs:ignore
 	}
 }
 
-cfa_uninstall_multisite();
+facioj_uninstall_multisite();

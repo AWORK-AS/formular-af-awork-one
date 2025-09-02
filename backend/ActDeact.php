@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Contact_Form_App
+ * mzaworkdk\CitizenOne
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace Contact_Form_App\Backend;
+namespace mzaworkdk\CitizenOne\Backend;
 
-use Contact_Form_App\Engine\Base;
+use mzaworkdk\CitizenOne\Engine\Base;
 
 /**
  * Activate and deactive method of the plugin and relates.
@@ -205,12 +205,12 @@ class ActDeact extends Base {
 		$version_option = \get_option( 'formular-af-citizenone-journalsystem-version' );
 		$version        = is_scalar( $version_option ) ? (string) $version_option : '';
 		
-		if ( !\version_compare( \CFA_VERSION, $version, '>' ) ) {
+		if ( !\version_compare( \FACIOJ_VERSION, $version, '>' ) ) {
 			return;
 		}
 
-		\update_option( 'formular-af-citizenone-journalsystem-version', \CFA_VERSION );
-		\delete_option( \CFA_TEXTDOMAIN . '_fake-meta' );
+		\update_option( 'formular-af-citizenone-journalsystem-version', \FACIOJ_VERSION );
+		\delete_option( \FACIOJ_TEXTDOMAIN . '_fake-meta' );
 	}
 
 	/**
@@ -235,7 +235,7 @@ class ActDeact extends Base {
 	private static function single_deactivate() {
 		self::remove_capabilities();
 		// Clear the permalinks
-		\delete_option( \CFA_TEXTDOMAIN . '-settings' );
+		\delete_option( \FACIOJ_TEXTDOMAIN . '-settings' );
 		\flush_rewrite_rules();
 	}
 

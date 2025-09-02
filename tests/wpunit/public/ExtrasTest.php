@@ -25,7 +25,7 @@ class ExtrasTest extends \Codeception\TestCase\WPTestCase {
 	}
 
 	private function make_instance() {
-		return new \Contact_Form_App\Frontend\Extras\Body_Class();
+		return new \mzaworkdk\CitizenOne\Frontend\Extras\Body_Class();
 	}
 
 	/**

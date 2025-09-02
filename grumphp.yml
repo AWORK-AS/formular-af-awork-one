@@ -29,7 +29,7 @@ grumphp:
       - print_r(
       - var_dump(
       - error_log(
-      - define( 'CFA_PLUGIN_API_URL', 'http://127.0.
+      - define( 'FACIOJ_PLUGIN_API_URL', 'http://127.0.
       triggered_by:
       - php
 ...

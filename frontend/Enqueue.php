@@ -1,17 +1,17 @@
 <?php
 /**
- * Contact_Form_App
+ * mzaworkdk\CitizenOne
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace Contact_Form_App\Frontend;
+namespace mzaworkdk\CitizenOne\Frontend;
 
-use Contact_Form_App\Engine\Base;
+use mzaworkdk\CitizenOne\Engine\Base;
 
 /**
  * Enqueue stuff on the frontend
@@ -52,10 +52,10 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	public function enqueue_styles() {
-		$handle  = CFA_TEXTDOMAIN . '-plugin-styles';
-		$src     = \plugins_url( 'assets/build/plugin-public.css', CFA_PLUGIN_ABSOLUTE );
+		$handle  = FACIOJ_TEXTDOMAIN . '-plugin-styles';
+		$src     = \plugins_url( 'assets/build/plugin-public.css', FACIOJ_PLUGIN_ABSOLUTE );
 		$deps    = array(); // No dependencies specified in original Inpsyde code
-		$version = CFA_VERSION;
+		$version = FACIOJ_VERSION;
 		$media   = 'all';
 
 		\wp_enqueue_style( $handle, $src, $deps, $version, $media );
@@ -68,10 +68,10 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		$handle    = CFA_TEXTDOMAIN . '-plugin-script';
-		$src       = \plugins_url( 'assets/build/plugin-public.js', CFA_PLUGIN_ABSOLUTE );
+		$handle    = FACIOJ_TEXTDOMAIN . '-plugin-script';
+		$src       = \plugins_url( 'assets/build/plugin-public.js', FACIOJ_PLUGIN_ABSOLUTE );
 		$deps      = array(); // No dependencies specified in original Inpsyde code
-		$version   = CFA_VERSION;
+		$version   = FACIOJ_VERSION;
 		$in_footer = true; // Inpsyde's useAsyncFilter implies defer/async, which often means loading in footer
 
 		\wp_enqueue_script( $handle, $src, $deps, $version, $in_footer );
@@ -80,7 +80,7 @@ class Enqueue extends Base {
 		\add_filter(
             'script_loader_tag',
             function( $tag, $handle ) {
-				if ( CFA_TEXTDOMAIN . '-plugin-script' === $handle ) {
+				if ( FACIOJ_TEXTDOMAIN . '-plugin-script' === $handle ) {
 					return str_replace( '<script', '<script async defer', $tag );
 				}
 
@@ -99,24 +99,24 @@ class Enqueue extends Base {
 	 */
 	public function localize_scripts() {
 		// Only localize if the script is enqueued
-		if ( !wp_script_is( CFA_TEXTDOMAIN . '-plugin-script', 'enqueued' ) ) {
+		if ( !wp_script_is( FACIOJ_TEXTDOMAIN . '-plugin-script', 'enqueued' ) ) {
 			return;
 		}
 		
 		// Get plugin options
-		$options = \cfa_get_settings();
+		$options = \facioj_get_settings();
 		
-		$color               = $options[CFA_TEXTDOMAIN . '_color_theme'] ?? '#205E77';
-		$headline            = $options[CFA_TEXTDOMAIN . '_headline'] ?? 'Get in Touch With Us';
-		$hcaptcha_site_key   = $options[CFA_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
-		$hcaptcha_secret_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
+		$color               = $options[FACIOJ_TEXTDOMAIN . '_color_theme'] ?? '#205E77';
+		$headline            = $options[FACIOJ_TEXTDOMAIN . '_headline'] ?? 'Get in Touch With Us';
+		$hcaptcha_site_key   = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
+		$hcaptcha_secret_key = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
 		$hcaptcha_enabled    = $hcaptcha_site_key && $hcaptcha_secret_key;
 
 		
 		// Localize the script using WordPress standard method
 		wp_localize_script(
-			CFA_TEXTDOMAIN . '-plugin-script',
-			'cfa_form_vars',
+			FACIOJ_TEXTDOMAIN . '-plugin-script',
+			'facioj_form_vars',
 			array(
 				'rest_url'          => rest_url( 'formular-af-citizenone-journalsystem/v1/submit' ),
 				'nonce'             => \wp_create_nonce( 'wp_rest' ),
@@ -145,9 +145,9 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	protected function load_hcaptcha_script() {
-		$opts = \cfa_get_settings();
-		$hcaptcha_site_key   = $opts[CFA_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
-		$hcaptcha_secret_key = $opts[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
+		$opts = \facioj_get_settings();
+		$hcaptcha_site_key   = $opts[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
+		$hcaptcha_secret_key = $opts[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
 		$hcaptcha_enabled    = $hcaptcha_site_key && $hcaptcha_secret_key;
 		if( $hcaptcha_enabled && !\wp_script_is( 'hcaptcha', 'enqueued' ) ) {
 			// Load hCaptcha script if needed
@@ -155,7 +155,7 @@ class Enqueue extends Base {
 				'hcaptcha',
 				'https://js.hcaptcha.com/1/api.js',
 				array(),
-				CFA_VERSION,
+				FACIOJ_VERSION,
 				true
 			);
 		}

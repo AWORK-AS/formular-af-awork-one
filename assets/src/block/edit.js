@@ -7,7 +7,7 @@ export default function Edit({ attributes, setAttributes }) {
     const { headline, color, btnColor, btnTextColor} = attributes;
     const hCaptcha     = window.cfaBlockhCaptcha || {};
     
-    const formId = `cfa-form-preview`;
+    const formId = `facioj-form-preview`;
 
     return (
         <div {...useBlockProps()}>
@@ -35,7 +35,7 @@ export default function Edit({ attributes, setAttributes }) {
                     />
                 </PanelRow>
                 <PanelRow>
-                    <label>{__('Button Text Color', 'formular-af-citizenone-journalsystem')}</label>
+                    <label>{__( 'Button Text Color', 'formular-af-citizenone-journalsystem' )}</label>
                     <ColorPalette
                         value={btnTextColor}
                         onChange={(value) => setAttributes({ btnTextColor: value })}
@@ -43,46 +43,46 @@ export default function Edit({ attributes, setAttributes }) {
                 </PanelRow>
             </PanelBody>
             {/* Form preview in editor */}
-            <div className="cfa-contact-form" id={formId}>
+            <div className="facioj-contact-form" id={formId}>
                 <h3 style={{ color: color || '#205E77' }}>
-                    {headline || 'Get in Touch With Us'}
+                    {headline || __( 'Get in Touch With Us', 'formular-af-citizenone-journalsystem' )}
                 </h3>
-                <div className="cfa-form-preview">
-                    <div className="cfa-form-grid">
-                        <div className="cfa-form-group cfa-form-group--full">
+                <div className="facioj-form-preview">
+                    <div className="facioj-form-grid">
+                        <div className="facioj-form-group facioj-form-group--full">
                             <input type="text" disabled placeholder={__( 'Name', 'formular-af-citizenone-journalsystem' )}/>
                         </div>
                         
-                        <div className="cfa-form-group">
+                        <div className="facioj-form-group">
                             <input type="text" disabled placeholder={__( 'Company', 'formular-af-citizenone-journalsystem' )}/>
                         </div>
                         
-                        <div className="cfa-form-group">
+                        <div className="facioj-form-group">
                             <input type="email" disabled placeholder={__( 'Email', 'formular-af-citizenone-journalsystem' )}/>
                         </div>
                         
-                        <div className="cfa-form-group">
+                        <div className="facioj-form-group">
                             <input type="tel" disabled placeholder={__( 'Phone', 'formular-af-citizenone-journalsystem' )}/>
                         </div>
                         
-                        <div className="cfa-form-group cfa-form-group--full">
+                        <div className="facioj-form-group facioj-form-group--full">
                             <textarea disabled placeholder={__( 'Message', 'formular-af-citizenone-journalsystem' )}></textarea>
                         </div>
                         {
                             hCaptcha.hCaptchaEnabled &&
-                            <div className="cfa-form-group cfa-form-group--full">
+                            <div className="facioj-form-group facioj-form-group--full">
                                 <div className="h-captcha" data-sitekey={hCaptcha.hCaptchaSiteKey}></div>
                             </div>
                         }
                     </div>
                     
-                    <div className="cfa-form-footer">
-                        <button type="button" disabled className="cfa-submit-btn" style={{backgroundColor: btnColor, color: btnTextColor}}>
+                    <div className="facioj-form-footer">
+                        <button type="button" disabled className="facioj-submit-btn" style={{backgroundColor: btnColor, color: btnTextColor}}>
                             {__( 'Submit', 'formular-af-citizenone-journalsystem' )}
                         </button>
                     </div>
                     
-                    <div className="cfa-powered-by">
+                    <div className="facioj-powered-by">
                         Formular af { ' ' }
                         <a href="https://citizenone.dk" target="_blank" rel="noreferrer">
                             CitizenOne - Journalsystem med alt inklusiv

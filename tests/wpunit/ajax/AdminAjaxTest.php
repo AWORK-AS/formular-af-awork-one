@@ -1,6 +1,6 @@
 <?php
 
-namespace Contact_Form_App\Tests\WPUnit;
+namespace mzaworkdk\CitizenOne\Tests\WPUnit;
 
 class AdminAjaxTest extends \Codeception\TestCase\WPAjaxTestCase {
 

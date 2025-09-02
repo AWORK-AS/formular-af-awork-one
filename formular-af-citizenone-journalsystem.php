@@ -1,6 +1,6 @@
 <?php
 /**
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -25,26 +25,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define constants that are safe to be global.
-define( 'CFA_PLUGIN_ABSOLUTE', __FILE__ );
-define( 'CFA_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
-define( 'CFA_TEXTDOMAIN', 'formular-af-citizenone-journalsystem' );
-define( 'CFA_VERSION', '1.0.5' );
-define( 'CFA_MIN_PHP_VERSION', '7.4' );
-define( 'CFA_WP_VERSION', '5.8' );
-define( 'CFA_PLUGIN_API_URL', 'https://server1488.citizenone.dk/api' );
-define( 'CFA_PLUGIN_API_NAME', 'CitizenOne journalsystem' );
-define( 'CFA_NAME', 'Formular af CitizenOne journalsystem' );
+define( 'FACIOJ_PLUGIN_ABSOLUTE', __FILE__ );
+define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
+define( 'FACIOJ_TEXTDOMAIN', 'formular-af-citizenone-journalsystem' );
+define( 'FACIOJ_VERSION', '1.0.5' );
+define( 'FACIOJ_MIN_PHP_VERSION', '7.4' );
+define( 'FACIOJ_WP_VERSION', '5.8' );
+define( 'FACIOJ_PLUGIN_API_URL', 'https://server1488.citizenone.dk/api' );
+define( 'FACIOJ_PLUGIN_API_NAME', 'CitizenOne journalsystem' );
+define( 'FACIOJ_NAME', 'Formular af CitizenOne journalsystem' );
 /**
  * The main function that initializes the plugin.
  *
  * This function is hooked to 'init' to ensure all WordPress functionalities,
  * including user data and translations, are ready.
  */
-function cfa_initialize_plugin() {
+function facioj_initialize_plugin() {
 	// Require necessary files.
-	$contact_form_app_libraries = require CFA_PLUGIN_ROOT . 'vendor/autoload.php';
-	require_once CFA_PLUGIN_ROOT . 'functions/functions.php';
-	require_once CFA_PLUGIN_ROOT . 'functions/debug.php';
+	$facioj_libraries = require FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php';
+	require_once FACIOJ_PLUGIN_ROOT . 'functions/functions.php';
+	require_once FACIOJ_PLUGIN_ROOT . 'functions/debug.php';
 
     
 
@@ -52,9 +52,9 @@ function cfa_initialize_plugin() {
 	$requirements = new \Micropackage\Requirements\Requirements(
 		__( 'Formular af CitizenOne journalsystem', 'formular-af-citizenone-journalsystem' ),
 		array(
-			'php'            => CFA_MIN_PHP_VERSION,
+			'php'            => FACIOJ_MIN_PHP_VERSION,
 			'php_extensions' => array( 'mbstring' ),
-			'wp'             => CFA_WP_VERSION,
+			'wp'             => FACIOJ_WP_VERSION,
 		)
 	);
 
@@ -67,15 +67,15 @@ function cfa_initialize_plugin() {
 	// Set up the update checker.
 	$myUpdateChecker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
 		'https://github.com/AWORK-AS/contact-form-app',
-		CFA_PLUGIN_ABSOLUTE,
-		CFA_TEXTDOMAIN
+		FACIOJ_PLUGIN_ABSOLUTE,
+		FACIOJ_TEXTDOMAIN
 	);
 	$myUpdateChecker->setBranch( 'main' );
     
 	
 	
 	// Initialize the plugin's core engine.
-	new \Contact_Form_App\Engine\Initialize( $contact_form_app_libraries );
+	new \mzaworkdk\CitizenOne\Engine\Initialize( $facioj_libraries );
 	
     // Load Contact form block.
 	add_action(
@@ -89,7 +89,7 @@ function cfa_initialize_plugin() {
         );
 	
 	// Use block.json for block registration
-	$block_json_path = CFA_PLUGIN_ROOT . 'assets/block.json';
+	$block_json_path = FACIOJ_PLUGIN_ROOT . 'assets/block.json';
 
 	if ( !file_exists( $block_json_path ) ) {
 		return;
@@ -99,7 +99,7 @@ function cfa_initialize_plugin() {
 }
 
 // Hook the initializer function to 'init'.
-add_action( 'init', 'cfa_initialize_plugin' );
+add_action( 'init', 'facioj_initialize_plugin' );
 
 
 
@@ -112,47 +112,47 @@ add_action( 'init', 'cfa_initialize_plugin' );
 /**
  * Handle activation - use a separate function to avoid class dependency issues
  */
-function cfa_activate_plugin( $network_wide ) {
+function facioj_activate_plugin( $network_wide ) {
 
 	// Double-check if constant is defined
-    if ( ! defined( 'CFA_PLUGIN_ROOT' ) ) {
-        define( 'CFA_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
+    if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
+        define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
     }
 	
     // Ensure the autoloader is available
-    if ( ! file_exists( CFA_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
+    if ( ! file_exists( FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
         wp_die( esc_html_e( 'Plugin dependencies are missing. Please run composer install.', 'formular-af-citizenone-journalsystem' ) );
     }
     
-    require_once CFA_PLUGIN_ROOT . 'vendor/autoload.php';
+    require_once FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php';
     
     // Load the ActDeact class
-    if ( ! class_exists( '\Contact_Form_App\Backend\ActDeact' ) ) {
-        require_once CFA_PLUGIN_ROOT . 'backend/ActDeact.php';
+    if ( ! class_exists( '\mzaworkdk\CitizenOne\Backend\ActDeact' ) ) {
+        require_once FACIOJ_PLUGIN_ROOT . 'backend/ActDeact.php';
     }
     
-    \Contact_Form_App\Backend\ActDeact::activate( $network_wide );
+    \mzaworkdk\CitizenOne\Backend\ActDeact::activate( $network_wide );
 }
 
 /**
  * Handle deactivation - use a separate function to avoid class dependency issues
  */
-function cfa_deactivate_plugin( $network_wide ) {
+function facioj_deactivate_plugin( $network_wide ) {
     // Ensure the autoloader is available
-    if ( ! file_exists( CFA_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
+    if ( ! file_exists( FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
         return;
     }
     
-    require_once CFA_PLUGIN_ROOT . 'vendor/autoload.php';
+    require_once FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php';
     
     // Load the ActDeact class
-    if ( ! class_exists( '\Contact_Form_App\Backend\ActDeact' ) ) {
-        require_once CFA_PLUGIN_ROOT . 'backend/ActDeact.php';
+    if ( ! class_exists( '\mzaworkdk\CitizenOne\Backend\ActDeact' ) ) {
+        require_once FACIOJ_PLUGIN_ROOT . 'backend/ActDeact.php';
     }
     
-    \Contact_Form_App\Backend\ActDeact::deactivate( $network_wide );
+    \mzaworkdk\CitizenOne\Backend\ActDeact::deactivate( $network_wide );
 }
 
 // Register activation and deactivation hooks
-register_activation_hook( CFA_PLUGIN_ABSOLUTE, 'cfa_activate_plugin' );
-register_deactivation_hook( CFA_PLUGIN_ABSOLUTE, 'cfa_deactivate_plugin' );
+register_activation_hook( FACIOJ_PLUGIN_ABSOLUTE, 'facioj_activate_plugin' );
+register_deactivation_hook( FACIOJ_PLUGIN_ABSOLUTE, 'facioj_deactivate_plugin' );

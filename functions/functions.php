@@ -1,8 +1,8 @@
 <?php
 /**
- * Contact_Form_App
+ * mzaworkdk\CitizenOne
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -17,6 +17,6 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-function cfa_get_settings() {
-	return apply_filters( 'cfa_get_settings', get_option( CFA_TEXTDOMAIN . '-settings' ) );
+function facioj_get_settings() {
+	return apply_filters( 'facioj_get_settings', get_option( FACIOJ_TEXTDOMAIN . '-settings' ) );
 }

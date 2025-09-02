@@ -4,13 +4,13 @@
  * The "Contact Form" submit handler
  *
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
-namespace Contact_Form_App\Rest;
+namespace mzaworkdk\CitizenOne\Rest;
 
 class FormHandler {
     public function __construct() {
@@ -28,9 +28,7 @@ class FormHandler {
         \register_rest_route('formular-af-citizenone-journalsystem/v1', '/submit', [
             'methods' => 'POST',
             'callback' => [$this, 'handle_form_submission'],
-            'permission_callback' => function() {
-                return true; // Public
-            },
+            'permission_callback' => '__return_true',
             'args' => [
                 '_wpnonce' => [
                     'required' => false,
@@ -57,10 +55,10 @@ class FormHandler {
         }
         $data = $request->get_params();
 
-        $opts = \cfa_get_settings();
+        $opts = \facioj_get_settings();
         if(!$opts) $opts = [];
-        $hcaptcha_site_key = $opts[CFA_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
-		$hcaptcha_secret_key = $opts[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
+        $hcaptcha_site_key = $opts[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
+		$hcaptcha_secret_key = $opts[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
 		$hcaptcha_enabled = $hcaptcha_site_key && $hcaptcha_secret_key;
 
         if($hcaptcha_enabled) {
@@ -76,14 +74,14 @@ class FormHandler {
             }
         }
 
-        $token = $opts[CFA_TEXTDOMAIN . '_token'] ?? false;
+        $token = $opts[FACIOJ_TEXTDOMAIN . '_token'] ?? false;
 
         if(!$token) {
             return new \WP_Error('not_connected', __('Error occured. Please contact the administrator.', 'formular-af-citizenone-journalsystem'), ['status' => 403]);
         }
 
         
-        $submission = new \Contact_Form_App\Internals\Models\ContactSubmission();
+        $submission = new \mzaworkdk\CitizenOne\Internals\Models\ContactSubmission();
         
         if ($submission->submit_lead($data)) {
             return new \WP_REST_Response([
@@ -105,8 +103,8 @@ class FormHandler {
      * @return array{success: bool, error-codes?: string[]}
      */
     private function verify_hcaptcha($token) {
-        $options = \cfa_get_settings();
-        $secret_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? '';
+        $options = \facioj_get_settings();
+        $secret_key = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? '';
 
         if (empty($secret_key)) {
             // Error: No secret key configured

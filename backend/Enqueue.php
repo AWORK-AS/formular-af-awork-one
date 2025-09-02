@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Contact_Form_App
+ * mzaworkdk\CitizenOne
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace Contact_Form_App\Backend;
+namespace mzaworkdk\CitizenOne\Backend;
 
-use Contact_Form_App\Engine\Base;
+use mzaworkdk\CitizenOne\Engine\Base;
 
 /**
  * This class contain the Enqueue stuff for the backend
@@ -58,10 +58,10 @@ class Enqueue extends Base {
 	public function enqueue_block_editor_assets() {
 		// Enqueue block editor styles
 		\wp_enqueue_style(
-			CFA_TEXTDOMAIN . '-block-editor-style',
-			\plugins_url( 'assets/build/plugin-block.css', CFA_PLUGIN_ABSOLUTE ),
+			FACIOJ_TEXTDOMAIN . '-block-editor-style',
+			\plugins_url( 'assets/build/plugin-block.css', FACIOJ_PLUGIN_ABSOLUTE ),
 			array( 'wp-edit-blocks' ),
-			CFA_VERSION
+			FACIOJ_VERSION
 		);
 		// Unregister editor script from block.json
 		\wp_deregister_script( 'formular-af-citizenone-journalsystem-contact-form-editor-script' );
@@ -69,9 +69,9 @@ class Enqueue extends Base {
 		// Enqueue block editor script
 		\wp_enqueue_script(
 			'formular-af-citizenone-journalsystem-contact-form-editor-script',
-			\plugins_url( 'assets/build/plugin-block.js', CFA_PLUGIN_ABSOLUTE ),
+			\plugins_url( 'assets/build/plugin-block.js', FACIOJ_PLUGIN_ABSOLUTE ),
 			array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n', 'wp-api-fetch' ),
-			CFA_VERSION,
+			FACIOJ_VERSION,
 			false
 		);
 		
@@ -80,14 +80,14 @@ class Enqueue extends Base {
 			\wp_set_script_translations(
 				'formular-af-citizenone-journalsystem-contact-form-editor-script',
 				'formular-af-citizenone-journalsystem',
-				CFA_PLUGIN_ROOT . 'languages'
+				FACIOJ_PLUGIN_ROOT . 'languages'
 			);
 		}
 		
 		// Localize script with hCaptcha settings
-		$options             = \get_option( CFA_TEXTDOMAIN . '-settings' );
-		$hcaptcha_site_key   = $options[CFA_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
-		$hcaptcha_secret_key = $options[CFA_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
+		$options             = \get_option( FACIOJ_TEXTDOMAIN . '-settings' );
+		$hcaptcha_site_key   = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
+		$hcaptcha_secret_key = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
 		$hcaptcha_enabled    = ( $hcaptcha_site_key && $hcaptcha_secret_key );
 
 		\wp_localize_script(
@@ -109,10 +109,10 @@ class Enqueue extends Base {
 	public function enqueue_admin_styles( $admin_page ) {
 		// Main admin style
 		\wp_enqueue_style(
-			CFA_TEXTDOMAIN . '-admin-style',
-			\plugins_url( 'assets/build/plugin-admin.css', CFA_PLUGIN_ABSOLUTE ),
+			FACIOJ_TEXTDOMAIN . '-admin-style',
+			\plugins_url( 'assets/build/plugin-admin.css', FACIOJ_PLUGIN_ABSOLUTE ),
 			array( 'dashicons' ),
-			CFA_VERSION
+			FACIOJ_VERSION
 		);
 		
 		// Settings page style
@@ -121,10 +121,10 @@ class Enqueue extends Base {
 		}
 
 		\wp_enqueue_style(
-			CFA_TEXTDOMAIN . '-settings-style',
-			\plugins_url( 'assets/build/plugin-settings.css', CFA_PLUGIN_ABSOLUTE ),
+			FACIOJ_TEXTDOMAIN . '-settings-style',
+			\plugins_url( 'assets/build/plugin-settings.css', FACIOJ_PLUGIN_ABSOLUTE ),
 			array( 'dashicons' ),
-			CFA_VERSION
+			FACIOJ_VERSION
 		);
 	}
     
@@ -137,10 +137,10 @@ class Enqueue extends Base {
 	public function enqueue_admin_scripts( $admin_page ) {
 		// Main admin script
 		\wp_enqueue_script(
-			CFA_TEXTDOMAIN . '-settings-admin',
-			\plugins_url( 'assets/build/plugin-admin.js', CFA_PLUGIN_ABSOLUTE ),
+			FACIOJ_TEXTDOMAIN . '-settings-admin',
+			\plugins_url( 'assets/build/plugin-admin.js', FACIOJ_PLUGIN_ABSOLUTE ),
 			array(),
-			CFA_VERSION,
+			FACIOJ_VERSION,
 			true
 		);
 		
@@ -150,10 +150,10 @@ class Enqueue extends Base {
 		}
 
 		\wp_enqueue_script(
-			CFA_TEXTDOMAIN . '-settings-script',
-			\plugins_url( 'assets/build/plugin-settings.js', CFA_PLUGIN_ABSOLUTE ),
+			FACIOJ_TEXTDOMAIN . '-settings-script',
+			\plugins_url( 'assets/build/plugin-settings.js', FACIOJ_PLUGIN_ABSOLUTE ),
 			array( 'jquery-ui-tabs' ),
-			CFA_VERSION,
+			FACIOJ_VERSION,
 			true
 		);
 	}

@@ -4,21 +4,21 @@
  * Submission of web leads to API
  *
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace Contact_Form_App\Internals\Models;
+namespace mzaworkdk\CitizenOne\Internals\Models;
 
 class ContactSubmission {
 
     public function submit_lead( $data ) {
         // Get plugin options
-        $options = \cfa_get_settings();
-        $token   = $options[CFA_TEXTDOMAIN . '_token'] ?? '';
+        $options = \facioj_get_settings();
+        $token   = $options[FACIOJ_TEXTDOMAIN . '_token'] ?? '';
 
         
 
@@ -33,7 +33,7 @@ class ContactSubmission {
         );
 
         $response = \wp_remote_post(
-            CFA_PLUGIN_API_URL . '/web-leads',
+            FACIOJ_PLUGIN_API_URL . '/web-leads',
             array(
 				'body'    => \json_encode( $data ),
 				'headers' => array(

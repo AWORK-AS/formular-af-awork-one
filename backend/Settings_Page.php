@@ -1,19 +1,19 @@
 <?php
 
 /**
- * Contact_Form_App
+ * mzaworkdk\CitizenOne
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace Contact_Form_App\Backend;
+namespace mzaworkdk\CitizenOne\Backend;
 
-use Contact_Form_App\Engine\Base;
-use Contact_Form_App\Internals\Models\RetrieveToken;
+use mzaworkdk\CitizenOne\Engine\Base;
+use mzaworkdk\CitizenOne\Internals\Models\RetrieveToken;
 
 /**
  * Create the settings page in the backend
@@ -37,7 +37,7 @@ class Settings_Page extends Base {
         \add_action( 'cmb2_save_options-page_fields', array( $this, 'before_settings_save' ), 10, 2 );
 
 		$realpath        = (string) \realpath( __DIR__ );
-		$plugin_basename = \plugin_basename( \plugin_dir_path( $realpath ) . CFA_TEXTDOMAIN . '.php' );
+		$plugin_basename = \plugin_basename( \plugin_dir_path( $realpath ) . FACIOJ_TEXTDOMAIN . '.php' );
 		\add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 	}
 
@@ -56,14 +56,14 @@ class Settings_Page extends Base {
 		 * - Change 'manage_options' to the capability you see fit
 		 *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
 
-		add_options_page( __( 'Page Title', CFA_TEXTDOMAIN ), CFA_NAME, 'manage_options', CFA_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ) );
+		add_options_page( __( 'Page Title', FACIOJ_TEXTDOMAIN ), FACIOJ_NAME, 'manage_options', FACIOJ_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ) );
 		 *
 		 */
 		/*
 		 * Add a settings page for this plugin to the main menu
 		 *
 		 */
-		\add_menu_page( \__( 'Contact Form App Settings', 'formular-af-citizenone-journalsystem' ), CFA_NAME, 'manage_options', CFA_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ), 'dashicons-hammer', 90 );
+		\add_menu_page( \__( 'Contact Form App Settings', 'formular-af-citizenone-journalsystem' ), FACIOJ_NAME, 'manage_options', FACIOJ_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ), 'dashicons-hammer', 90 );
 	}
 
 	/**
@@ -73,7 +73,7 @@ class Settings_Page extends Base {
 	 * @return void
 	 */
 	public function display_plugin_admin_page() {
-		include_once CFA_PLUGIN_ROOT . 'backend/views/admin.php';
+		include_once FACIOJ_PLUGIN_ROOT . 'backend/views/admin.php';
 	}
 
 	/**
@@ -86,7 +86,7 @@ class Settings_Page extends Base {
 	public function add_action_links( array $links ) {
 		return \array_merge(
 			array(
-				'settings' => '<a href="' . \admin_url( 'options-general.php?page=' . CFA_TEXTDOMAIN ) . '">' . \__( 'Settings', 'formular-af-citizenone-journalsystem' ) . '</a>',
+				'settings' => '<a href="' . \admin_url( 'options-general.php?page=' . FACIOJ_TEXTDOMAIN ) . '">' . \__( 'Settings', 'formular-af-citizenone-journalsystem' ) . '</a>',
 			),
 			$links
 		);
@@ -99,7 +99,7 @@ class Settings_Page extends Base {
 	 * @param string $cmb_id    CMB2 instance ID
 	 */
 	public function before_settings_save( $object_id, $cmb_id ) {
-		if ( $cmb_id !== CFA_TEXTDOMAIN . '_options' ) {
+		if ( $cmb_id !== FACIOJ_TEXTDOMAIN . '_options' ) {
 			return;
 		}
 		
@@ -110,9 +110,15 @@ class Settings_Page extends Base {
 		}
 
 		// Get the submitted values
-		$company_cvr = \sanitize_text_field( \wp_unslash( $_POST[CFA_TEXTDOMAIN . '_field_company_cvr'] ) );
-		$citizenone_company_id = \sanitize_text_field( \wp_unslash( $_POST[CFA_TEXTDOMAIN . '_field_company_id'] ) );
-		$email = \sanitize_email( \wp_unslash( $_POST[CFA_TEXTDOMAIN . '_field_email'] ) );
+		$company_cvr = isset( $_POST[FACIOJ_TEXTDOMAIN . '_field_company_cvr'] ) ? 
+						\sanitize_text_field( \wp_unslash( $_POST[FACIOJ_TEXTDOMAIN . '_field_company_cvr'] ) )
+						: '';
+		$citizenone_company_id = isset( $_POST[FACIOJ_TEXTDOMAIN . '_field_company_id'] ) ? 
+								\sanitize_text_field( \wp_unslash( $_POST[FACIOJ_TEXTDOMAIN . '_field_company_id'] ) )
+								: '';
+		$email = isset( $_POST[FACIOJ_TEXTDOMAIN . '_field_email'] ) ? 
+				\sanitize_email( \wp_unslash( $_POST[FACIOJ_TEXTDOMAIN . '_field_email'] ) )
+				: '';
 
 		if ( empty( $company_cvr )
 			|| empty( $citizenone_company_id )
@@ -134,9 +140,9 @@ class Settings_Page extends Base {
 			return;
 		}
 
-		$opts                            = \cfa_get_settings();
-		$opts[CFA_TEXTDOMAIN . '_token'] = $data->data;
-		\update_option( CFA_TEXTDOMAIN . '-settings', $opts );
+		$opts                            = \facioj_get_settings();
+		$opts[FACIOJ_TEXTDOMAIN . '_token'] = $data->data;
+		\update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
 	}
 
 	/**

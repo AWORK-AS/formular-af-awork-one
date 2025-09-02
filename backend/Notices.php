@@ -1,17 +1,17 @@
 <?php
 /**
- * Contact_Form_App
+ * mzaworkdk\CitizenOne
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace Contact_Form_App\Backend;
+namespace mzaworkdk\CitizenOne\Backend;
 
-use Contact_Form_App\Engine\Base;
+use mzaworkdk\CitizenOne\Engine\Base;
 use I18n_Notice_WordPressOrg;
 
 /**
@@ -33,14 +33,14 @@ class Notices extends Base {
 		 * Alert after few days to suggest to contribute to the localization if it is incomplete
 		 * on translate.wordpress.org, the filter enables to remove globally.
 		 */
-		if ( !\apply_filters( 'contact_form_app_alert_localization', true ) ) {
+		if ( !\apply_filters( 'facioj_alert_localization', true ) ) {
 			return;
 		}
 
 		new I18n_Notice_WordPressOrg(
 		array(
-			'textdomain'       => CFA_TEXTDOMAIN,
-			'contact_form_app' => CFA_NAME,
+			'textdomain'       => FACIOJ_TEXTDOMAIN,
+			'facioj' => FACIOJ_NAME,
 			'hook'             => 'admin_notices',
 		),
 		true

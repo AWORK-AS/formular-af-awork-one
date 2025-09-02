@@ -1,8 +1,8 @@
 <?php
 /**
- * Contact_Form_App
+ * mzaworkdk\CitizenOne
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -10,7 +10,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-$cfa_debug = new WPBP_Debug( __( 'Contact Form App', 'formular-af-citizenone-journalsystem' ) );
+$facioj_debug = new WPBP_Debug( __( 'Contact Form App', 'formular-af-citizenone-journalsystem' ) );
 
 /**
  * Log text inside the debugging plugins.
@@ -18,7 +18,7 @@ $cfa_debug = new WPBP_Debug( __( 'Contact Form App', 'formular-af-citizenone-jou
  * @param string $text The text.
  * @return void
  */
-function cfa_log( string $text ) {
-	global $cfa_debug;
-	$cfa_debug->log( $text );
+function facioj_log( string $text ) {
+	global $facioj_debug;
+	$facioj_debug->log( $text );
 }

@@ -5,18 +5,18 @@ export default function save({ attributes }) {
     const { headline, color, btnColor, btnTextColor } = attributes;
     const hCaptcha     = window.cfaBlockhCaptcha || {};
  
-    const formId = `cfa-form-save`;
+    const formId = `facioj-form-save`;
     
     return (
         <div {...useBlockProps.save()}>
-            <div className="cfa-contact-form" id={formId}>
+            <div className="facioj-contact-form" id={formId}>
                 <h3 style={{ color: color || '#205E77' }}>
                     {headline || __( 'Get in Touch With Us', 'formular-af-citizenone-journalsystem' )}
                 </h3>
-                <form className="cfa-form" id={`${formId}-form`}>
+                <form className="facioj-form" id={`${formId}-form`}>
                     
-                    <div className="cfa-form-grid">
-                        <div className="cfa-form-group cfa-form-group--full">
+                    <div className="facioj-form-grid">
+                        <div className="facioj-form-group facioj-form-group--full">
                             <input
                                 type="text"
                                 id={`${formId}-name`}
@@ -26,7 +26,7 @@ export default function save({ attributes }) {
                             />
                         </div>
                         
-                        <div className="cfa-form-group">
+                        <div className="facioj-form-group">
                             <input
                                 type="text"
                                 id={`${formId}-company`}
@@ -36,7 +36,7 @@ export default function save({ attributes }) {
                             />
                         </div>
                         
-                        <div className="cfa-form-group">
+                        <div className="facioj-form-group">
                             <input
                                 type="email"
                                 id={`${formId}-email`}
@@ -46,7 +46,7 @@ export default function save({ attributes }) {
                             />
                         </div>
                         
-                        <div className="cfa-form-group">
+                        <div className="facioj-form-group">
                             <input
                                 type="tel"
                                 id={`${formId}-phone`}
@@ -56,7 +56,7 @@ export default function save({ attributes }) {
                             />
                         </div>
                         
-                        <div className="cfa-form-group cfa-form-group--full">
+                        <div className="facioj-form-group facioj-form-group--full">
                             <textarea
                                 id={`${formId}-message`}
                                 name="message"
@@ -67,22 +67,22 @@ export default function save({ attributes }) {
 
                         {
                             hCaptcha.hCaptchaEnabled &&
-                            <div className="cfa-form-group cfa-form-group--full">
+                            <div className="facioj-form-group facioj-form-group--full">
                                 <div className="h-captcha" data-sitekey={hCaptcha.hCaptchaSiteKey}></div>
                             </div>
                         }
                     </div>
                     
-                    <div className="cfa-form-footer">
-                        <button type="submit" className="cfa-submit-btn" style={{backgroundColor: btnColor, color: btnTextColor}}>
+                    <div className="facioj-form-footer">
+                        <button type="submit" className="facioj-submit-btn" style={{backgroundColor: btnColor, color: btnTextColor}}>
                             {__( 'Submit', 'formular-af-citizenone-journalsystem' )}
                         </button>
                     </div>
                 </form>
                 
-                <div className="cfa-message"></div>
+                <div className="facioj-message"></div>
                 
-                <div className="cfa-powered-by">
+                <div className="facioj-powered-by">
                     Formular af { ' ' }
                     <a href="https://citizenone.dk" target="_blank" rel="noreferrer">
                         CitizenOne - Journalsystem med alt inklusiv

@@ -5,7 +5,7 @@
  * This includes the header, options, and other information that should provide
  * The User Interface to the end user.
  *
- * @package   Contact_Form_App
+ * @package   mzaworkdk\CitizenOne
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -14,13 +14,13 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-$opts  = cfa_get_settings();
-$token = $opts[CFA_TEXTDOMAIN . '_token'] ?? false;
+$opts  = facioj_get_settings();
+$token = $opts[FACIOJ_TEXTDOMAIN . '_token'] ?? false;
 
 if ( $token ) :
 	?>
-    <div class="cfa-icon-box">
-        <div class="cfa-icon cfa-connected">
+    <div class="facioj-icon-box">
+        <div class="facioj-icon facioj-connected">
             <svg width="60" height="60" viewBox="0 0 100 100">
                 <rect x="20" y="35" width="60" height="30" rx="15" fill="currentColor" opacity="0.2"></rect>
                 <circle cx="30" cy="50" r="10" fill="currentColor"></circle>
@@ -28,11 +28,11 @@ if ( $token ) :
                 <path d="M40,50 L60,50" stroke="white" stroke-width="4" stroke-linecap="round"></path>
             </svg>
         </div>
-        <div class="cfa-label cfa-connected"><?php esc_html_e( 'Connected', 'formular-af-citizenone-journalsystem' ); ?></div>
+        <div class="facioj-label facioj-connected"><?php esc_html_e( 'Connected', 'formular-af-citizenone-journalsystem' ); ?></div>
     </div>
 <?php else : ?>
-    <div class="cfa-icon-box">
-        <div class="cfa-icon cfa-not-connected">
+    <div class="facioj-icon-box">
+        <div class="facioj-icon facioj-not-connected">
             <svg width="60" height="60" viewBox="0 0 100 100">
                 <rect x="20" y="35" width="60" height="30" rx="15" fill="currentColor" opacity="0.2"></rect>
                 <circle cx="30" cy="50" r="10" fill="currentColor"></circle>
