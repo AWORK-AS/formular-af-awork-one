@@ -1,18 +1,18 @@
 <?php
 
 /**
- * mzaworkdk\CitizenOne
+ * mzaworkdk\Citizenone
  *
- * @package   mzaworkdk\CitizenOne
+ * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\CitizenOne\Backend;
+namespace mzaworkdk\Citizenone\Backend;
 
-use mzaworkdk\CitizenOne\Engine\Base;
+use mzaworkdk\Citizenone\Engine\Base;
 
 /**
  * Activate and deactive method of the plugin and relates.
@@ -235,7 +235,6 @@ class ActDeact extends Base {
 	private static function single_deactivate() {
 		self::remove_capabilities();
 		// Clear the permalinks
-		\delete_option( \FACIOJ_TEXTDOMAIN . '-settings' );
 		\flush_rewrite_rules();
 	}
 

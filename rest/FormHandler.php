@@ -4,13 +4,13 @@
  * The "Contact Form" submit handler
  *
  *
- * @package   mzaworkdk\CitizenOne
+ * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
-namespace mzaworkdk\CitizenOne\Rest;
+namespace mzaworkdk\Citizenone\Rest;
 
 class FormHandler {
     public function __construct() {
@@ -81,7 +81,7 @@ class FormHandler {
         }
 
         
-        $submission = new \mzaworkdk\CitizenOne\Internals\Models\ContactSubmission();
+        $submission = new \mzaworkdk\Citizenone\Internals\Models\ContactSubmission();
         
         if ($submission->submit_lead($data)) {
             return new \WP_REST_Response([

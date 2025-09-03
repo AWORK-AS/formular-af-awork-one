@@ -1,18 +1,18 @@
 <?php
 
 /**
- * mzaworkdk\CitizenOne
+ * mzaworkdk\Citizenone
  *
- * @package   mzaworkdk\CitizenOne
+ * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\CitizenOne\Backend;
+namespace mzaworkdk\Citizenone\Backend;
 
-use mzaworkdk\CitizenOne\Engine\Base;
+use mzaworkdk\Citizenone\Engine\Base;
 
 /**
  * Provide Import and Export of the settings of the plugin

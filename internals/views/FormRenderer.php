@@ -1,6 +1,6 @@
 <?php
 
-namespace mzaworkdk\CitizenOne\Internals\Views;
+namespace mzaworkdk\Citizenone\Internals\Views;
 
 class FormRenderer {
 

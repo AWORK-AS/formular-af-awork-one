@@ -1,6 +1,6 @@
 <?php
 /**
- * @package   mzaworkdk\CitizenOne
+ * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -75,7 +75,7 @@ function facioj_initialize_plugin() {
 	
 	
 	// Initialize the plugin's core engine.
-	new \mzaworkdk\CitizenOne\Engine\Initialize( $facioj_libraries );
+	new \mzaworkdk\Citizenone\Engine\Initialize( $facioj_libraries );
 	
     // Load Contact form block.
 	add_action(
@@ -127,11 +127,11 @@ function facioj_activate_plugin( $network_wide ) {
     require_once FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php';
     
     // Load the ActDeact class
-    if ( ! class_exists( '\mzaworkdk\CitizenOne\Backend\ActDeact' ) ) {
+    if ( ! class_exists( '\mzaworkdk\Citizenone\Backend\ActDeact' ) ) {
         require_once FACIOJ_PLUGIN_ROOT . 'backend/ActDeact.php';
     }
     
-    \mzaworkdk\CitizenOne\Backend\ActDeact::activate( $network_wide );
+    \mzaworkdk\Citizenone\Backend\ActDeact::activate( $network_wide );
 }
 
 /**
@@ -146,11 +146,11 @@ function facioj_deactivate_plugin( $network_wide ) {
     require_once FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php';
     
     // Load the ActDeact class
-    if ( ! class_exists( '\mzaworkdk\CitizenOne\Backend\ActDeact' ) ) {
+    if ( ! class_exists( '\mzaworkdk\Citizenone\Backend\ActDeact' ) ) {
         require_once FACIOJ_PLUGIN_ROOT . 'backend/ActDeact.php';
     }
     
-    \mzaworkdk\CitizenOne\Backend\ActDeact::deactivate( $network_wide );
+    \mzaworkdk\Citizenone\Backend\ActDeact::deactivate( $network_wide );
 }
 
 // Register activation and deactivation hooks

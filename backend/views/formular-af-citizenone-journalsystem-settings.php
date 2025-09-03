@@ -5,7 +5,7 @@
  * This includes the header, options, and other information that should provide
  * The User Interface to the end user.
  *
- * @package   mzaworkdk\CitizenOne
+ * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -68,6 +68,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             'type' => 'text',
         )
     );
+
     $cmb->add_field(
         array(
             'name' => 'hCaptcha ' . __( 'site key', 'formular-af-citizenone-journalsystem' ),

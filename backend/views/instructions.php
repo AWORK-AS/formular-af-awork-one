@@ -2,7 +2,7 @@
 /**
  * Instructions for the CitizenOne Form Plugin
  *
- * @package   mzaworkdk\CitizenOne
+ * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -76,7 +76,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 printf(
                     /* translators: %s is the shortcode example */
                     esc_html__( 'You can use the shortcode %s in any post, page, or widget area.', 'formular-af-citizenone-journalsystem' ),
-                    '<code>[fcioj_citizenone_form]</code>'
+                    '<code>[facioj_citizenone_form]</code>'
                 );
             ?></p>
             
@@ -89,7 +89,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             </ul>
             
             <p><strong><?php esc_html_e( 'Example with customization:', 'formular-af-citizenone-journalsystem' ); ?></strong></p>
-            <pre>[fcioj_citizenone_form
+            <pre>[facioj_citizenone_form
     headline="<?php esc_html_e( 'Get in Touch With Us', 'formular-af-citizenone-journalsystem' ); ?>"
     color="#205E77"
     button_color="#42aed9"

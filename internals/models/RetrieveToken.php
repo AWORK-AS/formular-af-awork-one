@@ -4,14 +4,14 @@
  * Retrieve token from API
  *
  *
- * @package   mzaworkdk\CitizenOne
+ * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\CitizenOne\Internals\Models;
+namespace mzaworkdk\Citizenone\Internals\Models;
 
 class RetrieveToken {
 

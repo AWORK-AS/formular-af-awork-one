@@ -134,3 +134,112 @@
     padding: 2px 5px;
     border-radius: 3px;
 }
+
+.facioj-error-message {
+	background: #fee2e2;
+	color: #b91c1c;
+	padding: 15px;
+	border-radius: 8px;
+	margin: 15px 0;
+	border-left: 4px solid #ef4444;
+}
+
+/* Modal Background */
+.facioj-plugin-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Modal Content */
+.facioj-plugin-modal-content {
+    background-color: #f8f9fa;
+    margin: 10% auto;
+    padding: 0;
+    border: 1px solid #1a2b47;
+    border-radius: 8px;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    animation: modalopen 0.3s;
+}
+
+/* Modal Header */
+.facioj-plugin-modal-header {
+    background-color: #1a2b47;
+    color: white;
+    padding: 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.facioj-plugin-modal-header h2 {
+    margin: 0;
+    color: white;
+}
+
+.facioj-plugin-modal-close {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.facioj-plugin-modal-close:hover {
+    color: #ff6b6b;
+}
+
+/* Modal Body */
+.facioj-plugin-modal-body {
+    padding: 20px;
+    color: #2c3e50;
+}
+
+.facioj-modal-form-section {
+    margin-bottom: 15px;
+}
+
+.facioj-modal-form-section label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.facioj-modal-form-section input[type="text"],
+.facioj-modal-form-section select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Modal Footer */
+.facioj-plugin-modal-footer {
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    text-align: right;
+}
+
+/* Animation */
+@keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .facioj-plugin-modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+}

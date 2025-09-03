@@ -1,6 +1,6 @@
 <?php
 
-namespace mzaworkdk\CitizenOne\Tests\WPUnit;
+namespace mzaworkdk\Citizenone\Tests\WPUnit;
 use Inpsyde\WpContext;
 
 class InitializeTest extends \Codeception\TestCase\WPTestCase {
@@ -32,14 +32,14 @@ class InitializeTest extends \Codeception\TestCase\WPTestCase {
 		do_action('plugins_loaded');
 
 		$classes   = array();
-		$classes[] = 'mzaworkdk\CitizenOne\Internals\PostTypes';
-		$classes[] = 'mzaworkdk\CitizenOne\Internals\Shortcode';
-		$classes[] = 'mzaworkdk\CitizenOne\Integrations\CMB';
-		$classes[] = 'mzaworkdk\CitizenOne\Integrations\Cron';
-		$classes[] = 'mzaworkdk\CitizenOne\Integrations\Template';
-		$classes[] = 'mzaworkdk\CitizenOne\Integrations\Widgets\My_Recent_Posts_Widget';
-		$classes[] = 'mzaworkdk\CitizenOne\Frontend\Enqueue';
-		$classes[] = 'mzaworkdk\CitizenOne\Frontend\Extras\Body_Class';
+		$classes[] = 'mzaworkdk\Citizenone\Internals\PostTypes';
+		$classes[] = 'mzaworkdk\Citizenone\Internals\Shortcode';
+		$classes[] = 'mzaworkdk\Citizenone\Integrations\CMB';
+		$classes[] = 'mzaworkdk\Citizenone\Integrations\Cron';
+		$classes[] = 'mzaworkdk\Citizenone\Integrations\Template';
+		$classes[] = 'mzaworkdk\Citizenone\Integrations\Widgets\My_Recent_Posts_Widget';
+		$classes[] = 'mzaworkdk\Citizenone\Frontend\Enqueue';
+		$classes[] = 'mzaworkdk\Citizenone\Frontend\Extras\Body_Class';
 
 		$all_classes = get_declared_classes();
 		foreach( $classes as $class ) {
@@ -56,8 +56,8 @@ class InitializeTest extends \Codeception\TestCase\WPTestCase {
 		do_action('plugins_loaded');
 
 		$classes   = array();
-		$classes[] = 'mzaworkdk\CitizenOne\Ajax\Ajax';
-		$classes[] = 'mzaworkdk\CitizenOne\Ajax\Ajax_Admin';
+		$classes[] = 'mzaworkdk\Citizenone\Ajax\Ajax';
+		$classes[] = 'mzaworkdk\Citizenone\Ajax\Ajax_Admin';
 
 		$all_classes = get_declared_classes();
 		foreach( $classes as $class ) {

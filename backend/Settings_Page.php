@@ -1,19 +1,19 @@
 <?php
 
 /**
- * mzaworkdk\CitizenOne
+ * mzaworkdk\Citizenone
  *
- * @package   mzaworkdk\CitizenOne
+ * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\CitizenOne\Backend;
+namespace mzaworkdk\Citizenone\Backend;
 
-use mzaworkdk\CitizenOne\Engine\Base;
-use mzaworkdk\CitizenOne\Internals\Models\RetrieveToken;
+use mzaworkdk\Citizenone\Engine\Base;
+use mzaworkdk\Citizenone\Internals\Models\RetrieveToken;
 
 /**
  * Create the settings page in the backend
@@ -109,6 +109,8 @@ class Settings_Page extends Base {
 			return;
 		}
 
+		$required_error_messages = array();
+        $required_error = false;
 		// Get the submitted values
 		$company_cvr = isset( $_POST[FACIOJ_TEXTDOMAIN . '_field_company_cvr'] ) ? 
 						\sanitize_text_field( \wp_unslash( $_POST[FACIOJ_TEXTDOMAIN . '_field_company_cvr'] ) )
@@ -120,27 +122,50 @@ class Settings_Page extends Base {
 				\sanitize_email( \wp_unslash( $_POST[FACIOJ_TEXTDOMAIN . '_field_email'] ) )
 				: '';
 
-		if ( empty( $company_cvr )
-			|| empty( $citizenone_company_id )
-			|| empty( $email )
-		) {
-			return;
+		if( empty( $company_cvr ) ) {
+			$required_error_messages['company_cvr'] = __( 'Company CVR is required.', 'formular-af-citizenone-journalsystem' );
+			$required_error = true;
 		}
 
-			$token = new RetrieveToken;
-			$data  = $token->submit(
-				array(
-					'company_cvr'           => $company_cvr,
-					'citizenone_company_id' => $citizenone_company_id,
-					'email'                 => $email,
-			      )
-				);
+		if( empty( $citizenone_company_id ) ) {
+			$required_error_messages['company_id'] = __( 'CitizenOne Company ID is required.', 'formular-af-citizenone-journalsystem' );
+			$required_error = true;
+		}
 
+		if( empty( $email ) ) {
+			$required_error_messages['company_id'] =  __( 'Email address ID is required.', 'formular-af-citizenone-journalsystem' );
+			$required_error = true;
+		}
+        
+		if( $required_error ) {
+			\set_transient( FACIOJ_TEXTDOMAIN .'-required-error-messages', $required_error_messages );
+			return;
+		}
+        
+		$token = new RetrieveToken;
+		$data  = $token->submit(
+			array(
+				'company_cvr'           => $company_cvr,
+				'citizenone_company_id' => $citizenone_company_id,
+				'email'                 => $email,
+				)
+			);
+		$opts = \facioj_get_settings();
+		
 		if ( !$data ) {
+			if( isset( $opts[FACIOJ_TEXTDOMAIN . '_token'] ) ) {
+				unset( $opts[FACIOJ_TEXTDOMAIN . '_token'] );
+				\update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
+			}
+            
+			\set_transient(  FACIOJ_TEXTDOMAIN .'-api-error-message', 
+					__('The API did not accept the provided data. Please check your information and try again.', 
+					 'formular-af-citizenone-journalsystem'
+				     ) );
 			return;
 		}
 
-		$opts                            = \facioj_get_settings();
+		
 		$opts[FACIOJ_TEXTDOMAIN . '_token'] = $data->data;
 		\update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
 	}
@@ -164,4 +189,25 @@ class Settings_Page extends Base {
 		return $value;
 	}
 
+	/**
+	 * Redirect to plugin settings page to apply localized script from enqueue_admin_assets. 
+	 * For showing the modal. Transients are deleted at the enqueue_admin_assets
+	 * 
+	 * @param object $cmb The CMB2 object being processed
+	 * @return void This function does not return anything as it may exit after redirect
+	 * 
+	 * @uses get_transient() Retrieves the value of a transient
+	 * @uses wp_redirect() Redirects to another page
+	 * @uses admin_url() Retrieves the URL to the admin page
+	 * 
+	 */
+     public function send_transient_to_current( $cimb ) {
+		$required_error_messages = \get_transient( FACIOJ_TEXTDOMAIN . '-required-error-messages' );
+		$api_error_message = \get_transient( FACIOJ_TEXTDOMAIN . '-api-error-message' );
+
+		if( $required_error_messages || $api_error_message ) {
+			\wp_redirect( \admin_url( 'admin.php?page=' . FACIOJ_TEXTDOMAIN ) );
+		}
+		
+	 }
 }

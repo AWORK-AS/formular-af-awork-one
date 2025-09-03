@@ -1,8 +1,8 @@
 <?php
 /**
- * mzaworkdk\CitizenOne
+ * mzaworkdk\Citizenone
  *
- * @package   mzaworkdk\CitizenOne
+ * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+

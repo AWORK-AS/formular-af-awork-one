@@ -1,18 +1,18 @@
 <?php
 
 /**
- * mzaworkdk\CitizenOne
+ * mzaworkdk\Citizenone
  *
- * @package   mzaworkdk\CitizenOne
+ * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\CitizenOne\Backend;
+namespace mzaworkdk\Citizenone\Backend;
 
-use mzaworkdk\CitizenOne\Engine\Base;
+use mzaworkdk\Citizenone\Engine\Base;
 
 /**
  * This class contain the Enqueue stuff for the backend
@@ -156,6 +156,31 @@ class Enqueue extends Base {
 			FACIOJ_VERSION,
 			true
 		);
+
+		$required_error_messages = \get_transient( FACIOJ_TEXTDOMAIN . '-required-error-messages' );
+		$api_error_message = \get_transient( FACIOJ_TEXTDOMAIN . '-api-error-message' );
+		
+		// if transients exists localized to script and delete it.
+		if( $required_error_messages || $api_error_message ) {
+
+			if( $required_error_messages ) {
+				\delete_transient( FACIOJ_TEXTDOMAIN . '-required-error-messages' );
+			}
+
+			if( $api_error_message ) {
+				\delete_transient( FACIOJ_TEXTDOMAIN . '-api-error-message' );
+			}
+
+			\wp_localize_script(
+				FACIOJ_TEXTDOMAIN . '-settings-script',
+				'facioj_transients',
+				array(
+					'required_error_messages' => $required_error_messages,
+					'api_error_message' => $api_error_message,
+				)
+			);
+			
+		}
 	}
 
 }

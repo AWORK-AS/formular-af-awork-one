@@ -1,8 +1,8 @@
 <?php
 
-namespace mzaworkdk\CitizenOne\Internals;
+namespace mzaworkdk\Citizenone\Internals;
 
-use mzaworkdk\CitizenOne\Internals\Views\FormRenderer;
+use mzaworkdk\Citizenone\Internals\Views\FormRenderer;
 
 class Shortcode {
 

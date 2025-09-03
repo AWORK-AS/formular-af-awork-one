@@ -68,17 +68,17 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "mzaworkdk\\CitizenOne\\Ajax\\": "ajax/",
-            "mzaworkdk\\CitizenOne\\Backend\\": "backend/",
-            "mzaworkdk\\CitizenOne\\Cli\\": "cli/",
-            "mzaworkdk\\CitizenOne\\Engine\\": "engine/",
-            "mzaworkdk\\CitizenOne\\Frontend\\": "frontend/",
-            "mzaworkdk\\CitizenOne\\Integrations\\": "integrations/",
-            "mzaworkdk\\CitizenOne\\Internals\\": "internals/",
-            "mzaworkdk\\CitizenOne\\Internals\\Models\\": "internals/models/",
-            "mzaworkdk\\CitizenOne\\Internals\\Views\\": "internals/views/",
-            "mzaworkdk\\CitizenOne\\Rest\\": "rest/",
-            "mzaworkdk\\CitizenOne\\Class\\": "class/"
+            "mzaworkdk\\Citizenone\\Ajax\\": "ajax/",
+            "mzaworkdk\\Citizenone\\Backend\\": "backend/",
+            "mzaworkdk\\Citizenone\\Cli\\": "cli/",
+            "mzaworkdk\\Citizenone\\Engine\\": "engine/",
+            "mzaworkdk\\Citizenone\\Frontend\\": "frontend/",
+            "mzaworkdk\\Citizenone\\Integrations\\": "integrations/",
+            "mzaworkdk\\Citizenone\\Internals\\": "internals/",
+            "mzaworkdk\\Citizenone\\Internals\\Models\\": "internals/models/",
+            "mzaworkdk\\Citizenone\\Internals\\Views\\": "internals/views/",
+            "mzaworkdk\\Citizenone\\Rest\\": "rest/",
+            "mzaworkdk\\Citizenone\\Class\\": "class/"
         }
     },
     "config": {

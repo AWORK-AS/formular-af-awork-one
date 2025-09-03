@@ -1,7 +1,7 @@
 <?php
 
 /**
- * mzaworkdk\CitizenOne
+ * mzaworkdk\Citizenone
  *
  * Fired when the plugin is uninstalled.
  *
@@ -15,7 +15,7 @@
  * - Repeat with other user roles. Best directly by using the links/query string parameters.
  * - Repeat things for multisite. Once for a single site in the network, once sitewide.
  *
- * @package   mzaworkdk\CitizenOne
+ * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
