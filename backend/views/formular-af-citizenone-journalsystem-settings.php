@@ -32,6 +32,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             'name' => __( 'Email', 'formular-af-citizenone-journalsystem' ),
             'id'   => FACIOJ_TEXTDOMAIN . '_field_email',
             'type' => 'text_email',
+            'attributes' => array(
+					    'required' => 'required', // HTML5 validation
+                                ),
         )
     );
     
@@ -40,6 +43,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             'name' => __( 'Company CVR', 'formular-af-citizenone-journalsystem' ),
             'id'   => FACIOJ_TEXTDOMAIN . '_field_company_cvr',
             'type' => 'text',
+            'attributes' => array(
+					    'required' => 'required', // HTML5 validation
+                                ),
         )
     );
     
@@ -48,6 +54,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             'name' => __( 'CitizenOne Company ID', 'formular-af-citizenone-journalsystem' ),
             'id'   => FACIOJ_TEXTDOMAIN . '_field_company_id',
             'type' => 'text',
+            'attributes' => array(
+					    'required' => 'required', // HTML5 validation
+                                ),
         )
     );
     

@@ -7,17 +7,9 @@ import './styles/settings.scss';
  */
 ( ( $ ) => {
 	$( () => {
-		var facioj_transients = window.facioj_transients;
-		let facioj_required_error_messages, facioj_api_error_message;
-		if ( facioj_transients ) {
-			facioj_required_error_messages = facioj_transients.required_error_messages ?? null;
-			facioj_api_error_message = facioj_transients.api_error_message ?? null;
-		}
-
-		if( facioj_required_error_messages || facioj_api_error_message ) {
-			
-		}
+		
 		$( '#tabs' ).tabs();
+		
 		var facioj_modal = $("#facioj-plugin-modal");
         var facioj_closeBtn = $(".facioj-plugin-modal-close");
 		var facioj_cancelBtn = $("#facioj-cancel-modal");

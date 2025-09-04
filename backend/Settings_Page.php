@@ -15,10 +15,17 @@ namespace mzaworkdk\Citizenone\Backend;
 use mzaworkdk\Citizenone\Engine\Base;
 use mzaworkdk\Citizenone\Internals\Models\RetrieveToken;
 
+
+
 /**
  * Create the settings page in the backend
  */
 class Settings_Page extends Base {
+
+	/**
+	 * @var object|null
+	 */
+
 
 	/**
 	 * Initialize the class.
@@ -29,7 +36,7 @@ class Settings_Page extends Base {
 		if ( !parent::initialize() ) {
 			return;
 		}
-		
+
 		// Add the options page and menu item.
 		\add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
     
@@ -39,6 +46,7 @@ class Settings_Page extends Base {
 		$realpath        = (string) \realpath( __DIR__ );
 		$plugin_basename = \plugin_basename( \plugin_dir_path( $realpath ) . FACIOJ_TEXTDOMAIN . '.php' );
 		\add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
+
 	}
 
 	/**
@@ -123,22 +131,33 @@ class Settings_Page extends Base {
 				: '';
 
 		if( empty( $company_cvr ) ) {
-			$required_error_messages['company_cvr'] = __( 'Company CVR is required.', 'formular-af-citizenone-journalsystem' );
+			\wpdesk_wp_notice( __( 'Company CVR is required.', 'formular-af-citizenone-journalsystem' ),
+			 			'error', 
+						true 
+					);
+			
+			
 			$required_error = true;
 		}
 
 		if( empty( $citizenone_company_id ) ) {
-			$required_error_messages['company_id'] = __( 'CitizenOne Company ID is required.', 'formular-af-citizenone-journalsystem' );
+			\wpdesk_wp_notice( __( 'CitizenOne Company ID is required.', 'formular-af-citizenone-journalsystem' ),
+							  'error',
+							  true
+							);
+			
 			$required_error = true;
 		}
 
 		if( empty( $email ) ) {
-			$required_error_messages['company_id'] =  __( 'Email address ID is required.', 'formular-af-citizenone-journalsystem' );
+			\wpdesk_wp_notice( __( 'Email address ID is required.', 'formular-af-citizenone-journalsystem' ),
+						 	'error',
+							true
+							);
 			$required_error = true;
 		}
-        
+
 		if( $required_error ) {
-			\set_transient( FACIOJ_TEXTDOMAIN .'-required-error-messages', $required_error_messages );
 			return;
 		}
         
@@ -150,6 +169,7 @@ class Settings_Page extends Base {
 				'email'                 => $email,
 				)
 			);
+		
 		$opts = \facioj_get_settings();
 		
 		if ( !$data ) {
@@ -157,17 +177,23 @@ class Settings_Page extends Base {
 				unset( $opts[FACIOJ_TEXTDOMAIN . '_token'] );
 				\update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
 			}
-            
-			\set_transient(  FACIOJ_TEXTDOMAIN .'-api-error-message', 
-					__('The API did not accept the provided data. Please check your information and try again.', 
-					 'formular-af-citizenone-journalsystem'
-				     ) );
+			\wpdesk_wp_notice( __('The API did not accept the provided data. Please check your information and try again.', 
+							      'formular-af-citizenone-journalsystem'
+								),
+								'error',
+								true
+							);
 			return;
 		}
-
 		
 		$opts[FACIOJ_TEXTDOMAIN . '_token'] = $data->data;
 		\update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
+		\wpdesk_wp_notice( __( '✅ Successfully connected to CitizenOne', 
+							'formular-af-citizenone-journalsystem'
+							),
+							'success',
+							true
+						);
 	}
 
 	/**
@@ -189,25 +215,4 @@ class Settings_Page extends Base {
 		return $value;
 	}
 
-	/**
-	 * Redirect to plugin settings page to apply localized script from enqueue_admin_assets. 
-	 * For showing the modal. Transients are deleted at the enqueue_admin_assets
-	 * 
-	 * @param object $cmb The CMB2 object being processed
-	 * @return void This function does not return anything as it may exit after redirect
-	 * 
-	 * @uses get_transient() Retrieves the value of a transient
-	 * @uses wp_redirect() Redirects to another page
-	 * @uses admin_url() Retrieves the URL to the admin page
-	 * 
-	 */
-     public function send_transient_to_current( $cimb ) {
-		$required_error_messages = \get_transient( FACIOJ_TEXTDOMAIN . '-required-error-messages' );
-		$api_error_message = \get_transient( FACIOJ_TEXTDOMAIN . '-api-error-message' );
-
-		if( $required_error_messages || $api_error_message ) {
-			\wp_redirect( \admin_url( 'admin.php?page=' . FACIOJ_TEXTDOMAIN ) );
-		}
-		
-	 }
 }

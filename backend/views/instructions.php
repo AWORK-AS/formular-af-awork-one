@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 printf(
                     /* translators: %s is a link to the CitizenOne dashboard */
                     esc_html__( 'You can find the CVR and Company ID in your %s.', 'formular-af-citizenone-journalsystem' ),
-                    '<a href="https://citizenone.dk/dashboard" target="_blank">' . esc_html__( 'CitizenOne dashboard', 'formular-af-citizenone-journalsystem' ) . '</a>'
+                    '<a href="https://citizenone.dk/" target="_blank">' . esc_html__( 'CitizenOne dashboard', 'formular-af-citizenone-journalsystem' ) . '</a>'
                 );
             ?></p>
         </div>
