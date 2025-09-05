@@ -9,7 +9,9 @@
  * @link      https://awork.dk
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 ?>
 
@@ -25,13 +27,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 <li><strong><?php esc_html_e( 'CitizenOne Company ID', 'formular-af-citizenone-journalsystem' ); ?></strong> - <?php esc_html_e( 'Your company ID in the CitizenOne system', 'formular-af-citizenone-journalsystem' ); ?></li>
             </ul>
             
-            <p><?php 
+            <p>
+            <?php
                 printf(
                     /* translators: %s is a link to the CitizenOne dashboard */
                     esc_html__( 'You can find the CVR and Company ID in your %s.', 'formular-af-citizenone-journalsystem' ),
                     '<a href="https://citizenone.dk/" target="_blank">' . esc_html__( 'CitizenOne dashboard', 'formular-af-citizenone-journalsystem' ) . '</a>'
                 );
-            ?></p>
+				?>
+            </p>
         </div>
         
         <div class="facioj-section">
@@ -43,13 +47,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                 <li><strong><?php esc_html_e( 'Secret Key', 'formular-af-citizenone-journalsystem' ); ?></strong> - <?php esc_html_e( 'Your hCaptcha secret key', 'formular-af-citizenone-journalsystem' ); ?></li>
             </ul>
             
-            <p><?php 
+            <p>
+            <?php
                 printf(
                     /* translators: %s is a link to the hCaptcha dashboard */
                     esc_html__( 'You can get these keys from the %s after creating an account.', 'formular-af-citizenone-journalsystem' ),
                     '<a href="https://www.hcaptcha.com/" target="_blank">' . esc_html__( 'hCaptcha dashboard', 'formular-af-citizenone-journalsystem' ) . '</a>'
                 );
-            ?></p>
+				?>
+            </p>
         </div>
         
         <div class="facioj-section">
@@ -60,25 +66,29 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
             <p><?php esc_html_e( 'When editing a page or post:', 'formular-af-citizenone-journalsystem' ); ?></p>
             <ol>
                 <li><?php esc_html_e( 'Click the "+" button to add a new block', 'formular-af-citizenone-journalsystem' ); ?></li>
-                <li><?php 
+                <li>
+                <?php
                     printf(
                         /* translators: %s is a list of search keywords */
                         esc_html__( 'Search for: %s', 'formular-af-citizenone-journalsystem' ),
                         '<strong>' . esc_html__( 'citizenone, contacts, leads, or form', 'formular-af-citizenone-journalsystem' ) . '</strong>'
                     );
-                ?></li>
+					?>
+                </li>
                 <li><?php esc_html_e( 'Select the "Contact Form" block', 'formular-af-citizenone-journalsystem' ); ?></li>
                 <li><?php esc_html_e( 'Customize the form as needed', 'formular-af-citizenone-journalsystem' ); ?></li>
             </ol>
             
             <h4><?php esc_html_e( '2. Shortcode', 'formular-af-citizenone-journalsystem' ); ?></h4>
-            <p><?php 
+            <p>
+            <?php
                 printf(
                     /* translators: %s is the shortcode example */
                     esc_html__( 'You can use the shortcode %s in any post, page, or widget area.', 'formular-af-citizenone-journalsystem' ),
                     '<code>[facioj_citizenone_form]</code>'
                 );
-            ?></p>
+				?>
+            </p>
             
             <p><strong><?php esc_html_e( 'Customization options:', 'formular-af-citizenone-journalsystem' ); ?></strong></p>
             <ul>

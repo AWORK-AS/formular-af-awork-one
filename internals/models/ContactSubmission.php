@@ -3,7 +3,6 @@
 /**
  * Submission of web leads to API
  *
- *
  * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
@@ -20,7 +19,7 @@ class ContactSubmission {
         $options = \facioj_get_settings();
         $token   = $options[FACIOJ_TEXTDOMAIN . '_token'] ?? false;
 
-        if( !$token ) {
+        if ( !$token ) {
             return false;
         }
 

@@ -11,8 +11,8 @@
 
 namespace mzaworkdk\Citizenone\Backend;
 
-use mzaworkdk\Citizenone\Engine\Base;
 use I18n_Notice_WordPressOrg;
+use mzaworkdk\Citizenone\Engine\Base;
 
 /**
  * Everything that involves notification on the WordPress dashboard
@@ -39,9 +39,9 @@ class Notices extends Base {
 
 		new I18n_Notice_WordPressOrg(
 		array(
-			'textdomain'       => FACIOJ_TEXTDOMAIN,
-			'facioj' => FACIOJ_NAME,
-			'hook'             => 'admin_notices',
+			'textdomain' => FACIOJ_TEXTDOMAIN,
+			'facioj'     => FACIOJ_NAME,
+			'hook'       => 'admin_notices',
 		),
 		true
 		);

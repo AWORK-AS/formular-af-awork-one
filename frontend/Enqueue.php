@@ -135,7 +135,6 @@ class Enqueue extends Base {
 				'hcaptcha_enabled'  => $hcaptcha_enabled,
 			)
 		);
-
 	}
 
 	/**
@@ -145,20 +144,17 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	protected function load_hcaptcha_script() {
-		$opts = \facioj_get_settings();
+		$opts                = \facioj_get_settings();
 		$hcaptcha_site_key   = $opts[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
 		$hcaptcha_secret_key = $opts[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
 		$hcaptcha_enabled    = $hcaptcha_site_key && $hcaptcha_secret_key;
-		if( $hcaptcha_enabled && !\wp_script_is( 'hcaptcha', 'enqueued' ) ) {
-			// Load hCaptcha script if needed
-			wp_enqueue_script(
-				'hcaptcha',
-				'https://js.hcaptcha.com/1/api.js',
-				array(),
-				FACIOJ_VERSION,
-				true
-			);
+
+		if ( !$hcaptcha_enabled || \wp_script_is( 'hcaptcha', 'enqueued' ) ) {
+			return;
 		}
-		
+
+		// Load hCaptcha script if needed
+		wp_enqueue_script( 'hcaptcha', 'https://js.hcaptcha.com/1/api.js', array(), FACIOJ_VERSION, true );
 	}
+
 }

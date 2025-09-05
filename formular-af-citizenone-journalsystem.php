@@ -31,8 +31,7 @@ define( 'FACIOJ_TEXTDOMAIN', 'formular-af-citizenone-journalsystem' );
 define( 'FACIOJ_VERSION', '1.0.5' );
 define( 'FACIOJ_MIN_PHP_VERSION', '7.4' );
 define( 'FACIOJ_WP_VERSION', '5.8' );
-// define( 'FACIOJ_PLUGIN_API_URL', 'https://server1488.citizenone.dk/api' );
-define( 'FACIOJ_PLUGIN_API_URL', 'http://127.0.0.1:8000/api' );
+define( 'FACIOJ_PLUGIN_API_URL', 'https://server1488.citizenone.dk/api' );
 define( 'FACIOJ_PLUGIN_API_NAME', 'CitizenOne journalsystem' );
 define( 'FACIOJ_NAME', 'Formular af CitizenOne journalsystem' );
 /**
@@ -114,7 +113,6 @@ add_action( 'init', 'facioj_initialize_plugin' );
  * Handle activation - use a separate function to avoid class dependency issues
  */
 function facioj_activate_plugin( $network_wide ) {
-
 	// Double-check if constant is defined
     if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
         define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );

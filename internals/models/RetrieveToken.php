@@ -3,7 +3,6 @@
 /**
  * Retrieve token from API
  *
- *
  * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
@@ -16,11 +15,11 @@ namespace mzaworkdk\Citizenone\Internals\Models;
 class RetrieveToken {
 
     /**
-     * Submit data to generate a token
-     *
-     * @param array<string, mixed> $data
-     * @return object|array<string, mixed>|null|false
-     */
+	 * Submit data to generate a token
+	 *
+	 * @param array<string, mixed> $data
+	 * @return object|array<string, mixed>|false|null
+	 */
     public function submit( $data ) {
         $response = \wp_remote_post(
             FACIOJ_PLUGIN_API_URL . '/jwt/generate-token',

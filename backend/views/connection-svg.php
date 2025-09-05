@@ -12,7 +12,9 @@
  * @link      https://awork.dk
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 $opts  = facioj_get_settings();
 $token = $opts[FACIOJ_TEXTDOMAIN . '_token'] ?? false;
@@ -21,11 +23,9 @@ if ( $token ) :
 	?>
     <div class="facioj-icon-box">
         <div class="facioj-icon facioj-connected">
-            <svg width="60" height="60" viewBox="0 0 100 100">
-                <rect x="20" y="35" width="60" height="30" rx="15" fill="currentColor" opacity="0.2"></rect>
-                <circle cx="30" cy="50" r="10" fill="currentColor"></circle>
-                <circle cx="70" cy="50" r="10" fill="currentColor"></circle>
-                <path d="M40,50 L60,50" stroke="white" stroke-width="4" stroke-linecap="round"></path>
+            <svg class="svg-icon" width="70" height="70" viewBox="0 0 38.98 38.98">
+                <circle cx="19.49" cy="19.49" r="18.99" fill="#00607a" stroke="#f3f9ee" stroke-width="1" opacity="0.9"></circle>
+                <circle cx="19.43" cy="19.55" r="11.93" fill="#f3f9ee" stroke="#f3f9ee" stroke-width="1" opacity="0.9"></circle>
             </svg>
         </div>
         <div class="facioj-label facioj-connected"><?php esc_html_e( 'Connected', 'formular-af-citizenone-journalsystem' ); ?></div>
@@ -33,11 +33,9 @@ if ( $token ) :
 <?php else : ?>
     <div class="facioj-icon-box">
         <div class="facioj-icon facioj-not-connected">
-            <svg width="60" height="60" viewBox="0 0 100 100">
-                <rect x="20" y="35" width="60" height="30" rx="15" fill="currentColor" opacity="0.2"></rect>
-                <circle cx="30" cy="50" r="10" fill="currentColor"></circle>
-                <circle cx="70" cy="50" r="10" fill="currentColor"></circle>
-                <path d="M40,40 L60,60 M60,40 L40,60" stroke="white" stroke-width="4" stroke-linecap="round"></path>
+            <svg class="svg-icon" width="70" height="70" viewBox="0 0 38.98 38.98">
+                <circle cx="19.49" cy="19.49" r="18.99" fill="#a62b2b" stroke="#f3f9ee" stroke-width="1" opacity="0.9"></circle>
+                <circle cx="19.43" cy="19.55" r="11.93" fill="#f3f9ee" stroke="#f3f9ee" stroke-width="1" opacity="0.9"></circle>
             </svg>
         </div>
         <div><?php esc_html_e( 'Not Connected', 'formular-af-citizenone-journalsystem' ); ?></div>

@@ -15,7 +15,9 @@
  * @since 1.0.0
  * @return array
  */
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 function facioj_get_settings() {
 	return apply_filters( 'facioj_get_settings', get_option( FACIOJ_TEXTDOMAIN . '-settings' ) );

@@ -11,7 +11,6 @@ class Shortcode {
     }
     
     public function render_shortcode( $attributes ) {
-
         // Pass block attributes to the renderer
         if ( !empty( $attributes['headline'] ) ) {
             \add_filter(
@@ -50,6 +49,7 @@ class Shortcode {
         }
 
         $renderer = new FormRenderer;
+
         return $renderer->render_form();
     }
 

@@ -156,7 +156,6 @@ class Enqueue extends Base {
 			FACIOJ_VERSION,
 			true
 		);
-		
 	}
 
 }

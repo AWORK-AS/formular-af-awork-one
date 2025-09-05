@@ -12,7 +12,9 @@
  * @link      https://awork.dk
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 ?>
 
@@ -29,33 +31,33 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
     
     $cmb->add_field(
         array(
-            'name' => __( 'Email', 'formular-af-citizenone-journalsystem' ),
-            'id'   => FACIOJ_TEXTDOMAIN . '_field_email',
-            'type' => 'text_email',
+            'name'       => __( 'Email', 'formular-af-citizenone-journalsystem' ),
+            'id'         => FACIOJ_TEXTDOMAIN . '_field_email',
+            'type'       => 'text_email',
             'attributes' => array(
-					    'required' => 'required', // HTML5 validation
+				'required' => 'required', // HTML5 validation
                                 ),
         )
     );
     
     $cmb->add_field(
         array(
-            'name' => __( 'Company CVR', 'formular-af-citizenone-journalsystem' ),
-            'id'   => FACIOJ_TEXTDOMAIN . '_field_company_cvr',
-            'type' => 'text',
+            'name'       => __( 'Company CVR', 'formular-af-citizenone-journalsystem' ),
+            'id'         => FACIOJ_TEXTDOMAIN . '_field_company_cvr',
+            'type'       => 'text',
             'attributes' => array(
-					    'required' => 'required', // HTML5 validation
+				'required' => 'required', // HTML5 validation
                                 ),
         )
     );
     
     $cmb->add_field(
         array(
-            'name' => __( 'CitizenOne Company ID', 'formular-af-citizenone-journalsystem' ),
-            'id'   => FACIOJ_TEXTDOMAIN . '_field_company_id',
-            'type' => 'text',
+            'name'       => __( 'CitizenOne Company ID', 'formular-af-citizenone-journalsystem' ),
+            'id'         => FACIOJ_TEXTDOMAIN . '_field_company_id',
+            'type'       => 'text',
             'attributes' => array(
-					    'required' => 'required', // HTML5 validation
+				'required' => 'required', // HTML5 validation
                                 ),
         )
     );

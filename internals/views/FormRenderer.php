@@ -8,12 +8,12 @@ class FormRenderer {
         $color        = \apply_filters( 'facioj_color', '#205E77' );
         $headline     = \apply_filters( 'facioj_headline', __( 'Get in Touch With Us', 'formular-af-citizenone-journalsystem' ) );
         $btnColor     = \apply_filters( 'facioj_button_color', '#42aed9' );
-        $btnTextColor = \apply_filters( 'facioj_button_text_color', '#ffffff');
+        $btnTextColor = \apply_filters( 'facioj_button_text_color', '#ffffff' );
         $opts         = \facioj_get_settings();
         
         $hcaptcha_site_key   = $opts[ FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key' ];
-        $hcaptcha_secret_key = $opts[ FACIOJ_TEXTDOMAIN. '_hcaptcha_secret_key'];
-        $hcaptcha_enabled    = ($hcaptcha_site_key && $hcaptcha_secret_key);
+        $hcaptcha_secret_key = $opts[ FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'];
+        $hcaptcha_enabled    = ( $hcaptcha_site_key && $hcaptcha_secret_key );
         
         // Unique ID for form instance
         $form_id = 'facioj-form-' . uniqid();
@@ -78,18 +78,21 @@ class FormRenderer {
                                 ></textarea>
                         </div>
 
-                        <?php if($hcaptcha_enabled):?>
+                        <?php
+
+						if ( $hcaptcha_enabled ) :
+							?>
                             <div class="facioj-form-group facioj-form-group--full">
                                 <div class="h-captcha" data-sitekey="<?php echo \esc_attr( $hcaptcha_site_key ); ?>"></div>
                             </div>
-                        <?php endif;?>
+                        <?php endif; ?>
                     </div>
                     
                     <div class="facioj-form-footer">
                         <button 
                         type="submit" 
                         class="facioj-submit-btn"
-                        style="background-color:<?php echo \esc_attr( $btnColor );?>;color:<?php echo \esc_attr( $btnTextColor );?>"
+                        style="background-color:<?php echo \esc_attr( $btnColor ); ?>;color:<?php echo \esc_attr( $btnTextColor ); ?>"
                         >
                             <?php \esc_attr_e( 'Submit', 'formular-af-citizenone-journalsystem' ); ?>
                         </button>

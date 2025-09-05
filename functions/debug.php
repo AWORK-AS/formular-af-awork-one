@@ -1,4 +1,5 @@
 <?php
+
 /**
  * mzaworkdk\Citizenone
  *
@@ -8,7 +9,9 @@
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 $facioj_debug = new WPBP_Debug( __( 'Contact Form App', 'formular-af-citizenone-journalsystem' ) );
 
