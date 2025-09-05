@@ -37,30 +37,15 @@ jobs:
 
     - name: Create plugin ZIP file
       run: |
-       wp dist-archive ./contact-form-app formular-af-citizenone-journalsystem.zip
-    
-    - name: Wait for ZIP file to be created
-      run: |
-          # Wait for 10 seconds
-          counter=0
-          while [ ! -f "formular-af-citizenone-journalsystem.zip" ] && [ $counter -lt 10 ]; do
-            sleep 1
-            counter=$((counter + 1))
-            echo "Waiting for ZIP file... ($counter seconds)"
-          done
-          
-          if [ -f "formular-af-citizenone-journalsystem.zip" ]; then
-            echo "✅ ZIP file found!"
-            ls -la formular-af-citizenone-journalsystem.zip
-          else
-            echo "❌ ZIP file still not found after 10 seconds"
-            ls -la
-            exit 1
-          fi
+       wp dist-archive . --plugin-dirname=formular-af-citizenone-journalsystem
     
     - name: Upload release assets
       uses: softprops/action-gh-release@v1
       with:
-        files: formular-af-citizenone-journalsystem.zip
+        files: ${{ github.workspace }}/formular-af-citizenone-journalsystem.*.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Clean archived file
+      run: |
+        rm ${{ github.workspace }}/formular-af-citizenone-journalsystem.*.zip
