@@ -3,7 +3,7 @@ Contributors: mzaworkdk
 Tags: contacts, leads, citizenone
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 1.0.5
+Stable tag: 1.1.0
 License: GPLv3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -91,3 +91,18 @@ All submissions populate in your dashboard > Leads section with timestamp, sourc
 
 = 1.0.5 =
 * Added a shortcode [citizenone_form]
+
+= 1.1.0 = 
+* Fixes for issues:
+  - You haven't added yourself to the "Contributors" list for this plugin.
+  - Not permitted ﬁles
+  - WordPress.org directory assets in the plugin code.
+  - Out of Date Libraries
+  - Undocumented use of a 3rd Party / external service
+  - Missing permission_callback in register_rest_route()
+  - Data Must be Sanitized, Escaped, and Validated
+  - Processing the whole input
+  - Generic function/class/deﬁne/namespace/option names
+  - Allowing Direct File Access to plugin ﬁles
+* Added settings validation notices
+* Added settings and form implementation instructions
