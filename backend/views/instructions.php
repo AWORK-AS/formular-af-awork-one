@@ -64,7 +64,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
                     printf(
                         /* translators: %s is a list of search keywords */
                         esc_html__( 'Search for: %s', 'formular-af-citizenone-journalsystem' ),
-                        '<strong>citizenone, contacts, leads, or form</strong>'
+                        '<strong>' . esc_html__( 'citizenone, contacts, leads, or form', 'formular-af-citizenone-journalsystem' ) . '</strong>'
                     );
                 ?></li>
                 <li><?php esc_html_e( 'Select the "Contact Form" block', 'formular-af-citizenone-journalsystem' ); ?></li>
