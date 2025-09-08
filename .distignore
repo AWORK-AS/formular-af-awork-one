@@ -4,7 +4,6 @@
 node_modules/
 .git/
 .github/
-composer.json
 composer.lock
 *.md
 *.sh

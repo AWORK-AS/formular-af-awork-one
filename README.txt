@@ -3,7 +3,7 @@ Contributors: mzaworkdk
 Tags: contacts, leads, citizenone
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -106,3 +106,6 @@ All submissions populate in your dashboard > Leads section with timestamp, sourc
   - Allowing Direct File Access to plugin ﬁles
 * Added settings validation notices
 * Added settings and form implementation instructions
+
+= 1.1.1 =
+* small .distignore fix
