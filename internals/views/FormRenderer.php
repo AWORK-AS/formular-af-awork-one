@@ -39,7 +39,7 @@ class FormRenderer {
                                 >
                         </div>
                         
-                        <div class="facioj-form-group">
+                        <div class="facioj-form-group facioj-form-group--full">
                             <input 
                                 type="text" 
                                 id="facioj-company" 

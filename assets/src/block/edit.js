@@ -53,7 +53,7 @@ export default function Edit({ attributes, setAttributes }) {
                             <input type="text" disabled placeholder={__( 'Name', 'formular-af-citizenone-journalsystem' )}/>
                         </div>
                         
-                        <div className="facioj-form-group">
+                        <div className="facioj-form-group facioj-form-group--full">
                             <input type="text" disabled placeholder={__( 'Company', 'formular-af-citizenone-journalsystem' )}/>
                         </div>
                         

@@ -26,7 +26,7 @@ export default function save({ attributes }) {
                             />
                         </div>
                         
-                        <div className="facioj-form-group">
+                        <div className="facioj-form-group facioj-form-group--full">
                             <input
                                 type="text"
                                 id={`${formId}-company`}

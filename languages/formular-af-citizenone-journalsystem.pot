@@ -322,7 +322,7 @@ msgstr "Navn"
 #: assets/src/block/edit.js:57
 #: assets/src/block/save.js:35
 msgid "Company"
-msgstr "Selskab"
+msgstr "Virksomhed"
 
 #: internals/views/FormRenderer.php:67
 #: assets/build/plugin-block.js:1
