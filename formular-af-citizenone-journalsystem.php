@@ -40,7 +40,7 @@ define( 'FACIOJ_NAME', 'Formular af CitizenOne journalsystem' );
  * This function is hooked to 'init' to ensure all WordPress functionalities,
  * including user data and translations, are ready.
  */
-function facioj_initialize_plugin() {
+function facioj_initialize_plugin(): void {
 	// Require necessary files.
 	$facioj_libraries = require FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php';
 	require_once FACIOJ_PLUGIN_ROOT . 'functions/functions.php';
@@ -65,15 +65,12 @@ function facioj_initialize_plugin() {
 	}
 
 	// Set up the update checker.
-	$my_update_checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+	\YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
 		'https://github.com/AWORK-AS/contact-form-app',
 		FACIOJ_PLUGIN_ABSOLUTE,
 		FACIOJ_TEXTDOMAIN
 	);
-	$my_update_checker->setBranch( 'main' );
     
-	
-	
 	// Initialize the plugin's core engine.
 	new \mzaworkdk\Citizenone\Engine\Initialize( $facioj_libraries );
 	
@@ -114,7 +111,7 @@ add_action( 'init', 'facioj_initialize_plugin' );
  *
  * @param bool $network_wide Network wide.
  */
-function facioj_activate_plugin( $network_wide ) {
+function facioj_activate_plugin( $network_wide ): void {
 	// Double-check if constant is defined
     if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
         define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
@@ -140,7 +137,7 @@ function facioj_activate_plugin( $network_wide ) {
  *
  * @param bool $network_wide Network wide.
  */
-function facioj_deactivate_plugin( $network_wide ) {
+function facioj_deactivate_plugin( $network_wide ): void {
     // Ensure the autoloader is available
     if ( ! file_exists( FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
         return;

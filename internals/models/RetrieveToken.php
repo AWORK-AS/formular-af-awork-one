@@ -21,13 +21,20 @@ class RetrieveToken {
 	 * Submit data to generate a token
 	 *
 	 * @param array $data Data.
-	 * @return object|array<string, mixed>|false|null
+	 * @return mixed|false
 	 */
     public function submit( $data ) {
+        $json_data = \wp_json_encode( $data );
+
+        // Ensure we have valid JSON before making the request
+        if ( false === $json_data ) {
+            return false;
+        }
+
         $response = \wp_remote_post(
             FACIOJ_PLUGIN_API_URL . '/jwt/generate-token',
             array(
-				'body'    => \wp_json_encode( $data ),
+				'body'    => $json_data,
 				'headers' => array(
 					'Content-Type' => 'application/json',
 					'Accept'       => 'application/json',

@@ -19,7 +19,7 @@ use mzaworkdk\Citizenone\Internals\Views\FormRenderer;
  */
 class Shortcode {
 
-    public function initialize() {
+    public function initialize(): void {
         \add_shortcode( 'facioj_citizenone_form', array( $this, 'render_shortcode' ) );
     }
     
@@ -28,7 +28,7 @@ class Shortcode {
      *
      * @param array $attributes Attributes.
      */
-    public function render_shortcode( $attributes ): string {
+    public function render_shortcode( $attributes ): string|false {
         // Pass block attributes to the renderer
         if ( !empty( $attributes['headline'] ) ) {
             \add_filter(

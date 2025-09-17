@@ -12,6 +12,8 @@
 
 namespace mzaworkdk\Citizenone\Rest;
 
+use WP_REST_Request;
+
 /**
  * Form submission handler.
  */
@@ -24,7 +26,7 @@ class FormHandler {
     /**
      * Register API endpoint
      */
-    public function register_api_endpoint() {
+    public function register_api_endpoint(): void {
         \register_rest_route(
             'formular-af-citizenone-journalsystem/v1',
             '/submit',
@@ -48,8 +50,9 @@ class FormHandler {
      * Handle form submission
      *
      * @param \WP_REST_Request $request WP Rest Request.
+     * @phpstan-param \WP_REST_Request<array<string, mixed>> $request
      */
-    public function handle_form_submission( \WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+    public function handle_form_submission( WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
         // Verify nonce
         $nonce_verification = $this->verify_nonce( $request );
 
@@ -82,10 +85,11 @@ class FormHandler {
      * Verify nonce from request
      *
      * @param \WP_REST_Request $request WP REST Request.
+     * @phpstan-param \WP_REST_Request<array<string, mixed>> $request
      */
-    private function verify_nonce( \WP_REST_Request $request ): ?\WP_Error {
+    private function verify_nonce( WP_REST_Request $request ): ?\WP_Error {
         $nonce = $request->get_header( 'X-WP-Nonce' ) ?? '';
-        
+
         if ( ! \wp_verify_nonce( $nonce, 'wp_rest' ) ) {
             return new \WP_Error( 'invalid_nonce', 'Security check failed', array( 'status' => 403 ) );
         }

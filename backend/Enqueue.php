@@ -43,9 +43,12 @@ class Enqueue extends Base {
 	public function enqueue_admin_assets() {
 		$admin_page = \get_current_screen();
 		
+		if ( ! $admin_page ) {
+			return;
+		}
+
 		// Enqueue admin styles
 		$this->enqueue_admin_styles( $admin_page );
-		
 		// Enqueue admin scripts
 		$this->enqueue_admin_scripts( $admin_page );
 	}
@@ -75,6 +78,10 @@ class Enqueue extends Base {
 			false
 		);
 		
+		if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
+			define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) . '../' );
+		}
+
 		// Handle translations
 		if ( function_exists( 'wp_set_script_translations' ) ) {
 			\wp_set_script_translations(
@@ -85,9 +92,10 @@ class Enqueue extends Base {
 		}
 		
 		// Localize script with hCaptcha settings
-		$options             = \get_option( FACIOJ_TEXTDOMAIN . '-settings' );
+		$options             = \facioj_get_settings();
 		$hcaptcha_site_key   = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
 		$hcaptcha_secret_key = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
+		$hcaptcha_enabled    = false;
 
 		if ( $hcaptcha_site_key && $hcaptcha_secret_key ) {
 			$hcaptcha_enabled = true;
@@ -119,6 +127,7 @@ class Enqueue extends Base {
 		);
 		
 		// Settings page style
+		// @phpstan-ignore function.impossibleType
 		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-citizenone-journalsystem' !== $admin_page->id ) {
 			return;
 		}
@@ -148,6 +157,7 @@ class Enqueue extends Base {
 		);
 		
 		// Settings page script
+		// @phpstan-ignore function.impossibleType
 		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-citizenone-journalsystem' !== $admin_page->id ) {
 			return;
 		}

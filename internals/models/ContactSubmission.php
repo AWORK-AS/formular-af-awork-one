@@ -34,18 +34,23 @@ class ContactSubmission {
 
         // Prepare API request
         
-        $data = array(
+        $lead_data      = array(
             'name'    => \sanitize_text_field( $data['name'] ),
             'email'   => \sanitize_email( $data['email'] ),
             'company' => \sanitize_text_field( $data['company'] ),
             'phone'   => \sanitize_text_field( $data['phone'] ),
             'message' => \sanitize_textarea_field( $data['message'] ),
         );
+        $json_lead_data = \wp_json_encode( $lead_data );
+
+        if ( false === $json_lead_data ) {
+            return false;
+        }
 
         $response = \wp_remote_post(
             FACIOJ_PLUGIN_API_URL . '/web-leads',
             array(
-				'body'    => \wp_json_encode( $data ),
+				'body'    => $json_lead_data,
 				'headers' => array(
 					'Content-Type'  => 'application/json',
 					'Accept'        => 'application/json',

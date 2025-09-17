@@ -11,6 +11,12 @@ grumphp:
       - /vendor/
       - /tests/
       - /assets/build
+    phpstan:
+      configuration: phpstan.neon
+      triggered_by:
+      - php
+      ignore_patterns:
+      - /vendor/
     git_blacklist:
       keywords:
       - print_r(

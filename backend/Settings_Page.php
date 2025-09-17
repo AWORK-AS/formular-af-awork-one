@@ -21,11 +21,6 @@ use mzaworkdk\Citizenone\Internals\Models\RetrieveToken;
 class Settings_Page extends Base {
 
 	/**
-	 * @var object|null
-	 */
-
-
-	/**
 	 * Initialize the class.
 	 *
 	 * @return void|bool
@@ -77,6 +72,10 @@ class Settings_Page extends Base {
 	 * @return void
 	 */
 	public function display_plugin_admin_page() {
+		if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
+			define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) . '../' );
+		}
+		
 		include_once FACIOJ_PLUGIN_ROOT . 'backend/views/admin.php';
 	}
 
@@ -245,9 +244,14 @@ class Settings_Page extends Base {
 	 * Handle API success
 	 *
 	 * @param array $opts Options.
-	 * @param array $data Data.
+	 * @param mixed $data Data.
 	 */
 	private function handle_api_success( array $opts, $data ): void {
+		// Check if $data is an object and has the property 'data'
+		if ( ! is_object( $data ) || ! isset( $data->data ) ) {
+			return;
+		}
+
 		$opts[ FACIOJ_TEXTDOMAIN . '_token' ] = $data->data;
 		update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
 

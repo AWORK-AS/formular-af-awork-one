@@ -20,7 +20,7 @@ class FormRenderer {
     /**
      * Render the contact form.
      */
-    public function render_form(): string {
+    public function render_form(): string|false {
         $color          = \apply_filters( 'facioj_color', '#205E77' );
         $headline       = \apply_filters( 'facioj_headline', __( 'Get in Touch With Us', 'formular-af-citizenone-journalsystem' ) );
         $btn_color      = \apply_filters( 'facioj_button_color', '#42aed9' );
