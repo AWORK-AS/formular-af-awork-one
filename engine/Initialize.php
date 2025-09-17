@@ -1,7 +1,7 @@
 <?php
 
 /**
- * mzaworkdk\Citizenone
+ * Formular af CitizenOne journalsystem
  *
  * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -15,7 +15,7 @@ namespace mzaworkdk\Citizenone\Engine;
 use mzaworkdk\Citizenone\Engine;
 
 /**
- * mzaworkdk\Citizenone Initializer
+ * Formular af CitizenOne journalsystem Initializer
  */
 class Initialize {
 

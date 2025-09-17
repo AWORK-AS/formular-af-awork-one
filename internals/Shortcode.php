@@ -1,16 +1,34 @@
 <?php
 
+/**
+ * Retrieve token from API
+ *
+ * @package   mzaworkdk\Citizenone
+ * @author    Mindell Zamora <mz@awork.dk>
+ * @copyright 2025 AWORK A/S
+ * @license   GPL 2.0+
+ * @link      https://awork.dk
+ */
+
 namespace mzaworkdk\Citizenone\Internals;
 
 use mzaworkdk\Citizenone\Internals\Views\FormRenderer;
 
+/**
+ * Render shortcode
+ */
 class Shortcode {
 
     public function initialize() {
         \add_shortcode( 'facioj_citizenone_form', array( $this, 'render_shortcode' ) );
     }
     
-    public function render_shortcode( $attributes ) {
+    /**
+     * Render shortcode.
+     *
+     * @param array $attributes Attributes.
+     */
+    public function render_shortcode( $attributes ): string {
         // Pass block attributes to the renderer
         if ( !empty( $attributes['headline'] ) ) {
             \add_filter(

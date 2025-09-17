@@ -1,6 +1,6 @@
 <?php
 /**
- * mzaworkdk\Citizenone
+ * Formular af CitizenOne journalsystem
  *
  * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -110,8 +110,12 @@ class Enqueue extends Base {
 		$headline            = $options[FACIOJ_TEXTDOMAIN . '_headline'] ?? 'Get in Touch With Us';
 		$hcaptcha_site_key   = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
 		$hcaptcha_secret_key = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
-		$hcaptcha_enabled    = $hcaptcha_site_key && $hcaptcha_secret_key;
+		
+		$hcaptcha_enabled = false;
 
+		if ( $hcaptcha_site_key && $hcaptcha_secret_key ) {
+			$hcaptcha_enabled = true;
+		}
 		
 		// Localize the script using WordPress standard method
 		wp_localize_script(
@@ -147,7 +151,12 @@ class Enqueue extends Base {
 		$opts                = \facioj_get_settings();
 		$hcaptcha_site_key   = $opts[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
 		$hcaptcha_secret_key = $opts[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
-		$hcaptcha_enabled    = $hcaptcha_site_key && $hcaptcha_secret_key;
+
+		$hcaptcha_enabled = false;
+
+		if ( $hcaptcha_site_key && $hcaptcha_secret_key ) {
+			$hcaptcha_enabled = true;
+		}
 
 		if ( !$hcaptcha_enabled || \wp_script_is( 'hcaptcha', 'enqueued' ) ) {
 			return;

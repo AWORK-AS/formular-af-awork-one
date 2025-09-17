@@ -1,6 +1,6 @@
 <?php
 /**
- * mzaworkdk\Citizenone
+ * Formular af CitizenOne journalsystem
  *
  * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>

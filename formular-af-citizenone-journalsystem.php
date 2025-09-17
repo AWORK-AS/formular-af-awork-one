@@ -11,7 +11,7 @@
  * Description:     Formular af CitizenOne journalsystem
  * Version:         1.1.1
  * Author:          support@citizenone.dk
- * Author URI:      https://github.com/mz-aworkdk
+ * Author URI:      https://citizenone.dk/kontakt/
  * Text Domain:     formular-af-citizenone-journalsystem
  * License:         GPLv3+
  * License URI:     http://www.gnu.org/licenses/gpl-3.0.txt
@@ -65,12 +65,12 @@ function facioj_initialize_plugin() {
 	}
 
 	// Set up the update checker.
-	$myUpdateChecker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+	$my_update_checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
 		'https://github.com/AWORK-AS/contact-form-app',
 		FACIOJ_PLUGIN_ABSOLUTE,
 		FACIOJ_TEXTDOMAIN
 	);
-	$myUpdateChecker->setBranch( 'main' );
+	$my_update_checker->setBranch( 'main' );
     
 	
 	
@@ -111,6 +111,8 @@ add_action( 'init', 'facioj_initialize_plugin' );
 
 /**
  * Handle activation - use a separate function to avoid class dependency issues
+ *
+ * @param bool $network_wide Network wide.
  */
 function facioj_activate_plugin( $network_wide ) {
 	// Double-check if constant is defined
@@ -135,6 +137,8 @@ function facioj_activate_plugin( $network_wide ) {
 
 /**
  * Handle deactivation - use a separate function to avoid class dependency issues
+ *
+ * @param bool $network_wide Network wide.
  */
 function facioj_deactivate_plugin( $network_wide ) {
     // Ensure the autoloader is available

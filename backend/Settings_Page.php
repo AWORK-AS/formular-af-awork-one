@@ -1,7 +1,7 @@
 <?php
 
 /**
- * mzaworkdk\Citizenone
+ * Formular af CitizenOne journalsystem
  *
  * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -14,8 +14,6 @@ namespace mzaworkdk\Citizenone\Backend;
 
 use mzaworkdk\Citizenone\Engine\Base;
 use mzaworkdk\Citizenone\Internals\Models\RetrieveToken;
-
-
 
 /**
  * Create the settings page in the backend
@@ -41,12 +39,11 @@ class Settings_Page extends Base {
 		\add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
     
 		// Add CMB2 save hook
-        \add_action( 'cmb2_save_options-page_fields', array( $this, 'before_settings_save' ), 10, 2 );
+        \add_action( 'cmb2_save_options-page_fields', array( $this, 'before_save_settings' ), 10, 2 );
 
 		$realpath        = (string) \realpath( __DIR__ );
 		$plugin_basename = \plugin_basename( \plugin_dir_path( $realpath ) . FACIOJ_TEXTDOMAIN . '.php' );
 		\add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
-
 	}
 
 	/**
@@ -59,7 +56,6 @@ class Settings_Page extends Base {
 		/*
 		 * Add a settings page for this plugin to the Settings menu
 		 *
-		 * @TODO:
 		 *
 		 * - Change 'manage_options' to the capability you see fit
 		 *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
@@ -103,116 +99,160 @@ class Settings_Page extends Base {
 	/**
 	 * Action before CMB2 saves settings
 	 *
-	 * @param int    $object_id Object ID
-	 * @param string $cmb_id    CMB2 instance ID
+	 * @param string $obj_id Object ID.
+	 * @param string $cmb_id CMB2 instance ID.
 	 */
-	public function before_settings_save( $object_id, $cmb_id ) {
-		if ( $cmb_id !== FACIOJ_TEXTDOMAIN . '_options' ) {
-			return;
-		}
-		
-		// Nonce verification - CRITICAL!
-		if ( ! isset( $_POST['nonce_CMB2php' . $cmb_id ] ) ||
-			! \wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST['nonce_CMB2php' . $cmb_id ] ) ), 'nonce_CMB2php' . $cmb_id ) ) {
+	// phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+	public function before_save_settings( string $obj_id, string $cmb_id ): void {
+		if ( ! $this->is_valid_cmb_id( $cmb_id ) ) {
 			return;
 		}
 
-		$required_error_messages = array();
-        $required_error = false;
-		// Get the submitted values
-		$company_cvr = isset( $_POST[FACIOJ_TEXTDOMAIN . '_field_company_cvr'] ) ? 
-						\sanitize_text_field( \wp_unslash( $_POST[FACIOJ_TEXTDOMAIN . '_field_company_cvr'] ) )
-						: '';
-		$citizenone_company_id = isset( $_POST[FACIOJ_TEXTDOMAIN . '_field_company_id'] ) ? 
-								\sanitize_text_field( \wp_unslash( $_POST[FACIOJ_TEXTDOMAIN . '_field_company_id'] ) )
-								: '';
-		$email = isset( $_POST[FACIOJ_TEXTDOMAIN . '_field_email'] ) ? 
-				\sanitize_email( \wp_unslash( $_POST[FACIOJ_TEXTDOMAIN . '_field_email'] ) )
-				: '';
-
-		if( empty( $company_cvr ) ) {
-			\wpdesk_wp_notice( __( 'Company CVR is required.', 'formular-af-citizenone-journalsystem' ),
-			 			'error', 
-						true 
-					);
-			
-			
-			$required_error = true;
-		}
-
-		if( empty( $citizenone_company_id ) ) {
-			\wpdesk_wp_notice( __( 'CitizenOne Company ID is required.', 'formular-af-citizenone-journalsystem' ),
-							  'error',
-							  true
-							);
-			
-			$required_error = true;
-		}
-
-		if( empty( $email ) ) {
-			\wpdesk_wp_notice( __( 'Email address ID is required.', 'formular-af-citizenone-journalsystem' ),
-						 	'error',
-							true
-							);
-			$required_error = true;
-		}
-
-		if( $required_error ) {
+		$submitted_values = $this->get_sanitized_submitted_values( $cmb_id );
+		
+		if ( $this->has_validation_errors( $submitted_values ) ) {
 			return;
 		}
-        
-		$token = new RetrieveToken;
-		$data  = $token->submit(
-			array(
-				'company_cvr'           => $company_cvr,
-				'citizenone_company_id' => $citizenone_company_id,
-				'email'                 => $email,
-				)
-			);
-		
-		$opts = \facioj_get_settings();
-		
-		if ( !$data ) {
-			if( isset( $opts[FACIOJ_TEXTDOMAIN . '_token'] ) ) {
-				unset( $opts[FACIOJ_TEXTDOMAIN . '_token'] );
-				\update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
-			}
-			\wpdesk_wp_notice( __('The API did not accept the provided data. Please check your information and try again.', 
-							      'formular-af-citizenone-journalsystem'
-								),
-								'error',
-								true
-							);
-			return;
-		}
-		
-		$opts[FACIOJ_TEXTDOMAIN . '_token'] = $data->data;
-		\update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
-		\wpdesk_wp_notice( __( '✅ Successfully connected to CitizenOne', 
-							'formular-af-citizenone-journalsystem'
-							),
-							'success',
-							true
-						);
+
+		$this->process_token_retrieval( $submitted_values );
 	}
 
 	/**
-	 * Token validation callback
-     *
-	 * @since 1.0.0
-	 * @param string $value The value of the token field.
-	 * @return string Returns an error message if validation fails, or true if validation
-     */
-	public function validate_token_field( $value ) {
-		$value = \sanitize_text_field( $value );
+	 * Check if CMB ID is valid
+	 *
+	 * @param string $cmb_id CMB ID.
+	 */
+	private function is_valid_cmb_id( string $cmb_id ): bool {
+		return $cmb_id === FACIOJ_TEXTDOMAIN . '_options';
+	}
 
-		if ( empty( trim( $value ) ) ) {
-			\update_option( 'formular-af-citizenone-journalsystem-connected', false );
+	/**
+	 * Get and sanitize submitted form values
+	 *
+	 * @param string $cmb_id CMB ID.
+	 * @return array Sanitized values.
+	 */
+	private function get_sanitized_submitted_values( string $cmb_id ) {
+		$data = array(
+			'company_cvr' => '',
+			'company_id'  => '',
+			'email'       => '',
+		);
+
+		// Nonce verification - CRITICAL!
+		if ( !isset( $_POST['nonce_CMB2php' . $cmb_id ] ) ) {
+			return $data;
 		}
 
-		// @TODO: Validate the token against the API.
+		if ( !\wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST['nonce_CMB2php' . $cmb_id ] ) ), 'nonce_CMB2php' . $cmb_id ) ) {
+			return $data;
+		}
+
+		if ( isset( $_POST[ FACIOJ_TEXTDOMAIN . '_field_company_cvr' ] ) ) {
+			$data['company_cvr'] = \sanitize_text_field( \wp_unslash( $_POST[ FACIOJ_TEXTDOMAIN . '_field_company_cvr' ] ) );
+		}
+
+		if ( isset( $_POST[ FACIOJ_TEXTDOMAIN . '_field_company_id' ] ) ) {
+			$data['company_id'] = \sanitize_text_field( \wp_unslash( $_POST[ FACIOJ_TEXTDOMAIN . '_field_company_id' ] ) );
+		}
+
+		if ( isset( $_POST[ FACIOJ_TEXTDOMAIN . '_field_email' ] ) ) {
+			$data['email'] = \sanitize_email( \wp_unslash( $_POST[ FACIOJ_TEXTDOMAIN . '_field_email' ] ) );
+		}
+
+		return $data;
+	}
+
+	/**
+	 * Validate required fields
+	 *
+	 * @param array $values Data.
+	 */
+	private function has_validation_errors( array $values ): bool {
+		$has_errors = false;
+
+		if ( empty( $values['company_cvr'] ) ) {
+			$this->add_error_notice( __( 'Company CVR is required.', 'formular-af-citizenone-journalsystem' ) );
+			$has_errors = true;
+		}
+
+		if ( empty( $values['company_id'] ) ) {
+			$this->add_error_notice( __( 'CitizenOne Company ID is required.', 'formular-af-citizenone-journalsystem' ) );
+			$has_errors = true;
+		}
+
+		if ( empty( $values['email'] ) ) {
+			$this->add_error_notice( __( 'Email address is required.', 'formular-af-citizenone-journalsystem' ) );
+			$has_errors = true;
+		}
+
+		return $has_errors;
+	}
+
+	/**
+	 * Add error notice
+	 *
+	 * @param string $message Message.
+	 */
+	private function add_error_notice( string $message ): void {
+		wpdesk_wp_notice( $message, 'error', true );
+	}
+
+	/**
+	 * Process token retrieval from API
+	 *
+	 * @param array $values The data.
+	 */
+	private function process_token_retrieval( array $values ): void {
+		$token = new RetrieveToken;
+		$data  = $token->submit(
+			array(
+				'company_cvr'           => $values['company_cvr'],
+				'citizenone_company_id' => $values['company_id'],
+				'email'                 => $values['email'],
+		)
+		);
+
+		$opts = facioj_get_settings();
+
+		if ( ! $data ) {
+			$this->handle_api_failure( $opts );
+		} else {
+			$this->handle_api_success( $opts, $data );
+		}
+	}
+
+	/**
+	 * Handle API failure
+	 *
+	 * @param array $opts Options.
+	 */
+	private function handle_api_failure( array $opts ): void {
+		if ( isset( $opts[ FACIOJ_TEXTDOMAIN . '_token' ] ) ) {
+			unset( $opts[ FACIOJ_TEXTDOMAIN . '_token' ] );
+			update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
+		}
+
+		$error_message = __(
+			'The API did not accept the provided data. Please check your information and try again.',
+			'formular-af-citizenone-journalsystem'
+		);
 		
-		return $value;
+		wpdesk_wp_notice( $error_message, 'error', true );
+	}
+
+	/**
+	 * Handle API success
+	 *
+	 * @param array $opts Options.
+	 * @param array $data Data.
+	 */
+	private function handle_api_success( array $opts, $data ): void {
+		$opts[ FACIOJ_TEXTDOMAIN . '_token' ] = $data->data;
+		update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
+
+		$success_message = __( '✅ Successfully connected to CitizenOne', 'formular-af-citizenone-journalsystem' );
+		wpdesk_wp_notice( $success_message, 'success', true );
 	}
 
 }

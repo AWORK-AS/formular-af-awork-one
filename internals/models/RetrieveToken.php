@@ -12,19 +12,22 @@
 
 namespace mzaworkdk\Citizenone\Internals\Models;
 
+/**
+ * Retrieve the token from CitizenOne
+ */
 class RetrieveToken {
 
     /**
 	 * Submit data to generate a token
 	 *
-	 * @param array<string, mixed> $data
+	 * @param array $data Data.
 	 * @return object|array<string, mixed>|false|null
 	 */
     public function submit( $data ) {
         $response = \wp_remote_post(
             FACIOJ_PLUGIN_API_URL . '/jwt/generate-token',
             array(
-				'body'    => \json_encode( $data ),
+				'body'    => \wp_json_encode( $data ),
 				'headers' => array(
 					'Content-Type' => 'application/json',
 					'Accept'       => 'application/json',

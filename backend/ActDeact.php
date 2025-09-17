@@ -1,7 +1,7 @@
 <?php
 
 /**
- * mzaworkdk\Citizenone
+ * Formular af CitizenOne journalsystem
  *
  * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -203,7 +203,12 @@ class ActDeact extends Base {
 		}
 
 		$version_option = \get_option( 'formular-af-citizenone-journalsystem-version' );
-		$version        = is_scalar( $version_option ) ? (string) $version_option : '';
+
+		if ( is_scalar( $version_option ) ) {
+			$version = (string) $version_option;
+		} else {
+			$version = '';
+	 	}
 		
 		if ( !\version_compare( \FACIOJ_VERSION, $version, '>' ) ) {
 			return;

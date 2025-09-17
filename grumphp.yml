@@ -11,25 +11,12 @@ grumphp:
       - /vendor/
       - /tests/
       - /assets/build
-    phpstan:
-      configuration: phpstan.neon
-      triggered_by:
-      - php
-      ignore_patterns:
-      - /vendor/
-      - /tests/
-      - /assets/build
-    codeception:
-      config_file: ~
-      fail_fast: false
-      suite: ~
-      test: ~
     git_blacklist:
       keywords:
       - print_r(
       - var_dump(
       - error_log(
-      - define( 'FACIOJ_PLUGIN_API_URL', 'http://127.0.
+      - define( 'FACIOJ_PLUGIN_API_URL', 'http://127.0.0.1:8000/api' )
       triggered_by:
       - php
 ...

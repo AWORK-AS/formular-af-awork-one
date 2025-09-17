@@ -1,7 +1,7 @@
 <?php
 
 /**
- * mzaworkdk\Citizenone
+ * Formular af CitizenOne journalsystem
  *
  * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -88,8 +88,11 @@ class Enqueue extends Base {
 		$options             = \get_option( FACIOJ_TEXTDOMAIN . '-settings' );
 		$hcaptcha_site_key   = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
 		$hcaptcha_secret_key = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
-		$hcaptcha_enabled    = ( $hcaptcha_site_key && $hcaptcha_secret_key );
 
+		if ( $hcaptcha_site_key && $hcaptcha_secret_key ) {
+			$hcaptcha_enabled = true;
+		}
+		
 		\wp_localize_script(
 			'formular-af-citizenone-journalsystem-contact-form-editor-script',
 			'cfaBlockhCaptcha',

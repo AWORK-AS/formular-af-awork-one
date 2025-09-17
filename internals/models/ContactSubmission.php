@@ -12,9 +12,18 @@
 
 namespace mzaworkdk\Citizenone\Internals\Models;
 
+/**
+ * This class contain the submission of Web Leads
+ */
 class ContactSubmission {
 
-    public function submit_lead( $data ) {
+    /**
+     * Submit lead
+     *
+     * @param array $data Data.
+     * @return bool.
+     */
+    public function submit_lead( $data ): bool {
         // Get plugin options
         $options = \facioj_get_settings();
         $token   = $options[FACIOJ_TEXTDOMAIN . '_token'] ?? false;
@@ -36,7 +45,7 @@ class ContactSubmission {
         $response = \wp_remote_post(
             FACIOJ_PLUGIN_API_URL . '/web-leads',
             array(
-				'body'    => \json_encode( $data ),
+				'body'    => \wp_json_encode( $data ),
 				'headers' => array(
 					'Content-Type'  => 'application/json',
 					'Accept'        => 'application/json',
@@ -46,8 +55,6 @@ class ContactSubmission {
 			)
             );
 
-        $body = \wp_remote_retrieve_body( $response );
-        
         if ( is_wp_error( $response ) ) {
             return false;
         }
