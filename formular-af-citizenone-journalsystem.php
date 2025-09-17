@@ -9,7 +9,7 @@
  * Plugin Name:     Formular af CitizenOne journalsystem
  * Plugin URI:      https://github.com/AWORK-AS/contact-form-app
  * Description:     Formular af CitizenOne journalsystem
- * Version:         1.1.2
+ * Version:         1.1.3
  * Author:          support@citizenone.dk
  * Author URI:      https://citizenone.dk/kontakt/
  * Text Domain:     formular-af-citizenone-journalsystem
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'FACIOJ_PLUGIN_ABSOLUTE', __FILE__ );
 define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
 define( 'FACIOJ_TEXTDOMAIN', 'formular-af-citizenone-journalsystem' );
-define( 'FACIOJ_VERSION', '1.1.2' );
+define( 'FACIOJ_VERSION', '1.1.3' );
 define( 'FACIOJ_MIN_PHP_VERSION', '7.4' );
 define( 'FACIOJ_WP_VERSION', '5.8' );
 define( 'FACIOJ_PLUGIN_API_URL', 'https://appserver.citizenone.dk/api' );
