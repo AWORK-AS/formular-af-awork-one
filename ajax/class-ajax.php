@@ -1,17 +1,17 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\Citizenone\Ajax;
+namespace mzaworkdk\Aworkone\Ajax;
 
-use mzaworkdk\Citizenone\Engine\Base;
+use mzaworkdk\Aworkone\Engine\Base;
 
 /**
  * AJAX in the public
@@ -24,12 +24,12 @@ class Ajax extends Base {
 	 * @return void|bool
 	 */
 	public function initialize() {
-		if ( ! \apply_filters( 'facioj_ajax_initialize', true ) ) {
+		if ( ! \apply_filters( 'faaone_ajax_initialize', true ) ) {
 			return;
 		}
 
 		// For not logged user.
-		\add_action( 'wp_ajax_nopriv_facioj_your_method', array( $this, 'facioj_your_method' ) );
+		\add_action( 'wp_ajax_nopriv_faaone_your_method', array( $this, 'faaone_your_method' ) );
 	}
 
 	/**
@@ -38,7 +38,7 @@ class Ajax extends Base {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	public function facioj_your_method() {
+	public function faaone_your_method() {
 		$return = array(
 			'message' => 'Saved',
 			'ID'      => 1,

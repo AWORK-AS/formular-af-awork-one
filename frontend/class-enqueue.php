@@ -1,17 +1,17 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\Citizenone\Frontend;
+namespace mzaworkdk\Aworkone\Frontend;
 
-use mzaworkdk\Citizenone\Engine\Base;
+use mzaworkdk\Aworkone\Engine\Base;
 
 /**
  * Enqueue stuff on the frontend
@@ -52,10 +52,10 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	public function enqueue_styles() {
-		$handle  = FACIOJ_TEXTDOMAIN . '-plugin-styles';
-		$src     = \plugins_url( 'assets/build/plugin-public.css', FACIOJ_PLUGIN_ABSOLUTE );
+		$handle  = FAAONE_TEXTDOMAIN . '-plugin-styles';
+		$src     = \plugins_url( 'assets/build/plugin-public.css', FAAONE_PLUGIN_ABSOLUTE );
 		$deps    = array(); // No dependencies specified in original Inpsyde code.
-		$version = FACIOJ_VERSION;
+		$version = FAAONE_VERSION;
 		$media   = 'all';
 
 		\wp_enqueue_style( $handle, $src, $deps, $version, $media );
@@ -68,10 +68,10 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	public function enqueue_scripts() {
-		$handle    = FACIOJ_TEXTDOMAIN . '-plugin-script';
-		$src       = \plugins_url( 'assets/build/plugin-public.js', FACIOJ_PLUGIN_ABSOLUTE );
+		$handle    = FAAONE_TEXTDOMAIN . '-plugin-script';
+		$src       = \plugins_url( 'assets/build/plugin-public.js', FAAONE_PLUGIN_ABSOLUTE );
 		$deps      = array(); // No dependencies specified in original Inpsyde code.
-		$version   = FACIOJ_VERSION;
+		$version   = FAAONE_VERSION;
 		$in_footer = true; // Inpsyde's useAsyncFilter implies defer/async, which often means loading in footer.
 
 		\wp_enqueue_script( $handle, $src, $deps, $version, $in_footer );
@@ -80,7 +80,7 @@ class Enqueue extends Base {
 		\add_filter(
 			'script_loader_tag',
 			function ( $tag, $handle ) {
-				if ( FACIOJ_TEXTDOMAIN . '-plugin-script' === $handle ) {
+				if ( FAAONE_TEXTDOMAIN . '-plugin-script' === $handle ) {
 					return str_replace( '<script', '<script async defer', $tag );
 				}
 
@@ -99,17 +99,17 @@ class Enqueue extends Base {
 	 */
 	public function localize_scripts() {
 		// Only localize if the script is enqueued.
-		if ( ! wp_script_is( FACIOJ_TEXTDOMAIN . '-plugin-script', 'enqueued' ) ) {
+		if ( ! wp_script_is( FAAONE_TEXTDOMAIN . '-plugin-script', 'enqueued' ) ) {
 			return;
 		}
 
 		// Get plugin options.
-		$options = \facioj_get_settings();
+		$options = \faaone_get_settings();
 
-		$color               = $options[ FACIOJ_TEXTDOMAIN . '_color_theme' ] ?? '#205E77';
-		$headline            = $options[ FACIOJ_TEXTDOMAIN . '_headline' ] ?? 'Get in Touch With Us';
-		$hcaptcha_site_key   = $options[ FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
-		$hcaptcha_secret_key = $options[ FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
+		$color               = $options[ FAAONE_TEXTDOMAIN . '_color_theme' ] ?? '#205E77';
+		$headline            = $options[ FAAONE_TEXTDOMAIN . '_headline' ] ?? 'Get in Touch With Us';
+		$hcaptcha_site_key   = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
+		$hcaptcha_secret_key = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
 
 		$hcaptcha_enabled = false;
 
@@ -119,19 +119,19 @@ class Enqueue extends Base {
 
 		// Localize the script using WordPress standard method.
 		wp_localize_script(
-			FACIOJ_TEXTDOMAIN . '-plugin-script',
-			'facioj_form_vars',
+			FAAONE_TEXTDOMAIN . '-plugin-script',
+			'faaone_form_vars',
 			array(
-				'rest_url'          => rest_url( 'formular-af-citizenone-journalsystem/v1/submit' ),
+				'rest_url'          => rest_url( 'formular-af-awork-one/v1/submit' ),
 				'nonce'             => \wp_create_nonce( 'wp_rest' ),
 				'i18n'              => array(
-					'loading'           => \__( 'Loading...', 'formular-af-citizenone-journalsystem' ),
-					'sending'           => \__( 'Sending...', 'formular-af-citizenone-journalsystem' ),
-					'submission_failed' => \__( 'Submission failed', 'formular-af-citizenone-journalsystem' ),
-					'invalid_nonce'     => \__( 'Session expired. Please refresh the page.', 'formular-af-citizenone-journalsystem' ),
-					'required_field'    => \__( 'This field is required', 'formular-af-citizenone-journalsystem' ),
-					'invalid_email'     => \__( 'Please enter a valid email address', 'formular-af-citizenone-journalsystem' ),
-					'success_message'   => \__( 'Thank you! Your message has been sent.', 'formular-af-citizenone-journalsystem' ),
+					'loading'           => \__( 'Loading...', 'formular-af-awork-one' ),
+					'sending'           => \__( 'Sending...', 'formular-af-awork-one' ),
+					'submission_failed' => \__( 'Submission failed', 'formular-af-awork-one' ),
+					'invalid_nonce'     => \__( 'Session expired. Please refresh the page.', 'formular-af-awork-one' ),
+					'required_field'    => \__( 'This field is required', 'formular-af-awork-one' ),
+					'invalid_email'     => \__( 'Please enter a valid email address', 'formular-af-awork-one' ),
+					'success_message'   => \__( 'Thank you! Your message has been sent.', 'formular-af-awork-one' ),
 				),
 				'color'             => $color,
 				'headline'          => $headline,
@@ -148,9 +148,9 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	protected function load_hcaptcha_script() {
-		$opts                = \facioj_get_settings();
-		$hcaptcha_site_key   = $opts[ FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
-		$hcaptcha_secret_key = $opts[ FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
+		$opts                = \faaone_get_settings();
+		$hcaptcha_site_key   = $opts[ FAAONE_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
+		$hcaptcha_secret_key = $opts[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
 
 		$hcaptcha_enabled = false;
 
@@ -163,6 +163,6 @@ class Enqueue extends Base {
 		}
 
 		// Load hCaptcha script if needed.
-		wp_enqueue_script( 'hcaptcha', 'https://js.hcaptcha.com/1/api.js', array(), FACIOJ_VERSION, true );
+		wp_enqueue_script( 'hcaptcha', 'https://js.hcaptcha.com/1/api.js', array(), FAAONE_VERSION, true );
 	}
 }

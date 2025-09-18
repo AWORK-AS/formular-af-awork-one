@@ -1,17 +1,17 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\Citizenone\Backend;
+namespace mzaworkdk\Aworkone\Backend;
 
-use mzaworkdk\Citizenone\Engine\Base;
+use mzaworkdk\Aworkone\Engine\Base;
 
 /**
  * This class contain the Enqueue stuff for the backend
@@ -57,45 +57,45 @@ class Enqueue extends Base {
 	public function enqueue_block_editor_assets() {
 		// Enqueue block editor styles.
 		\wp_enqueue_style(
-			FACIOJ_TEXTDOMAIN . '-block-editor-style',
-			\plugins_url( 'assets/build/plugin-block.css', FACIOJ_PLUGIN_ABSOLUTE ),
+			FAAONE_TEXTDOMAIN . '-block-editor-style',
+			\plugins_url( 'assets/build/plugin-block.css', FAAONE_PLUGIN_ABSOLUTE ),
 			array( 'wp-edit-blocks' ),
-			FACIOJ_VERSION
+			FAAONE_VERSION
 		);
 		// Unregister editor script from block.json.
-		\wp_deregister_script( 'formular-af-citizenone-journalsystem-contact-form-editor-script' );
+		\wp_deregister_script( 'formular-af-awork-one-contact-form-editor-script' );
 
 		// Enqueue block editor script.
 		\wp_enqueue_script(
-			'formular-af-citizenone-journalsystem-contact-form-editor-script',
-			\plugins_url( 'assets/build/plugin-block.js', FACIOJ_PLUGIN_ABSOLUTE ),
+			'formular-af-awork-one-contact-form-editor-script',
+			\plugins_url( 'assets/build/plugin-block.js', FAAONE_PLUGIN_ABSOLUTE ),
 			array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n', 'wp-api-fetch' ),
-			FACIOJ_VERSION,
+			FAAONE_VERSION,
 			false
 		);
-		if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
-			define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) . '../' );
+		if ( ! defined( 'FAAONE_PLUGIN_ROOT' ) ) {
+			define( 'FAAONE_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) . '../' );
 		}
 
 		// Handle translations.
 		if ( function_exists( 'wp_set_script_translations' ) ) {
 			\wp_set_script_translations(
-				'formular-af-citizenone-journalsystem-contact-form-editor-script',
-				'formular-af-citizenone-journalsystem',
-				FACIOJ_PLUGIN_ROOT . 'languages'
+				'formular-af-awork-one-contact-form-editor-script',
+				'formular-af-awork-one',
+				FAAONE_PLUGIN_ROOT . 'languages'
 			);
 		}
 		// Localize script with hCaptcha settings.
-		$options             = \facioj_get_settings();
-		$hcaptcha_site_key   = $options[ FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
-		$hcaptcha_secret_key = $options[ FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
+		$options             = \faaone_get_settings();
+		$hcaptcha_site_key   = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
+		$hcaptcha_secret_key = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
 		$hcaptcha_enabled    = false;
 
 		if ( $hcaptcha_site_key && $hcaptcha_secret_key ) {
 			$hcaptcha_enabled = true;
 		}
 		\wp_localize_script(
-			'formular-af-citizenone-journalsystem-contact-form-editor-script',
+			'formular-af-awork-one-contact-form-editor-script',
 			'cfaBlockhCaptcha',
 			array(
 				'hCaptchaEnabled' => $hcaptcha_enabled,
@@ -113,21 +113,21 @@ class Enqueue extends Base {
 	public function enqueue_admin_styles( $admin_page ) {
 		// Main admin style.
 		\wp_enqueue_style(
-			FACIOJ_TEXTDOMAIN . '-admin-style',
-			\plugins_url( 'assets/build/plugin-admin.css', FACIOJ_PLUGIN_ABSOLUTE ),
+			FAAONE_TEXTDOMAIN . '-admin-style',
+			\plugins_url( 'assets/build/plugin-admin.css', FAAONE_PLUGIN_ABSOLUTE ),
 			array( 'dashicons' ),
-			FACIOJ_VERSION
+			FAAONE_VERSION
 		);
 		// Settings page style.
-		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-citizenone-journalsystem' !== $admin_page->id ) {
+		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-awork-one' !== $admin_page->id ) {
 			return;
 		}
 
 		\wp_enqueue_style(
-			FACIOJ_TEXTDOMAIN . '-settings-style',
-			\plugins_url( 'assets/build/plugin-settings.css', FACIOJ_PLUGIN_ABSOLUTE ),
+			FAAONE_TEXTDOMAIN . '-settings-style',
+			\plugins_url( 'assets/build/plugin-settings.css', FAAONE_PLUGIN_ABSOLUTE ),
 			array( 'dashicons' ),
-			FACIOJ_VERSION
+			FAAONE_VERSION
 		);
 	}
 
@@ -140,22 +140,22 @@ class Enqueue extends Base {
 	public function enqueue_admin_scripts( $admin_page ) {
 		// Main admin script.
 		\wp_enqueue_script(
-			FACIOJ_TEXTDOMAIN . '-settings-admin',
-			\plugins_url( 'assets/build/plugin-admin.js', FACIOJ_PLUGIN_ABSOLUTE ),
+			FAAONE_TEXTDOMAIN . '-settings-admin',
+			\plugins_url( 'assets/build/plugin-admin.js', FAAONE_PLUGIN_ABSOLUTE ),
 			array(),
-			FACIOJ_VERSION,
+			FAAONE_VERSION,
 			true
 		);
 		// Settings page script.
-		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-citizenone-journalsystem' !== $admin_page->id ) {
+		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-awork-one' !== $admin_page->id ) {
 			return;
 		}
 
 		\wp_enqueue_script(
-			FACIOJ_TEXTDOMAIN . '-settings-script',
-			\plugins_url( 'assets/build/plugin-settings.js', FACIOJ_PLUGIN_ABSOLUTE ),
+			FAAONE_TEXTDOMAIN . '-settings-script',
+			\plugins_url( 'assets/build/plugin-settings.js', FAAONE_PLUGIN_ABSOLUTE ),
 			array( 'jquery-ui-tabs' ),
-			FACIOJ_VERSION,
+			FAAONE_VERSION,
 			true
 		);
 	}

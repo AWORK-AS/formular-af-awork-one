@@ -1,20 +1,20 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\Citizenone\Engine;
+namespace mzaworkdk\Aworkone\Engine;
 
-use mzaworkdk\Citizenone\Engine;
+use mzaworkdk\Aworkone\Engine;
 
 /**
- * Formular af CitizenOne journalsystem Initializer
+ * Formular af AWORK ONE Initializer
  */
 class Initialize {
 
@@ -83,13 +83,13 @@ class Initialize {
 	 * @return void If successful.
 	 */
 	private function load_classes() {
-		$this->classes = \apply_filters( 'facioj_classes_to_execute', $this->classes );
+		$this->classes = \apply_filters( 'faaone_classes_to_execute', $this->classes );
 
 		foreach ( $this->classes as $class ) {
 			try {
 				$this->initialize_plugin_class( $class );
 			} catch ( \Throwable $err ) {
-				\do_action( 'facioj_initialize_failed', $err );
+				\do_action( 'faaone_initialize_failed', $err );
 
 				if ( \WP_DEBUG ) {
 					throw new \Exception( $err->getMessage() ); //phpcs:ignore
@@ -125,7 +125,7 @@ class Initialize {
 
 					$temp->initialize();
 					\add_filter(
-						'facioj_instance_' . $classtovalidate,
+						'faaone_instance_' . $classtovalidate,
 						function () use ( $temp ) {
 							return $temp;
 						}
@@ -142,7 +142,7 @@ class Initialize {
 			$temp->initialize();
 
 			\add_filter(
-				'facioj_instance_' . $classtovalidate,
+				'faaone_instance_' . $classtovalidate,
 				function () use ( $temp ) {
 					return $temp;
 				}
@@ -160,10 +160,10 @@ class Initialize {
 	private function get_classes( string $namespacetofind ) {
 		$prefix          = $this->composer->getPrefixesPsr4();
 		$classmap        = $this->composer->getClassMap();
-		$namespacetofind = 'mzaworkdk\\Citizenone\\' . $namespacetofind;
+		$namespacetofind = 'mzaworkdk\\Aworkone\\' . $namespacetofind;
 
 		// In case composer has autoload optimized.
-		if ( isset( $classmap['mzaworkdk\\Citizenone\\Engine\\Initialize'] ) ) {
+		if ( isset( $classmap['mzaworkdk\\Aworkone\\Engine\\Initialize'] ) ) {
 			$classes = \array_keys( $classmap );
 
 			foreach ( $classes as $class ) {
@@ -186,7 +186,7 @@ class Initialize {
 			$this->find_classes( $php_files, $folder, $namespacetofind );
 
 			if ( ! WP_DEBUG ) {
-				\wp_die( \esc_html_e( 'Contact Form App is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself.', 'formular-af-citizenone-journalsystem' ) );
+				\wp_die( \esc_html_e( 'Contact Form App is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself.', 'formular-af-awork-one' ) );
 			}
 
 			return $this->classes;

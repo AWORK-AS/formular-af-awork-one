@@ -1,7 +1,7 @@
 {
-    "name": "formular-af-citizenone-journalsystem",
+    "name": "formular-af-awork-one",
     "version": "1.0.4",
-    "description": "Formular af CitizenOne journalsystem",
+    "description": "Formular af AWORK ONE",
     "author": "Mindell Zamora <mz@awork.dk>",
     "files": [
         "ajax",
@@ -19,7 +19,7 @@
         "vendor",
         "index.php",
         "LICENSE.txt",
-        "formular-af-citizenone-journalsystem.php",
+        "formular-af-awork-one.php",
         "README.txt",
         "uninstall.php"
     ],

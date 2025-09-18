@@ -1,15 +1,15 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\Citizenone\Engine;
+namespace mzaworkdk\Aworkone\Engine;
 
 /**
  * Base skeleton of the plugin
@@ -29,7 +29,7 @@ class Base {
 	 * @return bool
 	 */
 	public function initialize() {
-		$this->settings = \facioj_get_settings();
+		$this->settings = \faaone_get_settings();
 
 		return true;
 	}

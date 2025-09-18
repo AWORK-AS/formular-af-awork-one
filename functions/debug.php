@@ -1,8 +1,8 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param string $text The text.
  * @return void
  */
-function facioj_log( string $text ) {
-	$facioj_debug = new WPBP_Debug( __( 'Contact Form App', 'formular-af-citizenone-journalsystem' ) );
-	$facioj_debug->log( $text );
+function faaone_log( string $text ) {
+	$faaone_debug = new WPBP_Debug( __( 'Contact Form App', 'formular-af-awork-one' ) );
+	$faaone_debug->log( $text );
 }

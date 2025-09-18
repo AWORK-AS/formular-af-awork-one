@@ -22,7 +22,7 @@ grumphp:
       - print_r(
       - var_dump(
       - error_log(
-      - define( 'FACIOJ_PLUGIN_API_URL', 'http://127.0.0.1:8000/api' )
+      - define( 'FAAONE_PLUGIN_API_URL', 'http://127.0.0.1:8000/api' )
       triggered_by:
       - php
 ...

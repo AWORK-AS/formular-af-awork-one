@@ -1,6 +1,6 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
  * Fired when the plugin is uninstalled.
  *
@@ -14,7 +14,7 @@
  * - Repeat with other user roles. Best directly by using the links/query string parameters.
  * - Repeat things for multisite. Once for a single site in the network, once sitewide.
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
@@ -31,14 +31,14 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  *
  * @return void
  */
-function facioj_uninstall_multisite() {
+function faaone_uninstall_multisite() {
 	if ( is_multisite() ) {
 		$blogs = get_sites();
 
 		if ( ! empty( $blogs ) ) {
 			foreach ( $blogs as $blog ) {
 				switch_to_blog( (int) $blog->blog_id );
-				facioj_uninstall();
+				faaone_uninstall();
 				restore_current_blog();
 			}
 
@@ -46,7 +46,7 @@ function facioj_uninstall_multisite() {
 		}
 	}
 
-	facioj_uninstall();
+	faaone_uninstall();
 }
 
 /**
@@ -55,7 +55,7 @@ function facioj_uninstall_multisite() {
  * @global WP_Roles $wp_roles
  * @return void
  */
-function facioj_uninstall() { // phpcs:ignore
+function faaone_uninstall() { // phpcs:ignore
 	global $wp_roles;
 
 	// Remove the capabilities of the plugin.
@@ -88,4 +88,4 @@ function facioj_uninstall() { // phpcs:ignore
 	}
 }
 
-facioj_uninstall_multisite();
+faaone_uninstall_multisite();

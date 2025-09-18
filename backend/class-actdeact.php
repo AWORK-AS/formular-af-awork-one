@@ -1,17 +1,17 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\Citizenone\Backend;
+namespace mzaworkdk\Aworkone\Backend;
 
-use mzaworkdk\Citizenone\Engine\Base;
+use mzaworkdk\Aworkone\Engine\Base;
 
 /**
  * Activate and deactive method of the plugin and relates.
@@ -199,7 +199,7 @@ class ActDeact extends Base {
 			return;
 		}
 
-		$version_option = \get_option( 'formular-af-citizenone-journalsystem-version' );
+		$version_option = \get_option( 'formular-af-awork-one-version' );
 
 		if ( is_scalar( $version_option ) ) {
 			$version = (string) $version_option;
@@ -207,12 +207,12 @@ class ActDeact extends Base {
 			$version = '';
 		}
 
-		if ( ! \version_compare( \FACIOJ_VERSION, $version, '>' ) ) {
+		if ( ! \version_compare( \FAAONE_VERSION, $version, '>' ) ) {
 			return;
 		}
 
-		\update_option( 'formular-af-citizenone-journalsystem-version', \FACIOJ_VERSION );
-		\delete_option( \FACIOJ_TEXTDOMAIN . '_fake-meta' );
+		\update_option( 'formular-af-awork-one-version', \FAAONE_VERSION );
+		\delete_option( \FAAONE_TEXTDOMAIN . '_fake-meta' );
 	}
 
 	/**
