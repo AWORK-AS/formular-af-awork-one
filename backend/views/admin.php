@@ -13,7 +13,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 ?>
@@ -28,8 +28,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<li><a href="#tabs-2"><?php esc_html_e( 'Instructions', 'formular-af-citizenone-journalsystem' ); ?></a></li>
 		</ul>
 		<?php
-		    require_once plugin_dir_path( __FILE__ ) . 'formular-af-citizenone-journalsystem-settings.php';
-			require_once plugin_dir_path( __FILE__ ) . 'instructions.php';
+		require_once plugin_dir_path( __FILE__ ) . 'formular-af-citizenone-journalsystem-settings.php';
+		require_once plugin_dir_path( __FILE__ ) . 'instructions.php';
 		?>
 	</div>
 

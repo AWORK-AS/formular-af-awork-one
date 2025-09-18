@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Formular af CitizenOne journalsystem
  *
@@ -31,9 +30,8 @@ class CMB extends Base {
 		if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
 			define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) . '../' );
 		}
-		
+
 		require_once FACIOJ_PLUGIN_ROOT . 'vendor/cmb2/init.php';
 		require_once FACIOJ_PLUGIN_ROOT . 'vendor/cmb2-grid/Cmb2GridPluginLoad.php';
 	}
-
 }

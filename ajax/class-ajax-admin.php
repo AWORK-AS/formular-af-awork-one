@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Formular af CitizenOne journalsystem
  *
@@ -25,11 +24,11 @@ class Ajax_Admin extends Base {
 	 * @return void|bool
 	 */
 	public function initialize() {
-		if ( !\apply_filters( 'facioj_ajax_admin_initialize', true ) ) {
+		if ( ! \apply_filters( 'facioj_ajax_admin_initialize', true ) ) {
 			return;
 		}
 
-		// For logged user
+		// For logged user.
 		\add_action( 'wp_ajax_facioj_your_admin_method', array( $this, 'facioj_your_admin_method' ) );
 	}
 
@@ -47,5 +46,4 @@ class Ajax_Admin extends Base {
 
 		\wp_send_json_success( $return );
 	}
-	
 }

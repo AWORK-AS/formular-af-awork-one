@@ -67,19 +67,18 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
-        "psr-4": {
-            "mzaworkdk\\Citizenone\\Ajax\\": "ajax/",
-            "mzaworkdk\\Citizenone\\Backend\\": "backend/",
-            "mzaworkdk\\Citizenone\\Cli\\": "cli/",
-            "mzaworkdk\\Citizenone\\Engine\\": "engine/",
-            "mzaworkdk\\Citizenone\\Frontend\\": "frontend/",
-            "mzaworkdk\\Citizenone\\Integrations\\": "integrations/",
-            "mzaworkdk\\Citizenone\\Internals\\": "internals/",
-            "mzaworkdk\\Citizenone\\Internals\\Models\\": "internals/models/",
-            "mzaworkdk\\Citizenone\\Internals\\Views\\": "internals/views/",
-            "mzaworkdk\\Citizenone\\Rest\\": "rest/",
-            "mzaworkdk\\Citizenone\\Class\\": "class/"
-        }
+        "classmap": [
+            "ajax/",
+            "backend/",
+            "cli/",
+            "engine/",
+            "frontend/",
+            "integrations/",
+            "internals/",
+            "internals/models/",
+            "internals/views/",
+            "rest/"
+		]
     },
     "config": {
         "allow-plugins": {

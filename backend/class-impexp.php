@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Formular af CitizenOne journalsystem
  *
@@ -25,17 +24,17 @@ class ImpExp extends Base {
 	 * @return void|bool
 	 */
 	public function initialize() {
-		if ( !parent::initialize() ) {
+		if ( ! parent::initialize() ) {
 			return;
 		}
 
-		if ( !\current_user_can( 'manage_options' ) ) {
+		if ( ! \current_user_can( 'manage_options' ) ) {
 			return;
 		}
 
-		// Add the export settings method
+		// Add the export settings method.
 		\add_action( 'admin_init', array( $this, 'settings_export' ) );
-		// Add the import settings method
+		// Add the import settings method.
 		\add_action( 'admin_init', array( $this, 'settings_import' ) );
 	}
 
@@ -47,19 +46,19 @@ class ImpExp extends Base {
 	 */
 	public function settings_export() {
 		if (
-			empty( $_POST[ 'facioj_action' ] ) || //phpcs:ignore WordPress.Security.NonceVerification
-			'export_settings' !== \sanitize_text_field( \wp_unslash( $_POST[ 'facioj_action' ] ) ) //phpcs:ignore WordPress.Security.NonceVerification
+			empty( $_POST['facioj_action'] ) || //phpcs:ignore WordPress.Security.NonceVerification
+			'export_settings' !== \sanitize_text_field( \wp_unslash( $_POST['facioj_action'] ) ) //phpcs:ignore WordPress.Security.NonceVerification
 		) {
 			return;
 		}
 
-		if ( !\wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST[ 'facioj_export_nonce' ] ) ), 'facioj_export_nonce' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		if ( ! \wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST['facioj_export_nonce'] ) ), 'facioj_export_nonce' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			return;
 		}
 
-		$settings      = array();
-		$settings[ 0 ] = \get_option( FACIOJ_TEXTDOMAIN . '-settings' );
-		$settings[ 1 ] = \get_option( FACIOJ_TEXTDOMAIN . '-settings-second' );
+		$settings    = array();
+		$settings[0] = \get_option( FACIOJ_TEXTDOMAIN . '-settings' );
+		$settings[1] = \get_option( FACIOJ_TEXTDOMAIN . '-settings-second' );
 
 		\ignore_user_abort( true );
 
@@ -81,28 +80,28 @@ class ImpExp extends Base {
 	 */
 	public function settings_import() {
 		if (
-			empty( $_POST[ 'facioj_action' ] ) || //phpcs:ignore WordPress.Security.NonceVerification
-			'import_settings' !== \sanitize_text_field( \wp_unslash( $_POST[ 'facioj_action' ] ) ) //phpcs:ignore WordPress.Security.NonceVerification
+			empty( $_POST['facioj_action'] ) || //phpcs:ignore WordPress.Security.NonceVerification
+			'import_settings' !== \sanitize_text_field( \wp_unslash( $_POST['facioj_action'] ) ) //phpcs:ignore WordPress.Security.NonceVerification
 		) {
 			return;
 		}
 
-		if ( !\wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST[ 'facioj_import_nonce' ] ) ), 'facioj_import_nonce' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		if ( ! \wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST['facioj_import_nonce'] ) ), 'facioj_import_nonce' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			return;
 		}
 
-		if ( !isset( $_FILES[ 'facioj_import_file' ][ 'name' ] ) ) {
+		if ( ! isset( $_FILES['facioj_import_file']['name'] ) ) {
 			return;
 		}
 
-		$file_name_parts = \explode( '.', \sanitize_text_field( \wp_unslash( $_FILES[ 'facioj_import_file' ][ 'name' ] ) ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$file_name_parts = \explode( '.', \sanitize_text_field( \wp_unslash( $_FILES['facioj_import_file']['name'] ) ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		$extension       = \end( $file_name_parts );
 
 		if ( 'json' !== $extension ) {
 			\wp_die( \esc_html__( 'Please upload a valid .json file', 'formular-af-citizenone-journalsystem' ) );
 		}
 
-		$import_file = \sanitize_text_field( \wp_unslash( $_FILES[ 'facioj_import_file' ][ 'tmp_name' ] ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$import_file = \sanitize_text_field( \wp_unslash( $_FILES['facioj_import_file']['tmp_name'] ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 		if ( empty( $import_file ) ) {
 			\wp_die( \esc_html__( 'Please upload a file to import', 'formular-af-citizenone-journalsystem' ) );
@@ -111,12 +110,12 @@ class ImpExp extends Base {
 		// Retrieve the settings from the file and convert the json object to an array.
 		$settings_file = file_get_contents( $import_file );// phpcs:ignore
 
-		if ( $settings_file !== false ) {
+		if ( false !== $settings_file ) {
 			$settings = \json_decode( (string) $settings_file );
 
 			if ( \is_array( $settings ) ) {
-				\update_option( FACIOJ_TEXTDOMAIN . '-settings', \get_object_vars( $settings[ 0 ] ) );
-				\update_option( FACIOJ_TEXTDOMAIN . '-settings-second', \get_object_vars( $settings[ 1 ] ) );
+				\update_option( FACIOJ_TEXTDOMAIN . '-settings', \get_object_vars( $settings[0] ) );
+				\update_option( FACIOJ_TEXTDOMAIN . '-settings-second', \get_object_vars( $settings[1] ) );
 			}
 
 			\wp_safe_redirect( \admin_url( 'options-general.php?page=' . FACIOJ_TEXTDOMAIN ) );
@@ -124,9 +123,8 @@ class ImpExp extends Base {
 		}
 
 		new \WP_Error(
-				'facioj_import_settings_failed',
-				\__( 'Failed to import the settings.', 'formular-af-citizenone-journalsystem' )
-			);
+			'facioj_import_settings_failed',
+			\__( 'Failed to import the settings.', 'formular-af-citizenone-journalsystem' )
+		);
 	}
-
 }

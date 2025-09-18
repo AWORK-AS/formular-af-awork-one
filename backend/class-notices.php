@@ -25,7 +25,7 @@ class Notices extends Base {
 	 * @return void|bool
 	 */
 	public function initialize() {
-		if ( !parent::initialize() ) {
+		if ( ! parent::initialize() ) {
 			return;
 		}
 
@@ -33,18 +33,17 @@ class Notices extends Base {
 		 * Alert after few days to suggest to contribute to the localization if it is incomplete
 		 * on translate.wordpress.org, the filter enables to remove globally.
 		 */
-		if ( !\apply_filters( 'facioj_alert_localization', true ) ) {
+		if ( ! \apply_filters( 'facioj_alert_localization', true ) ) {
 			return;
 		}
 
 		new I18n_Notice_WordPressOrg(
-		array(
-			'textdomain' => FACIOJ_TEXTDOMAIN,
-			'facioj'     => FACIOJ_NAME,
-			'hook'       => 'admin_notices',
-		),
-		true
+			array(
+				'textdomain' => FACIOJ_TEXTDOMAIN,
+				'facioj'     => FACIOJ_NAME,
+				'hook'       => 'admin_notices',
+			),
+			true
 		);
 	}
-
 }

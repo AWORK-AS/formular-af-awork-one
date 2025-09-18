@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Formular af CitizenOne journalsystem
  *
@@ -13,7 +12,7 @@
 namespace mzaworkdk\Citizenone\Backend;
 
 use mzaworkdk\Citizenone\Engine\Base;
-use mzaworkdk\Citizenone\Internals\Models\RetrieveToken;
+use mzaworkdk\Citizenone\Internals\Models\Retrieve_Token;
 
 /**
  * Create the settings page in the backend
@@ -26,15 +25,15 @@ class Settings_Page extends Base {
 	 * @return void|bool
 	 */
 	public function initialize() {
-		if ( !parent::initialize() ) {
+		if ( ! parent::initialize() ) {
 			return;
 		}
 
 		// Add the options page and menu item.
 		\add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
-    
-		// Add CMB2 save hook
-        \add_action( 'cmb2_save_options-page_fields', array( $this, 'before_save_settings' ), 10, 2 );
+
+		// Add CMB2 save hook.
+		\add_action( 'cmb2_save_options-page_fields', array( $this, 'before_save_settings' ), 10, 2 );
 
 		$realpath        = (string) \realpath( __DIR__ );
 		$plugin_basename = \plugin_basename( \plugin_dir_path( $realpath ) . FACIOJ_TEXTDOMAIN . '.php' );
@@ -58,6 +57,7 @@ class Settings_Page extends Base {
 		add_options_page( __( 'Page Title', FACIOJ_TEXTDOMAIN ), FACIOJ_NAME, 'manage_options', FACIOJ_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ) );
 		 *
 		 */
+
 		/*
 		 * Add a settings page for this plugin to the main menu
 		 *
@@ -75,7 +75,7 @@ class Settings_Page extends Base {
 		if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
 			define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) . '../' );
 		}
-		
+
 		include_once FACIOJ_PLUGIN_ROOT . 'backend/views/admin.php';
 	}
 
@@ -94,21 +94,20 @@ class Settings_Page extends Base {
 			$links
 		);
 	}
-    
+
 	/**
 	 * Action before CMB2 saves settings
 	 *
 	 * @param string $obj_id Object ID.
 	 * @param string $cmb_id CMB2 instance ID.
 	 */
-	// phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
 	public function before_save_settings( string $obj_id, string $cmb_id ): void {
 		if ( ! $this->is_valid_cmb_id( $cmb_id ) ) {
 			return;
 		}
 
 		$submitted_values = $this->get_sanitized_submitted_values( $cmb_id );
-		
+
 		if ( $this->has_validation_errors( $submitted_values ) ) {
 			return;
 		}
@@ -122,7 +121,7 @@ class Settings_Page extends Base {
 	 * @param string $cmb_id CMB ID.
 	 */
 	private function is_valid_cmb_id( string $cmb_id ): bool {
-		return $cmb_id === FACIOJ_TEXTDOMAIN . '_options';
+		return FACIOJ_TEXTDOMAIN . '_options' === $cmb_id;
 	}
 
 	/**
@@ -139,11 +138,11 @@ class Settings_Page extends Base {
 		);
 
 		// Nonce verification - CRITICAL!
-		if ( !isset( $_POST['nonce_CMB2php' . $cmb_id ] ) ) {
+		if ( ! isset( $_POST[ 'nonce_CMB2php' . $cmb_id ] ) ) {
 			return $data;
 		}
 
-		if ( !\wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST['nonce_CMB2php' . $cmb_id ] ) ), 'nonce_CMB2php' . $cmb_id ) ) {
+		if ( ! \wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST[ 'nonce_CMB2php' . $cmb_id ] ) ), 'nonce_CMB2php' . $cmb_id ) ) {
 			return $data;
 		}
 
@@ -203,13 +202,13 @@ class Settings_Page extends Base {
 	 * @param array $values The data.
 	 */
 	private function process_token_retrieval( array $values ): void {
-		$token = new RetrieveToken;
+		$token = new Retrieve_Token();
 		$data  = $token->submit(
 			array(
 				'company_cvr'           => $values['company_cvr'],
 				'citizenone_company_id' => $values['company_id'],
 				'email'                 => $values['email'],
-		)
+			)
 		);
 
 		$opts = facioj_get_settings();
@@ -236,7 +235,6 @@ class Settings_Page extends Base {
 			'The API did not accept the provided data. Please check your information and try again.',
 			'formular-af-citizenone-journalsystem'
 		);
-		
 		wpdesk_wp_notice( $error_message, 'error', true );
 	}
 
@@ -247,7 +245,7 @@ class Settings_Page extends Base {
 	 * @param mixed $data Data.
 	 */
 	private function handle_api_success( array $opts, $data ): void {
-		// Check if $data is an object and has the property 'data'
+		// Check if $data is an object and has the property 'data'.
 		if ( ! is_object( $data ) || ! isset( $data->data ) ) {
 			return;
 		}
@@ -258,5 +256,4 @@ class Settings_Page extends Base {
 		$success_message = __( '✅ Successfully connected to CitizenOne', 'formular-af-citizenone-journalsystem' );
 		wpdesk_wp_notice( $success_message, 'success', true );
 	}
-
 }

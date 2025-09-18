@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Formular af CitizenOne journalsystem
  *
@@ -9,8 +8,9 @@
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
+
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 /**

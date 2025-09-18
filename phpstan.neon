@@ -30,6 +30,7 @@ parameters:
         - '/^Call to function is_wp_error\(\) with WP_REST_Response will always evaluate to false.$/'
         - '/^is_wp_error\(WP_REST_Response\) will always evaluate to false.$/'
         - identifier: missingType.iterableValue
+        - identifier: function.impossibleType
 # Not used in the boilerplate.
 #        # Uses func_get_args()
 #        - '#^Function apply_filters invoked with [34567] parameters, 2 required\.$#'

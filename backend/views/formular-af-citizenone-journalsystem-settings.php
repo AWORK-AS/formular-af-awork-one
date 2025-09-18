@@ -13,82 +13,85 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly
+	exit; // Exit if accessed directly.
 }
 
 ?>
 
 <div id="tabs-1" class="wrap">
 <?php
-    $cmb = new_cmb2_box(
-        array(
-            'id'         => FACIOJ_TEXTDOMAIN . '_options',
-            'hookup'     => false,
-            'show_on'    => array( 'key' => 'options-page', 'value' => array( FACIOJ_TEXTDOMAIN ) ),
-            'show_names' => true,
-        )
-    );
-    
-    $cmb->add_field(
-        array(
-            'name'       => __( 'Email', 'formular-af-citizenone-journalsystem' ),
-            'id'         => FACIOJ_TEXTDOMAIN . '_field_email',
-            'type'       => 'text_email',
-            'attributes' => array(
-				'required' => 'required', // HTML5 validation
-                                ),
-        )
-    );
-    
-    $cmb->add_field(
-        array(
-            'name'       => __( 'Company CVR', 'formular-af-citizenone-journalsystem' ),
-            'id'         => FACIOJ_TEXTDOMAIN . '_field_company_cvr',
-            'type'       => 'text',
-            'attributes' => array(
-				'required' => 'required', // HTML5 validation
-                                ),
-        )
-    );
-    
-    $cmb->add_field(
-        array(
-            'name'       => __( 'CitizenOne Company ID', 'formular-af-citizenone-journalsystem' ),
-            'id'         => FACIOJ_TEXTDOMAIN . '_field_company_id',
-            'type'       => 'text',
-            'attributes' => array(
-				'required' => 'required', // HTML5 validation
-                                ),
-        )
-    );
-    
-    // DIVIDER: hCaptcha Settings
-    $cmb->add_field(
-        array(
-            'name' => __( 'hCaptcha Settings (Optional)', 'formular-af-citizenone-journalsystem' ),
-            'desc' => __( 'Configure your hCaptcha integration', 'formular-af-citizenone-journalsystem' ),
-            'type' => 'title',
-            'id'   => 'hcaptcha_divider',
-        )
-    );
-    
-    $cmb->add_field(
-        array(
-            'name' => 'hCaptcha ' . __( 'secret key', 'formular-af-citizenone-journalsystem' ),
-            'id'   => FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key',
-            'type' => 'text',
-        )
-    );
+	$cmb = new_cmb2_box(
+		array(
+			'id'         => FACIOJ_TEXTDOMAIN . '_options',
+			'hookup'     => false,
+			'show_on'    => array(
+				'key'   => 'options-page',
+				'value' => array( FACIOJ_TEXTDOMAIN ),
+			),
+			'show_names' => true,
+		)
+	);
 
-    $cmb->add_field(
-        array(
-            'name' => 'hCaptcha ' . __( 'site key', 'formular-af-citizenone-journalsystem' ),
-            'id'   => FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key',
-            'type' => 'text',
-        )
-    );
-    
-    
-    cmb2_metabox_form( FACIOJ_TEXTDOMAIN . '_options', FACIOJ_TEXTDOMAIN . '-settings' );
+	$cmb->add_field(
+		array(
+			'name'       => __( 'Email', 'formular-af-citizenone-journalsystem' ),
+			'id'         => FACIOJ_TEXTDOMAIN . '_field_email',
+			'type'       => 'text_email',
+			'attributes' => array(
+				'required' => 'required',
+			),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'       => __( 'Company CVR', 'formular-af-citizenone-journalsystem' ),
+			'id'         => FACIOJ_TEXTDOMAIN . '_field_company_cvr',
+			'type'       => 'text',
+			'attributes' => array(
+				'required' => 'required',
+			),
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name'       => __( 'CitizenOne Company ID', 'formular-af-citizenone-journalsystem' ),
+			'id'         => FACIOJ_TEXTDOMAIN . '_field_company_id',
+			'type'       => 'text',
+			'attributes' => array(
+				'required' => 'required', // HTML5 validation.
+			),
+		)
+	);
+
+	// DIVIDER: hCaptcha Settings.
+	$cmb->add_field(
+		array(
+			'name' => __( 'hCaptcha Settings (Optional)', 'formular-af-citizenone-journalsystem' ),
+			'desc' => __( 'Configure your hCaptcha integration', 'formular-af-citizenone-journalsystem' ),
+			'type' => 'title',
+			'id'   => 'hcaptcha_divider',
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name' => 'hCaptcha ' . __( 'secret key', 'formular-af-citizenone-journalsystem' ),
+			'id'   => FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key',
+			'type' => 'text',
+		)
+	);
+
+	$cmb->add_field(
+		array(
+			'name' => 'hCaptcha ' . __( 'site key', 'formular-af-citizenone-journalsystem' ),
+			'id'   => FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key',
+			'type' => 'text',
+		)
+	);
+
+
+	cmb2_metabox_form( FACIOJ_TEXTDOMAIN . '_options', FACIOJ_TEXTDOMAIN . '-settings' );
 	?>
 </div>

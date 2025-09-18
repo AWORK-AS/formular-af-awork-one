@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Formular af CitizenOne journalsystem
  *
@@ -25,12 +24,10 @@ class Enqueue extends Base {
 	 * @return void|bool
 	 */
 	public function initialize() {
-		if ( !parent::initialize() ) {
+		if ( ! parent::initialize() ) {
 			return;
 		}
-
-        // Register and enqueue assets
-        
+		// Register and enqueue assets.
 		\add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		\add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
 	}
@@ -42,14 +39,13 @@ class Enqueue extends Base {
 	 */
 	public function enqueue_admin_assets() {
 		$admin_page = \get_current_screen();
-		
 		if ( ! $admin_page ) {
 			return;
 		}
 
-		// Enqueue admin styles
+		// Enqueue admin styles.
 		$this->enqueue_admin_styles( $admin_page );
-		// Enqueue admin scripts
+		// Enqueue admin scripts.
 		$this->enqueue_admin_scripts( $admin_page );
 	}
 
@@ -59,17 +55,17 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	public function enqueue_block_editor_assets() {
-		// Enqueue block editor styles
+		// Enqueue block editor styles.
 		\wp_enqueue_style(
 			FACIOJ_TEXTDOMAIN . '-block-editor-style',
 			\plugins_url( 'assets/build/plugin-block.css', FACIOJ_PLUGIN_ABSOLUTE ),
 			array( 'wp-edit-blocks' ),
 			FACIOJ_VERSION
 		);
-		// Unregister editor script from block.json
+		// Unregister editor script from block.json.
 		\wp_deregister_script( 'formular-af-citizenone-journalsystem-contact-form-editor-script' );
 
-		// Enqueue block editor script
+		// Enqueue block editor script.
 		\wp_enqueue_script(
 			'formular-af-citizenone-journalsystem-contact-form-editor-script',
 			\plugins_url( 'assets/build/plugin-block.js', FACIOJ_PLUGIN_ABSOLUTE ),
@@ -77,12 +73,11 @@ class Enqueue extends Base {
 			FACIOJ_VERSION,
 			false
 		);
-		
 		if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
 			define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) . '../' );
 		}
 
-		// Handle translations
+		// Handle translations.
 		if ( function_exists( 'wp_set_script_translations' ) ) {
 			\wp_set_script_translations(
 				'formular-af-citizenone-journalsystem-contact-form-editor-script',
@@ -90,17 +85,15 @@ class Enqueue extends Base {
 				FACIOJ_PLUGIN_ROOT . 'languages'
 			);
 		}
-		
-		// Localize script with hCaptcha settings
+		// Localize script with hCaptcha settings.
 		$options             = \facioj_get_settings();
-		$hcaptcha_site_key   = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
-		$hcaptcha_secret_key = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
+		$hcaptcha_site_key   = $options[ FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
+		$hcaptcha_secret_key = $options[ FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
 		$hcaptcha_enabled    = false;
 
 		if ( $hcaptcha_site_key && $hcaptcha_secret_key ) {
 			$hcaptcha_enabled = true;
 		}
-		
 		\wp_localize_script(
 			'formular-af-citizenone-journalsystem-contact-form-editor-script',
 			'cfaBlockhCaptcha',
@@ -118,16 +111,14 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	public function enqueue_admin_styles( $admin_page ) {
-		// Main admin style
+		// Main admin style.
 		\wp_enqueue_style(
 			FACIOJ_TEXTDOMAIN . '-admin-style',
 			\plugins_url( 'assets/build/plugin-admin.css', FACIOJ_PLUGIN_ABSOLUTE ),
 			array( 'dashicons' ),
 			FACIOJ_VERSION
 		);
-		
-		// Settings page style
-		// @phpstan-ignore function.impossibleType
+		// Settings page style.
 		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-citizenone-journalsystem' !== $admin_page->id ) {
 			return;
 		}
@@ -139,7 +130,7 @@ class Enqueue extends Base {
 			FACIOJ_VERSION
 		);
 	}
-    
+
 	/**
 	 * Register and enqueue admin-specific JavaScript.
 	 *
@@ -147,7 +138,7 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	public function enqueue_admin_scripts( $admin_page ) {
-		// Main admin script
+		// Main admin script.
 		\wp_enqueue_script(
 			FACIOJ_TEXTDOMAIN . '-settings-admin',
 			\plugins_url( 'assets/build/plugin-admin.js', FACIOJ_PLUGIN_ABSOLUTE ),
@@ -155,9 +146,7 @@ class Enqueue extends Base {
 			FACIOJ_VERSION,
 			true
 		);
-		
-		// Settings page script
-		// @phpstan-ignore function.impossibleType
+		// Settings page script.
 		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-citizenone-journalsystem' !== $admin_page->id ) {
 			return;
 		}
@@ -170,5 +159,4 @@ class Enqueue extends Base {
 			true
 		);
 	}
-
 }

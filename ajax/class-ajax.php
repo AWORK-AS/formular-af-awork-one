@@ -24,11 +24,11 @@ class Ajax extends Base {
 	 * @return void|bool
 	 */
 	public function initialize() {
-		if ( !\apply_filters( 'facioj_ajax_initialize', true ) ) {
+		if ( ! \apply_filters( 'facioj_ajax_initialize', true ) ) {
 			return;
 		}
 
-		// For not logged user
+		// For not logged user.
 		\add_action( 'wp_ajax_nopriv_facioj_your_method', array( $this, 'facioj_your_method' ) );
 	}
 
@@ -46,5 +46,4 @@ class Ajax extends Base {
 
 		\wp_send_json_success( $return );
 	}
-
 }

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Formular af CitizenOne journalsystem
  *
@@ -25,11 +24,11 @@ class ActDeact extends Base {
 	 * @return void|bool
 	 */
 	public function initialize() {
-		if ( !parent::initialize() ) {
+		if ( ! parent::initialize() ) {
 			return;
 		}
 
-		// Activate plugin when new blog is added
+		// Activate plugin when new blog is added.
 		\add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
 		\add_action( 'admin_init', array( $this, 'upgrade_procedure' ) );
@@ -62,8 +61,7 @@ class ActDeact extends Base {
 	public static function activate( $network_wide ) {
 		if ( \function_exists( 'is_multisite' ) && \is_multisite() ) {
 			if ( $network_wide ) {
-				// Get all blog ids
-				/** @var array<\WP_Site> $blogs */
+				// Get all blog ids.
 				$blogs = \get_sites();
 
 				foreach ( $blogs as $blog ) {
@@ -92,8 +90,7 @@ class ActDeact extends Base {
 	public static function deactivate( bool $network_wide ) {
 		if ( \function_exists( 'is_multisite' ) && \is_multisite() ) {
 			if ( $network_wide ) {
-				// Get all blog ids
-				/** @var array<\WP_Site> $blogs */
+				// Get all blog ids.
 				$blogs = \get_sites();
 
 				foreach ( $blogs as $blog ) {
@@ -115,7 +112,7 @@ class ActDeact extends Base {
 	 * @return void
 	 */
 	public static function add_capabilities() {
-		// Add the capabilites to all the roles
+		// Add the capabilites to all the roles.
 		$caps  = array(
 			'create_plugins',
 			'read_demo',
@@ -158,7 +155,7 @@ class ActDeact extends Base {
 	 * @return void
 	 */
 	public static function remove_capabilities() {
-		// Remove capabilities to specific roles
+		// Remove capabilities to specific roles.
 		$bad_caps = array(
 			'create_demoes',
 			'read_private_demoes',
@@ -198,7 +195,7 @@ class ActDeact extends Base {
 	 * @return void
 	 */
 	public static function upgrade_procedure() {
-		if ( !\is_admin() ) {
+		if ( ! \is_admin() ) {
 			return;
 		}
 
@@ -208,9 +205,9 @@ class ActDeact extends Base {
 			$version = (string) $version_option;
 		} else {
 			$version = '';
-	 	}
-		
-		if ( !\version_compare( \FACIOJ_VERSION, $version, '>' ) ) {
+		}
+
+		if ( ! \version_compare( \FACIOJ_VERSION, $version, '>' ) ) {
 			return;
 		}
 
@@ -227,7 +224,7 @@ class ActDeact extends Base {
 	private static function single_activate() {
 		self::add_capabilities();
 		self::upgrade_procedure();
-		// Clear the permalinks
+		// Clear the permalinks.
 		\flush_rewrite_rules();
 	}
 
@@ -239,8 +236,7 @@ class ActDeact extends Base {
 	 */
 	private static function single_deactivate() {
 		self::remove_capabilities();
-		// Clear the permalinks
+		// Clear the permalinks.
 		\flush_rewrite_rules();
 	}
-
 }

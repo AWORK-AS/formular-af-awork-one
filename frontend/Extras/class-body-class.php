@@ -41,5 +41,4 @@ class Body_Class extends Base {
 
 		return $classes;
 	}
-
 }

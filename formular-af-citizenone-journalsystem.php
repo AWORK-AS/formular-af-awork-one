@@ -1,5 +1,7 @@
 <?php
 /**
+ * Contact form for CitizenOne
+ *
  * @package   mzaworkdk\Citizenone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
@@ -9,7 +11,7 @@
  * Plugin Name:     Formular af CitizenOne journalsystem
  * Plugin URI:      https://github.com/AWORK-AS/contact-form-app
  * Description:     Formular af CitizenOne journalsystem
- * Version:         1.1.3
+ * Version:         1.2.0
  * Author:          support@citizenone.dk
  * Author URI:      https://citizenone.dk/kontakt/
  * Text Domain:     formular-af-citizenone-journalsystem
@@ -28,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'FACIOJ_PLUGIN_ABSOLUTE', __FILE__ );
 define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
 define( 'FACIOJ_TEXTDOMAIN', 'formular-af-citizenone-journalsystem' );
-define( 'FACIOJ_VERSION', '1.1.3' );
+define( 'FACIOJ_VERSION', '1.2.0' );
 define( 'FACIOJ_MIN_PHP_VERSION', '7.4' );
 define( 'FACIOJ_WP_VERSION', '5.8' );
 define( 'FACIOJ_PLUGIN_API_URL', 'https://appserver.citizenone.dk/api' );
@@ -45,8 +47,6 @@ function facioj_initialize_plugin(): void {
 	$facioj_libraries = require FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php';
 	require_once FACIOJ_PLUGIN_ROOT . 'functions/functions.php';
 	require_once FACIOJ_PLUGIN_ROOT . 'functions/debug.php';
-
-    
 
 	// Check for requirements.
 	$requirements = new \Micropackage\Requirements\Requirements(
@@ -70,25 +70,22 @@ function facioj_initialize_plugin(): void {
 		FACIOJ_PLUGIN_ABSOLUTE,
 		FACIOJ_TEXTDOMAIN
 	);
-    
 	// Initialize the plugin's core engine.
 	new \mzaworkdk\Citizenone\Engine\Initialize( $facioj_libraries );
-	
-    // Load Contact form block.
+	// Load Contact form block.
 	add_action(
-        'enqueue_block_assets',
-        function() {
-		// Only load on frontend
+		'enqueue_block_assets',
+		function () {
+			// Only load on frontend.
 			if ( is_admin() ) {
 				return;
 			}
 		}
-        );
-	
-	// Use block.json for block registration
+	);
+	// Use block.json for block registration.
 	$block_json_path = FACIOJ_PLUGIN_ROOT . 'assets/block.json';
 
-	if ( !file_exists( $block_json_path ) ) {
+	if ( ! file_exists( $block_json_path ) ) {
 		return;
 	}
 
@@ -112,24 +109,22 @@ add_action( 'init', 'facioj_initialize_plugin' );
  * @param bool $network_wide Network wide.
  */
 function facioj_activate_plugin( $network_wide ): void {
-	// Double-check if constant is defined
-    if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
-        define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
-    }
-	
-    // Ensure the autoloader is available
-    if ( ! file_exists( FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
-        wp_die( esc_html_e( 'Plugin dependencies are missing. Please run composer install.', 'formular-af-citizenone-journalsystem' ) );
-    }
-    
-    require_once FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php';
-    
-    // Load the ActDeact class
-    if ( ! class_exists( '\mzaworkdk\Citizenone\Backend\ActDeact' ) ) {
-        require_once FACIOJ_PLUGIN_ROOT . 'backend/ActDeact.php';
-    }
-    
-    \mzaworkdk\Citizenone\Backend\ActDeact::activate( $network_wide );
+	// Double-check if constant is defined.
+	if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
+		define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
+	}
+	// Ensure the autoloader is available.
+	if ( ! file_exists( FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
+		wp_die( esc_html_e( 'Plugin dependencies are missing. Please run composer install.', 'formular-af-citizenone-journalsystem' ) );
+	}
+
+	require_once FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php';
+	// Load the ActDeact class.
+	if ( ! class_exists( '\mzaworkdk\Citizenone\Backend\ActDeact' ) ) {
+		require_once FACIOJ_PLUGIN_ROOT . 'backend/class-actdeact.php';
+	}
+
+	\mzaworkdk\Citizenone\Backend\ActDeact::activate( $network_wide );
 }
 
 /**
@@ -138,21 +133,20 @@ function facioj_activate_plugin( $network_wide ): void {
  * @param bool $network_wide Network wide.
  */
 function facioj_deactivate_plugin( $network_wide ): void {
-    // Ensure the autoloader is available
-    if ( ! file_exists( FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
-        return;
-    }
-    
-    require_once FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php';
-    
-    // Load the ActDeact class
-    if ( ! class_exists( '\mzaworkdk\Citizenone\Backend\ActDeact' ) ) {
-        require_once FACIOJ_PLUGIN_ROOT . 'backend/ActDeact.php';
-    }
-    
-    \mzaworkdk\Citizenone\Backend\ActDeact::deactivate( $network_wide );
+	// Ensure the autoloader is available.
+	if ( ! file_exists( FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php' ) ) {
+		return;
+	}
+	require_once FACIOJ_PLUGIN_ROOT . 'vendor/autoload.php';
+
+	// Load the ActDeact class.
+	if ( ! class_exists( '\mzaworkdk\Citizenone\Backend\ActDeact' ) ) {
+		require_once FACIOJ_PLUGIN_ROOT . 'backend/class-actdeact.php';
+	}
+
+	\mzaworkdk\Citizenone\Backend\ActDeact::deactivate( $network_wide );
 }
 
-// Register activation and deactivation hooks
+// Register activation and deactivation hooks.
 register_activation_hook( FACIOJ_PLUGIN_ABSOLUTE, 'facioj_activate_plugin' );
 register_deactivation_hook( FACIOJ_PLUGIN_ABSOLUTE, 'facioj_deactivate_plugin' );

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Formular af CitizenOne journalsystem
  *
@@ -47,7 +46,7 @@ class Initialize {
 	 * @since 1.0.0
 	 */
 	public function __construct( \Composer\Autoload\ClassLoader $composer ) {
-		$this->content  = new Engine\Context;
+		$this->content  = new Engine\Context();
 		$this->composer = $composer;
 
 		$this->get_classes( 'Integrations' );
@@ -71,7 +70,7 @@ class Initialize {
 		if ( $this->content->request( 'rest' ) ) {
 			$this->get_classes( 'Rest' );
 		}
-        
+
 		$this->get_classes( 'Internals' );
 		$this->load_classes();
 	}
@@ -80,7 +79,8 @@ class Initialize {
 	 * Initialize all the classes.
 	 *
 	 * @since 1.0.0
-	 * @return void
+	 * @throws \Exception If class not initialized.
+	 * @return void If successful.
 	 */
 	private function load_classes() {
 		$this->classes = \apply_filters( 'facioj_classes_to_execute', $this->classes );
@@ -116,26 +116,26 @@ class Initialize {
 		if ( strpos( $classtovalidate, 'Widgets' ) !== false ) {
 			\add_action(
 				'widgets_init',
-				function() use ( $classtovalidate ) {
-					$temp = new $classtovalidate;
+				function () use ( $classtovalidate ) {
+					$temp = new $classtovalidate();
 
-					if ( !\method_exists( $temp, 'initialize' ) ) {
+					if ( ! \method_exists( $temp, 'initialize' ) ) {
 						return;
 					}
 
 					$temp->initialize();
 					\add_filter(
 						'facioj_instance_' . $classtovalidate,
-						function() use ( $temp ) {
+						function () use ( $temp ) {
 							return $temp;
 						}
 					);
 				}
 			);
 		} else {
-			$temp = new $classtovalidate;
+			$temp = new $classtovalidate();
 
-			if ( !\method_exists( $temp, 'initialize' ) ) {
+			if ( ! \method_exists( $temp, 'initialize' ) ) {
 				return;
 			}
 
@@ -143,7 +143,7 @@ class Initialize {
 
 			\add_filter(
 				'facioj_instance_' . $classtovalidate,
-				function() use ( $temp ) {
+				function () use ( $temp ) {
 					return $temp;
 				}
 			);
@@ -162,8 +162,8 @@ class Initialize {
 		$classmap        = $this->composer->getClassMap();
 		$namespacetofind = 'mzaworkdk\\Citizenone\\' . $namespacetofind;
 
-		// In case composer has autoload optimized
-		if ( isset( $classmap[ 'mzaworkdk\\Citizenone\\Engine\\Initialize' ] ) ) {
+		// In case composer has autoload optimized.
+		if ( isset( $classmap['mzaworkdk\\Citizenone\\Engine\\Initialize'] ) ) {
 			$classes = \array_keys( $classmap );
 
 			foreach ( $classes as $class ) {
@@ -179,13 +179,13 @@ class Initialize {
 
 		$namespacetofind .= '\\';
 
-		// In case composer is not optimized
+		// In case composer is not optimized.
 		if ( isset( $prefix[ $namespacetofind ] ) ) {
 			$folder    = $prefix[ $namespacetofind ][0];
 			$php_files = $this->scandir( $folder );
 			$this->find_classes( $php_files, $folder, $namespacetofind );
 
-			if ( !WP_DEBUG ) {
+			if ( ! WP_DEBUG ) {
 				\wp_die( \esc_html_e( 'Contact Form App is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself.', 'formular-af-citizenone-journalsystem' ) );
 			}
 
@@ -209,15 +209,14 @@ class Initialize {
 		$blacklist = array( '..', '.', 'index.php' );
 		// Scan for files.
 		$temp_files = \scandir( $folder );
-
-		$files = array();
+		$files      = array();
 
 		if ( \is_array( $temp_files ) ) {
 			foreach ( $temp_files as $temp_file ) {
 				// Only include filenames that DO NOT contain the excluded string and ARE NOT on the scandir result blacklist.
 				if (
 					false !== \mb_strpos( $temp_file, $exclude_str )
-					|| $temp_file[0] === '.'
+					|| '.' === $temp_file[0]
 					|| \in_array( $temp_file, $blacklist, true )
 				) {
 					continue;
@@ -242,7 +241,13 @@ class Initialize {
 	private function find_classes( array $php_files, string $folder, string $base ) {
 		foreach ( $php_files as $php_file ) {
 			$class_name = \substr( $php_file, 0, -4 );
+			if ( 0 === \strpos( $class_name, 'class-' ) ) {
+				$class_name = \substr( $class_name, 6 );
+			}
+
 			$path       = $folder . '/' . $php_file;
+			$class_name = \str_replace( '-', ' ', $class_name );
+			$class_name = \str_replace( ' ', '_', \ucwords( $class_name ) );
 
 			if ( \is_file( $path ) ) {
 				$this->classes[] = $base . $class_name;
@@ -250,12 +255,12 @@ class Initialize {
 				continue;
 			}
 
-			// Verify the Namespace level
+			// Verify the Namespace level.
 			if ( \substr_count( $base . $class_name, '\\' ) < 2 ) {
 				continue;
 			}
 
-			if ( !\is_dir( $path ) || \strtolower( $php_file ) === $php_file ) {
+			if ( ! \is_dir( $path ) || \strtolower( $php_file ) === $php_file ) {
 				continue;
 			}
 
@@ -263,5 +268,4 @@ class Initialize {
 			$this->find_classes( $sub_php_files, $folder . '/' . $php_file, $base . $php_file . '\\' );
 		}
 	}
-
 }

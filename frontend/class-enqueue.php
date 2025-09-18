@@ -27,10 +27,10 @@ class Enqueue extends Base {
 		parent::initialize();
 
 		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-		// Use a later hook for localization
+		// Use a later hook for localization.
 		\add_action( 'wp_footer', array( $this, 'localize_scripts' ), 5 );
 
-		// Load hCaptcha
+		// Load hCaptcha.
 		$this->load_hcaptcha_script();
 	}
 
@@ -54,7 +54,7 @@ class Enqueue extends Base {
 	public function enqueue_styles() {
 		$handle  = FACIOJ_TEXTDOMAIN . '-plugin-styles';
 		$src     = \plugins_url( 'assets/build/plugin-public.css', FACIOJ_PLUGIN_ABSOLUTE );
-		$deps    = array(); // No dependencies specified in original Inpsyde code
+		$deps    = array(); // No dependencies specified in original Inpsyde code.
 		$version = FACIOJ_VERSION;
 		$media   = 'all';
 
@@ -70,25 +70,25 @@ class Enqueue extends Base {
 	public function enqueue_scripts() {
 		$handle    = FACIOJ_TEXTDOMAIN . '-plugin-script';
 		$src       = \plugins_url( 'assets/build/plugin-public.js', FACIOJ_PLUGIN_ABSOLUTE );
-		$deps      = array(); // No dependencies specified in original Inpsyde code
+		$deps      = array(); // No dependencies specified in original Inpsyde code.
 		$version   = FACIOJ_VERSION;
-		$in_footer = true; // Inpsyde's useAsyncFilter implies defer/async, which often means loading in footer
+		$in_footer = true; // Inpsyde's useAsyncFilter implies defer/async, which often means loading in footer.
 
 		\wp_enqueue_script( $handle, $src, $deps, $version, $in_footer );
 
-		// Add async/defer attributes using script_loader_tag filter
+		// Add async/defer attributes using script_loader_tag filter.
 		\add_filter(
-            'script_loader_tag',
-            function( $tag, $handle ) {
+			'script_loader_tag',
+			function ( $tag, $handle ) {
 				if ( FACIOJ_TEXTDOMAIN . '-plugin-script' === $handle ) {
 					return str_replace( '<script', '<script async defer', $tag );
 				}
 
 				return $tag;
 			},
-            10,
-            2
-            );
+			10,
+			2
+		);
 	}
 
 	/**
@@ -98,26 +98,26 @@ class Enqueue extends Base {
 	 * @return void
 	 */
 	public function localize_scripts() {
-		// Only localize if the script is enqueued
-		if ( !wp_script_is( FACIOJ_TEXTDOMAIN . '-plugin-script', 'enqueued' ) ) {
+		// Only localize if the script is enqueued.
+		if ( ! wp_script_is( FACIOJ_TEXTDOMAIN . '-plugin-script', 'enqueued' ) ) {
 			return;
 		}
-		
-		// Get plugin options
+
+		// Get plugin options.
 		$options = \facioj_get_settings();
-		
-		$color               = $options[FACIOJ_TEXTDOMAIN . '_color_theme'] ?? '#205E77';
-		$headline            = $options[FACIOJ_TEXTDOMAIN . '_headline'] ?? 'Get in Touch With Us';
-		$hcaptcha_site_key   = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
-		$hcaptcha_secret_key = $options[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
-		
+
+		$color               = $options[ FACIOJ_TEXTDOMAIN . '_color_theme' ] ?? '#205E77';
+		$headline            = $options[ FACIOJ_TEXTDOMAIN . '_headline' ] ?? 'Get in Touch With Us';
+		$hcaptcha_site_key   = $options[ FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
+		$hcaptcha_secret_key = $options[ FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
+
 		$hcaptcha_enabled = false;
 
 		if ( $hcaptcha_site_key && $hcaptcha_secret_key ) {
 			$hcaptcha_enabled = true;
 		}
-		
-		// Localize the script using WordPress standard method
+
+		// Localize the script using WordPress standard method.
 		wp_localize_script(
 			FACIOJ_TEXTDOMAIN . '-plugin-script',
 			'facioj_form_vars',
@@ -149,8 +149,8 @@ class Enqueue extends Base {
 	 */
 	protected function load_hcaptcha_script() {
 		$opts                = \facioj_get_settings();
-		$hcaptcha_site_key   = $opts[FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key'] ?? false;
-		$hcaptcha_secret_key = $opts[FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key'] ?? false;
+		$hcaptcha_site_key   = $opts[ FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
+		$hcaptcha_secret_key = $opts[ FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
 
 		$hcaptcha_enabled = false;
 
@@ -158,12 +158,11 @@ class Enqueue extends Base {
 			$hcaptcha_enabled = true;
 		}
 
-		if ( !$hcaptcha_enabled || \wp_script_is( 'hcaptcha', 'enqueued' ) ) {
+		if ( ! $hcaptcha_enabled || \wp_script_is( 'hcaptcha', 'enqueued' ) ) {
 			return;
 		}
 
-		// Load hCaptcha script if needed
+		// Load hCaptcha script if needed.
 		wp_enqueue_script( 'hcaptcha', 'https://js.hcaptcha.com/1/api.js', array(), FACIOJ_VERSION, true );
 	}
-
 }

@@ -39,39 +39,39 @@ msgstr "mz@awork.dk"
 msgid "https://github.com/mz-aworkdk"
 msgstr "https://github.com/mz-aworkdk"
 
-#: backend/ImpExp.php:102
+#: backend/class-impexp.php:102
 msgid "Please upload a valid .json file"
 msgstr "Upload venligst en gyldig .json-fil"
 
-#: backend/ImpExp.php:108
+#: backend/class-impexp.php:108
 msgid "Please upload a file to import"
 msgstr "Upload venligst en fil at importere"
 
-#: backend/ImpExp.php:128
+#: backend/class-impexp.php:128
 msgid "Failed to import the settings."
 msgstr "Kunne ikke importere indstillingerne."
 
-#: backend/Settings_Page.php:74
+#: backend/class-settings-page.php:74
 msgid "Contact Form App Settings"
 msgstr "Kontaktformular App Indstillinger"
 
-#: backend/Settings_Page.php:97
+#: backend/class-settings-page.php:97
 msgid "Settings"
 msgstr "Indstillinger"
 
-#: backend/Settings_Page.php:134
+#: backend/class-settings-page.php:134
 msgid "Company CVR is required."
 msgstr "CVR-nummer er påkrævet."
 
-#: backend/Settings_Page.php:144
+#: backend/class-settings-page.php:144
 msgid "CitizenOne Company ID is required."
 msgstr "CitizenOne virksomheds-ID er påkrævet."
 
-#: backend/Settings_Page.php:153
+#: backend/class-settings-page.php:153
 msgid "Email address ID is required."
 msgstr "E-mailadresse er påkrævet."
 
-#: backend/Settings_Page.php:180
+#: backend/class-settings-page.php:180
 msgid ""
 "The API did not accept the provided data. Please check your information and "
 "try again."
@@ -79,7 +79,7 @@ msgstr ""
 "API'en accepterede ikke de angivne data. Tjek venligst dine oplysninger og "
 "prøv igen."
 
-#: backend/Settings_Page.php:191
+#: backend/class-settings-page.php:191
 msgid "✅ Successfully connected to CitizenOne"
 msgstr "✅ Forbindelse til CitizenOne oprettet"
 
@@ -100,7 +100,7 @@ msgid "Not Connected"
 msgstr "Ikke forbundet"
 
 #: backend/views/formular-af-citizenone-journalsystem-settings.php:32
-#: backend/views/instructions.php:23 internals/views/FormRenderer.php:57
+#: backend/views/instructions.php:23 internals/views/class-form-renderer.php:57
 #: assets/build/plugin-block.js:1 assets/src/block/edit.js:61
 #: assets/src/block/save.js:45
 msgid "Email"
@@ -274,13 +274,13 @@ msgstr "Send-knaptekstfarve (Standard: \"#ffffff\")"
 msgid "Example with customization:"
 msgstr "Eksempel med tilpasning:"
 
-#: backend/views/instructions.php:93 internals/views/FormRenderer.php:9
+#: backend/views/instructions.php:93 internals/views/class-form-renderer.php:9
 #: assets/build/plugin-block.js:1 assets/src/block/edit.js:48
 #: assets/src/block/index.js:15 assets/src/block/save.js:14
 msgid "Get in Touch With Us"
 msgstr "Kontakt os"
 
-#: engine/Initialize.php:189
+#: engine/initialize.php:189
 msgid ""
 "Contact Form App is on production environment with missing `composer "
 "dumpautoload -o` that will improve the performance on autoloading itself."
@@ -292,31 +292,31 @@ msgstr ""
 msgid "Plugin dependencies are missing. Please run composer install."
 msgstr "Plugin-afhængigheder mangler. Kør venligst composer-installationen."
 
-#: frontend/Enqueue.php:124
+#: frontend/class-enqueue.php:124
 msgid "Loading..."
 msgstr "Indlæser..."
 
-#: frontend/Enqueue.php:125
+#: frontend/class-enqueue.php:125
 msgid "Sending..."
 msgstr "Sender..."
 
-#: frontend/Enqueue.php:126
+#: frontend/class-enqueue.php:126
 msgid "Submission failed"
 msgstr "Indsendelse mislykkedes"
 
-#: frontend/Enqueue.php:127
+#: frontend/class-enqueue.php:127
 msgid "Session expired. Please refresh the page."
 msgstr "Sessionen er udløbet. Opdater venligst siden."
 
-#: frontend/Enqueue.php:128
+#: frontend/class-enqueue.php:128
 msgid "This field is required"
 msgstr "Dette felt er påkrævet"
 
-#: frontend/Enqueue.php:129
+#: frontend/class-enqueue.php:129
 msgid "Please enter a valid email address"
 msgstr "Indtast venligst en gyldig e-mailadresse"
 
-#: frontend/Enqueue.php:130 rest/FormHandler.php:89
+#: frontend/class-enqueue.php:130 rest/FormHandler.php:89
 msgid "Thank you! Your message has been sent."
 msgstr "Tak! Din besked er blevet sendt."
 
@@ -324,27 +324,27 @@ msgstr "Tak! Din besked er blevet sendt."
 msgid "Contact Form App"
 msgstr "Kontaktformular-app"
 
-#: internals/views/FormRenderer.php:37 assets/build/plugin-block.js:1
+#: internals/views/class-form-renderer.php:37 assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:53 assets/src/block/save.js:25
 msgid "Name"
 msgstr "Navn"
 
-#: internals/views/FormRenderer.php:47 assets/build/plugin-block.js:1
+#: internals/views/class-form-renderer.php:47 assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:57 assets/src/block/save.js:35
 msgid "Company"
 msgstr "Virksomhed"
 
-#: internals/views/FormRenderer.php:67 assets/build/plugin-block.js:1
+#: internals/views/class-form-renderer.php:67 assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:65 assets/src/block/save.js:55
 msgid "Phone"
 msgstr "Telefon"
 
-#: internals/views/FormRenderer.php:76 assets/build/plugin-block.js:1
+#: internals/views/class-form-renderer.php:76 assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:69 assets/src/block/save.js:64
 msgid "Message"
 msgstr "Meddelelse"
 
-#: internals/views/FormRenderer.php:94 assets/build/plugin-block.js:1
+#: internals/views/class-form-renderer.php:94 assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:81 assets/src/block/save.js:78
 msgid "Submit"
 msgstr "Indsend"

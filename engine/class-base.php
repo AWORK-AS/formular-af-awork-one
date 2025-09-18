@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Formular af CitizenOne journalsystem
  *
@@ -18,6 +17,8 @@ namespace mzaworkdk\Citizenone\Engine;
 class Base {
 
 	/**
+	 * Plugin options.
+	 *
 	 * @var array The settings of the plugin.
 	 */
 	public $settings = array();
@@ -32,5 +33,4 @@ class Base {
 
 		return true;
 	}
-
 }
