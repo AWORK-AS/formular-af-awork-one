@@ -1,17 +1,17 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\Citizenone\Backend;
+namespace mzaworkdk\Aworkone\Backend;
 
-use mzaworkdk\Citizenone\Engine\Base;
+use mzaworkdk\Aworkone\Engine\Base;
 
 /**
  * Provide Import and Export of the settings of the plugin
@@ -46,25 +46,25 @@ class ImpExp extends Base {
 	 */
 	public function settings_export() {
 		if (
-			empty( $_POST['facioj_action'] ) || //phpcs:ignore WordPress.Security.NonceVerification
-			'export_settings' !== \sanitize_text_field( \wp_unslash( $_POST['facioj_action'] ) ) //phpcs:ignore WordPress.Security.NonceVerification
+			empty( $_POST['faaone_action'] ) || //phpcs:ignore WordPress.Security.NonceVerification
+			'export_settings' !== \sanitize_text_field( \wp_unslash( $_POST['faaone_action'] ) ) //phpcs:ignore WordPress.Security.NonceVerification
 		) {
 			return;
 		}
 
-		if ( ! \wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST['facioj_export_nonce'] ) ), 'facioj_export_nonce' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		if ( ! \wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST['faaone_export_nonce'] ) ), 'faaone_export_nonce' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			return;
 		}
 
 		$settings    = array();
-		$settings[0] = \get_option( FACIOJ_TEXTDOMAIN . '-settings' );
-		$settings[1] = \get_option( FACIOJ_TEXTDOMAIN . '-settings-second' );
+		$settings[0] = \get_option( FAAONE_TEXTDOMAIN . '-settings' );
+		$settings[1] = \get_option( FAAONE_TEXTDOMAIN . '-settings-second' );
 
 		\ignore_user_abort( true );
 
 		\nocache_headers();
 		\header( 'Content-Type: application/json; charset=utf-8' );
-		\header( 'Content-Disposition: attachment; filename=facioj-settings-export-' . \gmdate( 'm-d-Y' ) . '.json' );
+		\header( 'Content-Disposition: attachment; filename=faaone-settings-export-' . \gmdate( 'm-d-Y' ) . '.json' );
 		\header( 'Expires: 0' );
 
 		echo \wp_json_encode( $settings, JSON_PRETTY_PRINT );
@@ -80,31 +80,31 @@ class ImpExp extends Base {
 	 */
 	public function settings_import() {
 		if (
-			empty( $_POST['facioj_action'] ) || //phpcs:ignore WordPress.Security.NonceVerification
-			'import_settings' !== \sanitize_text_field( \wp_unslash( $_POST['facioj_action'] ) ) //phpcs:ignore WordPress.Security.NonceVerification
+			empty( $_POST['faaone_action'] ) || //phpcs:ignore WordPress.Security.NonceVerification
+			'import_settings' !== \sanitize_text_field( \wp_unslash( $_POST['faaone_action'] ) ) //phpcs:ignore WordPress.Security.NonceVerification
 		) {
 			return;
 		}
 
-		if ( ! \wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST['facioj_import_nonce'] ) ), 'facioj_import_nonce' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		if ( ! \wp_verify_nonce( \sanitize_text_field( \wp_unslash( $_POST['faaone_import_nonce'] ) ), 'faaone_import_nonce' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 			return;
 		}
 
-		if ( ! isset( $_FILES['facioj_import_file']['name'] ) ) {
+		if ( ! isset( $_FILES['faaone_import_file']['name'] ) ) {
 			return;
 		}
 
-		$file_name_parts = \explode( '.', \sanitize_text_field( \wp_unslash( $_FILES['facioj_import_file']['name'] ) ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$file_name_parts = \explode( '.', \sanitize_text_field( \wp_unslash( $_FILES['faaone_import_file']['name'] ) ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 		$extension       = \end( $file_name_parts );
 
 		if ( 'json' !== $extension ) {
-			\wp_die( \esc_html__( 'Please upload a valid .json file', 'formular-af-citizenone-journalsystem' ) );
+			\wp_die( \esc_html__( 'Please upload a valid .json file', 'formular-af-awork-one' ) );
 		}
 
-		$import_file = \sanitize_text_field( \wp_unslash( $_FILES['facioj_import_file']['tmp_name'] ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+		$import_file = \sanitize_text_field( \wp_unslash( $_FILES['faaone_import_file']['tmp_name'] ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 		if ( empty( $import_file ) ) {
-			\wp_die( \esc_html__( 'Please upload a file to import', 'formular-af-citizenone-journalsystem' ) );
+			\wp_die( \esc_html__( 'Please upload a file to import', 'formular-af-awork-one' ) );
 		}
 
 		// Retrieve the settings from the file and convert the json object to an array.
@@ -114,17 +114,17 @@ class ImpExp extends Base {
 			$settings = \json_decode( (string) $settings_file );
 
 			if ( \is_array( $settings ) ) {
-				\update_option( FACIOJ_TEXTDOMAIN . '-settings', \get_object_vars( $settings[0] ) );
-				\update_option( FACIOJ_TEXTDOMAIN . '-settings-second', \get_object_vars( $settings[1] ) );
+				\update_option( FAAONE_TEXTDOMAIN . '-settings', \get_object_vars( $settings[0] ) );
+				\update_option( FAAONE_TEXTDOMAIN . '-settings-second', \get_object_vars( $settings[1] ) );
 			}
 
-			\wp_safe_redirect( \admin_url( 'options-general.php?page=' . FACIOJ_TEXTDOMAIN ) );
+			\wp_safe_redirect( \admin_url( 'options-general.php?page=' . FAAONE_TEXTDOMAIN ) );
 			exit;
 		}
 
 		new \WP_Error(
-			'facioj_import_settings_failed',
-			\__( 'Failed to import the settings.', 'formular-af-citizenone-journalsystem' )
+			'faaone_import_settings_failed',
+			\__( 'Failed to import the settings.', 'formular-af-awork-one' )
 		);
 	}
 }

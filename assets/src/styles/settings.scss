@@ -66,7 +66,7 @@
 	float: right;
 }
 
-.facioj-icon-box {
+.faaone-icon-box {
 	background: white;
 	border-radius: 10px;
 	padding: 15px;
@@ -75,32 +75,32 @@
 	width: 100px;
 	transition: transform 0.3s ease;
 }
-.facioj-icon-box:hover {
+.faaone-icon-box:hover {
 	transform: translateY(-3px);
 }
-.facioj-icon {
+.faaone-icon {
 	width: 60px;
 	height: 60px;
 	margin: 0 auto 10px;
 }
-.facioj-connected {
+.faaone-connected {
 	color: #00607A;
 }
-.facioj-not-connected {
+.faaone-not-connected {
 	color: #F3F9EE;
 }
 
-.facioj-label {
+.faaone-label {
 	font-size: 12px;
 	font-weight: 600;
 	margin-top: 8px;
 }
 
-.facioj-instructions {
+.faaone-instructions {
     max-width: 800px;
 }
 
-.facioj-section {
+.faaone-section {
     margin-bottom: 30px;
     padding: 20px;
     background: #fff;
@@ -108,34 +108,34 @@
     border-radius: 4px;
 }
 
-.facioj-section h3 {
+.faaone-section h3 {
     margin-top: 0;
     color: #205E77;
 }
 
-.facioj-section h4 {
+.faaone-section h4 {
     color: #205E77;
 }
 
-.facioj-section ul,
-.facioj-section ol {
+.faaone-section ul,
+.faaone-section ol {
     margin-left: 20px;
 }
 
-.facioj-section pre {
+.faaone-section pre {
     background: #f6f8fa;
     padding: 15px;
     border-radius: 4px;
     overflow: auto;
 }
 
-.facioj-section code {
+.faaone-section code {
     background: #f6f8fa;
     padding: 2px 5px;
     border-radius: 3px;
 }
 
-.facioj-error-message {
+.faaone-error-message {
 	background: #fee2e2;
 	color: #b91c1c;
 	padding: 15px;
@@ -145,7 +145,7 @@
 }
 
 /* Modal Background */
-.facioj-plugin-modal {
+.faaone-plugin-modal {
     display: none;
     position: fixed;
     z-index: 10000;
@@ -158,7 +158,7 @@
 }
 
 /* Modal Content */
-.facioj-plugin-modal-content {
+.faaone-plugin-modal-content {
     background-color: #f8f9fa;
     margin: 10% auto;
     padding: 0;
@@ -170,7 +170,7 @@
 }
 
 /* Modal Header */
-.facioj-plugin-modal-header {
+.faaone-plugin-modal-header {
     background-color: #1a2b47;
     color: white;
     padding: 15px;
@@ -181,40 +181,40 @@
     align-items: center;
 }
 
-.facioj-plugin-modal-header h2 {
+.faaone-plugin-modal-header h2 {
     margin: 0;
     color: white;
 }
 
-.facioj-plugin-modal-close {
+.faaone-plugin-modal-close {
     color: white;
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
 }
 
-.facioj-plugin-modal-close:hover {
+.faaone-plugin-modal-close:hover {
     color: #ff6b6b;
 }
 
 /* Modal Body */
-.facioj-plugin-modal-body {
+.faaone-plugin-modal-body {
     padding: 20px;
     color: #2c3e50;
 }
 
-.facioj-modal-form-section {
+.faaone-modal-form-section {
     margin-bottom: 15px;
 }
 
-.facioj-modal-form-section label {
+.faaone-modal-form-section label {
     display: block;
     margin-bottom: 5px;
     font-weight: 600;
 }
 
-.facioj-modal-form-section input[type="text"],
-.facioj-modal-form-section select {
+.faaone-modal-form-section input[type="text"],
+.faaone-modal-form-section select {
     width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
@@ -222,7 +222,7 @@
 }
 
 /* Modal Footer */
-.facioj-plugin-modal-footer {
+.faaone-plugin-modal-footer {
     padding: 15px;
     background-color: #f1f1f1;
     border-bottom-left-radius: 8px;
@@ -238,7 +238,7 @@
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-    .facioj-plugin-modal-content {
+    .faaone-plugin-modal-content {
         width: 90%;
         margin: 20% auto;
     }

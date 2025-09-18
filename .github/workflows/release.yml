@@ -37,15 +37,15 @@ jobs:
 
     - name: Create plugin ZIP file
       run: |
-       wp dist-archive . --plugin-dirname=formular-af-citizenone-journalsystem
+       wp dist-archive . --plugin-dirname=formular-af-awork-one
 
     - name: Upload release assets
       uses: softprops/action-gh-release@v1
       with:
-        files: ../formular-af-citizenone-journalsystem.*.zip
+        files: ../formular-af-awork-one.*.zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Clean archived file
       run: |
-        rm ../formular-af-citizenone-journalsystem.*.zip
+        rm ../formular-af-awork-one.*.zip

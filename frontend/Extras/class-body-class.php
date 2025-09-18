@@ -1,17 +1,17 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\Citizenone\Frontend\Extras;
+namespace mzaworkdk\Aworkone\Frontend\Extras;
 
-use mzaworkdk\Citizenone\Engine\Base;
+use mzaworkdk\Aworkone\Engine\Base;
 
 /**
  * Add custom css class to <body>
@@ -26,7 +26,7 @@ class Body_Class extends Base {
 	public function initialize() {
 		parent::initialize();
 
-		\add_filter( 'body_class', array( self::class, 'add_facioj_class' ), 10, 1 );
+		\add_filter( 'body_class', array( self::class, 'add_faaone_class' ), 10, 1 );
 	}
 
 	/**
@@ -36,8 +36,8 @@ class Body_Class extends Base {
 	 * @since 1.0.0
 	 * @return array
 	 */
-	public static function add_facioj_class( array $classes ) {
-		$classes[] = FACIOJ_TEXTDOMAIN;
+	public static function add_faaone_class( array $classes ) {
+		$classes[] = FAAONE_TEXTDOMAIN;
 
 		return $classes;
 	}

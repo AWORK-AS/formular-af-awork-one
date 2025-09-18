@@ -1,18 +1,18 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\Citizenone\Backend;
+namespace mzaworkdk\Aworkone\Backend;
 
-use mzaworkdk\Citizenone\Engine\Base;
-use mzaworkdk\Citizenone\Internals\Models\Retrieve_Token;
+use mzaworkdk\Aworkone\Engine\Base;
+use mzaworkdk\Aworkone\Internals\Models\Retrieve_Token;
 
 /**
  * Create the settings page in the backend
@@ -36,7 +36,7 @@ class Settings_Page extends Base {
 		\add_action( 'cmb2_save_options-page_fields', array( $this, 'before_save_settings' ), 10, 2 );
 
 		$realpath        = (string) \realpath( __DIR__ );
-		$plugin_basename = \plugin_basename( \plugin_dir_path( $realpath ) . FACIOJ_TEXTDOMAIN . '.php' );
+		$plugin_basename = \plugin_basename( \plugin_dir_path( $realpath ) . FAAONE_TEXTDOMAIN . '.php' );
 		\add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 	}
 
@@ -54,7 +54,7 @@ class Settings_Page extends Base {
 		 * - Change 'manage_options' to the capability you see fit
 		 *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
 
-		add_options_page( __( 'Page Title', FACIOJ_TEXTDOMAIN ), FACIOJ_NAME, 'manage_options', FACIOJ_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ) );
+		add_options_page( __( 'Page Title', FAAONE_TEXTDOMAIN ), FAAONE_NAME, 'manage_options', FAAONE_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ) );
 		 *
 		 */
 
@@ -62,7 +62,7 @@ class Settings_Page extends Base {
 		 * Add a settings page for this plugin to the main menu
 		 *
 		 */
-		\add_menu_page( \__( 'Contact Form App Settings', 'formular-af-citizenone-journalsystem' ), FACIOJ_NAME, 'manage_options', FACIOJ_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ), 'dashicons-hammer', 90 );
+		\add_menu_page( \__( 'Contact Form App Settings', 'formular-af-awork-one' ), FAAONE_NAME, 'manage_options', FAAONE_TEXTDOMAIN, array( $this, 'display_plugin_admin_page' ), 'dashicons-hammer', 90 );
 	}
 
 	/**
@@ -72,11 +72,11 @@ class Settings_Page extends Base {
 	 * @return void
 	 */
 	public function display_plugin_admin_page() {
-		if ( ! defined( 'FACIOJ_PLUGIN_ROOT' ) ) {
-			define( 'FACIOJ_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) . '../' );
+		if ( ! defined( 'FAAONE_PLUGIN_ROOT' ) ) {
+			define( 'FAAONE_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) . '../' );
 		}
 
-		include_once FACIOJ_PLUGIN_ROOT . 'backend/views/admin.php';
+		include_once FAAONE_PLUGIN_ROOT . 'backend/views/admin.php';
 	}
 
 	/**
@@ -89,7 +89,7 @@ class Settings_Page extends Base {
 	public function add_action_links( array $links ) {
 		return \array_merge(
 			array(
-				'settings' => '<a href="' . \admin_url( 'options-general.php?page=' . FACIOJ_TEXTDOMAIN ) . '">' . \__( 'Settings', 'formular-af-citizenone-journalsystem' ) . '</a>',
+				'settings' => '<a href="' . \admin_url( 'options-general.php?page=' . FAAONE_TEXTDOMAIN ) . '">' . \__( 'Settings', 'formular-af-awork-one' ) . '</a>',
 			),
 			$links
 		);
@@ -121,7 +121,7 @@ class Settings_Page extends Base {
 	 * @param string $cmb_id CMB ID.
 	 */
 	private function is_valid_cmb_id( string $cmb_id ): bool {
-		return FACIOJ_TEXTDOMAIN . '_options' === $cmb_id;
+		return FAAONE_TEXTDOMAIN . '_options' === $cmb_id;
 	}
 
 	/**
@@ -146,16 +146,16 @@ class Settings_Page extends Base {
 			return $data;
 		}
 
-		if ( isset( $_POST[ FACIOJ_TEXTDOMAIN . '_field_company_cvr' ] ) ) {
-			$data['company_cvr'] = \sanitize_text_field( \wp_unslash( $_POST[ FACIOJ_TEXTDOMAIN . '_field_company_cvr' ] ) );
+		if ( isset( $_POST[ FAAONE_TEXTDOMAIN . '_field_company_cvr' ] ) ) {
+			$data['company_cvr'] = \sanitize_text_field( \wp_unslash( $_POST[ FAAONE_TEXTDOMAIN . '_field_company_cvr' ] ) );
 		}
 
-		if ( isset( $_POST[ FACIOJ_TEXTDOMAIN . '_field_company_id' ] ) ) {
-			$data['company_id'] = \sanitize_text_field( \wp_unslash( $_POST[ FACIOJ_TEXTDOMAIN . '_field_company_id' ] ) );
+		if ( isset( $_POST[ FAAONE_TEXTDOMAIN . '_field_company_id' ] ) ) {
+			$data['company_id'] = \sanitize_text_field( \wp_unslash( $_POST[ FAAONE_TEXTDOMAIN . '_field_company_id' ] ) );
 		}
 
-		if ( isset( $_POST[ FACIOJ_TEXTDOMAIN . '_field_email' ] ) ) {
-			$data['email'] = \sanitize_email( \wp_unslash( $_POST[ FACIOJ_TEXTDOMAIN . '_field_email' ] ) );
+		if ( isset( $_POST[ FAAONE_TEXTDOMAIN . '_field_email' ] ) ) {
+			$data['email'] = \sanitize_email( \wp_unslash( $_POST[ FAAONE_TEXTDOMAIN . '_field_email' ] ) );
 		}
 
 		return $data;
@@ -170,17 +170,17 @@ class Settings_Page extends Base {
 		$has_errors = false;
 
 		if ( empty( $values['company_cvr'] ) ) {
-			$this->add_error_notice( __( 'Company CVR is required.', 'formular-af-citizenone-journalsystem' ) );
+			$this->add_error_notice( __( 'Company CVR is required.', 'formular-af-awork-one' ) );
 			$has_errors = true;
 		}
 
 		if ( empty( $values['company_id'] ) ) {
-			$this->add_error_notice( __( 'CitizenOne Company ID is required.', 'formular-af-citizenone-journalsystem' ) );
+			$this->add_error_notice( __( 'AWORK ONE Company ID is required.', 'formular-af-awork-one' ) );
 			$has_errors = true;
 		}
 
 		if ( empty( $values['email'] ) ) {
-			$this->add_error_notice( __( 'Email address is required.', 'formular-af-citizenone-journalsystem' ) );
+			$this->add_error_notice( __( 'Email address is required.', 'formular-af-awork-one' ) );
 			$has_errors = true;
 		}
 
@@ -205,13 +205,13 @@ class Settings_Page extends Base {
 		$token = new Retrieve_Token();
 		$data  = $token->submit(
 			array(
-				'company_cvr'           => $values['company_cvr'],
-				'citizenone_company_id' => $values['company_id'],
-				'email'                 => $values['email'],
+				'company_cvr'         => $values['company_cvr'],
+				'aworkone_company_id' => $values['company_id'],
+				'email'               => $values['email'],
 			)
 		);
 
-		$opts = facioj_get_settings();
+		$opts = faaone_get_settings();
 
 		if ( ! $data ) {
 			$this->handle_api_failure( $opts );
@@ -226,14 +226,14 @@ class Settings_Page extends Base {
 	 * @param array $opts Options.
 	 */
 	private function handle_api_failure( array $opts ): void {
-		if ( isset( $opts[ FACIOJ_TEXTDOMAIN . '_token' ] ) ) {
-			unset( $opts[ FACIOJ_TEXTDOMAIN . '_token' ] );
-			update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
+		if ( isset( $opts[ FAAONE_TEXTDOMAIN . '_token' ] ) ) {
+			unset( $opts[ FAAONE_TEXTDOMAIN . '_token' ] );
+			update_option( FAAONE_TEXTDOMAIN . '-settings', $opts );
 		}
 
 		$error_message = __(
 			'The API did not accept the provided data. Please check your information and try again.',
-			'formular-af-citizenone-journalsystem'
+			'formular-af-awork-one'
 		);
 		wpdesk_wp_notice( $error_message, 'error', true );
 	}
@@ -250,10 +250,10 @@ class Settings_Page extends Base {
 			return;
 		}
 
-		$opts[ FACIOJ_TEXTDOMAIN . '_token' ] = $data->data;
-		update_option( FACIOJ_TEXTDOMAIN . '-settings', $opts );
+		$opts[ FAAONE_TEXTDOMAIN . '_token' ] = $data->data;
+		update_option( FAAONE_TEXTDOMAIN . '-settings', $opts );
 
-		$success_message = __( '✅ Successfully connected to CitizenOne', 'formular-af-citizenone-journalsystem' );
+		$success_message = __( '✅ Successfully connected to AWORK ONE', 'formular-af-awork-one' );
 		wpdesk_wp_notice( $success_message, 'success', true );
 	}
 }

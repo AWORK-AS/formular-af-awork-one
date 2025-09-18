@@ -1,10 +1,10 @@
 <?php
 
-define( 'FAC_PLUGIN_ROOT', __DIR__ );
-define( 'FAC_TEXTDOMAIN', 'formular-af-citizenone' );
-define( 'FAC_NAME', 'Formular af CitizenOne' );
-define( 'FAC_PLUGIN_ABSOLUTE', __DIR__ );
-define( 'FAC_VERSION', '1.0.0' );
+define( 'FAAONE_PLUGIN_ROOT', __DIR__ );
+define( 'FAAONE_TEXTDOMAIN', 'formular-af-awork-one' );
+define( 'FAAONE_NAME', 'Formular af AWORK ONE' );
+define( 'FAAONE_PLUGIN_ABSOLUTE', __DIR__ );
+define( 'FAAONE_VERSION', '1.0.0' );
 
 // Load CMB2
 define( 'CMB2_DIR', dirname( __DIR__, 2 ) . '/vendor/cmb2/' );

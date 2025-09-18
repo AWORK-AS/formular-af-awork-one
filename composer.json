@@ -1,6 +1,6 @@
 {
     "name": "wpbp/wordpress-plugin-boilerplate-powered",
-    "description": "Wordpress Plugin for CitizenOne journalsystem",
+    "description": "Wordpress Plugin for AWORK ONE journalsystem",
     "license": "GPL-3.0-or-later",
     "type": "wordpress-plugin",
     "authors": [

@@ -2,17 +2,17 @@
 /**
  * Retrieve token from API
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\Citizenone\Internals\Models;
+namespace mzaworkdk\Aworkone\Internals\Models;
 
 /**
- * Retrieve the token from CitizenOne
+ * Retrieve the token from AWORK ONE
  */
 class Retrieve_Token {
 
@@ -31,7 +31,7 @@ class Retrieve_Token {
 		}
 
 		$response = \wp_remote_post(
-			FACIOJ_PLUGIN_API_URL . '/jwt/generate-token',
+			FAAONE_PLUGIN_API_URL . '/jwt/generate-token',
 			array(
 				'body'    => $json_data,
 				'headers' => array(

@@ -2,14 +2,14 @@
 /**
  * The "Contact Form" submit handler
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+
  * @link      https://awork.dk
  */
 
-namespace mzaworkdk\Citizenone\Rest;
+namespace mzaworkdk\Aworkone\Rest;
 
 use WP_REST_Request;
 
@@ -30,7 +30,7 @@ class Form_Handler {
 	 */
 	public function register_api_endpoint(): void {
 		\register_rest_route(
-			'formular-af-citizenone-journalsystem/v1',
+			'formular-af-awork-one/v1',
 			'/submit',
 			array(
 				'methods'             => 'POST',
@@ -63,7 +63,7 @@ class Form_Handler {
 		}
 
 		$data = $request->get_params();
-		$opts = \facioj_get_settings();
+		$opts = \faaone_get_settings();
 
 		// Validate hCaptcha if enabled.
 		$hcaptcha_validation = $this->validate_hcaptcha( $opts, $data );
@@ -106,8 +106,8 @@ class Form_Handler {
 	 * @param array $data Data.
 	 */
 	private function validate_hcaptcha( array $opts, array $data ): ?\WP_Error {
-		$hcaptcha_site_key   = $opts[ FACIOJ_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
-		$hcaptcha_secret_key = $opts[ FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
+		$hcaptcha_site_key   = $opts[ FAAONE_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
+		$hcaptcha_secret_key = $opts[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
 		$hcaptcha_enabled    = false;
 
 		if ( $hcaptcha_site_key && $hcaptcha_secret_key ) {
@@ -121,7 +121,7 @@ class Form_Handler {
 		if ( ! isset( $data['h-captcha-response'] ) || empty( $data['h-captcha-response'] ) ) {
 			return new \WP_Error(
 				'hcaptcha_missing',
-				__( 'Please complete the hCaptcha challenge.', 'formular-af-citizenone-journalsystem' ),
+				__( 'Please complete the hCaptcha challenge.', 'formular-af-awork-one' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -138,7 +138,7 @@ class Form_Handler {
 		if ( ! $verification_result['success'] ) {
 			return new \WP_Error(
 				'hcaptcha_failed',
-				__( 'hCaptcha verification failed. Please try again.', 'formular-af-citizenone-journalsystem' ),
+				__( 'hCaptcha verification failed. Please try again.', 'formular-af-awork-one' ),
 				array( 'status' => 403 )
 			);
 		}
@@ -152,12 +152,12 @@ class Form_Handler {
 	 * @param array $opts Options.
 	 */
 	private function validate_token( array $opts ): ?\WP_Error {
-		$token = $opts[ FACIOJ_TEXTDOMAIN . '_token' ] ?? false;
+		$token = $opts[ FAAONE_TEXTDOMAIN . '_token' ] ?? false;
 
 		if ( ! $token ) {
 			return new \WP_Error(
 				'not_connected',
-				__( 'Error occured. Please contact the administrator.', 'formular-af-citizenone-journalsystem' ),
+				__( 'Error occured. Please contact the administrator.', 'formular-af-awork-one' ),
 				array( 'status' => 403 )
 			);
 		}
@@ -171,13 +171,13 @@ class Form_Handler {
 	 * @param array $data Data.
 	 */
 	private function submit_lead( array $data ): \WP_REST_Response {
-		$submission = new \mzaworkdk\Citizenone\Internals\Models\Contact_Submission();
+		$submission = new \mzaworkdk\Aworkone\Internals\Models\Contact_Submission();
 
 		if ( $submission->submit_lead( $data ) ) {
 			return new \WP_REST_Response(
 				array(
 					'success' => true,
-					'message' => __( 'Thank you! Your message has been sent.', 'formular-af-citizenone-journalsystem' ),
+					'message' => __( 'Thank you! Your message has been sent.', 'formular-af-awork-one' ),
 				),
 				200
 			);
@@ -188,7 +188,7 @@ class Form_Handler {
 				'success' => false,
 				'message' => __(
 					'Failed to send message. Please try again.',
-					'formular-af-citizenone-journalsystem'
+					'formular-af-awork-one'
 				),
 			),
 			500
@@ -202,8 +202,8 @@ class Form_Handler {
 	 * @return array
 	 */
 	private function verify_hcaptcha( $token ) {
-		$options    = \facioj_get_settings();
-		$secret_key = $options[ FACIOJ_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? '';
+		$options    = \faaone_get_settings();
+		$secret_key = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? '';
 
 		if ( empty( $secret_key ) ) {
 			// Error: No secret key configured.

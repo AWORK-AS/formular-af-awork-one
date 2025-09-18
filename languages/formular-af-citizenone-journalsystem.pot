@@ -2,8 +2,8 @@
 # This file is distributed under the GPLv3+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Formular af CitizenOne journalsystem 1.0.5\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formular-af-citizenone-journalsystem\n"
+"Project-Id-Version: Formular af AWORK ONE 1.0.5\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formular-af-awork-one\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12,28 +12,28 @@ msgstr ""
 "POT-Creation-Date: 2025-09-05T08:29:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: formular-af-citizenone-journalsystem\n"
+"X-Domain: formular-af-awork-one\n"
 
 #. Plugin Name of the plugin
 #. Description of the plugin
-#: formular-af-citizenone-journalsystem.php
+#: formular-af-awork-one.php
 #: backend/views/admin.php:21
-#: formular-af-citizenone-journalsystem.php:54
-msgid "Formular af CitizenOne journalsystem"
-msgstr "Formular af CitizenOne journalsystem"
+#: formular-af-awork-one.php:54
+msgid "Formular af AWORK ONE"
+msgstr "Formular af AWORK ONE"
 
 #. Plugin URI of the plugin
-#: formular-af-citizenone-journalsystem.php
+#: formular-af-awork-one.php
 msgid "https://github.com/AWORK-AS/contact-form-app"
 msgstr "https://github.com/AWORK-AS/contact-form-app"
 
 #. Author of the plugin
-#: formular-af-citizenone-journalsystem.php
+#: formular-af-awork-one.php
 msgid "mz@awork.dk"
 msgstr "mz@awork.dk"
 
 #. Author URI of the plugin
-#: formular-af-citizenone-journalsystem.php
+#: formular-af-awork-one.php
 msgid "https://github.com/mz-aworkdk"
 msgstr "https://github.com/mz-aworkdk"
 
@@ -62,8 +62,8 @@ msgid "Company CVR is required."
 msgstr "CVR-nummer er påkrævet."
 
 #: backend/class-settings-page.php:144
-msgid "CitizenOne Company ID is required."
-msgstr "CitizenOne virksomheds-ID er påkrævet."
+msgid "AWORK ONE Company ID is required."
+msgstr "AWORK ONE virksomheds-ID er påkrævet."
 
 #: backend/class-settings-page.php:153
 msgid "Email address ID is required."
@@ -74,8 +74,8 @@ msgid "The API did not accept the provided data. Please check your information a
 msgstr "API'en accepterede ikke de angivne data. Tjek venligst dine oplysninger og prøv igen."
 
 #: backend/class-settings-page.php:191
-msgid "✅ Successfully connected to CitizenOne"
-msgstr "✅ Forbindelse til CitizenOne oprettet"
+msgid "✅ Successfully connected to AWORK ONE"
+msgstr "✅ Forbindelse til AWORK ONE oprettet"
 
 #: backend/views/admin.php:25
 msgid "Configuration"
@@ -93,7 +93,7 @@ msgstr "Forbundet"
 msgid "Not Connected"
 msgstr "Ikke forbundet"
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:32
+#: backend/views/formular-af-awork-one-settings.php:32
 #: backend/views/instructions.php:23
 #: internals/views/class-form-renderer.php:57
 #: assets/build/plugin-block.js:1
@@ -102,29 +102,29 @@ msgstr "Ikke forbundet"
 msgid "Email"
 msgstr "E-mail"
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:43
+#: backend/views/formular-af-awork-one-settings.php:43
 #: backend/views/instructions.php:24
 msgid "Company CVR"
 msgstr "Virksomheds CVR"
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:54
+#: backend/views/formular-af-awork-one-settings.php:54
 #: backend/views/instructions.php:25
-msgid "CitizenOne Company ID"
-msgstr "CitizenOne Virksomheds-ID"
+msgid "AWORK ONE Company ID"
+msgstr "AWORK ONE Virksomheds-ID"
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:66
+#: backend/views/formular-af-awork-one-settings.php:66
 msgid "hCaptcha Settings (Optional)"
 msgstr "hCaptcha-indstillinger (Valgfrit)"
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:67
+#: backend/views/formular-af-awork-one-settings.php:67
 msgid "Configure your hCaptcha integration"
 msgstr "Konfigurer din hCaptcha-integration"
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:75
+#: backend/views/formular-af-awork-one-settings.php:75
 msgid "secret key"
 msgstr "sikkerhedsnøgle"
 
-#: backend/views/formular-af-citizenone-journalsystem-settings.php:83
+#: backend/views/formular-af-awork-one-settings.php:83
 msgid "site key"
 msgstr "webstedsnøgle"
 
@@ -133,30 +133,30 @@ msgid "Required Admin Settings"
 msgstr "Obligatoriske administratorindstillinger"
 
 #: backend/views/instructions.php:20
-msgid "To use the CitizenOne form plugin, you need to configure the following required settings:"
-msgstr "For at bruge CitizenOne-formularpluginet skal du konfigurere følgende obligatoriske indstillinger:"
+msgid "To use the AWORK ONE form plugin, you need to configure the following required settings:"
+msgstr "For at bruge AWORK ONE-formularpluginet skal du konfigurere følgende obligatoriske indstillinger:"
 
 #: backend/views/instructions.php:23
-msgid "Your CitizenOne account email"
-msgstr "Din CitizenOne-kontos e-mail"
+msgid "Your AWORK ONE account email"
+msgstr "Din AWORK ONE-kontos e-mail"
 
 #: backend/views/instructions.php:24
 msgid "Your company's CVR number"
 msgstr "Dit virksomheds CVR-nummer"
 
 #: backend/views/instructions.php:25
-msgid "Your company ID in the CitizenOne system"
-msgstr "Dit virksomheds-ID i CitizenOne-systemet"
+msgid "Your company ID in the AWORK ONE system"
+msgstr "Dit virksomheds-ID i AWORK ONE-systemet"
 
-#. translators: %s is a link to the CitizenOne dashboard
+#. translators: %s is a link to the AWORK ONE dashboard
 #: backend/views/instructions.php:31
 #, php-format
 msgid "You can find the CVR and Company ID in your %s."
 msgstr "Du kan finde CVR og virksomheds-ID i din %s."
 
 #: backend/views/instructions.php:32
-msgid "CitizenOne dashboard"
-msgstr "CitizenOne-dashboard"
+msgid "AWORK ONE dashboard"
+msgstr "AWORK ONE-dashboard"
 
 #: backend/views/instructions.php:38
 msgid "Optional hCaptcha Integration"
@@ -197,8 +197,8 @@ msgid "Adding Forms to Your Site"
 msgstr "Tilføjelse af formularer til dit websted"
 
 #: backend/views/instructions.php:57
-msgid "You can add the CitizenOne form to your pages or posts using two methods:"
-msgstr "Du kan tilføje CitizenOne-formularen til dine sider eller indlæg ved hjælp af to metoder:"
+msgid "You can add the AWORK ONE form to your pages or posts using two methods:"
+msgstr "Du kan tilføje AWORK ONE-formularen til dine sider eller indlæg ved hjælp af to metoder:"
 
 #: backend/views/instructions.php:59
 msgid "1. Gutenberg Block (Widget)"
@@ -273,7 +273,7 @@ msgstr "Kontakt os"
 msgid "Contact Form App is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself."
 msgstr "Contact Form App kører i produktionsmiljø uden den manglende `composer dumpautoload -o`-kommando, som vil forbedre ydeevnen ved selve autoloading."
 
-#: formular-af-citizenone-journalsystem.php:125
+#: formular-af-awork-one.php:125
 msgid "Plugin dependencies are missing. Please run composer install."
 msgstr "Plugin-afhængigheder mangler. Kør venligst composer-installationen."
 
@@ -393,8 +393,8 @@ msgstr "Knaptekstfarve"
 
 #: assets/block.json
 msgctxt "block description"
-msgid "Formular af CitizenOne journalsystem"
-msgstr "Formular af CitizenOne journalsystem"
+msgid "Formular af AWORK ONE"
+msgstr "Formular af AWORK ONE"
 
 #: assets/block.json
 msgctxt "block keyword"
@@ -413,8 +413,8 @@ msgstr "leads"
 
 #: assets/block.json
 msgctxt "block keyword"
-msgid "citizenone"
-msgstr "citizenone"
+msgid "aworkone"
+msgstr "aworkone"
 
 #: assets/block.json
 msgctxt "block keyword"
@@ -422,5 +422,5 @@ msgid "journalsystem"
 msgstr "journalsystem"
 
 #: backend/views/instructions.php:67
-msgid "citizenone, contacts, leads, or form"
-msgstr "citizenone, kontakter, kundeemner, form"
+msgid "aworkone, contacts, leads, or form"
+msgstr "aworkone, kontakter, kundeemner, form"

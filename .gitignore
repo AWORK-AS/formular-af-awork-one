@@ -35,9 +35,9 @@ intermediate
 cache
 vendor
 tests/_output/
-formular-af-citizenone-journalsystem/vendor/
+formular-af-awork-one/vendor/
 tests/_support/_generated/
-formular-af-citizenone-journalsystem/assets/build/
+formular-af-awork-one/assets/build/
 /assets/build/
 
 !composer.lock

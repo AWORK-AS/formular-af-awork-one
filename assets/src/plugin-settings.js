@@ -7,24 +7,24 @@ import './styles/settings.scss';
  */
 ( ( $ ) => {
 	$( () => {
-		
-		$( '#tabs' ).tabs();
-		
-		var facioj_modal = $("#facioj-plugin-modal");
-        var facioj_closeBtn = $(".facioj-plugin-modal-close");
-		var facioj_cancelBtn = $("#facioj-cancel-modal");
 
-		facioj_closeBtn.on("click", function() {
-			facioj_modal.css("display", "none");
+		$( '#tabs' ).tabs();
+
+		var faaone_modal = $("#faaone-plugin-modal");
+        var faaone_closeBtn = $(".faaone-plugin-modal-close");
+		var faaone_cancelBtn = $("#faaone-cancel-modal");
+
+		faaone_closeBtn.on("click", function() {
+			faaone_modal.css("display", "none");
 		});
-		
-		facioj_cancelBtn.on("click", function() {
-			facioj_modal.css("display", "none");
+
+		faaone_cancelBtn.on("click", function() {
+			faaone_modal.css("display", "none");
 		});
-		
+
 		$(window).on("click", function(event) {
-			if ($(event.target).is(facioj_modal)) {
-				facioj_modal.css("display", "none");
+			if ($(event.target).is(faaone_modal)) {
+				faaone_modal.css("display", "none");
 			}
 		});
 
