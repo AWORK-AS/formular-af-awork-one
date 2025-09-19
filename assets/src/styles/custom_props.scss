@@ -4,75 +4,76 @@
 .faaone-contact-form {
     max-width: 100%;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    line-height: 1.5;
+	line-height: 1.5;
     padding: 20px;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	color: #001A56;
 }
 
+/* Removed grid layout to make it a single column */
 .faaone-form-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: block; /* Changed from 'grid' */
     margin-bottom: 20px;
 }
 
 .faaone-form-group {
     position: relative;
-    margin-bottom: 0;
+    margin-bottom: 10px; /* Adjusted to target spacing */
 }
 
 .faaone-form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    font-size: 14px;
+    display: none; /* Hidden labels to rely on placeholders, as per target */
 }
 
 .faaone-form-group input,
 .faaone-form-group textarea {
     width: 100%;
-    border: 1px solid #E2E2E2;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.07);
-    font-size: 16px;
+    box-shadow: none; /* Removed inset shadow */
+    font-size: 15px;
     box-sizing: border-box;
-    transition: border-color 0.3s;
-    background-color: #ffffff;
-    border-width: 1px 1px 1px 1px;
-    border-radius: 4px 4px 4px 4px;
-    font-family: var( --e-global-typography-text-font-family ), Sans-serif;
-    font-weight: var( --e-global-typography-text-font-weight );
-    min-height: 47px;
-    padding: 6px 16px;
+    border-width: 0 0 1px 0; /* Applied only bottom border */
+    border-color: #E5E5E5; /* Matched border color */
+    border-radius: 0; /* Removed border-radius */
+    padding: 6px 8px; /* Adjusted padding */
+	transition: border-color 0.3s, box-shadow 0.3s;
+	border-style: solid;
+}
+
+.faaone-contact-form  .faaone-form-group input:focus,
+.faaone-contact-form  .faaone-form-group textarea:focus {
+	box-shadow: 0 2px 0 0 #E5E5E5; /* Removed inset shadow */
+	outline: 1px solid #E5E5E5;
+}
+
+.faaone-form-group input::placeholder,
+.faaone-form-group textarea::placeholder {
+    opacity: 0.6; /* Matched placeholder opacity */
 }
 
 .faaone-form-group textarea {
-    min-height: 150px;
+    min-height: 120px; /* Slightly reduced height */
     resize: vertical;
 }
 
 .faaone-form-group input:focus,
 .faaone-form-group textarea:focus {
-    border-color: #007cba;
+    border-color: #E5E5E5; /* Can be adjusted if specific focus color exists */
     outline: none;
-    box-shadow: 0 0 0 2px rgba(0,124,186,0.2);
+    box-shadow: none; /* Removed focus shadow */
 }
 
 .faaone-form-footer {
-    text-align: right;
+    text-align: left; /* Moved button to the left */
     margin-top: 15px;
 }
 
 .faaone-submit-btn {
-    display: inline-block;
+    display: block;
     border: none;
-    padding-block-end: 0;
-    padding-block-start: 0;
-    border-radius: 4px 4px 4px 4px;
-    padding: 20px 32px 20px 32px;
+    border-radius: 4px;
+    padding: 15px 30px; /* Adjusted padding to be more compact */
     font-size: 16px;
     font-weight: 600;
     line-height: 1;
@@ -80,9 +81,9 @@
     text-align: center;
     text-decoration: none;
     transition: transform 0.1s;
-    background-color: #42AED9;
+    background-color: #368F8B; /* Color will remain from attributes */
     color: #ffffff;
-    flex-basis: 100%;
+	width:100%;
 }
 
 .faaone-message {
@@ -120,21 +121,4 @@
 
 .faaone-powered-by a:hover {
     text-decoration: underline;
-}
-
-/* Required field indicator */
-.faaone-form-group label[required]:after {
-    content: " *";
-    color: #dc3232;
-}
-
-/* Responsive styles */
-@media (min-width: 600px) {
-    .faaone-form-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .faaone-form-group--full {
-        grid-column: span 2;
-    }
 }

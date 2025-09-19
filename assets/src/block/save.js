@@ -10,13 +10,13 @@ export default function save({ attributes }) {
     return (
         <div {...useBlockProps.save()}>
             <div className="faaone-contact-form" id={formId}>
-                <h3 style={{ color: color || '#205E77' }}>
+                <h3 style={{ color: color || '#001A56' }}>
                     {headline || __( 'Get in Touch With Us', 'formular-af-awork-one' )}
                 </h3>
                 <form className="faaone-form" id={`${formId}-form`}>
 
                     <div className="faaone-form-grid">
-                        <div className="faaone-form-group faaone-form-group--full">
+                        <div className="faaone-form-group">
                             <input
                                 type="text"
                                 id={`${formId}-name`}
@@ -26,7 +26,7 @@ export default function save({ attributes }) {
                             />
                         </div>
 
-                        <div className="faaone-form-group faaone-form-group--full">
+                        <div className="faaone-form-group">
                             <input
                                 type="text"
                                 id={`${formId}-company`}
@@ -56,7 +56,7 @@ export default function save({ attributes }) {
                             />
                         </div>
 
-                        <div className="faaone-form-group faaone-form-group--full">
+                        <div className="faaone-form-group">
                             <textarea
                                 id={`${formId}-message`}
                                 name="message"
@@ -67,7 +67,7 @@ export default function save({ attributes }) {
 
                         {
                             hCaptcha.hCaptchaEnabled &&
-                            <div className="faaone-form-group faaone-form-group--full">
+                            <div className="faaone-form-group">
                                 <div className="h-captcha" data-sitekey={hCaptcha.hCaptchaSiteKey}></div>
                             </div>
                         }

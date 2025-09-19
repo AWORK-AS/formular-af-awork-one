@@ -20,9 +20,9 @@ class Form_Renderer {
 	 * Render the contact form.
 	 */
 	public function render_form(): string|false {
-		$color          = \apply_filters( 'faaone_color', '#205E77' );
+		$color          = \apply_filters( 'faaone_color', '#001A56' );
 		$headline       = \apply_filters( 'faaone_headline', __( 'Get in Touch With Us', 'formular-af-awork-one' ) );
-		$btn_color      = \apply_filters( 'faaone_button_color', '#42aed9' );
+		$btn_color      = \apply_filters( 'faaone_button_color', '#368F8B' );
 		$btn_text_color = \apply_filters( 'faaone_button_text_color', '#ffffff' );
 
 		$hcaptcha_enabled = $this->is_hcaptcha_enabled();

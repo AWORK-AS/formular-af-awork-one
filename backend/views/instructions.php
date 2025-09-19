@@ -93,16 +93,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<p><strong><?php esc_html_e( 'Customization options:', 'formular-af-awork-one' ); ?></strong></p>
 			<ul>
 				<li><code>headline</code> - <?php esc_html_e( 'Form headline text (Default: "Get in Touch With Us")', 'formular-af-awork-one' ); ?></li>
-				<li><code>color</code> - <?php esc_html_e( 'Headline text color (Default: "#205E77")', 'formular-af-awork-one' ); ?></li>
-				<li><code>button_color</code> - <?php esc_html_e( 'Submit button color (Default: "#42aed9")', 'formular-af-awork-one' ); ?></li>
+				<li><code>color</code> - <?php esc_html_e( 'Headline text color (Default: "#001A56")', 'formular-af-awork-one' ); ?></li>
+				<li><code>button_color</code> - <?php esc_html_e( 'Submit button color (Default: "#368F8B")', 'formular-af-awork-one' ); ?></li>
 				<li><code>button_text_color</code> - <?php esc_html_e( 'Submit button text color (Default: "#ffffff")', 'formular-af-awork-one' ); ?></li>
 			</ul>
 
 			<p><strong><?php esc_html_e( 'Example with customization:', 'formular-af-awork-one' ); ?></strong></p>
 			<pre>[faaone_aworkone_form
 	headline="<?php esc_html_e( 'Get in Touch With Us', 'formular-af-awork-one' ); ?>"
-	color="#205E77"
-	button_color="#42aed9"
+	color="#001A56"
+	button_color="#368F8B"
 	button_text_color="#ffffff"
 	]</pre>
 		</div>

@@ -106,7 +106,7 @@ class Enqueue extends Base {
 		// Get plugin options.
 		$options = \faaone_get_settings();
 
-		$color               = $options[ FAAONE_TEXTDOMAIN . '_color_theme' ] ?? '#205E77';
+		$color               = $options[ FAAONE_TEXTDOMAIN . '_color_theme' ] ?? '#001A56';
 		$headline            = $options[ FAAONE_TEXTDOMAIN . '_headline' ] ?? 'Get in Touch With Us';
 		$hcaptcha_site_key   = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
 		$hcaptcha_secret_key = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;

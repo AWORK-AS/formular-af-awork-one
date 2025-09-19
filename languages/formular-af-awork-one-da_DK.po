@@ -1,17 +1,17 @@
-# Copyright (C) 2025 mz@awork.dk
+# Copyright (C) 2025 support@aworkone.dk
 # This file is distributed under the GPLv3+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Formular af AWORK ONE 1.0.5\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formular-af-"
-"aworkone-journalsystem\n"
+"Project-Id-Version: Formular af AWORK ONE 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formular-af-awork-"
+"one\n"
 "Last-Translator: Mindell Zamora <mz@awork.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-05T08:29:19+00:00\n"
-"PO-Revision-Date: 2025-09-05 16:33+0800\n"
+"POT-Creation-Date: 2025-09-19T04:13:32+00:00\n"
+"PO-Revision-Date: 2025-09-19 12:30+0800\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: formular-af-awork-one\n"
 "Language: da\n"
@@ -20,7 +20,8 @@ msgstr ""
 #. Plugin Name of the plugin
 #. Description of the plugin
 #: formular-af-awork-one.php backend/views/admin.php:21
-#: formular-af-awork-one.php:54
+#: formular-af-awork-one.php:54 backend/views/admin.php:23
+#: formular-af-awork-one.php:53
 msgid "Formular af AWORK ONE"
 msgstr "Formular af AWORK ONE"
 
@@ -39,31 +40,31 @@ msgstr "mz@awork.dk"
 msgid "https://github.com/mz-aworkdk"
 msgstr "https://github.com/mz-aworkdk"
 
-#: backend/class-impexp.php:102
+#: backend/class-impexp.php:102 backend/class-impexp.php:101
 msgid "Please upload a valid .json file"
 msgstr "Upload venligst en gyldig .json-fil"
 
-#: backend/class-impexp.php:108
+#: backend/class-impexp.php:108 backend/class-impexp.php:107
 msgid "Please upload a file to import"
 msgstr "Upload venligst en fil at importere"
 
-#: backend/class-impexp.php:128
+#: backend/class-impexp.php:128 backend/class-impexp.php:127
 msgid "Failed to import the settings."
 msgstr "Kunne ikke importere indstillingerne."
 
-#: backend/class-settings-page.php:74
+#: backend/class-settings-page.php:74 backend/class-settings-page.php:65
 msgid "Contact Form App Settings"
 msgstr "Kontaktformular App Indstillinger"
 
-#: backend/class-settings-page.php:97
+#: backend/class-settings-page.php:97 backend/class-settings-page.php:92
 msgid "Settings"
 msgstr "Indstillinger"
 
-#: backend/class-settings-page.php:134
+#: backend/class-settings-page.php:134 backend/class-settings-page.php:173
 msgid "Company CVR is required."
 msgstr "CVR-nummer er påkrævet."
 
-#: backend/class-settings-page.php:144
+#: backend/class-settings-page.php:144 backend/class-settings-page.php:178
 msgid "AWORK ONE Company ID is required."
 msgstr "AWORK ONE virksomheds-ID er påkrævet."
 
@@ -71,7 +72,7 @@ msgstr "AWORK ONE virksomheds-ID er påkrævet."
 msgid "Email address ID is required."
 msgstr "E-mailadresse er påkrævet."
 
-#: backend/class-settings-page.php:180
+#: backend/class-settings-page.php:180 backend/class-settings-page.php:234
 msgid ""
 "The API did not accept the provided data. Please check your information and "
 "try again."
@@ -79,15 +80,15 @@ msgstr ""
 "API'en accepterede ikke de angivne data. Tjek venligst dine oplysninger og "
 "prøv igen."
 
-#: backend/class-settings-page.php:191
+#: backend/class-settings-page.php:191 backend/class-settings-page.php:256
 msgid "✅ Successfully connected to AWORK ONE"
 msgstr "✅ Forbindelse til AWORK ONE oprettet"
 
-#: backend/views/admin.php:25
+#: backend/views/admin.php:25 backend/views/admin.php:27
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: backend/views/admin.php:26
+#: backend/views/admin.php:26 backend/views/admin.php:28
 msgid "Instructions"
 msgstr "Vejledning"
 
@@ -95,7 +96,7 @@ msgstr "Vejledning"
 msgid "Connected"
 msgstr "Forbundet"
 
-#: backend/views/connection-svg.php:43
+#: backend/views/connection-svg.php:43 backend/views/connection-svg.php:41
 msgid "Not Connected"
 msgstr "Ikke forbundet"
 
@@ -103,40 +104,51 @@ msgstr "Ikke forbundet"
 #: backend/views/instructions.php:23 internals/views/class-form-renderer.php:57
 #: assets/build/plugin-block.js:1 assets/src/block/edit.js:61
 #: assets/src/block/save.js:45
+#: backend/views/formular-af-awork-one-settings.php:37
+#: backend/views/instructions.php:25
+#: internals/views/class-form-renderer.php:146
 msgid "Email"
 msgstr "E-mail"
 
 #: backend/views/formular-af-awork-one-settings.php:43
 #: backend/views/instructions.php:24
+#: backend/views/formular-af-awork-one-settings.php:48
+#: backend/views/instructions.php:26
 msgid "Company CVR"
 msgstr "Virksomheds CVR"
 
 #: backend/views/formular-af-awork-one-settings.php:54
 #: backend/views/instructions.php:25
+#: backend/views/formular-af-awork-one-settings.php:59
+#: backend/views/instructions.php:27
 msgid "AWORK ONE Company ID"
 msgstr "AWORK ONE Virksomheds-ID"
 
 #: backend/views/formular-af-awork-one-settings.php:66
+#: backend/views/formular-af-awork-one-settings.php:71
 msgid "hCaptcha Settings (Optional)"
 msgstr "hCaptcha-indstillinger (Valgfrit)"
 
 #: backend/views/formular-af-awork-one-settings.php:67
+#: backend/views/formular-af-awork-one-settings.php:72
 msgid "Configure your hCaptcha integration"
 msgstr "Konfigurer din hCaptcha-integration"
 
 #: backend/views/formular-af-awork-one-settings.php:75
+#: backend/views/formular-af-awork-one-settings.php:80
 msgid "secret key"
 msgstr "sikkerhedsnøgle"
 
 #: backend/views/formular-af-awork-one-settings.php:83
+#: backend/views/formular-af-awork-one-settings.php:88
 msgid "site key"
 msgstr "webstedsnøgle"
 
-#: backend/views/instructions.php:19
+#: backend/views/instructions.php:19 backend/views/instructions.php:21
 msgid "Required Admin Settings"
 msgstr "Obligatoriske administratorindstillinger"
 
-#: backend/views/instructions.php:20
+#: backend/views/instructions.php:20 backend/views/instructions.php:22
 msgid ""
 "To use the AWORK ONE form plugin, you need to configure the following "
 "required settings:"
@@ -144,143 +156,145 @@ msgstr ""
 "For at bruge AWORK ONE-formularpluginet skal du konfigurere følgende "
 "obligatoriske indstillinger:"
 
-#: backend/views/instructions.php:23
+#: backend/views/instructions.php:23 backend/views/instructions.php:25
 msgid "Your AWORK ONE account email"
 msgstr "Din AWORK ONE-kontos e-mail"
 
-#: backend/views/instructions.php:24
+#: backend/views/instructions.php:24 backend/views/instructions.php:26
 msgid "Your company's CVR number"
 msgstr "Dit virksomheds CVR-nummer"
 
-#: backend/views/instructions.php:25
+#: backend/views/instructions.php:25 backend/views/instructions.php:27
 msgid "Your company ID in the AWORK ONE system"
 msgstr "Dit virksomheds-ID i AWORK ONE-systemet"
 
 #. translators: %s is a link to the AWORK ONE dashboard
-#: backend/views/instructions.php:31
+#: backend/views/instructions.php:31 backend/views/instructions.php:34
 #, php-format
 msgid "You can find the CVR and Company ID in your %s."
 msgstr "Du kan finde CVR og virksomheds-ID i din %s."
 
-#: backend/views/instructions.php:32
+#: backend/views/instructions.php:32 backend/views/instructions.php:35
 msgid "AWORK ONE dashboard"
 msgstr "AWORK ONE-dashboard"
 
-#: backend/views/instructions.php:38
+#: backend/views/instructions.php:38 backend/views/instructions.php:42
 msgid "Optional hCaptcha Integration"
 msgstr "Valgfri hCaptcha-integration"
 
-#: backend/views/instructions.php:39
+#: backend/views/instructions.php:39 backend/views/instructions.php:43
 msgid ""
 "To prevent spam submissions, you can integrate hCaptcha with your forms:"
 msgstr ""
 "For at forhindre spam-indsendelser kan du integrere hCaptcha med dine "
 "formularer:"
 
-#: backend/views/instructions.php:42
+#: backend/views/instructions.php:42 backend/views/instructions.php:46
 msgid "Site Key"
 msgstr "Site-nøgle"
 
-#: backend/views/instructions.php:42
+#: backend/views/instructions.php:42 backend/views/instructions.php:46
 msgid "Your hCaptcha site key"
 msgstr "Din hCaptcha site-nøgle"
 
-#: backend/views/instructions.php:43
+#: backend/views/instructions.php:43 backend/views/instructions.php:47
 msgid "Secret Key"
 msgstr "Hemmelig nøgle"
 
-#: backend/views/instructions.php:43
+#: backend/views/instructions.php:43 backend/views/instructions.php:47
 msgid "Your hCaptcha secret key"
 msgstr "Din hemmelige hCaptcha-nøgle"
 
 #. translators: %s is a link to the hCaptcha dashboard
-#: backend/views/instructions.php:49
+#: backend/views/instructions.php:49 backend/views/instructions.php:54
 #, php-format
 msgid "You can get these keys from the %s after creating an account."
 msgstr "Du kan få disse nøgler fra %s efter oprettelse af en konto."
 
-#: backend/views/instructions.php:50
+#: backend/views/instructions.php:50 backend/views/instructions.php:55
 msgid "hCaptcha dashboard"
 msgstr "hCaptcha-dashboard"
 
-#: backend/views/instructions.php:56
+#: backend/views/instructions.php:56 backend/views/instructions.php:62
 msgid "Adding Forms to Your Site"
 msgstr "Tilføjelse af formularer til dit websted"
 
-#: backend/views/instructions.php:57
+#: backend/views/instructions.php:57 backend/views/instructions.php:63
 msgid ""
 "You can add the AWORK ONE form to your pages or posts using two methods:"
 msgstr ""
-"Du kan tilføje AWORK ONE-formularen til dine sider eller indlæg ved hjælp "
-"af to metoder:"
+"Du kan tilføje AWORK ONE-formularen til dine sider eller indlæg ved hjælp af "
+"to metoder:"
 
-#: backend/views/instructions.php:59
+#: backend/views/instructions.php:59 backend/views/instructions.php:65
 msgid "1. Gutenberg Block (Widget)"
 msgstr "1. Gutenberg-blok (widget)"
 
-#: backend/views/instructions.php:60
+#: backend/views/instructions.php:60 backend/views/instructions.php:66
 msgid "When editing a page or post:"
 msgstr "Når du redigerer en side eller et indlæg:"
 
-#: backend/views/instructions.php:62
+#: backend/views/instructions.php:62 backend/views/instructions.php:68
 msgid "Click the \"+\" button to add a new block"
 msgstr "Klik på \"+\"-knappen for at tilføje en ny blok"
 
 #. translators: %s is a list of search keywords
-#: backend/views/instructions.php:66
+#: backend/views/instructions.php:66 backend/views/instructions.php:73
 #, php-format
 msgid "Search for: %s"
 msgstr "Søg efter: %s"
 
-#: backend/views/instructions.php:70
+#: backend/views/instructions.php:70 backend/views/instructions.php:78
 msgid "Select the \"Contact Form\" block"
 msgstr "Vælg \"Kontaktformular\"-blokken"
 
-#: backend/views/instructions.php:71
+#: backend/views/instructions.php:71 backend/views/instructions.php:79
 msgid "Customize the form as needed"
 msgstr "Tilpas formularen efter behov"
 
-#: backend/views/instructions.php:74
+#: backend/views/instructions.php:74 backend/views/instructions.php:82
 msgid "2. Shortcode"
 msgstr "2. Shortcode"
 
 #. translators: %s is the shortcode example
-#: backend/views/instructions.php:78
+#: backend/views/instructions.php:78 backend/views/instructions.php:87
 #, php-format
 msgid "You can use the shortcode %s in any post, page, or widget area."
 msgstr "Du kan bruge shortkoden %s i ethvert indlæg, side eller widget-område."
 
-#: backend/views/instructions.php:83
+#: backend/views/instructions.php:83 backend/views/instructions.php:93
 msgid "Customization options:"
 msgstr "Tilpasningsmuligheder:"
 
-#: backend/views/instructions.php:85
+#: backend/views/instructions.php:85 backend/views/instructions.php:95
 msgid "Form headline text (Default: \"Get in Touch With Us\")"
 msgstr "Formularoverskriftstekst (Standard: \"Kontakt Os\")"
 
-#: backend/views/instructions.php:86
-msgid "Headline text color (Default: \"#205E77\")"
-msgstr "Overskriftstekstfarve (Standard: \"#205E77\")"
+#: backend/views/instructions.php:86 backend/views/instructions.php:96
+msgid "Headline text color (Default: \"#001A56\")"
+msgstr "Overskriftstekstfarve (Standard: \"#001A56\")"
 
-#: backend/views/instructions.php:87
-msgid "Submit button color (Default: \"#42aed9\")"
-msgstr "Send-knapfarve (Standard: \"#42aed9\")"
+#: backend/views/instructions.php:87 backend/views/instructions.php:97
+msgid "Submit button color (Default: \"#368F8B\")"
+msgstr "Send-knapfarve (Standard: \"#368F8B\")"
 
-#: backend/views/instructions.php:88
+#: backend/views/instructions.php:88 backend/views/instructions.php:98
 msgid "Submit button text color (Default: \"#ffffff\")"
 msgstr "Send-knaptekstfarve (Standard: \"#ffffff\")"
 
-#: backend/views/instructions.php:91
+#: backend/views/instructions.php:91 backend/views/instructions.php:101
 msgid "Example with customization:"
 msgstr "Eksempel med tilpasning:"
 
 #: backend/views/instructions.php:93 internals/views/class-form-renderer.php:9
 #: assets/build/plugin-block.js:1 assets/src/block/edit.js:48
 #: assets/src/block/index.js:15 assets/src/block/save.js:14
+#: backend/views/instructions.php:103
+#: internals/views/class-form-renderer.php:24
 msgid "Get in Touch With Us"
 msgstr "Kontakt os"
 
-#: engine/initialize.php:189
+#: engine/class-initialize.php:189
 msgid ""
 "Contact Form App is on production environment with missing `composer "
 "dumpautoload -o` that will improve the performance on autoloading itself."
@@ -288,80 +302,86 @@ msgstr ""
 "Contact Form App kører i produktionsmiljø uden den manglende `composer "
 "dumpautoload -o`-kommando, som vil forbedre ydeevnen ved selve autoloading."
 
-#: formular-af-awork-one.php:125
+#: formular-af-awork-one.php:125 formular-af-awork-one.php:118
 msgid "Plugin dependencies are missing. Please run composer install."
 msgstr "Plugin-afhængigheder mangler. Kør venligst composer-installationen."
 
-#: frontend/class-enqueue.php:124
+#: frontend/class-enqueue.php:124 frontend/class-enqueue.php:128
 msgid "Loading..."
 msgstr "Indlæser..."
 
-#: frontend/class-enqueue.php:125
+#: frontend/class-enqueue.php:125 frontend/class-enqueue.php:129
 msgid "Sending..."
 msgstr "Sender..."
 
-#: frontend/class-enqueue.php:126
+#: frontend/class-enqueue.php:126 frontend/class-enqueue.php:130
 msgid "Submission failed"
 msgstr "Indsendelse mislykkedes"
 
-#: frontend/class-enqueue.php:127
+#: frontend/class-enqueue.php:127 frontend/class-enqueue.php:131
 msgid "Session expired. Please refresh the page."
 msgstr "Sessionen er udløbet. Opdater venligst siden."
 
-#: frontend/class-enqueue.php:128
+#: frontend/class-enqueue.php:128 frontend/class-enqueue.php:132
 msgid "This field is required"
 msgstr "Dette felt er påkrævet"
 
-#: frontend/class-enqueue.php:129
+#: frontend/class-enqueue.php:129 frontend/class-enqueue.php:133
 msgid "Please enter a valid email address"
 msgstr "Indtast venligst en gyldig e-mailadresse"
 
-#: frontend/class-enqueue.php:130 rest/FormHandler.php:89
+#: frontend/class-enqueue.php:130 frontend/class-enqueue.php:134
+#: rest/class-form-handler.php:180
 msgid "Thank you! Your message has been sent."
 msgstr "Tak! Din besked er blevet sendt."
 
-#: functions/debug.php:13
+#: functions/debug.php:13 functions/debug.php:23
 msgid "Contact Form App"
 msgstr "Kontaktformular-app"
 
 #: internals/views/class-form-renderer.php:37 assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:53 assets/src/block/save.js:25
+#: internals/views/class-form-renderer.php:82
 msgid "Name"
 msgstr "Navn"
 
 #: internals/views/class-form-renderer.php:47 assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:57 assets/src/block/save.js:35
+#: internals/views/class-form-renderer.php:83
 msgid "Company"
 msgstr "Virksomhed"
 
 #: internals/views/class-form-renderer.php:67 assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:65 assets/src/block/save.js:55
+#: internals/views/class-form-renderer.php:163
 msgid "Phone"
 msgstr "Telefon"
 
 #: internals/views/class-form-renderer.php:76 assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:69 assets/src/block/save.js:64
+#: internals/views/class-form-renderer.php:179
 msgid "Message"
 msgstr "Meddelelse"
 
 #: internals/views/class-form-renderer.php:94 assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:81 assets/src/block/save.js:78
+#: internals/views/class-form-renderer.php:213
 msgid "Submit"
 msgstr "Indsend"
 
-#: rest/FormHandler.php:66
+#: rest/class-form-handler.php:124
 msgid "Please complete the hCaptcha challenge."
 msgstr "Udfordringen fra hCaptcha skal gennemføres."
 
-#: rest/FormHandler.php:73
+#: rest/class-form-handler.php:141
 msgid "hCaptcha verification failed. Please try again."
 msgstr "hCaptcha-verificering mislykkedes. Prøv venligst igen."
 
-#: rest/FormHandler.php:80
+#: rest/class-form-handler.php:160
 msgid "Error occured. Please contact the administrator."
 msgstr "Der opstod en fejl. Kontakt venligst administratoren."
 
-#: rest/FormHandler.php:95
+#: rest/class-form-handler.php:189
 msgid "Failed to send message. Please try again."
 msgstr "Kunne ikke sende beskeden. Prøv venligst igen."
 
@@ -419,6 +439,20 @@ msgctxt "block keyword"
 msgid "journalsystem"
 msgstr "journalsystem"
 
-#: backend/views/instructions.php:67
+#: backend/views/instructions.php:67 backend/views/instructions.php:74
 msgid "aworkone, contacts, leads, or form"
 msgstr "aworkone, kontakter, kundeemner, form"
+
+#. Author of the plugin
+#: formular-af-awork-one.php
+msgid "support@aworkone.dk"
+msgstr "support@aworkone.dk"
+
+#. Author URI of the plugin
+#: formular-af-awork-one.php
+msgid "https://aworkone.dk/kontakt-os/"
+msgstr "https://aworkone.dk/kontakt-os/"
+
+#: backend/class-settings-page.php:183
+msgid "Email address is required."
+msgstr "E-mailadresse er påkrævet."

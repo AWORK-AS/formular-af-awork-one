@@ -17,11 +17,11 @@
         },
         "color": {
             "type": "string",
-            "default": "#205E77"
+            "default": "#001A56"
         },
         "btnColor": {
             "type": "string",
-            "default": "#42aed9"
+            "default": "#368F8B"
         },
         "btnTextColor": {
             "type": "string",
@@ -31,8 +31,8 @@
     "example": {
         "attributes": {
             "headline": "Get in Touch With Us",
-            "color": "#205E77",
-            "btnColor": "#42aed9",
+            "color": "#001A56",
+            "btnColor": "#368F8B",
             "btnTextColor": "#ffffff"
         }
     }

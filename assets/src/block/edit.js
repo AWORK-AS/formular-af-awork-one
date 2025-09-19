@@ -44,16 +44,16 @@ export default function Edit({ attributes, setAttributes }) {
 			</PanelBody>
 			{/* Form preview in editor */}
 			<div className="faaone-contact-form" id={formId}>
-				<h3 style={{ color: color || '#205E77' }}>
+				<h3 style={{ color: color || '#001A56' }}>
 					{headline || __( 'Get in Touch With Us', 'formular-af-awork-one' )}
 				</h3>
 				<div className="faaone-form-preview">
 					<div className="faaone-form-grid">
-						<div className="faaone-form-group faaone-form-group--full">
+						<div className="faaone-form-group">
 							<input type="text" disabled placeholder={__( 'Name', 'formular-af-awork-one' )}/>
 						</div>
 
-						<div className="faaone-form-group faaone-form-group--full">
+						<div className="faaone-form-group">
 							<input type="text" disabled placeholder={__( 'Company', 'formular-af-awork-one' )}/>
 						</div>
 
@@ -65,12 +65,12 @@ export default function Edit({ attributes, setAttributes }) {
 							<input type="tel" disabled placeholder={__( 'Phone', 'formular-af-awork-one' )}/>
 						</div>
 
-						<div className="faaone-form-group faaone-form-group--full">
+						<div className="faaone-form-group">
 							<textarea disabled placeholder={__( 'Message', 'formular-af-awork-one' )}></textarea>
 						</div>
 						{
 							hCaptcha.hCaptchaEnabled &&
-							<div className="faaone-form-group faaone-form-group--full">
+							<div className="faaone-form-group">
 								<div className="h-captcha" data-sitekey={hCaptcha.hCaptchaSiteKey}></div>
 							</div>
 						}

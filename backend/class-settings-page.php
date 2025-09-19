@@ -205,9 +205,9 @@ class Settings_Page extends Base {
 		$token = new Retrieve_Token();
 		$data  = $token->submit(
 			array(
-				'company_cvr'         => $values['company_cvr'],
-				'aworkone_company_id' => $values['company_id'],
-				'email'               => $values['email'],
+				'company_cvr'           => $values['company_cvr'],
+				'citizenone_company_id' => $values['company_id'],
+				'email'                 => $values['email'],
 			)
 		);
 

@@ -16,11 +16,11 @@ registerBlockType('formular-af-awork-one/contact-form', {
         },
         color: {
             type: 'string',
-            default: '#205E77',
+            default: '#001A56',
         },
         btnColor: {
             "type": "string",
-            "default": "#42aed9"
+            "default": "#368F8B"
         },
         btnTextColor: {
             "type": "string",
