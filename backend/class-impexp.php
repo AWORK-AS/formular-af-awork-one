@@ -98,13 +98,17 @@ class ImpExp extends Base {
 		$extension       = \end( $file_name_parts );
 
 		if ( 'json' !== $extension ) {
-			\wp_die( \esc_html__( 'Please upload a valid .json file', 'formular-af-awork-one' ) );
+			$redirect_url = add_query_arg( 'faaone_error', 'invalid_file_type', wp_get_referer() );
+			wp_safe_redirect( $redirect_url );
+			exit; // Always exit after redirect.
 		}
 
 		$import_file = \sanitize_text_field( \wp_unslash( $_FILES['faaone_import_file']['tmp_name'] ) ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput
 
 		if ( empty( $import_file ) ) {
-			\wp_die( \esc_html__( 'Please upload a file to import', 'formular-af-awork-one' ) );
+			$redirect_url = add_query_arg( 'faaone_error', 'no_file_uploaded', wp_get_referer() );
+			wp_safe_redirect( $redirect_url );
+			exit; // Always exit after redirect.
 		}
 
 		// Retrieve the settings from the file and convert the json object to an array.

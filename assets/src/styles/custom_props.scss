@@ -81,11 +81,12 @@
     text-align: center;
     text-decoration: none;
     transition: transform 0.1s;
-    background-color: #368F8B; /* Color will remain from attributes */
     color: #ffffff;
 	width:100%;
 }
-
+.faaone-submit-btn:hover{
+	filter:brightness(90%);
+}
 .faaone-message {
     margin-top: 20px;
     padding: 15px;

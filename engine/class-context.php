@@ -11,7 +11,7 @@
 
 namespace mzaworkdk\Aworkone\Engine;
 
-use Inpsyde\WpContext;
+use mzaworkdk\Aworkone\Dependencies\Inpsyde\WpContext;
 
 /**
  * Contact Form App Is Methods

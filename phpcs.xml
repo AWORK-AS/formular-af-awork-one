@@ -4,10 +4,12 @@
     <rule ref="WordPress" />
     <rule ref="WordPress-Extra" />
     <rule ref="WordPress-Docs" />
+	<rule ref="WordPress-Core" />
     <file>.</file>
     <exclude-pattern>/vendor/*</exclude-pattern>
     <exclude-pattern>/node_modules/*</exclude-pattern>
 	<exclude-pattern>/tests/*</exclude-pattern>
 	<exclude-pattern>/assets/*</exclude-pattern>
+	<exclude-pattern>scoper.inc.php</exclude-pattern>
     <arg value="sp"/>
 </ruleset>

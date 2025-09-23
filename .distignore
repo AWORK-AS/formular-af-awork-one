@@ -1,6 +1,7 @@
-/vendor/bin/
-/vendor/*/bin/
-/vendor/decodelabs/veneer/bin/
+vendor/
+/build/bin/
+/build/*/bin/
+/build/decodelabs/veneer/bin/
 node_modules/
 .git/
 .github/
@@ -25,3 +26,4 @@ phpunit.xml
 .*
 *.dist.yml
 *.xml.dist
+scoper.inc.php

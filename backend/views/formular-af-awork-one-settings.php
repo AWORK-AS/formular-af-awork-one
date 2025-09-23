@@ -19,79 +19,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <div id="tabs-1" class="wrap">
-<?php
-	$cmb = new_cmb2_box(
-		array(
-			'id'         => FAAONE_TEXTDOMAIN . '_options',
-			'hookup'     => false,
-			'show_on'    => array(
-				'key'   => 'options-page',
-				'value' => array( FAAONE_TEXTDOMAIN ),
-			),
-			'show_names' => true,
-		)
-	);
+	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+	<form action="options.php" method="post">
+		<?php
+		// Output security fields for the registered setting.
+		settings_fields( FAAONE_TEXTDOMAIN . '_group' );
 
-	$cmb->add_field(
-		array(
-			'name'       => __( 'Email', 'formular-af-awork-one' ),
-			'id'         => FAAONE_TEXTDOMAIN . '_field_email',
-			'type'       => 'text_email',
-			'attributes' => array(
-				'required' => 'required',
-			),
-		)
-	);
+		// Output setting sections and their fields.
+		do_settings_sections( FAAONE_TEXTDOMAIN );
 
-	$cmb->add_field(
-		array(
-			'name'       => __( 'Company CVR', 'formular-af-awork-one' ),
-			'id'         => FAAONE_TEXTDOMAIN . '_field_company_cvr',
-			'type'       => 'text',
-			'attributes' => array(
-				'required' => 'required',
-			),
-		)
-	);
-
-	$cmb->add_field(
-		array(
-			'name'       => __( 'AWORK ONE Company ID', 'formular-af-awork-one' ),
-			'id'         => FAAONE_TEXTDOMAIN . '_field_company_id',
-			'type'       => 'text',
-			'attributes' => array(
-				'required' => 'required', // HTML5 validation.
-			),
-		)
-	);
-
-	// DIVIDER: hCaptcha Settings.
-	$cmb->add_field(
-		array(
-			'name' => __( 'hCaptcha Settings (Optional)', 'formular-af-awork-one' ),
-			'desc' => __( 'Configure your hCaptcha integration', 'formular-af-awork-one' ),
-			'type' => 'title',
-			'id'   => 'hcaptcha_divider',
-		)
-	);
-
-	$cmb->add_field(
-		array(
-			'name' => 'hCaptcha ' . __( 'secret key', 'formular-af-awork-one' ),
-			'id'   => FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key',
-			'type' => 'text',
-		)
-	);
-
-	$cmb->add_field(
-		array(
-			'name' => 'hCaptcha ' . __( 'site key', 'formular-af-awork-one' ),
-			'id'   => FAAONE_TEXTDOMAIN . '_hcaptcha_site_key',
-			'type' => 'text',
-		)
-	);
-
-
-	cmb2_metabox_form( FAAONE_TEXTDOMAIN . '_options', FAAONE_TEXTDOMAIN . '-settings' );
-	?>
+		// Output save settings button.
+		submit_button( __( 'Save Settings', 'formular-af-awork-one' ) );
+		?>
+	</form>
 </div>

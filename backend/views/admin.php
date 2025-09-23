@@ -20,8 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div class="wrap">
 
-	<h2><?php esc_html_e( 'Formular af AWORK ONE', 'formular-af-awork-one' ); ?></h2>
-
 	<div id="tabs" class="settings-tab">
 		<ul>
 			<li><a href="#tabs-1"><?php esc_html_e( 'Configuration', 'formular-af-awork-one' ); ?></a></li>
