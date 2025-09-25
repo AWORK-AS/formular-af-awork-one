@@ -20,6 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <div id="tabs-1" class="wrap">
 	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+	<?php
+		settings_errors( 'faaone_messages' );
+	?>
 	<form action="options.php" method="post">
 		<?php
 		// Output security fields for the registered setting.

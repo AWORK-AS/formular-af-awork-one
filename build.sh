@@ -35,4 +35,7 @@ composer dump-autoload --working-dir=build --classmap-authoritative
 
 rm -rf vendor/  # ✅ IMPORTANT: Remove original
 
+# Rename the 'build' directory (which contains the scoped dependencies) to 'vendor'.
+mv build vendor
+
 echo "✅ Build completed successfully!"

@@ -24,6 +24,5 @@ tests.sh
 tsconfig.json
 phpunit.xml
 .*
-*.dist.yml
-*.xml.dist
 scoper.inc.php
+build.sh

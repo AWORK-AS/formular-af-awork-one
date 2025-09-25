@@ -1,18 +1,10 @@
 <?php
 /**
- * Formular af AWORK ONE
+ * AWORK ONE Uninstall Form
  *
- * Fired when the plugin is uninstalled.
- *
- * When populating this file, consider the following flow
- * of control:
- *
- * - This method should be static
- * - Check if the $_REQUEST content actually is the plugin name
- * - Run an admin referrer check to make sure it goes through authentication
- * - Verify the output of $_GET makes sense
- * - Repeat with other user roles. Best directly by using the links/query string parameters.
- * - Repeat things for multisite. Once for a single site in the network, once sitewide.
+ * Fired when the plugin is uninstalled. This script should remove ALL data
+ * created by the plugin, including options, transients, and any other
+ * database entries.
  *
  * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -21,71 +13,66 @@
  * @link      https://awork.dk
  */
 
-// If uninstall not called from WordPress, then exit.
+// If uninstall is not called from WordPress, exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-/**
- * Loop for uninstall
- *
- * @return void
- */
-function faaone_uninstall_multisite() {
-	if ( is_multisite() ) {
-		$blogs = get_sites();
-
-		if ( ! empty( $blogs ) ) {
-			foreach ( $blogs as $blog ) {
-				switch_to_blog( (int) $blog->blog_id );
-				faaone_uninstall();
-				restore_current_blog();
-			}
-
-			return;
-		}
-	}
-
-	faaone_uninstall();
+// Important: Check that the user has permission to uninstall plugins.
+if ( ! current_user_can( 'delete_plugins' ) ) {
+	exit;
 }
 
+// Define the option names and transients used by your plugin.
+// ✅ MAKE THIS A SINGLE PLACE FOR EASY UPDATING IN THE FUTURE.
+
+
+
 /**
- * What happen on uninstall?
- *
- * @global WP_Roles $wp_roles
- * @return void
+ * Main uninstall logic for a single site.
+ * Deletes all plugin options and transients.
  */
-function faaone_uninstall() { // phpcs:ignore
-	global $wp_roles;
-
-	// Remove the capabilities of the plugin.
-	if ( ! isset( $wp_roles ) ) {
-		$wp_roles = new WP_Roles; // phpcs:ignore
-	}
-
-	$caps = array(
-		'create_plugins',
-		'read_demo',
-		'read_private_demoes',
-		'edit_demo',
-		'edit_demoes',
-		'edit_private_demoes',
-		'edit_published_demoes',
-		'edit_others_demoes',
-		'publish_demoes',
-		'delete_demo',
-		'delete_demoes',
-		'delete_private_demoes',
-		'delete_published_demoes',
-		'delete_others_demoes',
-		'manage_demoes',
+function faaone_uninstall_single_site(): void {
+	$options_to_delete = array(
+		'formular-af-awork-one-settings', // The main option for your settings.
+		'formular-af-awork-one-version',
 	);
 
-	foreach ( $wp_roles as $role ) {
-		foreach ( $caps as $cap ) {
-			$role->remove_cap( $cap );
-		}
+	$transients_to_delete = array(
+		'faaone_autoloader_not_optimized',
+	);
+
+	// Delete all options.
+	foreach ( $options_to_delete as $option_name ) {
+		delete_option( $option_name );
+	}
+
+	// Delete all transients.
+	foreach ( $transients_to_delete as $transient_name ) {
+		delete_transient( $transient_name );
 	}
 }
 
-faaone_uninstall_multisite();
+
+// --- Main Execution Logic ---
+
+// Check if it's a multisite uninstall.
+if ( is_multisite() ) {
+
+	// Get all blogs in the network and loop through them.
+	$blog_ids = get_sites(
+		array(
+			'fields'     => 'ids',
+			'network_id' => get_current_network_id(),
+		)
+	);
+
+	foreach ( $blog_ids as $blg_id ) {
+		switch_to_blog( $blg_id );
+		faaone_uninstall_single_site();
+		restore_current_blog();
+	}
+} else {
+	// This is a single site, so just run the uninstall function once.
+	faaone_uninstall_single_site();
+}

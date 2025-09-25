@@ -1,8 +1,8 @@
 <?php
 /**
- * Formular af CitizenOne journalsystem
+ * Formular af AWORK ONE
  *
- * @package   mzaworkdk\Citizenone
+ * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
  * @copyright 2025 AWORK A/S
  * @license   GPL 2.0+

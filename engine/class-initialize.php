@@ -14,7 +14,7 @@ namespace mzaworkdk\Aworkone\Engine;
 use mzaworkdk\Aworkone\Engine;
 
 /**
- * Formular af CitizenOne journalsystem Initializer
+ * Formular af AWORK ONE Initializer
  */
 class Initialize {
 

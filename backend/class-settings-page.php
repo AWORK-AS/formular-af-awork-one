@@ -90,8 +90,10 @@ class Settings_Page extends Base {
 		// Register the setting. This will create the entry in the wp_options table.
 		register_setting(
 			$this->option_group,
-			$this->option_name
-			// We will handle sanitization in the `before_save_settings` method.
+			$this->option_name,
+			array(
+				'sanitize_callback' => array( $this, 'sanitize_main_settings' ),
+			)
 		);
 
 		// Section 1: Main Settings.
@@ -209,7 +211,7 @@ class Settings_Page extends Base {
 	}
 
 	/**
-	 * Action before settings are saved. This replaces the CMB2 hook.
+	 * Action before settings are saved.
 	 *
 	 * @param array $new_value The new, unsanitized value for the option.
 	 * @param array $old_value The old value of the option.
@@ -353,5 +355,36 @@ class Settings_Page extends Base {
 			// Remove the transient so the notice doesn't appear again.
 			delete_transient( 'faaone_autoloader_not_optimized' );
 		}
+	}
+
+	/**
+	 * ✅ NEW FUNCTION: Main sanitization callback for the settings.
+	 *
+	 * @param array $input The raw input from the form.
+	 * @return array The sanitized input.
+	 */
+	public function sanitize_main_settings( array $input ): array {
+		$new_input = array();
+
+		// Sanitize each expected field.
+		if ( isset( $input['faaone_field_email'] ) ) {
+			$new_input['faaone_field_email'] = sanitize_email( $input['faaone_field_email'] );
+		}
+		if ( isset( $input['faaone_field_company_cvr'] ) ) {
+			$new_input['faaone_field_company_cvr'] = sanitize_text_field( $input['faaone_field_company_cvr'] );
+		}
+		if ( isset( $input['faaone_field_company_id'] ) ) {
+			$new_input['faaone_field_company_id'] = sanitize_text_field( $input['faaone_field_company_id'] );
+		}
+		if ( isset( $input['faaone_hcaptcha_secret_key'] ) ) {
+			$new_input['faaone_hcaptcha_secret_key'] = sanitize_text_field( $input['faaone_hcaptcha_secret_key'] );
+		}
+		if ( isset( $input['faaone_hcaptcha_site_key'] ) ) {
+			$new_input['faaone_hcaptcha_site_key'] = sanitize_text_field( $input['faaone_hcaptcha_site_key'] );
+		}
+		if ( isset( $input[ FAAONE_TEXTDOMAIN . '_token' ] ) ) {
+			$new_input[ FAAONE_TEXTDOMAIN . '_token' ] = sanitize_text_field( $input[ FAAONE_TEXTDOMAIN . '_token' ] );
+		}
+		return $new_input;
 	}
 }

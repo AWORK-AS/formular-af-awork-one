@@ -33,7 +33,8 @@ define( 'FAAONE_TEXTDOMAIN', 'formular-af-awork-one' );
 define( 'FAAONE_VERSION', '1.0.0' );
 define( 'FAAONE_MIN_PHP_VERSION', '7.4' );
 define( 'FAAONE_WP_VERSION', '5.8' );
-define( 'FAAONE_PLUGIN_API_URL', 'https://appserver.citizenone.dk/api' );
+// define( 'FAAONE_PLUGIN_API_URL', 'https://appserver.citizenone.dk/api' );
+define( 'FAAONE_PLUGIN_API_URL', 'http://127.0.0.1:8000/api' );
 define( 'FAAONE_PLUGIN_API_NAME', 'Formular af AWORK ONE' );
 define( 'FAAONE_NAME', 'Formular af AWORK ONE' );
 
@@ -42,7 +43,7 @@ define( 'FAAONE_NAME', 'Formular af AWORK ONE' );
  * This makes all our classes and scoped dependencies available globally
  * as soon as the plugin file is loaded.
  */
-$autoloader_path = FAAONE_PLUGIN_ROOT . 'build/autoload.php';
+$autoloader_path = FAAONE_PLUGIN_ROOT . 'vendor/autoload.php';
 if ( ! file_exists( $autoloader_path ) ) {
 	// Add a more user-friendly admin notice if possible.
 	if ( is_admin() ) {
@@ -58,7 +59,7 @@ if ( ! file_exists( $autoloader_path ) ) {
 	// Stop execution if the autoloader is missing.
 	return;
 }
-require_once FAAONE_PLUGIN_ROOT . 'build/autoload.php';
+require_once FAAONE_PLUGIN_ROOT . 'vendor/autoload.php';
 
 /**
  * The main function that initializes the plugin.
@@ -67,7 +68,7 @@ require_once FAAONE_PLUGIN_ROOT . 'build/autoload.php';
  * including user data and translations, are ready.
  */
 function faaone_initialize_plugin(): void {
-	$faaone_libraries = require FAAONE_PLUGIN_ROOT . 'build/autoload.php';
+	$faaone_libraries = require FAAONE_PLUGIN_ROOT . 'vendor/autoload.php';
 	// Require necessary files.
 	require_once FAAONE_PLUGIN_ROOT . 'functions/functions.php';
 	require_once FAAONE_PLUGIN_ROOT . 'functions/debug.php';
@@ -126,31 +127,6 @@ add_action( 'init', 'faaone_initialize_plugin' );
  * @param bool $network_wide Network wide.
  */
 function faaone_activate_plugin( $network_wide ): void {
-	// Double-check if constant is defined.
-	if ( ! defined( 'FAAONE_PLUGIN_ROOT' ) ) {
-		define( 'FAAONE_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
-	}
-
-	if ( ! file_exists( FAAONE_PLUGIN_ROOT . 'build/autoload.php' ) ) {
-		// 1. Set a flag (transient) to show an admin notice.
-		set_transient( 'faaone_activation_error', true, 5 );
-
-		// 2. Deactivate itself.
-		// We need to include this file to use deactivate_plugins.
-		if ( ! function_exists( 'deactivate_plugins' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-		deactivate_plugins( plugin_basename( FAAONE_PLUGIN_ABSOLUTE ) );
-
-		return; // Stop activation execution.
-	}
-
-	require_once FAAONE_PLUGIN_ROOT . 'build/autoload.php';
-	// Load the ActDeact class.
-	if ( ! class_exists( '\mzaworkdk\Citizenone\Backend\ActDeact' ) ) {
-		require_once FAAONE_PLUGIN_ROOT . 'backend/class-actdeact.php';
-	}
-
 	\mzaworkdk\Aworkone\Backend\ActDeact::activate( $network_wide );
 }
 
@@ -162,21 +138,6 @@ function faaone_activate_plugin( $network_wide ): void {
 function faaone_deactivate_plugin( $network_wide ): void {
 	\mzaworkdk\Aworkone\Backend\ActDeact::deactivate( $network_wide );
 }
-
-/**
- * Show activation error notice.
- */
-function faaone_show_activation_error_notice(): void {
-	if ( get_transient( 'faaone_activation_error' ) ) {
-		?>
-		<div class="error notice is-dismissible">
-			<p><?php esc_html_e( 'Formular af AWORK ONE could not be activated. Plugin dependencies are missing. Please run the build script.', 'formular-af-awork-one' ); ?></p>
-		</div>
-		<?php
-		delete_transient( 'faaone_activation_error' );
-	}
-}
-add_action( 'admin_notices', 'faaone_show_activation_error_notice' );
 
 // Register activation and deactivation hooks.
 register_activation_hook( FAAONE_PLUGIN_ABSOLUTE, 'faaone_activate_plugin' );
