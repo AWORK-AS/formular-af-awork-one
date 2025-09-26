@@ -3,7 +3,7 @@ import './styles/public.scss';
 /**
  * @function onload The window.onload function is called when the page is loaded
  */
-window.onload = () => {
+window.addEventListener('load', () => {
 	// Write in console log the PHP value passed in enqueue_js_vars in frontend/class-enqueue.php
 	( () => {
 
@@ -52,4 +52,4 @@ window.onload = () => {
 
 	} )();
 	// Place your public-facing magic js 🪄 here
-};
+});

@@ -34,7 +34,7 @@ class Form_Handler {
 			'/submit',
 			array(
 				'methods'             => 'POST',
-				'callback'            => array( $this, 'handle_form_submission' ),
+				'callback'            => array( $this, 'faaone_handle_form_submission' ),
 				'permission_callback' => '__return_true',
 				'args'                => array(
 					'_wpnonce' => array(
@@ -54,7 +54,7 @@ class Form_Handler {
 	 * @param \WP_REST_Request $request WP Rest Request.
 	 * @phpstan-param \WP_REST_Request<array<string, mixed>> $request
 	 */
-	public function handle_form_submission( WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
+	public function faaone_handle_form_submission( WP_REST_Request $request ): \WP_REST_Response|\WP_Error {
 		// Verify nonce.
 		$nonce_verification = $this->verify_nonce( $request );
 
@@ -106,8 +106,8 @@ class Form_Handler {
 	 * @param array $data Data.
 	 */
 	private function validate_hcaptcha( array $opts, array $data ): ?\WP_Error {
-		$hcaptcha_site_key   = $opts[ FAAONE_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
-		$hcaptcha_secret_key = $opts[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
+		$hcaptcha_site_key   = $opts['faaone_hcaptcha_site_key'] ?? false;
+		$hcaptcha_secret_key = $opts['faaone_hcaptcha_secret_key'] ?? false;
 		$hcaptcha_enabled    = false;
 
 		if ( $hcaptcha_site_key && $hcaptcha_secret_key ) {
@@ -203,7 +203,7 @@ class Form_Handler {
 	 */
 	private function verify_hcaptcha( $token ) {
 		$options    = \faaone_get_settings();
-		$secret_key = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? '';
+		$secret_key = $options['faaone_hcaptcha_secret_key'] ?? '';
 
 		if ( empty( $secret_key ) ) {
 			// Error: No secret key configured.

@@ -51,8 +51,8 @@ class Form_Renderer {
 	 */
 	private function is_hcaptcha_enabled(): bool {
 		$opts                = \faaone_get_settings();
-		$hcaptcha_site_key   = $opts[ FAAONE_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? '';
-		$hcaptcha_secret_key = $opts[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? '';
+		$hcaptcha_site_key   = $opts['faaone_hcaptcha_site_key'] ?? '';
+		$hcaptcha_secret_key = $opts['faaone_hcaptcha_secret_key'] ?? '';
 		return ! empty( $hcaptcha_site_key ) && ! empty( $hcaptcha_secret_key );
 	}
 

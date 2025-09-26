@@ -87,8 +87,8 @@ class Enqueue extends Base {
 		}
 		// Localize script with hCaptcha settings.
 		$options             = \faaone_get_settings();
-		$hcaptcha_site_key   = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
-		$hcaptcha_secret_key = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
+		$hcaptcha_site_key   = $options['faaone_hcaptcha_site_key'] ?? false;
+		$hcaptcha_secret_key = $options['faaone_hcaptcha_secret_key'] ?? false;
 		$hcaptcha_enabled    = false;
 
 		if ( $hcaptcha_site_key && $hcaptcha_secret_key ) {

@@ -19,6 +19,21 @@ use mzaworkdk\Aworkone\Engine\Base;
 class Enqueue extends Base {
 
 	/**
+	 * The shortcode name.
+	 *
+	 * @var string Shortcode name.
+	 */
+	private $shortcode_name = 'faaone_aworkone_form';
+
+	/**
+	 * The block name
+	 *
+	 * @var string Block name.
+	 */
+	private $block_name = 'formular-af-awork-one/contact-form';
+
+
+	/**
 	 * Initialize the class.
 	 *
 	 * @return void|bool
@@ -106,10 +121,10 @@ class Enqueue extends Base {
 		// Get plugin options.
 		$options = \faaone_get_settings();
 
-		$color               = $options[ FAAONE_TEXTDOMAIN . '_color_theme' ] ?? '#001A56';
-		$headline            = $options[ FAAONE_TEXTDOMAIN . '_headline' ] ?? 'Get in Touch With Us';
-		$hcaptcha_site_key   = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
-		$hcaptcha_secret_key = $options[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
+		$color               = $options['faaone_color_theme'] ?? '#001A56';
+		$headline            = $options['faaone_headline'] ?? 'Get in Touch With Us';
+		$hcaptcha_site_key   = $options['faaone_hcaptcha_site_key'] ?? false;
+		$hcaptcha_secret_key = $options['faaone_hcaptcha_secret_key'] ?? false;
 
 		$hcaptcha_enabled = false;
 
@@ -149,8 +164,8 @@ class Enqueue extends Base {
 	 */
 	protected function load_hcaptcha_script() {
 		$opts                = \faaone_get_settings();
-		$hcaptcha_site_key   = $opts[ FAAONE_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? false;
-		$hcaptcha_secret_key = $opts[ FAAONE_TEXTDOMAIN . '_hcaptcha_secret_key' ] ?? false;
+		$hcaptcha_site_key   = $opts['faaone_hcaptcha_site_key'] ?? false;
+		$hcaptcha_secret_key = $opts['faaone_hcaptcha_secret_key'] ?? false;
 
 		$hcaptcha_enabled = false;
 
