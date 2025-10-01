@@ -10,8 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-19T04:13:32+00:00\n"
-"PO-Revision-Date: 2025-09-19 12:30+0800\n"
+"POT-Creation-Date: 2025-10-01T04:08:08+00:00\n"
+"PO-Revision-Date: 2025-10-01 13:42+0800\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: formular-af-awork-one\n"
 "Language: da\n"
@@ -21,14 +21,14 @@ msgstr ""
 #. Description of the plugin
 #: formular-af-awork-one.php backend/views/admin.php:21
 #: formular-af-awork-one.php:54 backend/views/admin.php:23
-#: formular-af-awork-one.php:53
+#: formular-af-awork-one.php:53 formular-af-awork-one.php:77
 msgid "Formular af AWORK ONE"
 msgstr "Formular af AWORK ONE"
 
 #. Plugin URI of the plugin
 #: formular-af-awork-one.php
-msgid "https://github.com/AWORK-AS/contact-form-app"
-msgstr "https://github.com/AWORK-AS/contact-form-app"
+msgid "https://github.com/AWORK-AS/formular-af-awork-one"
+msgstr "https://github.com/AWORK-AS/formular-af-awork-one"
 
 #. Author of the plugin
 #: formular-af-awork-one.php
@@ -49,22 +49,27 @@ msgid "Please upload a file to import"
 msgstr "Upload venligst en fil at importere"
 
 #: backend/class-impexp.php:128 backend/class-impexp.php:127
+#: backend/class-impexp.php:131
 msgid "Failed to import the settings."
 msgstr "Kunne ikke importere indstillingerne."
 
 #: backend/class-settings-page.php:74 backend/class-settings-page.php:65
+#: backend/class-settings-page.php:68
 msgid "Contact Form App Settings"
 msgstr "Kontaktformular App Indstillinger"
 
 #: backend/class-settings-page.php:97 backend/class-settings-page.php:92
+#: backend/class-settings-page.php:319
 msgid "Settings"
 msgstr "Indstillinger"
 
 #: backend/class-settings-page.php:134 backend/class-settings-page.php:173
+#: backend/class-settings-page.php:296
 msgid "Company CVR is required."
 msgstr "CVR-nummer er påkrævet."
 
 #: backend/class-settings-page.php:144 backend/class-settings-page.php:178
+#: backend/class-settings-page.php:300
 msgid "AWORK ONE Company ID is required."
 msgstr "AWORK ONE virksomheds-ID er påkrævet."
 
@@ -73,6 +78,7 @@ msgid "Email address ID is required."
 msgstr "E-mailadresse er påkrævet."
 
 #: backend/class-settings-page.php:180 backend/class-settings-page.php:234
+#: backend/class-settings-page.php:278
 msgid ""
 "The API did not accept the provided data. Please check your information and "
 "try again."
@@ -81,6 +87,7 @@ msgstr ""
 "prøv igen."
 
 #: backend/class-settings-page.php:191 backend/class-settings-page.php:256
+#: backend/class-settings-page.php:283
 msgid "✅ Successfully connected to AWORK ONE"
 msgstr "✅ Forbindelse til AWORK ONE oprettet"
 
@@ -92,11 +99,12 @@ msgstr "Konfiguration"
 msgid "Instructions"
 msgstr "Vejledning"
 
-#: backend/views/connection-svg.php:31
+#: backend/views/connection-svg.php:31 backend/views/connection-svg.php:28
 msgid "Connected"
 msgstr "Forbundet"
 
 #: backend/views/connection-svg.php:43 backend/views/connection-svg.php:41
+#: backend/views/connection-svg.php:35
 msgid "Not Connected"
 msgstr "Ikke forbundet"
 
@@ -107,25 +115,27 @@ msgstr "Ikke forbundet"
 #: backend/views/formular-af-awork-one-settings.php:37
 #: backend/views/instructions.php:25
 #: internals/views/class-form-renderer.php:146
+#: backend/class-settings-page.php:120
 msgid "Email"
 msgstr "E-mail"
 
 #: backend/views/formular-af-awork-one-settings.php:43
 #: backend/views/instructions.php:24
 #: backend/views/formular-af-awork-one-settings.php:48
-#: backend/views/instructions.php:26
+#: backend/views/instructions.php:26 backend/class-settings-page.php:131
 msgid "Company CVR"
 msgstr "Virksomheds CVR"
 
 #: backend/views/formular-af-awork-one-settings.php:54
 #: backend/views/instructions.php:25
 #: backend/views/formular-af-awork-one-settings.php:59
-#: backend/views/instructions.php:27
+#: backend/views/instructions.php:27 backend/class-settings-page.php:142
 msgid "AWORK ONE Company ID"
 msgstr "AWORK ONE Virksomheds-ID"
 
 #: backend/views/formular-af-awork-one-settings.php:66
 #: backend/views/formular-af-awork-one-settings.php:71
+#: backend/class-settings-page.php:111
 msgid "hCaptcha Settings (Optional)"
 msgstr "hCaptcha-indstillinger (Valgfrit)"
 
@@ -136,11 +146,13 @@ msgstr "Konfigurer din hCaptcha-integration"
 
 #: backend/views/formular-af-awork-one-settings.php:75
 #: backend/views/formular-af-awork-one-settings.php:80
+#: backend/class-settings-page.php:155
 msgid "secret key"
 msgstr "sikkerhedsnøgle"
 
 #: backend/views/formular-af-awork-one-settings.php:83
 #: backend/views/formular-af-awork-one-settings.php:88
+#: backend/class-settings-page.php:163
 msgid "site key"
 msgstr "webstedsnøgle"
 
@@ -307,31 +319,37 @@ msgid "Plugin dependencies are missing. Please run composer install."
 msgstr "Plugin-afhængigheder mangler. Kør venligst composer-installationen."
 
 #: frontend/class-enqueue.php:124 frontend/class-enqueue.php:128
+#: frontend/class-enqueue.php:165
 msgid "Loading..."
 msgstr "Indlæser..."
 
 #: frontend/class-enqueue.php:125 frontend/class-enqueue.php:129
+#: frontend/class-enqueue.php:166
 msgid "Sending..."
 msgstr "Sender..."
 
 #: frontend/class-enqueue.php:126 frontend/class-enqueue.php:130
+#: frontend/class-enqueue.php:167
 msgid "Submission failed"
 msgstr "Indsendelse mislykkedes"
 
 #: frontend/class-enqueue.php:127 frontend/class-enqueue.php:131
+#: frontend/class-enqueue.php:168
 msgid "Session expired. Please refresh the page."
 msgstr "Sessionen er udløbet. Opdater venligst siden."
 
 #: frontend/class-enqueue.php:128 frontend/class-enqueue.php:132
+#: frontend/class-enqueue.php:169
 msgid "This field is required"
 msgstr "Dette felt er påkrævet"
 
 #: frontend/class-enqueue.php:129 frontend/class-enqueue.php:133
+#: frontend/class-enqueue.php:170
 msgid "Please enter a valid email address"
 msgstr "Indtast venligst en gyldig e-mailadresse"
 
 #: frontend/class-enqueue.php:130 frontend/class-enqueue.php:134
-#: rest/class-form-handler.php:180
+#: rest/class-form-handler.php:180 frontend/class-enqueue.php:171
 msgid "Thank you! Your message has been sent."
 msgstr "Tak! Din besked er blevet sendt."
 
@@ -453,6 +471,36 @@ msgstr "support@aworkone.dk"
 msgid "https://aworkone.dk/kontakt-os/"
 msgstr "https://aworkone.dk/kontakt-os/"
 
-#: backend/class-settings-page.php:183
+#: backend/class-settings-page.php:183 backend/class-settings-page.php:304
 msgid "Email address is required."
 msgstr "E-mailadresse er påkrævet."
+
+#: backend/class-settings-page.php:102
+msgid "API Credentials"
+msgstr "API-legitimationsoplysninger"
+
+#. translators: %s is a link to dismiss the notice
+#: backend/class-settings-page.php:339 engine/class-initialize.php:291
+#, php-format
+msgid ""
+"For better performance, the Formular af AWORK ONE plugin recommends "
+"regenerating the autoloader. This is a developer-level task. %s"
+msgstr ""
+"For bedre ydeevne anbefaler Formular af AWORK ONE pluginet at regenerere "
+"autoloaderen. Dette er en udvikleropgave. %s"
+
+#: backend/class-settings-page.php:341 engine/class-initialize.php:293
+msgid "Dismiss this notice"
+msgstr "Luk denne besked"
+
+#: backend/views/formular-af-awork-one-settings.php:35
+msgid "Save Settings"
+msgstr "Gem indstillinger"
+
+#: formular-af-awork-one.php:54
+msgid ""
+"Formular af AWORK ONE is not built correctly. Please run the build script "
+"and reactivate the plugin."
+msgstr ""
+"Formular af AWORK ONE er ikke bygget korrekt. Kør venligst build-scriptet og "
+"genaktiver pluginet."

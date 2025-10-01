@@ -21,9 +21,9 @@ class Enqueue extends Base {
 	/**
 	 * The shortcode name.
 	 *
-	 * @var string Shortcode name.
+	 * @var string Shortcode tag name.
 	 */
-	private $shortcode_name = 'faaone_aworkone_form';
+	private $shortcode_tag = 'faaone_aworkone_form';
 
 	/**
 	 * The block name
@@ -41,12 +41,31 @@ class Enqueue extends Base {
 	public function initialize() {
 		parent::initialize();
 
-		\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-		// Use a later hook for localization.
-		\add_action( 'wp_footer', array( $this, 'localize_scripts' ), 5 );
+		// We will change the hook from 'wp_enqueue_scripts' to 'wp'.
+		// The 'wp' hook runs after the $post object has been set up.
+		\add_action( 'wp', array( $this, 'conditionally_enqueue_assets' ) );
+	}
 
-		// Load hCaptcha.
-		$this->load_hcaptcha_script();
+	/**
+	 * Checks if the shortcode or block exists before enqueueing assets.
+	 *
+	 * @return void
+	 */
+	public function conditionally_enqueue_assets() {
+		// Get the global post object.
+		global $post;
+		if ( ! isset( $post->post_content ) ) {
+			return;
+		}
+
+		if (
+			\has_shortcode( $post->post_content, $this->shortcode_tag )
+			|| has_block( $this->block_name, $post->post_content )
+			) {
+			\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+			// Use a later hook for localization.
+			\add_action( 'wp_footer', array( $this, 'localize_scripts' ), 5 );
+		}
 	}
 
 	/**
@@ -104,6 +123,9 @@ class Enqueue extends Base {
 			10,
 			2
 		);
+
+		// Load hCaptcha.
+		$this->load_hcaptcha_script();
 	}
 
 	/**

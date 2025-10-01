@@ -1,5 +1,5 @@
 === Formular af AWORK ONE ===
-Contributors: mzaworkdk
+Contributors: awbot123, mzaworkdk
 Tags: contacts, leads, aworkone
 Requires at least: 5.8
 Tested up to: 6.8

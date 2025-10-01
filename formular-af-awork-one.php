@@ -9,7 +9,7 @@
  * @link      https://github.com/mz-aworkdk
  *
  * Plugin Name:     Formular af AWORK ONE
- * Plugin URI:      https://github.com/AWORK-AS/contact-form-app
+ * Plugin URI:      https://github.com/AWORK-AS/formular-af-awork-one
  * Description:     Formular af AWORK ONE
  * Version:         1.0.0
  * Author:          support@aworkone.dk

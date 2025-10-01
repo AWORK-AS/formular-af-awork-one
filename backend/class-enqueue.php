@@ -28,25 +28,59 @@ class Enqueue extends Base {
 			return;
 		}
 		// Register and enqueue assets.
-		\add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
+		\add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_settings_page_assets' ) );
 		\add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ) );
 	}
 
 	/**
-	 * Enqueue admin assets
+	 * Enqueue assets ONLY for the plugin's settings page.
 	 *
+	 * @param string $hook_suffix The hook suffix of the current admin page.
 	 * @return void
 	 */
-	public function enqueue_admin_assets() {
-		$admin_page = \get_current_screen();
-		if ( ! $admin_page ) {
+	public function enqueue_settings_page_assets( $hook_suffix ) {
+		// The $hook_suffix for a top-level menu page is 'toplevel_page_{page_slug}'.
+		// This is the most reliable way to target a specific admin page.
+		$settings_page_hook = 'toplevel_page_formular-af-awork-one';
+
+		// If we're not on the correct page, don't proceed.
+		if ( $hook_suffix !== $settings_page_hook ) {
 			return;
 		}
 
+		// Now that we're sure we're on the correct page, let's enqueue everything needed.
+
 		// Enqueue admin styles.
-		$this->enqueue_admin_styles( $admin_page );
+		\wp_enqueue_style(
+			FAAONE_TEXTDOMAIN . '-admin-style',
+			\plugins_url( 'assets/build/plugin-admin.css', FAAONE_PLUGIN_ABSOLUTE ),
+			array( 'dashicons' ),
+			FAAONE_VERSION
+		);
+
+		\wp_enqueue_style(
+			FAAONE_TEXTDOMAIN . '-settings-style',
+			\plugins_url( 'assets/build/plugin-settings.css', FAAONE_PLUGIN_ABSOLUTE ),
+			array( 'dashicons' ),
+			FAAONE_VERSION
+		);
+
 		// Enqueue admin scripts.
-		$this->enqueue_admin_scripts( $admin_page );
+		\wp_enqueue_script(
+			FAAONE_TEXTDOMAIN . '-settings-admin',
+			\plugins_url( 'assets/build/plugin-admin.js', FAAONE_PLUGIN_ABSOLUTE ),
+			array(),
+			FAAONE_VERSION,
+			true
+		);
+
+		\wp_enqueue_script(
+			FAAONE_TEXTDOMAIN . '-settings-script',
+			\plugins_url( 'assets/build/plugin-settings.js', FAAONE_PLUGIN_ABSOLUTE ),
+			array( 'jquery-ui-tabs' ),
+			FAAONE_VERSION,
+			true
+		);
 	}
 
 	/**
@@ -101,62 +135,6 @@ class Enqueue extends Base {
 				'hCaptchaEnabled' => $hcaptcha_enabled,
 				'hCaptchaSiteKey' => $hcaptcha_site_key,
 			)
-		);
-	}
-
-	/**
-	 * Register and enqueue admin-specific style sheet.
-	 *
-	 * @param \WP_Screen $admin_page The current admin screen.
-	 * @return void
-	 */
-	public function enqueue_admin_styles( $admin_page ) {
-		// Main admin style.
-		\wp_enqueue_style(
-			FAAONE_TEXTDOMAIN . '-admin-style',
-			\plugins_url( 'assets/build/plugin-admin.css', FAAONE_PLUGIN_ABSOLUTE ),
-			array( 'dashicons' ),
-			FAAONE_VERSION
-		);
-		// Settings page style.
-		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-awork-one' !== $admin_page->id ) {
-			return;
-		}
-
-		\wp_enqueue_style(
-			FAAONE_TEXTDOMAIN . '-settings-style',
-			\plugins_url( 'assets/build/plugin-settings.css', FAAONE_PLUGIN_ABSOLUTE ),
-			array( 'dashicons' ),
-			FAAONE_VERSION
-		);
-	}
-
-	/**
-	 * Register and enqueue admin-specific JavaScript.
-	 *
-	 * @param \WP_Screen $admin_page The current admin screen.
-	 * @return void
-	 */
-	public function enqueue_admin_scripts( $admin_page ) {
-		// Main admin script.
-		\wp_enqueue_script(
-			FAAONE_TEXTDOMAIN . '-settings-admin',
-			\plugins_url( 'assets/build/plugin-admin.js', FAAONE_PLUGIN_ABSOLUTE ),
-			array(),
-			FAAONE_VERSION,
-			true
-		);
-		// Settings page script.
-		if ( \is_null( $admin_page ) || 'toplevel_page_formular-af-awork-one' !== $admin_page->id ) {
-			return;
-		}
-
-		\wp_enqueue_script(
-			FAAONE_TEXTDOMAIN . '-settings-script',
-			\plugins_url( 'assets/build/plugin-settings.js', FAAONE_PLUGIN_ABSOLUTE ),
-			array( 'jquery-ui-tabs' ),
-			FAAONE_VERSION,
-			true
 		);
 	}
 }
