@@ -130,7 +130,7 @@ class Enqueue extends Base {
 		}
 		\wp_localize_script(
 			'formular-af-awork-one-contact-form-editor-script',
-			'cfaBlockhCaptcha',
+			'faaoneBlockhCaptcha',
 			array(
 				'hCaptchaEnabled' => $hcaptcha_enabled,
 				'hCaptchaSiteKey' => $hcaptcha_site_key,

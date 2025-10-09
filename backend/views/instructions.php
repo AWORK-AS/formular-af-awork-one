@@ -24,14 +24,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<ul>
 				<li><strong><?php esc_html_e( 'Email', 'formular-af-awork-one' ); ?></strong> - <?php esc_html_e( 'Your AWORK ONE account email', 'formular-af-awork-one' ); ?></li>
 				<li><strong><?php esc_html_e( 'Company CVR', 'formular-af-awork-one' ); ?></strong> - <?php esc_html_e( 'Your company\'s CVR number', 'formular-af-awork-one' ); ?></li>
-				<li><strong><?php esc_html_e( 'AWORK ONE Company ID', 'formular-af-awork-one' ); ?></strong> - <?php esc_html_e( 'Your company ID in the AWORK ONE system', 'formular-af-awork-one' ); ?></li>
+				<li><strong><?php esc_html_e( 'AWORK ONE Client ID', 'formular-af-awork-one' ); ?></strong> - <?php esc_html_e( 'Your client ID in the AWORK ONE system', 'formular-af-awork-one' ); ?></li>
 			</ul>
 
 			<p>
 			<?php
 				printf(
 					/* translators: %s is a link to the AWORK ONE dashboard */
-					esc_html__( 'You can find the CVR and Company ID in your %s.', 'formular-af-awork-one' ),
+					esc_html__( 'You can find the CVR and Client ID in your %s.', 'formular-af-awork-one' ),
 					'<a href="https://aworkone.dk/" target="_blank">' . esc_html__( 'AWORK ONE dashboard', 'formular-af-awork-one' ) . '</a>'
 				);
 				?>

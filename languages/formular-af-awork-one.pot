@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-01T04:08:08+00:00\n"
+"POT-Creation-Date: 2025-10-09T11:45:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: formular-af-awork-one\n"
@@ -77,8 +77,8 @@ msgstr "CVR-nummer er påkrævet."
 #: backend/class-settings-page.php:144
 #: backend/class-settings-page.php:178
 #: backend/class-settings-page.php:300
-msgid "AWORK ONE Company ID is required."
-msgstr "AWORK ONE virksomheds-ID er påkrævet."
+msgid "AWORK ONE Client ID is required."
+msgstr "AWORK ONE Client ID er påkrævet."
 
 #: backend/class-settings-page.php:153
 msgid "Email address ID is required."
@@ -143,8 +143,8 @@ msgstr "Virksomheds CVR"
 #: backend/views/formular-af-awork-one-settings.php:59
 #: backend/views/instructions.php:27
 #: backend/class-settings-page.php:142
-msgid "AWORK ONE Company ID"
-msgstr "AWORK ONE Virksomheds-ID"
+msgid "AWORK ONE Client ID"
+msgstr "AWORK ONE Client ID"
 
 #: backend/views/formular-af-awork-one-settings.php:66
 #: backend/views/formular-af-awork-one-settings.php:71
@@ -191,15 +191,15 @@ msgstr "Dit virksomheds CVR-nummer"
 
 #: backend/views/instructions.php:25
 #: backend/views/instructions.php:27
-msgid "Your company ID in the AWORK ONE system"
-msgstr "Dit virksomheds-ID i AWORK ONE-systemet"
+msgid "Your client ID in the AWORK ONE system"
+msgstr "Din klient-ID i AWORK ONE-systemet"
 
 #. translators: %s is a link to the AWORK ONE dashboard
 #: backend/views/instructions.php:31
 #: backend/views/instructions.php:34
 #, php-format
-msgid "You can find the CVR and Company ID in your %s."
-msgstr "Du kan finde CVR og virksomheds-ID i din %s."
+msgid "You can find the CVR and Client ID in your %s."
+msgstr "Du kan finde CVR og Client ID i din %s."
 
 #: backend/views/instructions.php:32
 #: backend/views/instructions.php:35

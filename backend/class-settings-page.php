@@ -138,13 +138,13 @@ class Settings_Page extends Base {
 			)
 		);
 		add_settings_field(
-			'faaone_field_company_id',
-			__( 'AWORK ONE Company ID', 'formular-af-awork-one' ),
+			'faaone_field_client_id',
+			__( 'AWORK ONE Client ID', 'formular-af-awork-one' ),
 			array( $this, 'render_text_field' ),
 			FAAONE_TEXTDOMAIN,
 			'faaone_main_section',
 			array(
-				'id'       => 'faaone_field_company_id',
+				'id'       => 'faaone_field_client_id',
 				'required' => true,
 			)
 		);
@@ -252,7 +252,7 @@ class Settings_Page extends Base {
 	private function get_sanitized_submitted_values( array $values ): array {
 		$data = array(
 			'company_cvr' => isset( $values['faaone_field_company_cvr'] ) ? sanitize_text_field( $values['faaone_field_company_cvr'] ) : '',
-			'company_id'  => isset( $values['faaone_field_company_id'] ) ? sanitize_text_field( $values['faaone_field_company_id'] ) : '',
+			'client_id'   => isset( $values['faaone_field_client_id'] ) ? sanitize_text_field( $values['faaone_field_client_id'] ) : '',
 			'email'       => isset( $values['faaone_field_email'] ) ? sanitize_email( $values['faaone_field_email'] ) : '',
 		);
 		return $data;
@@ -268,9 +268,9 @@ class Settings_Page extends Base {
 		$token = new Retrieve_Token();
 		$data  = $token->submit(
 			array(
-				'company_cvr'           => $values['company_cvr'],
-				'citizenone_company_id' => $values['company_id'],
-				'email'                 => $values['email'],
+				'company_cvr'        => $values['company_cvr'],
+				'aworkone_client_id' => $values['client_id'],
+				'email'              => $values['email'],
 			)
 		);
 
@@ -296,8 +296,8 @@ class Settings_Page extends Base {
 			add_settings_error( 'faaone_messages', 'cvr_required', __( 'Company CVR is required.', 'formular-af-awork-one' ), 'error' );
 			$has_errors = true;
 		}
-		if ( empty( $values['company_id'] ) ) {
-			add_settings_error( 'faaone_messages', 'id_required', __( 'AWORK ONE Company ID is required.', 'formular-af-awork-one' ), 'error' );
+		if ( empty( $values['client_id'] ) ) {
+			add_settings_error( 'faaone_messages', 'id_required', __( 'AWORK ONE Client ID is required.', 'formular-af-awork-one' ), 'error' );
 			$has_errors = true;
 		}
 		if ( empty( $values['email'] ) ) {
@@ -373,8 +373,8 @@ class Settings_Page extends Base {
 		if ( isset( $input['faaone_field_company_cvr'] ) ) {
 			$new_input['faaone_field_company_cvr'] = sanitize_text_field( $input['faaone_field_company_cvr'] );
 		}
-		if ( isset( $input['faaone_field_company_id'] ) ) {
-			$new_input['faaone_field_company_id'] = sanitize_text_field( $input['faaone_field_company_id'] );
+		if ( isset( $input['faaone_field_client_id'] ) ) {
+			$new_input['faaone_field_client_id'] = sanitize_text_field( $input['faaone_field_client_id'] );
 		}
 		if ( isset( $input['faaone_hcaptcha_secret_key'] ) ) {
 			$new_input['faaone_hcaptcha_secret_key'] = sanitize_text_field( $input['faaone_hcaptcha_secret_key'] );

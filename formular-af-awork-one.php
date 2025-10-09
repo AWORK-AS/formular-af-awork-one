@@ -33,8 +33,7 @@ define( 'FAAONE_TEXTDOMAIN', 'formular-af-awork-one' );
 define( 'FAAONE_VERSION', '1.0.0' );
 define( 'FAAONE_MIN_PHP_VERSION', '7.4' );
 define( 'FAAONE_WP_VERSION', '5.8' );
-// define( 'FAAONE_PLUGIN_API_URL', 'https://appserver.citizenone.dk/api' );
-define( 'FAAONE_PLUGIN_API_URL', 'http://127.0.0.1:8000/api' );
+define( 'FAAONE_PLUGIN_API_URL', 'https://server6611.aworkinsight.dk/api' );
 define( 'FAAONE_PLUGIN_API_NAME', 'Formular af AWORK ONE' );
 define( 'FAAONE_NAME', 'Formular af AWORK ONE' );
 

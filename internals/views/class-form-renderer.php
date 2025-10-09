@@ -188,7 +188,7 @@ class Form_Renderer {
 	 */
 	private function render_hcaptcha(): void {
 		$opts              = \faaone_get_settings();
-		$hcaptcha_site_key = $opts[ FAAONE_TEXTDOMAIN . '_hcaptcha_site_key' ] ?? '';
+		$hcaptcha_site_key = $opts['faaone_hcaptcha_site_key'] ?? '';
 		?>
 		<div class="faaone-form-group faaone-form-group--full">
 			<div class="h-captcha" data-sitekey="<?php echo \esc_attr( $hcaptcha_site_key ); ?>"></div>

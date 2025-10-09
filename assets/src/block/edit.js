@@ -5,7 +5,7 @@ import { PanelBody, PanelRow } from '@wordpress/components';
 export default function Edit({ attributes, setAttributes }) {
 
     const { headline, color, btnColor, btnTextColor} = attributes;
-    const hCaptcha     = window.cfaBlockhCaptcha || {};
+    const hCaptcha     = window.faaoneBlockhCaptcha || {};
 
     const formId = `faaone-form-preview`;
 

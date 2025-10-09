@@ -3,7 +3,7 @@ import { useBlockProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
     const { headline, color, btnColor, btnTextColor } = attributes;
-    const hCaptcha     = window.cfaBlockhCaptcha || {};
+    const hCaptcha     = window.faaoneBlockhCaptcha || {};
 
     const formId = `faaone-form-save`;
 
