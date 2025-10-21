@@ -11,7 +11,7 @@ export default function save({ attributes }) {
         <div {...useBlockProps.save()}>
             <div className="faaone-contact-form" id={formId}>
                 <h3 style={{ color: color || '#001A56' }}>
-                    {headline || __( 'Get in Touch With Us', 'formular-af-awork-one' )}
+                    {headline || __( 'Get in Touch With Us', 'formularer-for-awork-one' )}
                 </h3>
                 <form className="faaone-form" id={`${formId}-form`}>
 
@@ -22,7 +22,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-name`}
                                 name="name"
                                 required
-								placeholder={__( 'Name', 'formular-af-awork-one' )}
+								placeholder={__( 'Name', 'formularer-for-awork-one' )}
                             />
                         </div>
 
@@ -32,7 +32,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-company`}
                                 name="company"
                                 required
-								placeholder={__( 'Company', 'formular-af-awork-one' )}
+								placeholder={__( 'Company', 'formularer-for-awork-one' )}
                             />
                         </div>
 
@@ -42,7 +42,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-email`}
                                 name="email"
                                 required
-								placeholder={__( 'Email', 'formular-af-awork-one' )}
+								placeholder={__( 'Email', 'formularer-for-awork-one' )}
                             />
                         </div>
 
@@ -52,7 +52,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-phone`}
                                 name="phone"
                                 required
-								placeholder={__( 'Phone', 'formular-af-awork-one' )}
+								placeholder={__( 'Phone', 'formularer-for-awork-one' )}
                             />
                         </div>
 
@@ -61,7 +61,7 @@ export default function save({ attributes }) {
                                 id={`${formId}-message`}
                                 name="message"
                                 required
-								placeholder={__( 'Message', 'formular-af-awork-one' )}
+								placeholder={__( 'Message', 'formularer-for-awork-one' )}
                             ></textarea>
                         </div>
 
@@ -75,7 +75,7 @@ export default function save({ attributes }) {
 
                     <div className="faaone-form-footer">
                         <button type="submit" className="faaone-submit-btn" style={{backgroundColor: btnColor, color: btnTextColor}}>
-                            {__( 'Submit', 'formular-af-awork-one' )}
+                            {__( 'Submit', 'formularer-for-awork-one' )}
                         </button>
                     </div>
                 </form>
@@ -83,9 +83,9 @@ export default function save({ attributes }) {
                 <div className="faaone-message"></div>
 
                 <div className="faaone-powered-by">
-                    Formular af { ' ' }
+                    Formularer for { ' ' }
                     <a href="https://aworkone.dk" target="_blank" rel="noreferrer">
-                        AWORK ONE
+                        AWORK One
                     </a>
                 </div>
             </div>

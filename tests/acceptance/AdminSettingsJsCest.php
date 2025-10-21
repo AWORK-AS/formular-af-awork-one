@@ -9,7 +9,7 @@ class AdminSettingsJsCest {
 	function jquery_tabs_loaded( AcceptanceTester $I ) {
 		$I->am('administrator');
 		$I->wantTo('access to the plugin settings and see the tabs working');
-		$I->amOnPage('/wp-admin/admin.php?page=formular-af-awork-one');
+		$I->amOnPage('/wp-admin/admin.php?page=formularer-for-awork-one');
 		$I->seeElement('.ui-tabs');
 		$I->click('#ui-id-2');
 		$I->seeElement('#tabs-2');

@@ -30,7 +30,7 @@ class Form_Handler {
 	 */
 	public function register_api_endpoint(): void {
 		\register_rest_route(
-			'formular-af-awork-one/v1',
+			'formularer-for-awork-one/v1',
 			'/submit',
 			array(
 				'methods'             => 'POST',
@@ -121,7 +121,7 @@ class Form_Handler {
 		if ( ! isset( $data['h-captcha-response'] ) || empty( $data['h-captcha-response'] ) ) {
 			return new \WP_Error(
 				'hcaptcha_missing',
-				__( 'Please complete the hCaptcha challenge.', 'formular-af-awork-one' ),
+				__( 'Please complete the hCaptcha challenge.', 'formularer-for-awork-one' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -138,7 +138,7 @@ class Form_Handler {
 		if ( ! $verification_result['success'] ) {
 			return new \WP_Error(
 				'hcaptcha_failed',
-				__( 'hCaptcha verification failed. Please try again.', 'formular-af-awork-one' ),
+				__( 'hCaptcha verification failed. Please try again.', 'formularer-for-awork-one' ),
 				array( 'status' => 403 )
 			);
 		}
@@ -157,7 +157,7 @@ class Form_Handler {
 		if ( ! $token ) {
 			return new \WP_Error(
 				'not_connected',
-				__( 'Error occured. Please contact the administrator.', 'formular-af-awork-one' ),
+				__( 'Error occured. Please contact the administrator.', 'formularer-for-awork-one' ),
 				array( 'status' => 403 )
 			);
 		}
@@ -177,7 +177,7 @@ class Form_Handler {
 			return new \WP_REST_Response(
 				array(
 					'success' => true,
-					'message' => __( 'Thank you! Your message has been sent.', 'formular-af-awork-one' ),
+					'message' => __( 'Thank you! Your message has been sent.', 'formularer-for-awork-one' ),
 				),
 				200
 			);
@@ -188,7 +188,7 @@ class Form_Handler {
 				'success' => false,
 				'message' => __(
 					'Failed to send message. Please try again.',
-					'formular-af-awork-one'
+					'formularer-for-awork-one'
 				),
 			),
 			500

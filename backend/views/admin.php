@@ -22,11 +22,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div id="tabs" class="settings-tab">
 		<ul>
-			<li><a href="#tabs-1"><?php esc_html_e( 'Configuration', 'formular-af-awork-one' ); ?></a></li>
-			<li><a href="#tabs-2"><?php esc_html_e( 'Instructions', 'formular-af-awork-one' ); ?></a></li>
+			<li><a href="#tabs-1"><?php esc_html_e( 'Configuration', 'formularer-for-awork-one' ); ?></a></li>
+			<li><a href="#tabs-2"><?php esc_html_e( 'Instructions', 'formularer-for-awork-one' ); ?></a></li>
 		</ul>
 		<?php
-		require_once plugin_dir_path( __FILE__ ) . 'formular-af-awork-one-settings.php';
+		require_once plugin_dir_path( __FILE__ ) . 'formularer-for-awork-one-settings.php';
 		require_once plugin_dir_path( __FILE__ ) . 'instructions.php';
 		?>
 	</div>

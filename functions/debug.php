@@ -1,6 +1,6 @@
 <?php
 /**
- * Formular af AWORK ONE
+ * Formularer for AWORK One
  *
  * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -20,6 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  */
 function faaone_log( string $text ) {
-	$faaone_debug = new WPBP_Debug( __( 'Contact Form App', 'formular-af-awork-one' ) );
+	$faaone_debug = new WPBP_Debug( __( 'Contact Form App', 'formularer-for-awork-one' ) );
 	$faaone_debug->log( $text );
 }

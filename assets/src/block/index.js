@@ -4,15 +4,15 @@ import Edit from './edit';
 import save from './save';
 import '../styles/block.scss';
 
-registerBlockType('formular-af-awork-one/contact-form', {
+registerBlockType('formularer-for-awork-one/contact-form', {
     apiVersion: 2,
-    title:__('Contact Form', 'formular-af-awork-one'),
+    title:__('Contact Form', 'formularer-for-awork-one'),
     icon: 'email-alt',
     category: 'widgets',
     attributes: {
         headline: {
             type: 'string',
-            default: __('Get in Touch With Us', 'formular-af-awork-one'),
+            default: __('Get in Touch With Us', 'formularer-for-awork-one'),
         },
         color: {
             type: 'string',

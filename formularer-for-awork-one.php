@@ -1,6 +1,6 @@
 <?php
 /**
- * Contact form for AWORK ONE
+ * Contact form for AWORK One
  *
  * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -8,13 +8,13 @@
  * @license   GPL 2.0+
  * @link      https://github.com/mz-aworkdk
  *
- * Plugin Name:     Formular af AWORK ONE
- * Plugin URI:      https://github.com/AWORK-AS/formular-af-awork-one
- * Description:     Formular af AWORK ONE
- * Version:         1.0.0
+ * Plugin Name:     Formularer for AWORK One
+ * Plugin URI:      https://github.com/AWORK-AS/formularer-for-awork-one
+ * Description:     Formularer for AWORK One
+ * Version:         1.0.1
  * Author:          support@aworkone.dk
  * Author URI:      https://aworkone.dk/kontakt-os/
- * Text Domain:     formular-af-awork-one
+ * Text Domain:     formularer-for-awork-one
  * License:         GPLv3+
  * License URI:     http://www.gnu.org/licenses/gpl-3.0.txt
  * Domain Path:     /languages
@@ -29,13 +29,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Define constants that are safe to be global.
 define( 'FAAONE_PLUGIN_ABSOLUTE', __FILE__ );
 define( 'FAAONE_PLUGIN_ROOT', plugin_dir_path( __FILE__ ) );
-define( 'FAAONE_TEXTDOMAIN', 'formular-af-awork-one' );
-define( 'FAAONE_VERSION', '1.0.0' );
+define( 'FAAONE_TEXTDOMAIN', 'formularer-for-awork-one' );
+define( 'FAAONE_VERSION', '1.0.1' );
 define( 'FAAONE_MIN_PHP_VERSION', '7.4' );
 define( 'FAAONE_WP_VERSION', '5.8' );
 define( 'FAAONE_PLUGIN_API_URL', 'https://server6611.aworkinsight.dk/api' );
-define( 'FAAONE_PLUGIN_API_NAME', 'Formular af AWORK ONE' );
-define( 'FAAONE_NAME', 'Formular af AWORK ONE' );
+define( 'FAAONE_PLUGIN_API_NAME', 'Formularer for AWORK One' );
+define( 'FAAONE_NAME', 'Formularer for AWORK One' );
 
 /**
  * Load the Composer autoloader from the build directory.
@@ -50,7 +50,7 @@ if ( ! file_exists( $autoloader_path ) ) {
 			'admin_notices',
 			function () {
 				echo '<div class="error"><p>';
-				esc_html_e( 'Formular af AWORK ONE is not built correctly. Please run the build script and reactivate the plugin.', 'formular-af-awork-one' );
+				esc_html_e( 'Formularer for AWORK One is not built correctly. Please run the build script and reactivate the plugin.', 'formularer-for-awork-one' );
 				echo '</p></div>';
 			}
 		);
@@ -73,7 +73,7 @@ function faaone_initialize_plugin(): void {
 	require_once FAAONE_PLUGIN_ROOT . 'functions/debug.php';
 	// Check for requirements.
 	$requirements = new \mzaworkdk\Aworkone\Dependencies\Micropackage\Requirements\Requirements(
-		__( 'Formular af AWORK ONE', 'formular-af-awork-one' ),
+		__( 'Formularer for AWORK One', 'formularer-for-awork-one' ),
 		array(
 			'php'            => FAAONE_MIN_PHP_VERSION,
 			'php_extensions' => array( 'mbstring' ),

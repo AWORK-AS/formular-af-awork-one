@@ -87,8 +87,8 @@ modules:
             phpBinary: php
             language: ''
             configFile: 'wp-config-test.php'
-            plugins: ['formular-af-awork-one/formular-af-awork-one.php']
-            activatePlugins: ['formular-af-awork-one/formular-af-awork-one.php']
+            plugins: ['formularer-for-awork-one/formularer-for-awork-one.php']
+            activatePlugins: ['formularer-for-awork-one/formularer-for-awork-one.php']
         WPWebDriver:
             url: '%WP_URL%'
             browser: chrome

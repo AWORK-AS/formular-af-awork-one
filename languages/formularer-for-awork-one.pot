@@ -2,8 +2,8 @@
 # This file is distributed under the GPLv3+.
 msgid ""
 msgstr ""
-"Project-Id-Version: Formular af AWORK ONE 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formular-af-awork-one\n"
+"Project-Id-Version: Formularer for AWORK One 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/formularer-for-awork-one\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12,31 +12,31 @@ msgstr ""
 "POT-Creation-Date: 2025-10-09T11:45:40+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: formular-af-awork-one\n"
+"X-Domain: formularer-for-awork-one\n"
 
 #. Plugin Name of the plugin
 #. Description of the plugin
-#: formular-af-awork-one.php
+#: formularer-for-awork-one.php
 #: backend/views/admin.php:21
-#: formular-af-awork-one.php:54
+#: formularer-for-awork-one.php:54
 #: backend/views/admin.php:23
-#: formular-af-awork-one.php:53
-#: formular-af-awork-one.php:77
-msgid "Formular af AWORK ONE"
-msgstr "Formular af AWORK ONE"
+#: formularer-for-awork-one.php:53
+#: formularer-for-awork-one.php:77
+msgid "Formularer for AWORK One"
+msgstr "Formularer for AWORK One"
 
 #. Plugin URI of the plugin
-#: formular-af-awork-one.php
-msgid "https://github.com/AWORK-AS/formular-af-awork-one"
-msgstr "https://github.com/AWORK-AS/formular-af-awork-one"
+#: formularer-for-awork-one.php
+msgid "https://github.com/AWORK-AS/formularer-for-awork-one"
+msgstr "https://github.com/AWORK-AS/formularer-for-awork-one"
 
 #. Author of the plugin
-#: formular-af-awork-one.php
+#: formularer-for-awork-one.php
 msgid "mz@awork.dk"
 msgstr "mz@awork.dk"
 
 #. Author URI of the plugin
-#: formular-af-awork-one.php
+#: formularer-for-awork-one.php
 msgid "https://github.com/mz-aworkdk"
 msgstr "https://github.com/mz-aworkdk"
 
@@ -77,8 +77,8 @@ msgstr "CVR-nummer er påkrævet."
 #: backend/class-settings-page.php:144
 #: backend/class-settings-page.php:178
 #: backend/class-settings-page.php:300
-msgid "AWORK ONE Client ID is required."
-msgstr "AWORK ONE Client ID er påkrævet."
+msgid "AWORK One Client ID is required."
+msgstr "AWORK One Client ID er påkrævet."
 
 #: backend/class-settings-page.php:153
 msgid "Email address ID is required."
@@ -93,8 +93,8 @@ msgstr "API'en accepterede ikke de angivne data. Tjek venligst dine oplysninger 
 #: backend/class-settings-page.php:191
 #: backend/class-settings-page.php:256
 #: backend/class-settings-page.php:283
-msgid "✅ Successfully connected to AWORK ONE"
-msgstr "✅ Forbindelse til AWORK ONE oprettet"
+msgid "✅ Successfully connected to AWORK One"
+msgstr "✅ Forbindelse til AWORK One oprettet"
 
 #: backend/views/admin.php:25
 #: backend/views/admin.php:27
@@ -117,54 +117,54 @@ msgstr "Forbundet"
 msgid "Not Connected"
 msgstr "Ikke forbundet"
 
-#: backend/views/formular-af-awork-one-settings.php:32
+#: backend/views/formularer-for-awork-one-settings.php:32
 #: backend/views/instructions.php:23
 #: internals/views/class-form-renderer.php:57
 #: assets/build/plugin-block.js:1
 #: assets/src/block/edit.js:61
 #: assets/src/block/save.js:45
-#: backend/views/formular-af-awork-one-settings.php:37
+#: backend/views/formularer-for-awork-one-settings.php:37
 #: backend/views/instructions.php:25
 #: internals/views/class-form-renderer.php:146
 #: backend/class-settings-page.php:120
 msgid "Email"
 msgstr "E-mail"
 
-#: backend/views/formular-af-awork-one-settings.php:43
+#: backend/views/formularer-for-awork-one-settings.php:43
 #: backend/views/instructions.php:24
-#: backend/views/formular-af-awork-one-settings.php:48
+#: backend/views/formularer-for-awork-one-settings.php:48
 #: backend/views/instructions.php:26
 #: backend/class-settings-page.php:131
 msgid "Company CVR"
 msgstr "Virksomheds CVR"
 
-#: backend/views/formular-af-awork-one-settings.php:54
+#: backend/views/formularer-for-awork-one-settings.php:54
 #: backend/views/instructions.php:25
-#: backend/views/formular-af-awork-one-settings.php:59
+#: backend/views/formularer-for-awork-one-settings.php:59
 #: backend/views/instructions.php:27
 #: backend/class-settings-page.php:142
-msgid "AWORK ONE Client ID"
-msgstr "AWORK ONE Client ID"
+msgid "AWORK One Client ID"
+msgstr "AWORK One Client ID"
 
-#: backend/views/formular-af-awork-one-settings.php:66
-#: backend/views/formular-af-awork-one-settings.php:71
+#: backend/views/formularer-for-awork-one-settings.php:66
+#: backend/views/formularer-for-awork-one-settings.php:71
 #: backend/class-settings-page.php:111
 msgid "hCaptcha Settings (Optional)"
 msgstr "hCaptcha-indstillinger (Valgfrit)"
 
-#: backend/views/formular-af-awork-one-settings.php:67
-#: backend/views/formular-af-awork-one-settings.php:72
+#: backend/views/formularer-for-awork-one-settings.php:67
+#: backend/views/formularer-for-awork-one-settings.php:72
 msgid "Configure your hCaptcha integration"
 msgstr "Konfigurer din hCaptcha-integration"
 
-#: backend/views/formular-af-awork-one-settings.php:75
-#: backend/views/formular-af-awork-one-settings.php:80
+#: backend/views/formularer-for-awork-one-settings.php:75
+#: backend/views/formularer-for-awork-one-settings.php:80
 #: backend/class-settings-page.php:155
 msgid "secret key"
 msgstr "sikkerhedsnøgle"
 
-#: backend/views/formular-af-awork-one-settings.php:83
-#: backend/views/formular-af-awork-one-settings.php:88
+#: backend/views/formularer-for-awork-one-settings.php:83
+#: backend/views/formularer-for-awork-one-settings.php:88
 #: backend/class-settings-page.php:163
 msgid "site key"
 msgstr "webstedsnøgle"
@@ -176,13 +176,13 @@ msgstr "Obligatoriske administratorindstillinger"
 
 #: backend/views/instructions.php:20
 #: backend/views/instructions.php:22
-msgid "To use the AWORK ONE form plugin, you need to configure the following required settings:"
-msgstr "For at bruge AWORK ONE-formularpluginet skal du konfigurere følgende obligatoriske indstillinger:"
+msgid "To use the AWORK One form plugin, you need to configure the following required settings:"
+msgstr "For at bruge AWORK One-formularpluginet skal du konfigurere følgende obligatoriske indstillinger:"
 
 #: backend/views/instructions.php:23
 #: backend/views/instructions.php:25
-msgid "Your AWORK ONE account email"
-msgstr "Din AWORK ONE-kontos e-mail"
+msgid "Your AWORK One account email"
+msgstr "Din AWORK One-kontos e-mail"
 
 #: backend/views/instructions.php:24
 #: backend/views/instructions.php:26
@@ -191,10 +191,10 @@ msgstr "Dit virksomheds CVR-nummer"
 
 #: backend/views/instructions.php:25
 #: backend/views/instructions.php:27
-msgid "Your client ID in the AWORK ONE system"
-msgstr "Din klient-ID i AWORK ONE-systemet"
+msgid "Your client ID in the AWORK One system"
+msgstr "Din klient-ID i AWORK One-systemet"
 
-#. translators: %s is a link to the AWORK ONE dashboard
+#. translators: %s is a link to the AWORK One dashboard
 #: backend/views/instructions.php:31
 #: backend/views/instructions.php:34
 #, php-format
@@ -203,8 +203,8 @@ msgstr "Du kan finde CVR og Client ID i din %s."
 
 #: backend/views/instructions.php:32
 #: backend/views/instructions.php:35
-msgid "AWORK ONE dashboard"
-msgstr "AWORK ONE-dashboard"
+msgid "AWORK One dashboard"
+msgstr "AWORK One-dashboard"
 
 #: backend/views/instructions.php:38
 #: backend/views/instructions.php:42
@@ -255,8 +255,8 @@ msgstr "Tilføjelse af formularer til dit websted"
 
 #: backend/views/instructions.php:57
 #: backend/views/instructions.php:63
-msgid "You can add the AWORK ONE form to your pages or posts using two methods:"
-msgstr "Du kan tilføje AWORK ONE-formularen til dine sider eller indlæg ved hjælp af to metoder:"
+msgid "You can add the AWORK One form to your pages or posts using two methods:"
+msgstr "Du kan tilføje AWORK One-formularen til dine sider eller indlæg ved hjælp af to metoder:"
 
 #: backend/views/instructions.php:59
 #: backend/views/instructions.php:65
@@ -347,8 +347,8 @@ msgstr "Kontakt os"
 msgid "Contact Form App is on production environment with missing `composer dumpautoload -o` that will improve the performance on autoloading itself."
 msgstr "Contact Form App kører i produktionsmiljø uden den manglende `composer dumpautoload -o`-kommando, som vil forbedre ydeevnen ved selve autoloading."
 
-#: formular-af-awork-one.php:125
-#: formular-af-awork-one.php:118
+#: formularer-for-awork-one.php:125
+#: formularer-for-awork-one.php:118
 msgid "Plugin dependencies are missing. Please run composer install."
 msgstr "Plugin-afhængigheder mangler. Kør venligst composer-installationen."
 
@@ -488,8 +488,8 @@ msgstr "Knaptekstfarve"
 
 #: assets/block.json
 msgctxt "block description"
-msgid "Formular af AWORK ONE"
-msgstr "Formular af AWORK ONE"
+msgid "Formularer for AWORK One"
+msgstr "Formularer for AWORK One"
 
 #: assets/block.json
 msgctxt "block keyword"
@@ -522,12 +522,12 @@ msgid "aworkone, contacts, leads, or form"
 msgstr "aworkone, kontakter, kundeemner, form"
 
 #. Author of the plugin
-#: formular-af-awork-one.php
+#: formularer-for-awork-one.php
 msgid "support@aworkone.dk"
 msgstr "support@aworkone.dk"
 
 #. Author URI of the plugin
-#: formular-af-awork-one.php
+#: formularer-for-awork-one.php
 msgid "https://aworkone.dk/kontakt-os/"
 msgstr "https://aworkone.dk/kontakt-os/"
 
@@ -544,18 +544,18 @@ msgstr "API-legitimationsoplysninger"
 #: backend/class-settings-page.php:339
 #: engine/class-initialize.php:291
 #, php-format
-msgid "For better performance, the Formular af AWORK ONE plugin recommends regenerating the autoloader. This is a developer-level task. %s"
-msgstr "For bedre ydeevne anbefaler Formular af AWORK ONE pluginet at regenerere autoloaderen. Dette er en udvikleropgave. %s"
+msgid "For better performance, the Formularer for AWORK One plugin recommends regenerating the autoloader. This is a developer-level task. %s"
+msgstr "For bedre ydeevne anbefaler Formularer for AWORK One pluginet at regenerere autoloaderen. Dette er en udvikleropgave. %s"
 
 #: backend/class-settings-page.php:341
 #: engine/class-initialize.php:293
 msgid "Dismiss this notice"
 msgstr "Luk denne besked"
 
-#: backend/views/formular-af-awork-one-settings.php:35
+#: backend/views/formularer-for-awork-one-settings.php:35
 msgid "Save Settings"
 msgstr "Gem indstillinger"
 
-#: formular-af-awork-one.php:54
-msgid "Formular af AWORK ONE is not built correctly. Please run the build script and reactivate the plugin."
-msgstr "Formular af AWORK ONE er ikke bygget korrekt. Kør venligst build-scriptet og genaktiver pluginet."
+#: formularer-for-awork-one.php:54
+msgid "Formularer for AWORK One is not built correctly. Please run the build script and reactivate the plugin."
+msgstr "Formularer for AWORK One er ikke bygget korrekt. Kør venligst build-scriptet og genaktiver pluginet."

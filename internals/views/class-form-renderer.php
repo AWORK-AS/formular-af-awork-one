@@ -21,7 +21,7 @@ class Form_Renderer {
 	 */
 	public function render_form(): string|false {
 		$color          = \apply_filters( 'faaone_color', '#001A56' );
-		$headline       = \apply_filters( 'faaone_headline', __( 'Get in Touch With Us', 'formular-af-awork-one' ) );
+		$headline       = \apply_filters( 'faaone_headline', __( 'Get in Touch With Us', 'formularer-for-awork-one' ) );
 		$btn_color      = \apply_filters( 'faaone_button_color', '#368F8B' );
 		$btn_text_color = \apply_filters( 'faaone_button_text_color', '#ffffff' );
 
@@ -79,8 +79,8 @@ class Form_Renderer {
 		?>
 		<div class="faaone-form-grid">
 		<?php
-		$this->render_text_input( 'name', __( 'Name', 'formular-af-awork-one' ), true, 'full' );
-		$this->render_text_input( 'company', __( 'Company', 'formular-af-awork-one' ), true, 'full' );
+		$this->render_text_input( 'name', __( 'Name', 'formularer-for-awork-one' ), true, 'full' );
+		$this->render_text_input( 'company', __( 'Company', 'formularer-for-awork-one' ), true, 'full' );
 		$this->render_email_input();
 		$this->render_phone_input();
 		$this->render_textarea();
@@ -143,7 +143,7 @@ class Form_Renderer {
 				type="email"
 				id="faaone-email"
 				name="email"
-				placeholder="<?php \esc_attr_e( 'Email', 'formular-af-awork-one' ); ?>"
+				placeholder="<?php \esc_attr_e( 'Email', 'formularer-for-awork-one' ); ?>"
 				required
 			>
 		</div>
@@ -160,7 +160,7 @@ class Form_Renderer {
 				type="tel"
 				id="faaone-phone"
 				name="phone"
-				placeholder="<?php \esc_attr_e( 'Phone', 'formular-af-awork-one' ); ?>"
+				placeholder="<?php \esc_attr_e( 'Phone', 'formularer-for-awork-one' ); ?>"
 				required
 			>
 		</div>
@@ -176,7 +176,7 @@ class Form_Renderer {
 			<textarea
 				id="faaone-message"
 				name="message"
-				placeholder="<?php \esc_attr_e( 'Message', 'formular-af-awork-one' ); ?>"
+				placeholder="<?php \esc_attr_e( 'Message', 'formularer-for-awork-one' ); ?>"
 				required
 			></textarea>
 		</div>
@@ -210,7 +210,7 @@ class Form_Renderer {
 				class="faaone-submit-btn"
 				style="background-color:<?php echo \esc_attr( $btn_color ); ?>;color:<?php echo \esc_attr( $btn_text_color ); ?>"
 			>
-				<?php \esc_attr_e( 'Submit', 'formular-af-awork-one' ); ?>
+				<?php \esc_attr_e( 'Submit', 'formularer-for-awork-one' ); ?>
 			</button>
 		</div>
 		<?php
@@ -224,7 +224,7 @@ class Form_Renderer {
 		<div class="faaone-powered-by">
 			Formular af
 			<a href="https://aworkone.dk" target="_blank">
-				AWORK ONE
+				AWORK One
 			</a>
 		</div>
 		<?php

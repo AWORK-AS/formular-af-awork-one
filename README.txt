@@ -1,20 +1,20 @@
-=== Formular af AWORK ONE ===
+=== Formularer for AWORK One ===
 Contributors: awbot123, mzaworkdk
 Tags: contacts, leads, aworkone
 Requires at least: 5.8
 Tested up to: 6.8
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3+
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
 
-Embed customizable contact forms from AWORK ONE on any WordPress site.
+Embed customizable contact forms from AWORK One on any WordPress site.
 == Description ==
 
 * Customizable embed forms with color matching
-* Real-time lead submission to AWORK ONE dashboard
+* Real-time lead submission to AWORK One dashboard
 * Shortcode & Gutenberg block implementation
-* "Formular af AWORK ONE - Journalsystem med alt inklusiv" branding
+* "Formularer for AWORK One - Journalsystem med alt inklusiv" branding
 * Mobile-responsive design
 
 == External Services ==
@@ -28,7 +28,7 @@ This plugin utilizes the following third-party services to enhance functionality
 * **Terms**: https://hcaptcha.com/terms
 * **Privacy Policy**: https://hcaptcha.com/privacy
 
-=== Awork One API ===
+=== AWORK One API ===
 * **Purpose**: Processing form submissions and generating authentication tokens
 * **Data Sent**: Form submission data (as provided by users) and authentication tokens
 * **When**: When users submit forms through the contact form
@@ -42,15 +42,15 @@ This plugin utilizes the following third-party services to enhance functionality
 
 1. Navigate to the 'Add New' in the plugins dashboard
 2. Navigate to the 'Upload' area
-3. Select `formular-af-awork-one.zip` from your computer
+3. Select `formularer-for-awork-one.zip` from your computer
 4. Click 'Install Now'
 5. Activate the plugin in the Plugin dashboard
 
 = Using FTP =
 
-1. Download `formular-af-awork-one.zip`
-2. Extract the `formular-af-awork-one` directory to your computer
-3. Upload the `formular-af-awork-one` directory to the `/wp-content/plugins/` directory
+1. Download `formularer-for-awork-one.zip`
+2. Extract the `formularer-for-awork-one` directory to your computer
+3. Upload the `formularer-for-awork-one` directory to the `/wp-content/plugins/` directory
 4. Activate the plugin in the Plugin dashboard
 
 == Frequently Asked Questions ==
@@ -60,7 +60,7 @@ For hCaptcha to work, you need to add your **Secret Key** and **Site Key** from 
 **Important**: If you already had a **Contact Form** block on your web page before adding the hCaptcha keys, you must replace it with a new one for the settings to take effect.
 
 
-= How do leads appear in AWORK ONE? =
+= How do leads appear in AWORK One? =
 All submissions populate in your dashboard > Leads section with timestamp, source URL, and contact details.
 
 
@@ -88,4 +88,5 @@ All submissions populate in your dashboard > Leads section with timestamp, sourc
 * Optimization: Frontend assets (CSS/JS) are now loaded conditionally, only on pages where the form block or shortcode is present.
 * Optimization: Backend assets are now loaded strictly on the plugin's own settings page, reducing unnecessary load across the WordPress admin area.
 
-
+= 1.0.1 =
+* Tweak: Renamed the plugin to "Formularer for AWORK ONE" to comply with WordPress.org naming guidelines.

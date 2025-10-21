@@ -16,7 +16,7 @@ parameters:
         # CMB2 is loaded in this file
         - tests/phpstan/bootstrap.php
     scanFiles:
-        - formular-af-awork-one.php
+        - formularer-for-awork-one.php
         - uninstall.php
         - vendor/wpbp/i18n-notice/src/i18n-wordpressorg-v3.php
         - vendor/inpsyde/wp-context/src/WpContext.php

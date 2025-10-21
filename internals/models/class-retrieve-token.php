@@ -12,7 +12,7 @@
 namespace mzaworkdk\Aworkone\Internals\Models;
 
 /**
- * Retrieve the token from AWORK ONE
+ * Retrieve the token from AWORK One
  */
 class Retrieve_Token {
 

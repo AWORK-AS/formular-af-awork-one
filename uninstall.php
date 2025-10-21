@@ -1,6 +1,6 @@
 <?php
 /**
- * AWORK ONE Uninstall Form
+ * AWORK One Uninstall Form
  *
  * Fired when the plugin is uninstalled. This script should remove ALL data
  * created by the plugin, including options, transients, and any other
@@ -34,8 +34,8 @@ if ( ! current_user_can( 'delete_plugins' ) ) {
  */
 function faaone_uninstall_single_site(): void {
 	$options_to_delete = array(
-		'formular-af-awork-one-settings', // The main option for your settings.
-		'formular-af-awork-one-version',
+		'formularer-for-awork-one-settings', // The main option for your settings.
+		'formularer-for-awork-one-version',
 	);
 
 	$transients_to_delete = array(

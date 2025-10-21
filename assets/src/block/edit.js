@@ -11,31 +11,31 @@ export default function Edit({ attributes, setAttributes }) {
 
     return (
 		<div {...useBlockProps()}>
-			<PanelBody title={__( 'Form Settings', 'formular-af-awork-one' )} initialOpen={true}>
+			<PanelBody title={__( 'Form Settings', 'formularer-for-awork-one' )} initialOpen={true}>
 				<PanelRow>
 					<RichText
 						tagName="h3"
 						value={headline}
 						onChange={(value) => setAttributes({ headline: value })}
-						placeholder={__( 'Enter form headline...', 'formular-af-awork-one' ) }
+						placeholder={__( 'Enter form headline...', 'formularer-for-awork-one' ) }
 					/>
 				</PanelRow>
 				<PanelRow>
-					<label>{__( 'Headline Color', 'formular-af-awork-one' )}</label>
+					<label>{__( 'Headline Color', 'formularer-for-awork-one' )}</label>
 					<ColorPalette
 						value={color}
 						onChange={(value) => setAttributes({ color: value })}
 					/>
 				</PanelRow>
 				<PanelRow>
-					<label>{__( 'Button Color', 'formular-af-awork-one' )}</label>
+					<label>{__( 'Button Color', 'formularer-for-awork-one' )}</label>
 					<ColorPalette
 						value={btnColor}
 						onChange={(value) => setAttributes({ btnColor: value })}
 					/>
 				</PanelRow>
 				<PanelRow>
-					<label>{__( 'Button Text Color', 'formular-af-awork-one' )}</label>
+					<label>{__( 'Button Text Color', 'formularer-for-awork-one' )}</label>
 					<ColorPalette
 						value={btnTextColor}
 						onChange={(value) => setAttributes({ btnTextColor: value })}
@@ -45,28 +45,28 @@ export default function Edit({ attributes, setAttributes }) {
 			{/* Form preview in editor */}
 			<div className="faaone-contact-form" id={formId}>
 				<h3 style={{ color: color || '#001A56' }}>
-					{headline || __( 'Get in Touch With Us', 'formular-af-awork-one' )}
+					{headline || __( 'Get in Touch With Us', 'formularer-for-awork-one' )}
 				</h3>
 				<div className="faaone-form-preview">
 					<div className="faaone-form-grid">
 						<div className="faaone-form-group">
-							<input type="text" disabled placeholder={__( 'Name', 'formular-af-awork-one' )}/>
+							<input type="text" disabled placeholder={__( 'Name', 'formularer-for-awork-one' )}/>
 						</div>
 
 						<div className="faaone-form-group">
-							<input type="text" disabled placeholder={__( 'Company', 'formular-af-awork-one' )}/>
+							<input type="text" disabled placeholder={__( 'Company', 'formularer-for-awork-one' )}/>
 						</div>
 
 						<div className="faaone-form-group">
-							<input type="email" disabled placeholder={__( 'Email', 'formular-af-awork-one' )}/>
+							<input type="email" disabled placeholder={__( 'Email', 'formularer-for-awork-one' )}/>
 						</div>
 
 						<div className="faaone-form-group">
-							<input type="tel" disabled placeholder={__( 'Phone', 'formular-af-awork-one' )}/>
+							<input type="tel" disabled placeholder={__( 'Phone', 'formularer-for-awork-one' )}/>
 						</div>
 
 						<div className="faaone-form-group">
-							<textarea disabled placeholder={__( 'Message', 'formular-af-awork-one' )}></textarea>
+							<textarea disabled placeholder={__( 'Message', 'formularer-for-awork-one' )}></textarea>
 						</div>
 						{
 							hCaptcha.hCaptchaEnabled &&
@@ -78,14 +78,14 @@ export default function Edit({ attributes, setAttributes }) {
 
 					<div className="faaone-form-footer">
 						<button type="button" disabled className="faaone-submit-btn" style={{backgroundColor: btnColor, color: btnTextColor}}>
-							{__( 'Submit', 'formular-af-awork-one' )}
+							{__( 'Submit', 'formularer-for-awork-one' )}
 						</button>
 					</div>
 
 					<div className="faaone-powered-by">
-						Formular af { ' ' }
+						Formularer for { ' ' }
 						<a href="https://aworkone.dk" target="_blank" rel="noreferrer">
-							AWORK ONE
+							AWORK One
 						</a>
 					</div>
 				</div>

@@ -36,9 +36,9 @@ cache
 vendor
 build
 tests/_output/
-formular-af-awork-one/vendor/
+formularer-for-awork-one/vendor/
 tests/_support/_generated/
-formular-af-awork-one/assets/build/
+formularer-for-awork-one/assets/build/
 /assets/build/
 
 !composer.lock

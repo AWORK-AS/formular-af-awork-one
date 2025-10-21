@@ -1,6 +1,6 @@
 <?php
 /**
- * Formular af AWORK ONE
+ * Formularer for AWORK One
  *
  * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -128,7 +128,7 @@ class ImpExp extends Base {
 
 		new \WP_Error(
 			'faaone_import_settings_failed',
-			\__( 'Failed to import the settings.', 'formular-af-awork-one' )
+			\__( 'Failed to import the settings.', 'formularer-for-awork-one' )
 		);
 	}
 }

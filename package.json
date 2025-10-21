@@ -1,7 +1,7 @@
 {
-    "name": "formular-af-awork-one",
+    "name": "formularer-for-awork-one",
     "version": "1.0.4",
-    "description": "Formular af AWORK ONE",
+    "description": "Formularer for AWORK One",
     "author": "Mindell Zamora <mz@awork.dk>",
     "files": [
         "ajax",
@@ -19,7 +19,7 @@
         "vendor",
         "index.php",
         "LICENSE.txt",
-        "formular-af-awork-one.php",
+        "formularer-for-awork-one.php",
         "README.txt",
         "uninstall.php"
     ],

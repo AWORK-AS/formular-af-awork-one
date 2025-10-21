@@ -1,6 +1,6 @@
 <?php
 /**
- * Formular af AWORK ONE
+ * Formularer for AWORK One
  *
  * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -30,7 +30,7 @@ class Enqueue extends Base {
 	 *
 	 * @var string Block name.
 	 */
-	private $block_name = 'formular-af-awork-one/contact-form';
+	private $block_name = 'formularer-for-awork-one/contact-form';
 
 
 	/**
@@ -40,7 +40,6 @@ class Enqueue extends Base {
 	 */
 	public function initialize() {
 		parent::initialize();
-
 		// We will change the hook from 'wp_enqueue_scripts' to 'wp'.
 		// The 'wp' hook runs after the $post object has been set up.
 		\add_action( 'wp', array( $this, 'conditionally_enqueue_assets' ) );
@@ -57,10 +56,9 @@ class Enqueue extends Base {
 		if ( ! isset( $post->post_content ) ) {
 			return;
 		}
-
 		if (
 			\has_shortcode( $post->post_content, $this->shortcode_tag )
-			|| has_block( $this->block_name, $post->post_content )
+			|| \has_block( $this->block_name, $post->post_content )
 			) {
 			\add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 			// Use a later hook for localization.
@@ -159,16 +157,16 @@ class Enqueue extends Base {
 			FAAONE_TEXTDOMAIN . '-plugin-script',
 			'faaone_form_vars',
 			array(
-				'rest_url'          => rest_url( 'formular-af-awork-one/v1/submit' ),
+				'rest_url'          => rest_url( 'formularer-for-awork-one/v1/submit' ),
 				'nonce'             => \wp_create_nonce( 'wp_rest' ),
 				'i18n'              => array(
-					'loading'           => \__( 'Loading...', 'formular-af-awork-one' ),
-					'sending'           => \__( 'Sending...', 'formular-af-awork-one' ),
-					'submission_failed' => \__( 'Submission failed', 'formular-af-awork-one' ),
-					'invalid_nonce'     => \__( 'Session expired. Please refresh the page.', 'formular-af-awork-one' ),
-					'required_field'    => \__( 'This field is required', 'formular-af-awork-one' ),
-					'invalid_email'     => \__( 'Please enter a valid email address', 'formular-af-awork-one' ),
-					'success_message'   => \__( 'Thank you! Your message has been sent.', 'formular-af-awork-one' ),
+					'loading'           => \__( 'Loading...', 'formularer-for-awork-one' ),
+					'sending'           => \__( 'Sending...', 'formularer-for-awork-one' ),
+					'submission_failed' => \__( 'Submission failed', 'formularer-for-awork-one' ),
+					'invalid_nonce'     => \__( 'Session expired. Please refresh the page.', 'formularer-for-awork-one' ),
+					'required_field'    => \__( 'This field is required', 'formularer-for-awork-one' ),
+					'invalid_email'     => \__( 'Please enter a valid email address', 'formularer-for-awork-one' ),
+					'success_message'   => \__( 'Thank you! Your message has been sent.', 'formularer-for-awork-one' ),
 				),
 				'color'             => $color,
 				'headline'          => $headline,

@@ -1,6 +1,6 @@
 <?php
 /**
- * Formular af AWORK ONE
+ * Formularer for AWORK One
  *
  * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -116,7 +116,7 @@ class ActDeact extends Base {
 			return;
 		}
 
-		$version_option = \get_option( 'formular-af-awork-one-version' );
+		$version_option = \get_option( 'formularer-for-awork-one-version' );
 
 		if ( is_scalar( $version_option ) ) {
 			$version = (string) $version_option;
@@ -128,7 +128,7 @@ class ActDeact extends Base {
 			return;
 		}
 
-		\update_option( 'formular-af-awork-one-version', \FAAONE_VERSION );
+		\update_option( 'formularer-for-awork-one-version', \FAAONE_VERSION );
 		\delete_option( \FAAONE_TEXTDOMAIN . '_fake-meta' );
 	}
 

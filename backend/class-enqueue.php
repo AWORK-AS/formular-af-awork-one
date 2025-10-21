@@ -1,6 +1,6 @@
 <?php
 /**
- * Formular af AWORK ONE
+ * Formularer for AWORK One
  *
  * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -41,7 +41,7 @@ class Enqueue extends Base {
 	public function enqueue_settings_page_assets( $hook_suffix ) {
 		// The $hook_suffix for a top-level menu page is 'toplevel_page_{page_slug}'.
 		// This is the most reliable way to target a specific admin page.
-		$settings_page_hook = 'toplevel_page_formular-af-awork-one';
+		$settings_page_hook = 'toplevel_page_formularer-for-awork-one';
 
 		// If we're not on the correct page, don't proceed.
 		if ( $hook_suffix !== $settings_page_hook ) {
@@ -97,11 +97,11 @@ class Enqueue extends Base {
 			FAAONE_VERSION
 		);
 		// Unregister editor script from block.json.
-		\wp_deregister_script( 'formular-af-awork-one-contact-form-editor-script' );
+		\wp_deregister_script( 'formularer-for-awork-one-contact-form-editor-script' );
 
 		// Enqueue block editor script.
 		\wp_enqueue_script(
-			'formular-af-awork-one-contact-form-editor-script',
+			'formularer-for-awork-one-contact-form-editor-script',
 			\plugins_url( 'assets/build/plugin-block.js', FAAONE_PLUGIN_ABSOLUTE ),
 			array( 'wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n', 'wp-api-fetch' ),
 			FAAONE_VERSION,
@@ -114,8 +114,8 @@ class Enqueue extends Base {
 		// Handle translations.
 		if ( function_exists( 'wp_set_script_translations' ) ) {
 			\wp_set_script_translations(
-				'formular-af-awork-one-contact-form-editor-script',
-				'formular-af-awork-one',
+				'formularer-for-awork-one-contact-form-editor-script',
+				'formularer-for-awork-one',
 				FAAONE_PLUGIN_ROOT . 'languages'
 			);
 		}
@@ -129,7 +129,7 @@ class Enqueue extends Base {
 			$hcaptcha_enabled = true;
 		}
 		\wp_localize_script(
-			'formular-af-awork-one-contact-form-editor-script',
+			'formularer-for-awork-one-contact-form-editor-script',
 			'faaoneBlockhCaptcha',
 			array(
 				'hCaptchaEnabled' => $hcaptcha_enabled,

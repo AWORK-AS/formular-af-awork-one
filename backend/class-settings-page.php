@@ -1,6 +1,6 @@
 <?php
 /**
- * Form by AWORK ONE
+ * Form by AWORK One
  *
  * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -65,7 +65,7 @@ class Settings_Page extends Base {
 	 */
 	public function add_plugin_admin_menu(): void {
 		\add_menu_page(
-			\__( 'Contact Form App Settings', 'formular-af-awork-one' ),
+			\__( 'Contact Form App Settings', 'formularer-for-awork-one' ),
 			FAAONE_NAME,
 			'manage_options',
 			FAAONE_TEXTDOMAIN, // Page slug.
@@ -99,7 +99,7 @@ class Settings_Page extends Base {
 		// Section 1: Main Settings.
 		add_settings_section(
 			'faaone_main_section',
-			__( 'API Credentials', 'formular-af-awork-one' ),
+			__( 'API Credentials', 'formularer-for-awork-one' ),
 			// @phpstan-ignore argument.type
 			null, // No callback needed for the section description.
 			FAAONE_TEXTDOMAIN // Page slug.
@@ -108,7 +108,7 @@ class Settings_Page extends Base {
 		// Section 2: hCaptcha Settings.
 		add_settings_section(
 			'faaone_hcaptcha_section',
-			__( 'hCaptcha Settings (Optional)', 'formular-af-awork-one' ),
+			__( 'hCaptcha Settings (Optional)', 'formularer-for-awork-one' ),
 			// @phpstan-ignore argument.type
 			null, // No callback needed for the section description.
 			FAAONE_TEXTDOMAIN
@@ -117,7 +117,7 @@ class Settings_Page extends Base {
 		// Add fields for Main Settings.
 		add_settings_field(
 			'faaone_field_email',
-			__( 'Email', 'formular-af-awork-one' ),
+			__( 'Email', 'formularer-for-awork-one' ),
 			array( $this, 'render_text_field' ),
 			FAAONE_TEXTDOMAIN,
 			'faaone_main_section',
@@ -128,7 +128,7 @@ class Settings_Page extends Base {
 		);
 		add_settings_field(
 			'faaone_field_company_cvr',
-			__( 'Company CVR', 'formular-af-awork-one' ),
+			__( 'Company CVR', 'formularer-for-awork-one' ),
 			array( $this, 'render_text_field' ),
 			FAAONE_TEXTDOMAIN,
 			'faaone_main_section',
@@ -139,7 +139,7 @@ class Settings_Page extends Base {
 		);
 		add_settings_field(
 			'faaone_field_client_id',
-			__( 'AWORK ONE Client ID', 'formular-af-awork-one' ),
+			__( 'AWORK One Client ID', 'formularer-for-awork-one' ),
 			array( $this, 'render_text_field' ),
 			FAAONE_TEXTDOMAIN,
 			'faaone_main_section',
@@ -152,7 +152,7 @@ class Settings_Page extends Base {
 		// Add fields for hCaptcha.
 		add_settings_field(
 			'faaone_hcaptcha_secret_key',
-			'hCaptcha ' . __( 'secret key', 'formular-af-awork-one' ),
+			'hCaptcha ' . __( 'secret key', 'formularer-for-awork-one' ),
 			array( $this, 'render_text_field' ),
 			FAAONE_TEXTDOMAIN,
 			'faaone_hcaptcha_section',
@@ -160,7 +160,7 @@ class Settings_Page extends Base {
 		);
 		add_settings_field(
 			'faaone_hcaptcha_site_key',
-			'hCaptcha ' . __( 'site key', 'formular-af-awork-one' ),
+			'hCaptcha ' . __( 'site key', 'formularer-for-awork-one' ),
 			array( $this, 'render_text_field' ),
 			FAAONE_TEXTDOMAIN,
 			'faaone_hcaptcha_section',
@@ -275,12 +275,12 @@ class Settings_Page extends Base {
 		);
 
 		if ( ! is_object( $data ) || ! isset( $data->data ) ) {
-			$error_message = __( 'The API did not accept the provided data. Please check your information and try again.', 'formular-af-awork-one' );
+			$error_message = __( 'The API did not accept the provided data. Please check your information and try again.', 'formularer-for-awork-one' );
 			add_settings_error( 'faaone_messages', 'api_error', $error_message, 'error' );
 			return false;
 		}
 
-		$success_message = __( '✅ Successfully connected to AWORK ONE', 'formular-af-awork-one' );
+		$success_message = __( '✅ Successfully connected to AWORK One', 'formularer-for-awork-one' );
 		add_settings_error( 'faaone_messages', 'api_success', $success_message, 'updated' ); // 'updated' is the class for green notices.
 		return $data->data;
 	}
@@ -293,15 +293,15 @@ class Settings_Page extends Base {
 	private function has_validation_errors( array $values ): bool {
 		$has_errors = false;
 		if ( empty( $values['company_cvr'] ) ) {
-			add_settings_error( 'faaone_messages', 'cvr_required', __( 'Company CVR is required.', 'formular-af-awork-one' ), 'error' );
+			add_settings_error( 'faaone_messages', 'cvr_required', __( 'Company CVR is required.', 'formularer-for-awork-one' ), 'error' );
 			$has_errors = true;
 		}
 		if ( empty( $values['client_id'] ) ) {
-			add_settings_error( 'faaone_messages', 'id_required', __( 'AWORK ONE Client ID is required.', 'formular-af-awork-one' ), 'error' );
+			add_settings_error( 'faaone_messages', 'id_required', __( 'AWORK One Client ID is required.', 'formularer-for-awork-one' ), 'error' );
 			$has_errors = true;
 		}
 		if ( empty( $values['email'] ) ) {
-			add_settings_error( 'faaone_messages', 'email_required', __( 'Email address is required.', 'formular-af-awork-one' ), 'error' );
+			add_settings_error( 'faaone_messages', 'email_required', __( 'Email address is required.', 'formularer-for-awork-one' ), 'error' );
 			$has_errors = true;
 		}
 		return $has_errors;
@@ -316,7 +316,7 @@ class Settings_Page extends Base {
 		// Update the URL to point to the correct menu page.
 		return \array_merge(
 			array(
-				'settings' => '<a href="' . \admin_url( 'admin.php?page=' . FAAONE_TEXTDOMAIN ) . '">' . \__( 'Settings', 'formular-af-awork-one' ) . '</a>',
+				'settings' => '<a href="' . \admin_url( 'admin.php?page=' . FAAONE_TEXTDOMAIN ) . '">' . \__( 'Settings', 'formularer-for-awork-one' ) . '</a>',
 			),
 			$links
 		);
@@ -336,9 +336,9 @@ class Settings_Page extends Base {
 			$message = sprintf(
 				// Use esc_html() for security.
 				/* translators: %s is a link to dismiss the notice */
-				esc_html__( 'For better performance, the Formular af AWORK ONE plugin recommends regenerating the autoloader. This is a developer-level task. %s', 'formular-af-awork-one' ),
+				esc_html__( 'For better performance, the Formularer for AWORK One plugin recommends regenerating the autoloader. This is a developer-level task. %s', 'formularer-for-awork-one' ),
 				// Add a link to dismiss the notice.
-				'<a href="' . esc_url( add_query_arg( 'faaone_dismiss_notice', 'autoloader_warning' ) ) . '">' . esc_html__( 'Dismiss this notice', 'formular-af-awork-one' ) . '</a>'
+				'<a href="' . esc_url( add_query_arg( 'faaone_dismiss_notice', 'autoloader_warning' ) ) . '">' . esc_html__( 'Dismiss this notice', 'formularer-for-awork-one' ) . '</a>'
 			);
 
 			// Show the notice. 'notice-warning' gives a yellow color.

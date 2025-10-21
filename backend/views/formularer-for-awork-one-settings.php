@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		do_settings_sections( FAAONE_TEXTDOMAIN );
 
 		// Output save settings button.
-		submit_button( __( 'Save Settings', 'formular-af-awork-one' ) );
+		submit_button( __( 'Save Settings', 'formularer-for-awork-one' ) );
 		?>
 	</form>
 </div>

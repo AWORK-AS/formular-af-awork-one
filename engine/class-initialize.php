@@ -1,6 +1,6 @@
 <?php
 /**
- * Formular af AWORK ONE
+ * Formularer for AWORK One
  *
  * @package   mzaworkdk\Aworkone
  * @author    Mindell Zamora <mz@awork.dk>
@@ -14,7 +14,7 @@ namespace mzaworkdk\Aworkone\Engine;
 use mzaworkdk\Aworkone\Engine;
 
 /**
- * Formular af AWORK ONE Initializer
+ * Formularer for AWORK One Initializer
  */
 class Initialize {
 
@@ -288,9 +288,9 @@ class Initialize {
 			$message = sprintf(
 				// Use esc_html() for security.
 				/* translators: %s is a link to dismiss the notice */
-				\esc_html__( 'For better performance, the Formular af AWORK ONE plugin recommends regenerating the autoloader. This is a developer-level task. %s', 'formular-af-awork-one' ),
+				\esc_html__( 'For better performance, the Formularer for AWORK One plugin recommends regenerating the autoloader. This is a developer-level task. %s', 'formularer-for-awork-one' ),
 				// Add a link to dismiss the notice.
-				'<a href="' . esc_url( add_query_arg( 'faaone_dismiss_notice', 'autoloader_warning' ) ) . '">' . esc_html__( 'Dismiss this notice', 'formular-af-awork-one' ) . '</a>'
+				'<a href="' . esc_url( add_query_arg( 'faaone_dismiss_notice', 'autoloader_warning' ) ) . '">' . esc_html__( 'Dismiss this notice', 'formularer-for-awork-one' ) . '</a>'
 			);
 
 			// Show the notice. 'notice-warning' gives a yellow color.
